@@ -19,3 +19,20 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func fizzBuzz(_ number: Int) -> String {
+    switch (number.isMultiple(of: 3), number.isMultiple(of: 5)) {
+    case (true, true):
+        return "fizzbuzz"
+    case (true, false):
+        return "fizz"
+    case (false, true):
+        return "buzz"
+    default:
+        return "\(number)"
+    }
+}
+
+for number in 1...100 {
+    print("\(fizzBuzz(number))")
+}
