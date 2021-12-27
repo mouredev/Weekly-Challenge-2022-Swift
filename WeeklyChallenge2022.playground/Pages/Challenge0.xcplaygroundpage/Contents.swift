@@ -19,3 +19,19 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+// LandaetaDev
+// \(i)
+for i in 1...100 {
+    if (i % 3 > 0 && i % 5 > 0){
+        print(i)
+    } else if (i % 3 == 0 && i % 5 == 0) {
+        print("fizzbuzz")
+    } else {
+        if (i % 3 == 0) {
+            print("fizz")
+        }
+        if (i % 5 == 0) {
+            print("buzz")
+        }
+    }
+}
