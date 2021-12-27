@@ -19,3 +19,16 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+for i in 1...100 {
+    if i%3 == 0 {
+        if i%5 == 0 {
+            print("fizzbuzz")
+        } else {
+            print("fizz")
+        }
+    } else if i%5 == 0 {
+        print("buzz")
+    } else {
+        print(i)
+    }
+}
