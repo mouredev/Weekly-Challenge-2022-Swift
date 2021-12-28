@@ -34,6 +34,10 @@ Si quieres unirte a nuestra comunidad de desarrollo, aprender programación de A
 [![Discord](https://img.shields.io/badge/Discord-Canal_de_chat_para_retos-5865F2?style=for-the-badge&logo=discord&logoColor=white&labelColor=101010)](https://mouredev.com/discord)
 [![Link](https://img.shields.io/badge/Links_de_interés-moure.dev-39E09B?style=for-the-badge&logo=Linktree&logoColor=white&labelColor=101010)](https://mouredev.com)
 
+## Listado de retos
+* **#0** - 27/12/21 - `EL FAMOSO "FIZZ BUZZ"`
+* **#1** - 03/01/22 - `Publicación nuevo reto...` 
+
 ## ![https://mouredev.com](https://raw.githubusercontent.com/mouredev/mouredev/master/mouredev_emote.png) Hola, mi nombre es Brais Moure.
 ### Freelance full-stack iOS & Android engineer
 
