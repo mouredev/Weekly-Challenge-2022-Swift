@@ -21,7 +21,7 @@ import Foundation
  */
 for i in 1...100 {
     let r = fizzbuzz(i)
-    print("\(i) \(r)")
+    print(r)
 }
 
 func fizzbuzz(_ i: Int) -> String {
@@ -32,5 +32,6 @@ func fizzbuzz(_ i: Int) -> String {
     if i.isMultiple(of: 5) {
         r += "buzz"
     }
+    if (r.isEmpty) { r = String(i) }
     return r
 }
