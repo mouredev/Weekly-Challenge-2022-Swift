@@ -19,3 +19,21 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+for i in 1...100 {
+    let r = fizzbuzz(i)
+    print(r)
+}
+
+func fizzbuzz(_ i: Int) -> String {
+    switch (i % 3 == 0, i % 5 == 0) {
+    case (true, true):
+        return "fizzbuzz"
+    case (true, false):
+        return "fizz"
+    case (false, true):
+        return "buzz"
+    default:
+        return String(i)
+    }
+}
