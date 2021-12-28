@@ -19,3 +19,18 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+for i in 1...100 {
+    let r = fizzbuzz(i)
+    print("\(i) \(r)")
+}
+
+func fizzbuzz(_ i: Int) -> String {
+    var r : String = ""
+    if (i.isMultiple(of: 3)) {
+         r += "fizz"
+    }
+    if i.isMultiple(of: 5) {
+        r += "buzz"
+    }
+    return r
+}
