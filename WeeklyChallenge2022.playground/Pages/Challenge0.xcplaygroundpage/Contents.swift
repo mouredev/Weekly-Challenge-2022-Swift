@@ -20,18 +20,17 @@ import Foundation
  *
  */
 // LandaetaDev
-// \(i)
-for i in 1...100 {
-    if (i % 3 > 0 && i % 5 > 0){
-        print(i)
-    } else if (i % 3 == 0 && i % 5 == 0) {
-        print("fizzbuzz")
+for varNumber in 1...100 {
+    if (varNumber % 3 > 0 && varNumber % 5 > 0){
+        print("\(varNumber) \n")
+    } else if (varNumber % 3 == 0 && varNumber % 5 == 0) {
+        print("fizzbuzz \n")
     } else {
-        if (i % 3 == 0) {
-            print("fizz")
+        if (varNumber % 3 == 0) {
+            print("fizz \n")
         }
-        if (i % 5 == 0) {
-            print("buzz")
+        if (varNumber % 5 == 0) {
+            print("buzz \n")
         }
     }
 }
