@@ -1,4 +1,5 @@
 import Foundation
+import Darwin
 
 /*
  * Reto #0
@@ -19,3 +20,21 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+for numero in 1...100 {
+    if numero % 3 == 0 && numero % 5 == 0 {  //si numero modulo de 3 es igual a numero modulo de 5 es igual a o
+        print("fizzbuzz")
+    } else if numero % 5 == 0 {  // Si numero modulo de 5 es igual a 0
+        print("buzz")
+    } else if numero % 3 == 0 {  // si numero modulo de 3 es igual a 0
+        print("fizz")
+    } else {
+        print(numero)
+    }
+}
+
+
+
+
+
+
