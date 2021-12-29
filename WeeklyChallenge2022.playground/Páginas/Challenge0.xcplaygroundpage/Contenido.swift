@@ -22,7 +22,7 @@ import Darwin
  */
 
 for numero in 1...100 {
-    if numero % 3 == 0 && numero % 5 == 0 {  //si numero modulo de 3 es igual a numero modulo de 5 es igual a o
+    if numero % 3 == 0 && numero % 5 == 0 {  //si numero modulo de 3 es igual a numero modulo de 5 es igual a 0
         print("fizzbuzz")
     } else if numero % 5 == 0 {  // Si numero modulo de 5 es igual a 0
         print("buzz")
