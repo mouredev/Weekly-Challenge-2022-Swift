@@ -19,3 +19,18 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+for i in 1...100 {
+    var phrase: String = String(i)
+    
+    if (i % 3 == 0) {
+        phrase = "fizz"
+    }
+    if (i % 5 == 0 && phrase.count > 3) {
+        phrase += "buzz"
+    } else if (i % 5 == 0){
+        phrase = "buzz"
+    }
+    
+    print(phrase)
+}
