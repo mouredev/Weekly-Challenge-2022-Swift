@@ -19,3 +19,16 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+
+for i in 1...100 {
+    if(i.isMultiple(of: 3) && i.isMultiple(of: 5)){
+        print("fizzbuzz")
+    }else if(i.isMultiple(of: 3)){
+        print("fizz")
+    }else if(i.isMultiple(of: 5)){
+        print("buzz")
+    }else{
+        print(i)
+    }
+}
