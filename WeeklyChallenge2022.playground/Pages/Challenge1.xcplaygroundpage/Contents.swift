@@ -19,3 +19,11 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+extension String {
+    func isAnagram(_ anagram: String) -> Bool {
+        if self.count == anagram.count && self != anagram {
+            return self.lowercased().sorted() == anagram.lowercased().sorted()
+        }
+        return false
+    }
+}
