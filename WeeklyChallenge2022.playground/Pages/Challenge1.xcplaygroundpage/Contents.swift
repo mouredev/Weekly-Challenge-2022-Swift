@@ -19,3 +19,40 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+// LandaetaDev
+func funcAnagrama (letWord1:String, letWord2:String) -> Bool {
+
+    let arrWord1 = Array(letWord1)
+    var arrWord2 = Array(letWord2)
+    var varResult : Bool = false
+
+    if (arrWord1.count == arrWord2.count) && (arrWord1 != arrWord2) {
+        
+        for i in 0...arrWord1.count-1 {
+            
+            for j in 0...arrWord2.count-1 {
+                
+                if arrWord1[i] == arrWord2[j] {
+                    arrWord2.remove(at: j)
+                    break
+                }
+                
+            }
+
+        }
+        
+    }
+
+    if arrWord2.count == 0 {
+        varResult = true
+    }
+
+    return varResult
+}
+
+funcAnagrama(letWord1: String("Canada"), letWord2: String("andaCa"))
+funcAnagrama(letWord1: String("rablo"), letWord2: String("arbol"))
+funcAnagrama(letWord1: String("ralo2"), letWord2: String("ao2"))
+funcAnagrama(letWord1: String("prueba"), letWord2: String("prueba"))
+funcAnagrama(letWord1: String("prueba"), letWord2: String("rupbae"))
+funcAnagrama(letWord1: String("prueba"), letWord2: String("rupbaeXc"))
