@@ -20,9 +20,19 @@ import Foundation
  *
  */
 
+// MARK: - My implementation
+
 for value in 1...100 {
     if value.isMultiple(of: 3) && value.isMultiple(of: 5) { print("fizzbuzz") }
     else if value.isMultiple(of: 3) { print("fizz") }
     else if value.isMultiple(of: 5) { print("buzz") }
     else { print(value) }
+}
+
+// MARK: - Mouredev implementation
+
+for index in 1...100 {
+    let divisibleByThree = index % 3 == 0
+    let divisibleByFive = index % 5 == 0
+    print("\((divisibleByThree && divisibleByFive) ? "fizzbuzz" : (divisibleByThree ? "fizz" : (divisibleByFive ? "buzz" : index.description)))")
 }
