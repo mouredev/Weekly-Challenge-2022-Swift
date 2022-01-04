@@ -19,3 +19,37 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func anagram(firstWord: String, secondWord: String) -> Bool {
+    let first = firstWord.uppercased().folding(options: .diacriticInsensitive, locale: .current)
+    let second = secondWord.uppercased().folding(options: .diacriticInsensitive, locale: .current)
+    guard !first.isEmpty, !second.isEmpty, first != second else { return false }
+    
+    return first.sorted() == second.sorted()
+    
+}
+
+// Anagram list - Should succeed
+anagram(firstWord: "Jamón", secondWord: "Monja")
+anagram(firstWord: "Amor", secondWord: "Roma")
+anagram(firstWord: "Irónicamente", secondWord: "Renacimiento")
+anagram(firstWord: "Frase", secondWord: "Fresa")
+anagram(firstWord: "Lucía", secondWord: "Licúa")
+anagram(firstWord: "Aspero", secondWord: "Espora")
+
+// Same words list - Should fail
+anagram(firstWord: "hola", secondWord: "hola")
+anagram(firstWord: "mundo", secondWord: "mundo")
+anagram(firstWord: "prueba", secondWord: "prueba")
+anagram(firstWord: "MoureDev", secondWord: "MoureDev")
+
+// Random words list - Should fail
+anagram(firstWord: "hola", secondWord: "casa")
+anagram(firstWord: "ok", secondWord: "okk")
+anagram(firstWord: "bueno", secondWord: "boeno")
+anagram(firstWord: "aaa", secondWord: "a")
+
+// Empty strings - Should fail
+anagram(firstWord: "", secondWord: "something")
+anagram(firstWord: "something", secondWord: "")
+anagram(firstWord: "", secondWord: "")
