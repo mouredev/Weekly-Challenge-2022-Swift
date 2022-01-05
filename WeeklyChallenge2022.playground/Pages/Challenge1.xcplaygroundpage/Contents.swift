@@ -19,3 +19,10 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func isAnagram(word1: String, word2: String) -> Bool {
+  guard word1 != word2, !word1.isEmpty, !word2.isEmpty else {
+    return false
+  }
+  return word1.lowercased().sorted() == word2.lowercased().sorted()
+}
