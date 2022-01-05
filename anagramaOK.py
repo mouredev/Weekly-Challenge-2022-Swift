@@ -18,7 +18,7 @@ def anagrama(palabra1, palabra2):
 	p1=normalize(p1.lower())
 	p2=normalize(p2.lower())
 	if len(p1)!=len(p2):
-		return "false l"
+		return "false"
 
 	c=0
 	sw=0
