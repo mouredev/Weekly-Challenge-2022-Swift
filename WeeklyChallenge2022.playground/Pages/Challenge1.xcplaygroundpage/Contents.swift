@@ -21,7 +21,7 @@ import Foundation
  */
 
 func isAnagram(word1: String, word2: String) -> Bool {
-  guard word1 != word2 else {
+  guard word1 != word2, !word1.isEmpty, !word2.isEmpty else {
     return false
   }
   return word1.lowercased().sorted() == word2.lowercased().sorted()
