@@ -4,5 +4,10 @@
         <page name='Challenge0'/>
         <page name='Challenge1'/>
         <page name='Readme'/>
+<<<<<<< Updated upstream
+=======
+        <page name='LandaetaDev.Challenge0'/>
+        <page name='LandaetaDev.Challenge1'/>
+>>>>>>> Stashed changes
     </pages>
 </playground>
