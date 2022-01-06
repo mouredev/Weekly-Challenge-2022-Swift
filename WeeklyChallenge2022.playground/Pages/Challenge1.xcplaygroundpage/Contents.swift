@@ -23,16 +23,18 @@ import Foundation
 import Foundation
 
 
-func isAnagram(word1: String, word2: String){
+func isAnagram(word1: String, word2: String) -> Bool {
     
     if(word1 == word2){
         print("\(word1) & \(word2) are the same word")
-        return
+        return false
     }
     if(Array(word1).sorted() == Array(word2).sorted()){
         print("\(word1) & \(word2) are anagrams")
+        return true
     }else{
         print("\(word1) &\(word2) are not anagrams")
+        return false
     }
    
 }
