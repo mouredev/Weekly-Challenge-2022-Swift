@@ -19,3 +19,8 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func anagrmaChecker(string1: String, string2: String) -> Bool {
+    
+    return string1.count == string2.count && string1.sorted() == string2.sorted()
+}
