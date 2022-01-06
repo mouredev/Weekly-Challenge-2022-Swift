@@ -19,3 +19,26 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+import Foundation
+
+
+func isAnagram(word1: String, word2: String) -> Bool {
+    
+    if(word1 == word2){
+        print("\(word1) & \(word2) are the same word")
+        return false
+    }
+    if(Array(word1).sorted() == Array(word2).sorted()){
+        print("\(word1) & \(word2) are anagrams")
+        return true
+    }else{
+        print("\(word1) &\(word2) are not anagrams")
+        return false
+    }
+   
+}
+
+let word1 = "Night".lowercased()
+let word2 = "Thing".lowercased()
+isAnagram(word1: word1, word2: word2)
