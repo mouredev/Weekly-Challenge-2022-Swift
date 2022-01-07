@@ -25,10 +25,10 @@ func comprobarAnagrama(palabra1: String, palabra2: String)-> Bool{
     var array2 = Array(palabra2)
     let mismoNumeroDeLetras = array1.count == array2.count ? true : false
     let sonMismaPalabra = palabra1 == palabra2 ? true : false
+    var sonAnagrama = false
     
     if mismoNumeroDeLetras && !sonMismaPalabra{
         for _ in 0..<array1.count{
-            
             if let removeInd = array2.firstIndex(where: {$0 == array1.first}){
                 array2.remove(at: removeInd)
                 array1.removeFirst()
@@ -43,13 +43,11 @@ func comprobarAnagrama(palabra1: String, palabra2: String)-> Bool{
 //                array1.removeFirst()
 //            }
         }
-        return (array1.count == 0 && array2.count == 0) ? true : false
+        sonAnagrama = (array1.count == 0 && array2.count == 0) ? true : false
         
-    }else{
-        return false
     }
-    
+    return sonAnagrama
 }
 
-print(comprobarAnagrama(palabra1: "mañano", palabra2: "ñanama"))
+print(comprobarAnagrama(palabra1: "mañanos", palabra2: "sañonma"))
 
