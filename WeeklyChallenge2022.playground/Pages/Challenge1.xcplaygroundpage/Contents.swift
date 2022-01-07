@@ -19,3 +19,35 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func comprobarAnagrama(palabra1: String, palabra2: String)-> Bool{
+    var array1 = Array(palabra1)
+    var array2 = Array(palabra2)
+    let mismoNumeroDeLetras = array1.count == array2.count ? true : false
+    let sonMismaPalabra = palabra1 == palabra2 ? true : false
+    var sonAnagrama = false
+    
+    if mismoNumeroDeLetras && !sonMismaPalabra{
+        for _ in 0..<array1.count{
+            if let removeInd = array2.firstIndex(where: {$0 == array1.first}){
+                array2.remove(at: removeInd)
+                array1.removeFirst()
+            }
+//            if array2.contains(where: { $0 == array1.first}){
+//                for (index,value) in array2.enumerated(){
+//                    if value == array1.first{
+//                        array2.remove(at: index)
+//                        break
+//                    }
+//                }
+//                array1.removeFirst()
+//            }
+        }
+        sonAnagrama = (array1.count == 0 && array2.count == 0) ? true : false
+        
+    }
+    return sonAnagrama
+}
+
+print(comprobarAnagrama(palabra1: "mañanos", palabra2: "sañonma"))
+
