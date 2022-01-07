@@ -26,22 +26,30 @@ func comprobarAnagrama(palabra1: String, palabra2: String)-> Bool{
     let mismoNumeroDeLetras = array1.count == array2.count ? true : false
     let sonMismaPalabra = palabra1 == palabra2 ? true : false
     
-    if mismoNumeroDeLetras{
+    if mismoNumeroDeLetras && !sonMismaPalabra{
         for _ in 0..<array1.count{
-            if array2.contains(where: { $0 == array1.first}){
-                for (index,value) in array2.enumerated(){
-                    if value == array1.first{
-                        array2.remove(at: index)
-                        break
-                    }
-                }
+            
+            if let removeInd = array2.firstIndex(where: {$0 == array1.first}){
+                array2.remove(at: removeInd)
                 array1.removeFirst()
             }
-
+//            if array2.contains(where: { $0 == array1.first}){
+//                for (index,value) in array2.enumerated(){
+//                    if value == array1.first{
+//                        array2.remove(at: index)
+//                        break
+//                    }
+//                }
+//                array1.removeFirst()
+//            }
         }
+        return (array1.count == 0 && array2.count == 0) ? true : false
+        
+    }else{
+        return false
     }
-    return (array1.count == 0 && array2.count == 0) || sonMismaPalabra ? true : false
+    
 }
 
-print(comprobarAnagrama(palabra1: "mañano", palabra2: "nañoma"))
+print(comprobarAnagrama(palabra1: "mañano", palabra2: "ñanama"))
 
