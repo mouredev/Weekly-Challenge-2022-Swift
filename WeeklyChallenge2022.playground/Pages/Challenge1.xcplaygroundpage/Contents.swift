@@ -19,3 +19,9 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+print("Introduce la primera palabra")
+var palabra1 = readLine()!
+print("Introduce la segunda palabra")
+var palabra2 = readLine()!
+print((palabra1.count == palabra2.count) ? ((palabra1 != palabra2) ? (String(Array(palabra1.uppercased()).sorted()) == String(Array(palabra2.uppercased()).sorted()) ? "ES ANAGRAMA" : "NO ANAGRAMA") : "NO ANAGRAMA") : "NO ANAGRAMA")

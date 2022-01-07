@@ -20,8 +20,20 @@ import Foundation
  *
  */
 
-for index in 1...100 {
+/*for index in 1...100 {
     let divisibleByThree = index % 3 == 0
     let divisibleByFive = index % 5 == 0
     print("\((divisibleByThree && divisibleByFive) ? "fizzbuzz" : (divisibleByThree ? "fizz" : (divisibleByFive ? "buzz" : index.description)))")
+}*/
+
+for numero in 1...100 {
+    if numero % 3 == 0 && numero % 5 == 0 {  //si numero modulo de 3 es igual a numero modulo de 5 es igual a 0
+        print("fizzbuzz")
+    } else if numero % 5 == 0 {  // Si numero modulo de 5 es igual a 0
+        print("buzz")
+    } else if numero % 3 == 0 {  // si numero modulo de 3 es igual a 0
+        print("fizz")
+    } else {
+        print(numero)
+    }
 }
