@@ -19,3 +19,19 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+ 
+ print("Introduce la primera palabra")
+ var palabra1 = readLine()!
+ var p1 = palabra1
+ print("Introduce la segunda palabra")
+ var palabra2 = readLine()!
+ var p2 = palabra2
+
+ print((palabra1.count == palabra2.count) ?
+      ((palabra1 != palabra2) ?
+      (String(Array(palabra1.uppercased()).sorted()) == String(Array(palabra2.uppercased()).sorted()) ?
+       "LA PALABRA " + p2 + " ES UN ANAGRAMA DE " + p1
+      : "LA PALABRA " + p2 + " NO ES UN ANAGRAMA DE " + p1 + " PORQUE NO CONTIENE LOS MISMOS CARACTERES")
+      : "LA PALABRA " + p2 + " NO ES UN ANAGRAMA DE " + p1 + " YA QUE SON LA MISMA PALABRA")
+      : "LA PALABRA " + p2 + " NO ES UN ANAGRAMA DE " + p1 + " YA QUE SON DE DIFERENTE TAMAÑO")
+
