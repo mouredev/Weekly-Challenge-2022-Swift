@@ -22,8 +22,8 @@ import Foundation
 // LandaetaDev
 func funcAnagrama (letWord1:String, letWord2:String) -> Bool {
 
-    let arrWord1 = Array(letWord1)
-    var arrWord2 = Array(letWord2)
+    let arrWord1 = Array(letWord1.lowercased())
+    var arrWord2 = Array(letWord2.lowercased())
     var varResult : Bool = false
 
     if (arrWord1.count == arrWord2.count) && (arrWord1 != arrWord2) {
@@ -45,6 +45,7 @@ func funcAnagrama (letWord1:String, letWord2:String) -> Bool {
     return varResult
 }
 
+funcAnagrama(letWord1: String("TORONTO"), letWord2: String("NoROtTo"))
 funcAnagrama(letWord1: String("Canada"), letWord2: String("andaCa"))
 funcAnagrama(letWord1: String("rablo"), letWord2: String("arbol"))
 funcAnagrama(letWord1: String("ralo2"), letWord2: String("ao2"))
