@@ -19,3 +19,12 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func checkAnagramFor(firstWord: String, secondWord: String) -> Bool {
+    if firstWord == secondWord { return false }
+    return firstWord.lowercased().sorted() == secondWord.lowercased().sorted()
+}
+
+checkAnagramFor(firstWord: "mouredev", secondWord: "mouredev")
+checkAnagramFor(firstWord: "mouredev", secondWord: "euromvde")
+checkAnagramFor(firstWord: "mouredev", secondWord: "w")
