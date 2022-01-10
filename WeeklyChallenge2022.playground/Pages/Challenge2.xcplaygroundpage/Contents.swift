@@ -18,3 +18,13 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func fibonacci() {
+    var numbers: [Int] = [0, 1]
+    (3...50).forEach { _ in
+        numbers.append(numbers.last! + numbers[numbers.endIndex - 2])
+    }
+    print("Sucesión de Fibonacci: \(numbers)")
+}
+
+fibonacci()
