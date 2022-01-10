@@ -19,3 +19,17 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func areAnagrams(wordA: String, wordB: String) -> Bool {
+    return (wordA.count == wordB.count) &&
+    (wordA.caseInsensitiveCompare(wordB) != ComparisonResult.orderedSame) &&
+    (wordA.enumerated().filter { (index, c) in c.lowercased() == String(Array(wordB)[index]) }.isEmpty)
+}
+
+print(areAnagrams(wordA: "Roma", wordB: ""))
+print(areAnagrams(wordA: "Roma", wordB: "Roma"))
+print(areAnagrams(wordA: "Roma", wordB: "romana"))
+print(areAnagrams(wordA: "Roma", wordB: "Italia"))
+print(areAnagrams(wordA: "Roma", wordB: "ramo"))
+print(areAnagrams(wordA: "Roma", wordB: "mora"))
+print(areAnagrams(wordA: "Roma", wordB: "amor"))
