@@ -19,9 +19,18 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
-
-for index in 1...100 {
-    let divisibleByThree = index % 3 == 0
-    let divisibleByFive = index % 5 == 0
-    print("\((divisibleByThree && divisibleByFive) ? "fizzbuzz" : (divisibleByThree ? "fizz" : (divisibleByFive ? "buzz" : index.description)))")
+// LandaetaDev
+for varNumber in 1...100 {
+    if (varNumber % 3 > 0 && varNumber % 5 > 0){
+        print("\(varNumber) \n")
+    } else if (varNumber % 3 == 0 && varNumber % 5 == 0) {
+        print("fizzbuzz \n")
+    } else {
+        if (varNumber % 3 == 0) {
+            print("fizz \n")
+        }
+        if (varNumber % 5 == 0) {
+            print("buzz \n")
+        }
+    }
 }
