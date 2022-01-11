@@ -24,14 +24,14 @@ func fibonacci(iteration: Int) -> Decimal {
     if iteration <= 1 {
         return 0
     }
-    return recursive(iteration: iteration-1, current: 1, previous: 0)
+    return add(iteration: iteration-1, current: 1, previous: 0) //fibonacci(iteration: iteration - 1) + fibonacci(iteration: iteration - 2)
 }
 
-func recursive(iteration: Int, current: Decimal, previous: Decimal) -> Decimal {
+func add(iteration: Int, current: Decimal, previous: Decimal) -> Decimal {
     if iteration == 1 {
         return current
     }
-    return recursive(iteration: iteration - 1, current: current+previous, previous: current)
+    return add(iteration: iteration - 1, current: current+previous, previous: current)
 }
 
 assert(fibonacci(iteration: 0) == 0)
