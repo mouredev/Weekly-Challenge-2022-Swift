@@ -21,15 +21,15 @@ import Foundation
  */
 
 func areAnagrams(wordA: String, wordB: String) -> Bool {
-    return (wordA.count == wordB.count) &&
-    (wordA.caseInsensitiveCompare(wordB) != ComparisonResult.orderedSame) &&
+    return wordA.lowercased().sorted().elementsEqual(wordB.lowercased().sorted()) &&
     (wordA.enumerated().filter { (index, c) in c.lowercased() == String(Array(wordB)[index]) }.isEmpty)
 }
 
 print(areAnagrams(wordA: "Roma", wordB: ""))
 print(areAnagrams(wordA: "Roma", wordB: "Roma"))
 print(areAnagrams(wordA: "Roma", wordB: "romana"))
-print(areAnagrams(wordA: "Roma", wordB: "Italia"))
+print(areAnagrams(wordA: "Roma", wordB: "Peru"))
 print(areAnagrams(wordA: "Roma", wordB: "ramo"))
 print(areAnagrams(wordA: "Roma", wordB: "mora"))
+print(areAnagrams(wordA: "Roma", wordB: "moar"))
 print(areAnagrams(wordA: "Roma", wordB: "amor"))
