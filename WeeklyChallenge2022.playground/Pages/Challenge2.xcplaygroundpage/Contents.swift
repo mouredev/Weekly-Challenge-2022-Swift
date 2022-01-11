@@ -18,3 +18,30 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func fibonacci(count: Int) -> Decimal {
+    assert(count <= 186)
+    return recursive(iteration: count, current: 1, previous: 0)
+}
+
+func recursive(iteration: Int, current: Decimal, previous: Decimal) -> Decimal {
+    if iteration == 0 {
+        return previous
+    } else if iteration == 1 {
+        return current
+    }
+    return recursive(iteration: iteration - 1, current: current+previous, previous: current)
+}
+
+assert(fibonacci(count: 0) == 0)
+assert(fibonacci(count: 1) == 1)
+assert(fibonacci(count: 2) == 1)
+assert(fibonacci(count: 3) == 2)
+assert(fibonacci(count: 4) == 3)
+assert(fibonacci(count: 5) == 5)
+assert(fibonacci(count: 6) == 8)
+assert(fibonacci(count: 7) == 13)
+assert(fibonacci(count: 50) == 12586269025)
+assert("\(fibonacci(count: 100))" == "354224848179261915075")
+assert("\(fibonacci(count: 150))" == "9969216677189303386214405760200")
+assert("\(fibonacci(count: 186))" == "332825110087067562321196029789634457848")
