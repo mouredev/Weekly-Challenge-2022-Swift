@@ -20,6 +20,23 @@ import Foundation
  *
  */
 
+//mi solucion
+for i in 1...100{
+    var texto = ""
+    
+    if i % 3 == 0{
+        texto += "fizz"
+    }
+    if i % 5 == 0{
+        texto += "buzz"
+    }
+    if texto == ""{
+        texto = String(i)
+    }
+    print("\(texto) \n")
+}
+
+//solucion de mouredev
 for index in 1...100 {
     let divisibleByThree = index % 3 == 0
     let divisibleByFive = index % 5 == 0
