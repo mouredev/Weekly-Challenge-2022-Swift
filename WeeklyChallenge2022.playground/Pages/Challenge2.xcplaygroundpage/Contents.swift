@@ -19,29 +19,28 @@ import Foundation
  *
  */
 
-func fibonacci(count: Int) -> Decimal {
-    assert(count <= 186)
-    return recursive(iteration: count, current: 1, previous: 0)
+func fibonacci(iteration: Int) -> Decimal {
+    assert(iteration <= 187)
+    if iteration <= 1 {
+        return 0
+    }
+    return recursive(iteration: iteration-1, current: 1, previous: 0)
 }
 
 func recursive(iteration: Int, current: Decimal, previous: Decimal) -> Decimal {
-    if iteration == 0 {
-        return previous
-    } else if iteration == 1 {
+    if iteration == 1 {
         return current
     }
     return recursive(iteration: iteration - 1, current: current+previous, previous: current)
 }
 
-assert(fibonacci(count: 0) == 0)
-assert(fibonacci(count: 1) == 1)
-assert(fibonacci(count: 2) == 1)
-assert(fibonacci(count: 3) == 2)
-assert(fibonacci(count: 4) == 3)
-assert(fibonacci(count: 5) == 5)
-assert(fibonacci(count: 6) == 8)
-assert(fibonacci(count: 7) == 13)
-assert(fibonacci(count: 50) == 12586269025)
-assert("\(fibonacci(count: 100))" == "354224848179261915075")
-assert("\(fibonacci(count: 150))" == "9969216677189303386214405760200")
-assert("\(fibonacci(count: 186))" == "332825110087067562321196029789634457848")
+assert(fibonacci(iteration: 0) == 0)
+assert(fibonacci(iteration: 1) == 0)
+assert(fibonacci(iteration: 2) == 1)
+assert(fibonacci(iteration: 3) == 1)
+assert(fibonacci(iteration: 4) == 2)
+assert(fibonacci(iteration: 5) == 3)
+assert(fibonacci(iteration: 6) == 5)
+assert(fibonacci(iteration: 7) == 8)
+assert(fibonacci(iteration: 8) == 13)
+assert(fibonacci(iteration: 50) == 7778742049)
