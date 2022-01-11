@@ -18,3 +18,29 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func fibonacci(iteration: Int) -> Decimal {
+    assert(iteration <= 187)
+    if iteration <= 1 {
+        return 0
+    }
+    return add(iteration: iteration-1, current: 1, previous: 0) //fibonacci(iteration: iteration - 1) + fibonacci(iteration: iteration - 2)
+}
+
+func add(iteration: Int, current: Decimal, previous: Decimal) -> Decimal {
+    if iteration == 1 {
+        return current
+    }
+    return add(iteration: iteration - 1, current: current+previous, previous: current)
+}
+
+assert(fibonacci(iteration: 0) == 0)
+assert(fibonacci(iteration: 1) == 0)
+assert(fibonacci(iteration: 2) == 1)
+assert(fibonacci(iteration: 3) == 1)
+assert(fibonacci(iteration: 4) == 2)
+assert(fibonacci(iteration: 5) == 3)
+assert(fibonacci(iteration: 6) == 5)
+assert(fibonacci(iteration: 7) == 8)
+assert(fibonacci(iteration: 8) == 13)
+assert(fibonacci(iteration: 50) == 7778742049)
