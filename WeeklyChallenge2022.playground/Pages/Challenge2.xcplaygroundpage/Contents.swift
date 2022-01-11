@@ -1,4 +1,5 @@
 import Foundation
+import CoreFoundation
 
 /*
  * Reto #2
@@ -18,3 +19,30 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+
+func fibonacci(n: Int) {
+    
+    var a = 0
+    var b = 1
+    
+    print(a)
+
+    for _ in 0..<n {
+        
+        let c = a + b
+        a = b
+        b = c
+        print(a)
+    }
+}
+fibonacci(n: 50)
+
+
+
+
+
+
+
+
+
