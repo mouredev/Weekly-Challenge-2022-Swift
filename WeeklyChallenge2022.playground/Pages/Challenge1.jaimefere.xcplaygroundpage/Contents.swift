@@ -21,8 +21,10 @@ import Foundation
  */
 
 func areAnagrams(wordA: String, wordB: String) -> Bool {
-    return wordA.lowercased().sorted().elementsEqual(wordB.lowercased().sorted()) &&
-    (wordA.enumerated().filter { (index, c) in c.lowercased() == String(Array(wordB)[index]) }.isEmpty)
+    return wordA.count == wordB.count && (wordA.lowercased().enumerated().filter { (index, c) in
+        String(c) == String(Array(wordB)[index]).lowercased() ||  // que cumpla que TODAS las letras están en otra posición (reordenadas)
+        wordA.split(separator: c).count != wordB.split(separator: c).count
+    }.isEmpty)
 }
 
 print(areAnagrams(wordA: "Roma", wordB: ""))
