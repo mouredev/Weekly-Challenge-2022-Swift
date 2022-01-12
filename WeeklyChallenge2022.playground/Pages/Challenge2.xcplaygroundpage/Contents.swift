@@ -18,3 +18,17 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+ let endNumber = 50;
+ var first = 0;
+ var second = 1;
+ var sum = 0;
+
+ print("Firsts \(endNumber) numbers of Fibonacci: ")
+
+ for i in 1...endNumber{
+     sum = first + second;
+     first = second;
+     second = sum;
+     print("\(sum)")
+ }
