@@ -3,7 +3,5 @@
     <pages>
         <page name='Readme'/>
         <page name='Challenge0'/>
-        <page name='Challenge1'/>
-        <page name='Challenge2'/>
     </pages>
 </playground>
