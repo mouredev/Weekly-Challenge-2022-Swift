@@ -18,3 +18,24 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+var values: [Int] = []
+
+while values.count < 50 {
+    if values.isEmpty {
+        values.append(0)
+    } else if values.last == 0 {
+        values.append(1)
+    } else {
+        if let lastValue = values.last {
+            let previousValue = values[values.count - 2]
+            let newValue = previousValue + lastValue
+            values.append(newValue)
+        }
+    }
+}
+
+print(values)
+
+
+
