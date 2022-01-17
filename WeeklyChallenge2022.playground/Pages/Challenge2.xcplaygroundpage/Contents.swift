@@ -18,3 +18,16 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func fibonacci(n: Int) {
+    var initial = 0
+    var second = 1
+    print(initial) // Print 0
+    for i in 0..<n {
+        let sum = initial + second
+        initial = second
+        second = sum
+        print(initial)
+    }
+}
+fibonacci(n: 50)
