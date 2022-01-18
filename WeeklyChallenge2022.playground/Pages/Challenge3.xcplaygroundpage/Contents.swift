@@ -32,7 +32,7 @@ function esPrimo($valor){
   if((is_int($valor)) && ($valor > 1 )){ //Si el valor no es un entero, no juega :P
     for($div = 2; $div <= 9; $div++){ //Conocer si es divisible por otro numero
       if($div != $valor){ //No hacer que se cuente a si mismo 
-        $resultado  = round(($valor / $div),4); //chequear con numeros grandes, capaz haya que aumentar o no los decimales 
+        $resultado  = round(($valor / $div),4); //chequear, capaz con menos decimales esta bien tambien
         $entero     = intval($resultado); //solo quiero el valor entero
 
         if($resultado == $entero) { array_push($divisores, $div); } //Si son iguales, es un divisor valido
