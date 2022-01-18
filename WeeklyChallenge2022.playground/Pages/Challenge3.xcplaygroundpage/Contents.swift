@@ -17,3 +17,29 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+extension Int {
+    func isPrime() -> Bool {
+        let start = 2
+        let end = self / 2
+        if end >= start {
+            for index in start...end {
+                if self % index == 0 {
+                    return false
+                }
+            } // 0.09194803237915039
+            //return !(start...end).contains { self % $0 == 0 } // 0.3190920352935791
+            //return (start...end).first { self % $0 == 0 } == nil // 0.3278859853744507
+            //return (start...end).allSatisfy { self % $0 != 0 } // 0.3230630159378052
+        }
+        return self < start ? false : true
+    }
+}
+
+let date = Date()
+(1...100).forEach {
+    if $0.isPrime() {
+        print($0)
+    }
+}
+print(Date().timeIntervalSince(date))
