@@ -44,3 +44,14 @@ fibonacciRegBucle(pos: 50)
 //dump(fibonacciReg.sorted(by: { $0.key < $1.key}))
 
 
+//solucion mouredev
+var n0 = 0
+var n1 = 1
+
+(1...50).forEach { _ in
+    print(n0)
+
+    let fib = n0 + n1
+    n0 = n1
+    n1 = fib
+}
