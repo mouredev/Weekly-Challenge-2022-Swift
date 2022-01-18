@@ -1,4 +1,5 @@
 import Foundation
+import Darwin
 
 /*
  * Reto #3
@@ -17,3 +18,20 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+var numeroPrimos: [Int] = []
+var num = 2
+for i in 2 ... 100 {
+    if ((i == 2) || (i == 3) || (i == 5) || (i == 7))
+    {
+        numeroPrimos.append(i)
+    }
+    else if (((i % 2) != 0)) && (((i % 3) != 0)) && (((i % 5) != 0)) && (((i % 7) != 0))
+    {
+        numeroPrimos.append(i)
+    }
+    if (i > 100){
+        break
+    }
+}
+print(numeroPrimos)
