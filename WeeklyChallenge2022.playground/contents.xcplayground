@@ -6,5 +6,9 @@
         <page name='Challenge1'/>
         <page name='Challenge2'/>
         <page name='Challenge3'/>
+        <page name='LandaetaDev.Challenge0'/>
+        <page name='LandaetaDev.Challenge1'/>
+        <page name='LandaetaDev.Challenge2'/>
+        <page name='LandaetaDev.Challenge3'/>
     </pages>
 </playground>
