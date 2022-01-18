@@ -17,3 +17,31 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+//un numero es primo si solo si da division exacta al dividirlo por 1 y por si mismo.
+//culaquier numero dividido por un numero superior no va a dar una division exacta.
+
+func esPrimo(numero: Int)->Bool{
+    var numeroDivisionesExactas = 0
+    //bucle que recorre todos los numero desde el 1 hasta el numero pasado como argumento.
+    for i in 1...numero{
+        //obtiene el resto de la division entre el numero pasado como argumento y todos los numeros que hay entre 1 y el mismo.
+        if numero % i == 0{
+            numeroDivisionesExactas += 1
+        }
+    }
+    
+    //si el numero es primo solo puede dar como 0 como resto 2 veces. Si da mas, no es primo.
+    return numeroDivisionesExactas > 2 ? false : true;
+    
+}
+
+//imprime los numeros primos que hay entre 1 y 100.
+for t in 1...100{
+    if esPrimo(numero: t){
+        print(t)
+    }
+}
+
+
+
