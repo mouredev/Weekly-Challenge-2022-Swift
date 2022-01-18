@@ -30,7 +30,7 @@ function esPrimo($valor){
   $divisores = array(); //Iniciar el array
 
   if((is_int($valor)) && ($valor > 1 )){ //Si el valor no es un entero, no juega :P
-    for($div = 2; $div <= 9; $div++){ //Conocer si es divisible por otro numero
+    for($div = 2; $div <= substr($valor,0,2); $div++){ //Conocer si es divisible por otro numero (menor o igual a los primeros 2 digitos)
       if($div != $valor){ //No hacer que se cuente a si mismo 
         $resultado  = round(($valor / $div),4); //chequear, capaz con menos decimales esta bien tambien
         $entero     = intval($resultado); //solo quiero el valor entero
@@ -58,7 +58,7 @@ function esPrimo($valor){
   for($x = 1; $x <= 100; $x++){
     $divisores = array();
 
-    for($div = 2; $div <= 9; $div++){
+    for($div = 2; $div <= 10; $div++){
       if($div != $x){
         $resultado  = round(($x / $div),4); 
         $entero     = intval($resultado);
