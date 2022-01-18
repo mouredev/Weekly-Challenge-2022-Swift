@@ -17,3 +17,19 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+import Foundation
+
+//ALGORITMO BASADO EN LA CRIBA DE ERATÓSTENES
+
+var numPrimos: [Int] = []
+var num = 2
+
+while (num < 200)
+{
+    if (((num % 2) != 0) || (num == 2))  && (((num % 3) != 0) || (num == 3)) && (((num % 5) != 0) || (num == 5)) && (((num % 7) != 0) || (num == 7))
+     {
+         numPrimos.append(num)
+     }
+    num += 1
+}
+print(numPrimos)
