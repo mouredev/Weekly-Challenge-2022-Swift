@@ -20,12 +20,20 @@ import Foundation
  */
 
 
-func fibonacci() {
-     var numberos: [Int] = [0, 1]
-     (3...50).forEach { _ in
-         numberos.append(numberos.last! + numberos[numberos.endIndex - 2])
-     }
-     print("Sucesión de Fibonacci: \(numberos)")
- }
+var valorInit:Int = 1
+var valorNext:Int = 1
 
- fibonacci()
+print("Serie de Fibonacci")
+print("==================")
+
+for  i in 1...91  {
+    if ( i < 3 ) {
+        print("\(i) 1")
+    } else {
+        let nuevoValor = valorInit + valorNext;
+        print("\(i) \(nuevoValor)")
+        valorInit = valorNext
+        valorNext = nuevoValor
+    }
+}
+
