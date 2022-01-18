@@ -17,3 +17,26 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+var numero = 1
+
+
+while numero < 100 {
+    
+    var divisor = 1
+    var nDivisiones = 0
+    
+    while divisor <= numero {
+        
+        if numero % divisor == 0{
+            nDivisiones += 1
+        }
+        divisor += 1
+    }
+    if nDivisiones ==  2 {
+        
+        print(numero)
+    }
+    
+    numero += 1
+    
+}
