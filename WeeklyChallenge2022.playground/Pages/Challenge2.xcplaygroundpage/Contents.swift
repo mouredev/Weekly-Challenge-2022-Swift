@@ -20,4 +20,12 @@ import Foundation
  */
 
 
-//Solucion
+func fibonacci() {
+     var numberos: [Int] = [0, 1]
+     (3...50).forEach { _ in
+         numberos.append(numberos.last! + numberos[numberos.endIndex - 2])
+     }
+     print("Sucesión de Fibonacci: \(numberos)")
+ }
+
+ fibonacci()
