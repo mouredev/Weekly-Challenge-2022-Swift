@@ -17,3 +17,38 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func isPrime(number: Int) -> Bool {
+    
+    var rangeArray = [Int]()
+    var multiplierArray = [Int]()
+    var counter = 0
+    
+    for n in 1...number {
+        
+        rangeArray.append(n)
+    }
+    
+    for r in rangeArray {
+        
+        multiplierArray.append(number % r)
+    }
+    
+    for m in multiplierArray {
+        
+        if m == 0 {
+            
+            counter += 1
+            
+            if counter > 2 {
+                
+                print("No es Primo")
+                return false
+            }
+        }
+    }
+    print("Si Es Primo")
+    return true
+}
+
+isPrime(number: 13)
