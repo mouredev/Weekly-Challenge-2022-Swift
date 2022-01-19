@@ -17,3 +17,15 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func isPrime(_ number: UInt) -> Bool {
+    guard number > 1 else { return false }
+    for orderedNumber in (2..<number) where number.isMultiple(of: orderedNumber) {
+        return false
+    }
+    return true
+}
+
+(1...100).forEach { number in
+    isPrime(number) ? print(number) : ()
+}
