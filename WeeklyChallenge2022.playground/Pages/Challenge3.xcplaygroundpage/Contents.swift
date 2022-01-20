@@ -27,19 +27,15 @@ extension Int {
                 if self % index == 0 {
                     return false
                 }
-            } // 0.09194803237915039
-            //return !(start...end).contains { self % $0 == 0 } // 0.3190920352935791
-            //return (start...end).first { self % $0 == 0 } == nil // 0.3278859853744507
-            //return (start...end).allSatisfy { self % $0 != 0 } // 0.3230630159378052
+            } // 0.19314706325531006
+            //return !(start...end).contains { self % $0 == 0 } // 0.34242796897888184
+            //return (start...end).first { self % $0 == 0 } == nil // 0.37084102630615234
+            //return (start...end).allSatisfy { self % $0 != 0 } // 0.3679659366607666
         }
         return self < start ? false : true
     }
 }
 
 let date = Date()
-(1...100).forEach {
-    if $0.isPrime() {
-        print($0)
-    }
-}
+(1...10000).filter{ $0.isPrime() }.forEach { print($0) }
 print(Date().timeIntervalSince(date))
