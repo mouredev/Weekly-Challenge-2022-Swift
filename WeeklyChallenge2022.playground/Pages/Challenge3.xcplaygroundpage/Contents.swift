@@ -27,10 +27,10 @@ extension Int {
                 if self % index == 0 {
                     return false
                 }
-            } // 0.19314706325531006
-            //return !(start...end).contains { self % $0 == 0 } // 0.34242796897888184
-            //return (start...end).first { self % $0 == 0 } == nil // 0.37084102630615234
-            //return (start...end).allSatisfy { self % $0 != 0 } // 0.3679659366607666
+            } // 0.09490203857421875
+            //return !(start...end).contains { self % $0 == 0 } // 0.3565179109573364
+            //return (start...end).first { self % $0 == 0 } == nil // 0.33719396591186523
+            //return (start...end).allSatisfy { self % $0 != 0 } // 0.34450197219848633
         }
         return self < start ? false : true
     }
