@@ -37,5 +37,5 @@ extension Int {
 }
 
 let date = Date()
-(1...100).filter{ $0.isPrime() }.forEach { print($0) }
+print((1...100).filter{ $0.isPrime() })
 print(Date().timeIntervalSince(date))
