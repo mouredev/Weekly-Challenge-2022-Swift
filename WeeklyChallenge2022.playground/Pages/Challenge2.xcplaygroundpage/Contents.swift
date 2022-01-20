@@ -18,11 +18,14 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
-var penultimate = 0
-var ultimate = 1
-(2...49).forEach { _ in
-    print("\(penultimate), ", terminator: "")
-    ultimate += penultimate
-    penultimate = ultimate - penultimate
+
+var n0 = 0
+var n1 = 1
+
+(1...50).forEach { _ in
+    print(n0)
+
+    let fib = n0 + n1
+    n0 = n1
+    n1 = fib
 }
-print("\(penultimate), \(ultimate)")
