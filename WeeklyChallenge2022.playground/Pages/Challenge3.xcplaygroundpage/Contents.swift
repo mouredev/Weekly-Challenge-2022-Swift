@@ -17,3 +17,23 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func isPrime(_ number: Int) -> Bool {
+    if(number < 2) {
+        return false
+    } else {
+        var result = true
+        (2..<number).forEach { partialNumber in
+            if(number % partialNumber == 0) {
+                result = false
+            }
+        }
+        return result
+    }
+}
+
+(1...100).forEach { number in
+    if(isPrime(number)) {
+        print(number)
+    }
+}
