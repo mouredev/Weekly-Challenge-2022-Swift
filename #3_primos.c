@@ -1,14 +1,18 @@
 #include <iostream>
+#include <time.h>
 using namespace std;
 int main(void){
     int num1;
     int num2;
     int pri;
+    unsigned t0, t1;
+ 
+    t0=clock();
     
     cout << 2;
     cout << " es Primo" << endl;
     /* El 2 es primoC */
-    for(num1=3;num1<100;num1++) {
+    for(num1=3;num1<1000;num1++) {
         for(num2=1;num2<num1+1;num2++) {
             if(num2==1) {
                 pri++; /* Asumimos que todos los numeros son divisibles por 1 */
@@ -30,4 +34,8 @@ int main(void){
         }
         pri=0;
     }
+    t1 = clock();
+ 
+    double time = (double(t1-t0)/CLOCKS_PER_SEC);
+    cout << "Tiempo ejecucion: " << time << endl;
 }
