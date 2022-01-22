@@ -36,7 +36,7 @@ extension Int {
     }
 
     static let cribado: [Int] = [2, 3, 5, 7]
-    func eratostenes () -> Book {
+    func eratostenes () -> Bool {
         return (self > 1 && Int.cribado.first { self % $0 == 0 && self / $0 != 1} == nil)
     }
 }
