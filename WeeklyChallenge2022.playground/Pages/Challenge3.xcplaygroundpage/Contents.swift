@@ -34,8 +34,15 @@ extension Int {
         }
         return self < start ? false : true
     }
+
+    static let cribado: [Int] = [2, 3, 5, 7]
+    func eratostenes () -> Book {
+        return (self > 1 && Int.cribado.first { self % $0 == 0 && self / $0 != 1} == nil)
+    }
 }
 
-let date = Date()
+var now = Date()
 print((1...100).filter{ $0.isPrime() })
-print(Date().timeIntervalSince(date))
+print(Date().timeIntervalSince(now))
+print((1...100).filter{ $0.eratostenes() })
+print(Date().timeIntervalSince(now))
