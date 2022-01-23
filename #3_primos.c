@@ -12,7 +12,7 @@ int main(void){
     cout << 2;
     cout << " es Primo" << endl;
     /* El 2 es primoC */
-    for(num1=3;num1<1000;num1++) {
+    for(num1=3;num1<100;num1++) {
         for(num2=1;num2<num1+1;num2++) {
             if(num2==1) {
                 pri++; /* Asumimos que todos los numeros son divisibles por 1 */
