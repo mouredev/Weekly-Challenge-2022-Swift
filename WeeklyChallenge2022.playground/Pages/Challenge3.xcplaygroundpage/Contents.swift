@@ -17,3 +17,22 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+import Foundation
+
+func isPrime(number : Int) -> Bool {
+    let raiz = Int(sqrt(Double(number)))
+    
+    if number < 2 {
+        return false
+    }
+    
+    if number == 2 {
+        return true
+    }
+    
+    for i in 2...raiz where number % i == 0 {
+        return false
+    }
+    return true
+}
