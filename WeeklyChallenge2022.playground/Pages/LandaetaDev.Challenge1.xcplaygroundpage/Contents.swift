@@ -19,7 +19,7 @@ import Foundation
   * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
   *
   */
- // LandaetaDev
+ // LandaetaDev.
  func funcAnagrama (letWord1:String, letWord2:String) -> Bool {
 
      let arrWord1 = Array(letWord1)
