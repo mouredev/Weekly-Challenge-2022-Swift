@@ -17,3 +17,32 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+extension Int {
+    func isPrime() -> Bool {
+        let start = 2
+        let end = self / 2
+        if end >= start {
+            for index in start...end {
+                if self % index == 0 {
+                    return false
+                }
+            } // 0.09490203857421875
+            //return !(start...end).contains { self % $0 == 0 } // 0.3565179109573364
+            //return (start...end).first { self % $0 == 0 } == nil // 0.33719396591186523
+            //return (start...end).allSatisfy { self % $0 != 0 } // 0.34450197219848633
+        }
+        return self < start ? false : true
+    }
+
+    static let cribado: [Int] = [2, 3, 5, 7]
+    func eratostenes () -> Bool {
+        return (self > 1 && Int.cribado.first { self % $0 == 0 && self / $0 != 1} == nil)
+    }
+}
+
+var now = Date()
+print((1...100).filter{ $0.isPrime() })
+print(Date().timeIntervalSince(now))
+print((1...100).filter{ $0.eratostenes() })
+print(Date().timeIntervalSince(now))
