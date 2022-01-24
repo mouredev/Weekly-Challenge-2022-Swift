@@ -19,7 +19,7 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
-// LandaetaDev
+// LandaetaDev.
 for varNumber in 1...100 {
     if (varNumber % 3 > 0 && varNumber % 5 > 0){
         print("\(varNumber) \n")
