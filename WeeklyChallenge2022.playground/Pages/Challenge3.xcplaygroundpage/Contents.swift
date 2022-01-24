@@ -17,3 +17,22 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func isPrime(_ value: Int) -> Bool {
+    var count = 0
+    
+    if value < 2 { return false }
+    
+    for index in 1...value {
+        if value % index == 0 {
+            count += 1
+        }
+    }
+    
+    return count == 2 ? true : false
+}
+
+
+for value in 1...100 {
+    if isPrime(value) { print(value) }
+}
