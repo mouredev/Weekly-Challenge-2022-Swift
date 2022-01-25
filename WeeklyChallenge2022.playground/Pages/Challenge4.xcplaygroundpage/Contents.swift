@@ -19,3 +19,34 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+enum Polygon {
+    case triangle(base: Int, height: Int)
+    case square(sideLength: Int)
+    case rectangle(base: Int, height: Int)
+}
+
+func getAreaForPolygon(_ polygon: Polygon) -> Int {
+    switch polygon {
+    case .triangle(let base, let height):
+        return (base * height) / 2
+    case .square(let sideLength):
+        return sideLength * sideLength
+    case .rectangle(let base, let height):
+        return base * height
+    }
+}
+
+let squareSide = 10
+let square: Polygon = .square(sideLength: squareSide)
+print("Área de un Cuadrado de lado \(squareSide): \(getAreaForPolygon(square)) unidades cuadradas")
+
+let triangleBase = 5
+let triangleHeight = 10
+let triangle: Polygon = .triangle(base: triangleBase, height: triangleHeight)
+print("Área de un Triángulo de base \(triangleBase) y altura \(triangleHeight): \(getAreaForPolygon(triangle)) unidades cuadradas")
+
+let rectangleBase = 2
+let rectangleHeight = 5
+let rectangle: Polygon = .rectangle(base: rectangleBase, height: rectangleHeight)
+print("Área de un Rectángulo de base \(rectangleBase) y altura \(rectangleHeight): \(getAreaForPolygon(rectangle)) unidades cuadradas")
