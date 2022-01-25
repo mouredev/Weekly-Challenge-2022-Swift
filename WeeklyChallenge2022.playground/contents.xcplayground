@@ -6,5 +6,6 @@
         <page name='Challenge1'/>
         <page name='Challenge2'/>
         <page name='Challenge3'/>
+        <page name='Challenge4'/>
     </pages>
 </playground>
