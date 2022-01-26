@@ -19,3 +19,25 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+enum Polygon {
+    case triangle, square, rectangle
+}
+
+func calculateArea(forPolygon polygon: Polygon, base: Double, height: Double) -> Double {
+    switch polygon {
+    case .triangle:
+        return (base * height) / 2
+    case .square, .rectangle:
+        return base * height
+    }
+}
+
+let rectangleArea = calculateArea(forPolygon: .rectangle, base: 4.0, height: 6.0)
+print(String(format: "Rectangle area (base: 4, height: 6): %.2f", rectangleArea))
+
+let squareArea = calculateArea(forPolygon: .square, base: 4.0, height: 4.0)
+print(String(format: "Square area (base: 4): %.2f", squareArea))
+
+let triangleArea = calculateArea(forPolygon: .triangle, base: 4.0, height: 4.0)
+print(String(format: "Triangle area (base: 4, height: 4): %.2f", triangleArea))
