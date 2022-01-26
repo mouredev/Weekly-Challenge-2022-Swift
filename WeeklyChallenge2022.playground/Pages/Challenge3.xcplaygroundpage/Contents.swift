@@ -18,22 +18,23 @@ import Foundation
  *
  */
 
-func isPrime(_ number: Int) -> Bool {
-    if(number < 2) {
+func isPrime(number: Int) -> Bool {
+    
+    if number < 2 {
         return false
-    } else {
-        var result = true
-        (2..<number).forEach { partialNumber in
-            if(number % partialNumber == 0) {
-                result = false
-            }
-        }
-        return result
     }
+    
+    for i in 2 ..< number {
+        if number % i == 0 {
+            return false
+        }
+    }
+    
+    return true
 }
 
 (1...100).forEach { number in
-    if(isPrime(number)) {
+    if isPrime(number: number) {
         print(number)
     }
 }
