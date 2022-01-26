@@ -19,3 +19,44 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+struct Polygon {
+    private var possibleDistinctSideLengths: Int
+    private var width: Double
+    private var height: Double = 0.0
+    private var length: Double = 0.0
+    
+    init(square sideWidth: Double) {
+        possibleDistinctSideLengths = 1
+        width = sideWidth
+    }
+    
+    init(rectangle base: Double, height: Double) {
+        possibleDistinctSideLengths = 2
+        width = base
+        self.height = height
+    }
+    
+    init(triangle sideLengthA: Double, sideLengthB: Double, sideLengthC: Double) {
+        possibleDistinctSideLengths = 3
+        width = sideLengthA
+        height = sideLengthB
+        length = sideLengthC
+    }
+    
+    func getArea() -> Double {
+        switch possibleDistinctSideLengths {
+        case 1:
+            return width * width
+        case 2:
+            return width * height
+        default:
+            let semiperimeter = (width + height + length) / 2.0
+            return sqrt(semiperimeter * (semiperimeter - width) * (semiperimeter - height) * (semiperimeter - length))
+        }
+    }
+}
+
+print(Polygon.init(square: 4).getArea())
+print(Polygon.init(rectangle: 7, height: 4).getArea())
+print(Polygon.init(triangle: 3, sideLengthB: 4, sideLengthC: 5).getArea())
