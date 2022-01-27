@@ -21,42 +21,30 @@ import Foundation
  */
 
 struct Polygon {
-    private var possibleDistinctSideLengths: Int
-    private var width: Double
-    private var height: Double = 0.0
-    private var length: Double = 0.0
+    private var hasFourVertices: Bool
+    private var sideA: Double
+    private var sideB: Double
+    private var sideC: Double
     
-    init(square sideWidth: Double) {
-        possibleDistinctSideLengths = 1
-        width = sideWidth
-    }
-    
-    init(rectangle base: Double, height: Double) {
-        possibleDistinctSideLengths = 2
-        width = base
-        self.height = height
-    }
-    
-    init(triangle sideLengthA: Double, sideLengthB: Double, sideLengthC: Double) {
-        possibleDistinctSideLengths = 3
-        width = sideLengthA
-        height = sideLengthB
-        length = sideLengthC
+    init(hasFourVertices:Bool, sideA: Double, sideB: Double = 0.0, sideC: Double = 0.0) {
+        self.hasFourVertices = hasFourVertices
+        self.sideA = sideA
+        self.sideB = (sideB == 0.0) ? sideA : sideB
+        self.sideC = (sideC == 0.0) ? self.sideB : sideC
     }
     
     func getArea() -> Double {
-        switch possibleDistinctSideLengths {
-        case 1:
-            return width * width
-        case 2:
-            return width * height
-        default:
-            let semiperimeter = (width + height + length) / 2.0
-            return sqrt(semiperimeter * (semiperimeter - width) * (semiperimeter - height) * (semiperimeter - length))
+        if(hasFourVertices) {
+            return sideA * sideB
+        } else {
+            let semiperimeter = (sideA + sideB + sideC) / 2.0
+            return sqrt(semiperimeter * (semiperimeter - sideA) * (semiperimeter - sideB) * (semiperimeter - sideC))
         }
     }
 }
 
-print(Polygon.init(square: 4).getArea())
-print(Polygon.init(rectangle: 7, height: 4).getArea())
-print(Polygon.init(triangle: 3, sideLengthB: 4, sideLengthC: 5).getArea())
+print(Polygon.init(hasFourVertices: true, sideA: 4).getArea())
+print(Polygon.init(hasFourVertices: true, sideA: 7, sideB: 4).getArea())
+print(Polygon.init(hasFourVertices: false, sideA: 3, sideB: 4, sideC: 5).getArea())
+print(Polygon.init(hasFourVertices: false, sideA: 3, sideB: 4).getArea())   // isosceles
+print(Polygon.init(hasFourVertices: false, sideA: 3).getArea())             // equilateral
