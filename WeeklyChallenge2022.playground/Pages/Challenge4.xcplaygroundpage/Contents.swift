@@ -19,3 +19,48 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+
+func area(of polygonType: String, width: Double, height: Double) -> Double {
+    
+    var area = 0.0
+    
+    switch polygonType {
+        
+    case "Cuadrado":
+        if width != height {
+            print("Los lados no son iguales, no puede ser un cuadrado")
+        } else {
+            area = width * height
+            print("El area del Cuadrado es: \(area)")
+            return area
+        }
+    case "Rectangulo":
+        if width == height {
+            print("Los lados son iguales, no puede ser un retangulo")
+        } else {
+            area = width * height
+            print("El area del Retangulo es: \(area)")
+            return area
+        }
+    case "Triangulo":
+        area = (width * height) / 2
+        print("El area del Triangulo es: \(area)")
+        return area
+        
+    default:
+        print("No es un poligono")
+    }
+    return 0.0
+}
+
+area(of: "Cuadrado", width: 23, height: 23)
+area(of: "Triangulo", width: 23, height: 23)
+area(of: "Rectangulo", width: 33, height: 23)
+
+
+
+
+
+
+
