@@ -19,3 +19,68 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+// PHP
+// Se puede ver en https://poio.com.ar/retos_moure/4/ 
+
+<?php //Funciones
+  function calcularArea($lado1, $lado2, $lado3){
+    // Array de lados
+    $_lados = array();
+      // Incluimos los valores al array
+      for($l = 1; $l <= 3; $l++){
+        if(${"lado$l"} > 0){ array_push($_lados, ${"lado$l"});}
+      }
+      // Ordenar valores de mayor a menor
+      arsort($_lados);
+
+      // Sacar valores 0 y vacio 
+      $zeros = array(0, '');
+      $lados = array_diff($_lados, $zeros);
+
+    // Empieza la Matematica
+    switch(count($lados)){
+      case 1:
+        //Cuadrado
+        $area_c = $lados[0] * $lados[0];
+
+        //Triangulo
+          // Semiperimetro
+          $s = ($lados[0] + $lados[0] + $lados[0]) / 2;
+
+          // Heron
+          $area_t = sqrt( $s * ($s - $lados[0]) * ($s - $lados[0]) * ($s - $lados[0]) );
+
+          // Respuesta
+          $respuesta = 'Si es un Cuadrado, su area es '.$area_c.'.<br />Si se trata de un Triangulo EQUILATERO, su area es '.$area_t;
+        break;
+      case 2:
+        //Cuadrado / Rectangulo
+        $area_c = $lados[0] * $lados[1];
+
+        //Triangulo
+          // Semiperimetro
+          $s = ($lados[0] + $lados[0] + $lados[1]) / 2;
+
+          // Heron
+          $area_t = sqrt( $s * ($s - $lados[0]) * ($s - $lados[0]) * ($s - $lados[1]) );
+
+          // Respuesta
+          $respuesta = 'Si es un Rectangulo, su area es '.$area_c.'.<br />Si se trata de un Triangulo ISOSELES, su area es '.$area_t;
+        break;
+      case 3:
+        // Semiperimetro
+        $s = ($lados[0] + $lados[1] + $lados[2]) / 2;
+
+        // Heron
+        $area = sqrt( $s * ($s - $lados[0]) * ($s - $lados[1]) * ($s - $lados[2]) );
+
+        // Respuesta
+        $respuesta = 'El area del Triangulo es: '.$area;
+        break;
+    }
+
+    //Devolver el resultado
+    return $respuesta;
+  }
+?>
