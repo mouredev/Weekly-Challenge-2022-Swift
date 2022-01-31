@@ -19,3 +19,40 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+enum poligono{
+    case triangulo
+    case cuadrado
+    case rectangulo
+}
+
+struct Poligono {
+    let tipo: poligono
+    let base: Float
+    let altura: Float
+    
+    init(tipo: poligono, base: Float, altura: Float? = nil) {
+        self.tipo = tipo
+        self.base = base
+        self.altura = altura == nil || tipo == .cuadrado ? base : altura!
+    }
+}
+
+func area(poligono: Poligono) -> Float{
+    var area = poligono.base * poligono.altura
+    
+    if poligono.tipo == .triangulo {
+        area /= 2
+    }
+    
+    return area
+}
+
+let triangulo = Poligono(tipo: .triangulo, base: 3, altura: 4)
+print(area(poligono: triangulo))
+
+let cuadrado = Poligono(tipo: .cuadrado, base: 3)
+print(area(poligono: cuadrado))
+
+let rectangulo = Poligono(tipo: .rectangulo, base: 3, altura: 4)
+print(area(poligono: rectangulo))
