@@ -22,7 +22,35 @@ import Foundation
 
 // PHP
 // Se puede ver en https://poio.com.ar/retos_moure/4/ 
+//
+//   Pense 2 soluciones, la 1ra es la facil y la que mejor funcionaria 
+//   y la 2da agarrate de la silla porque es una locura que todavia
+//   hay que pulir.
+//
 
+// 1ra funcion/posibilidad
+<?php
+  function area($b, $h, $shape){
+    switch($shape){
+      case 'Cuadrado':
+      case 'Rectangulo':
+        $resultado = $b * $h;
+        break;
+
+      case 'Triangulo';
+        $resultado = round( (($b * $h) / 2) , 2);
+        break;
+
+      default:
+        $resultado = 'Error: Falta seleccionar el poligono';
+        break;
+    }
+
+    return $resultado;
+  }
+?>
+
+// 2da funcion/posibilidad
 <?php //Funciones
   function calcularArea($lado1, $lado2, $lado3){
     // Array de lados
