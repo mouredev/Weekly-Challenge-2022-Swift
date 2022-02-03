@@ -22,16 +22,14 @@ import UIKit
 extension Int {
     func primeFactors() -> [Int] {
         var values :[Int] = []
-        if self > 2 {
-            for value in 2...self {
-                if self % value == 0 {
-                    values.append(value)
-                    values.append(contentsOf: (self/value).primeFactors())
-                    break
-                }
+        for value in 2..<self {
+            if self % value == 0 {
+                values.append(value)
+                values.append(contentsOf: (self/value).primeFactors())
+                return values
             }
         }
-        return values
+        return [self]
     }
     
     func greatestCommonFactor(value: Int) -> Int {
@@ -71,3 +69,4 @@ let image = Image(url: "https://raw.githubusercontent.com/mouredev/mouredev/mast
 print(image.width)
 print(image.height)
 print(image.aspectRatio)
+//128:41
