@@ -20,27 +20,58 @@ import Foundation
  *
  */
 
-struct Polygon {
-    private var hasFourVertices: Bool
-    private var sideA: Double
-    private var sideB: Double
-    private var sideC: Double
+area(polygon: Triangle(base: 10.0, height: 5.0))
+area(polygon: Rectangle(length: 5.0, width: 7.0))
+area(polygon: Square(side: 4.0))
+
+protocol Polygon {
+
+    func area() -> Double
+    func printArea()
+}
+
+struct Triangle: Polygon {
+
+    let base, height: Double
     
-    init(hasFourVertices:Bool, sideA: Double, sideB: Double = 0.0, sideC: Double = 0.0) {
-        self.hasFourVertices = hasFourVertices
-        self.sideA = sideA
-        self.sideB = (sideB == 0.0) ? sideA : sideB
-        self.sideC = (sideC == 0.0) ? self.sideB : sideC
+    func area() -> Double {
+        return (base * height) / 2
     }
+
+    func printArea() {
+        print("El área del triángulo es \(area())")
+    }
+}
+
+struct Rectangle: Polygon {
+
+    let length, width: Double
     
-    func getArea() -> Double {
-        if(hasFourVertices) {
-            return sideA * sideB
-        } else {
-            let semiperimeter = (sideA + sideB + sideC) / 2.0
-            return sqrt(semiperimeter * (semiperimeter - sideA) * (semiperimeter - sideB) * (semiperimeter - sideC))
-        }
+    func area() -> Double {
+        return length * width
     }
+
+    func printArea() {
+        print("El área del rectángulo es \(area())")
+    }
+}
+
+struct Square: Polygon {
+
+    let side: Double
+    
+    func area() -> Double {
+        return side * side
+    }
+
+    func printArea() {
+        print("El área del cuadrado es \(area())")
+    }
+}
+
+func area(polygon: Polygon) -> Double {
+    polygon.printArea()
+    return polygon.area()
 }
 
 print(Polygon.init(hasFourVertices: true, sideA: 4).getArea())
