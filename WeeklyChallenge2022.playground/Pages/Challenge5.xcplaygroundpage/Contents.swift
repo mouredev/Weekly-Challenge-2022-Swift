@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 /*
  * Reto #5
@@ -18,3 +18,40 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+
+
+
+func getAspectRatioOfImageURL(_ url: String) {
+
+    let urlSession = URLSession.shared
+
+    let url = URL(string: url)
+
+    urlSession.dataTask(with: url!) { data, response, error in
+        
+        if let data = data {
+            
+            let image =  UIImage(data: data)
+            let width = Int((image?.size.width)!)
+            let hight = Int((image?.size.height)!)
+
+            func gcd(_ a: Int, _ b: Int) -> Int {
+              let r = a % b
+
+              if r != 0 {
+                return gcd(b, r)
+
+              } else {
+                return b
+              }
+            }
+            let gcd = gcd(width, hight)
+
+            print("Image URL: \(url!)\nAspect Ration\n\(width / gcd):\(hight / gcd)")
+        }
+    }.resume()
+}
+
+getAspectRatioOfImageURL("https://raw.githubusercontent.com/mouredev/mouredev/master/mouredev_github_profile.png")
+
