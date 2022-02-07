@@ -18,3 +18,34 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+import UIKit
+
+
+let url = String ("https://raw.githubusercontent.com/mouredev/mouredev/master/mouredev_github_profile.png")
+    let urlImagen = URL(string: url)!
+   
+    let task = URLSession.shared.dataTask(with: urlImagen) { data, response, error in
+        if let data = data {
+            let image = UIImage(data: data)!
+            print("el aspect ratio es \(calcularAR(width: Int(image.size.width),height: Int(image.size.height)))")
+        } else if let error = error {
+            print("Error en la llamada \(error)")
+        }
+        
+        func calcularAR(width: Int, height: Int) -> String{
+            var temporal : Int
+            var a: Int = width
+            var b: Int = height
+            while (b != 0) {
+                temporal = b
+                b = a % b
+                a = temporal
+            }
+            return "\(width/a) / \(height/a)";
+        }
+        
+    }.resume()
+    
+
+    
