@@ -17,3 +17,15 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func getReversed(forString text: String) {
+    var result: String = ""
+    var intIndex = text.count - 1
+    while intIndex >= 0 {
+        let index = text.index(text.startIndex, offsetBy: intIndex)
+        result += "\(text[index])"
+        intIndex -= 1
+    }
+    print("Result: \(result)")
+}
+
