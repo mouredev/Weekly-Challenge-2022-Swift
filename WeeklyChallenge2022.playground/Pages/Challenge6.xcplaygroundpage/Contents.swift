@@ -17,3 +17,17 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func ReverseString(stringToReverse: String = "Pampincho") -> String {
+    var stringTemp: String = ""
+    
+    for char in stringToReverse {
+        stringTemp = String(char) + stringTemp
+    }
+
+    return stringTemp
+}
+
+let str1:String = "Hello world"
+
+ReverseString(stringToReverse: str1)
