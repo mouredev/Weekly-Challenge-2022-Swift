@@ -1,4 +1,5 @@
 import Foundation
+import Security
 
 /*
  * Reto #6
@@ -17,3 +18,25 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+
+
+func stringReverse(_ str: String) {
+    var arrayCharacters: [Character] = []
+
+    for c in str {
+        arrayCharacters.append(c)
+    }
+
+    var newString = ""
+    var stepper = 0
+
+    for _ in arrayCharacters {
+        stepper += 1
+        newString.append(arrayCharacters[str.count - stepper])
+    }
+    
+    print(newString)
+}
+
+stringReverse("Hola mundo")
