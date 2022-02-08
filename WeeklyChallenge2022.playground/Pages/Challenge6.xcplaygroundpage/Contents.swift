@@ -17,3 +17,14 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+extension String {
+    func reverse() -> String {
+        var result = ""
+        for char in self {
+            result = "\(char)\(result)"
+        }
+        return result
+    }
+}
+
+print("Hola mundo".reverse())
