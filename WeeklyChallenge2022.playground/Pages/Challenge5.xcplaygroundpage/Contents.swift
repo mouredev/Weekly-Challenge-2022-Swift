@@ -1,5 +1,4 @@
-import Foundation
-import ImageIO
+import UIKit
 
 /*
  * Reto #5
@@ -8,7 +7,7 @@ import ImageIO
  * Fecha publicación resolución: 07/02/22
  * Dificultad: DIFÍCIL
  *
- * Enunciado: Crea un programa que se encargue de calcular y el aspect ratio de una imagen a partir de una url.
+ * Enunciado: Crea un programa que se encargue de calcular el aspect ratio de una imagen a partir de una url.
  * - Url de ejemplo: https://raw.githubusercontent.com/mouredev/mouredev/master/mouredev_github_profile.png
  * - Por ratio hacemos referencia por ejemplo a los "16:9" de una imagen de 1920*1080px.
  *
@@ -20,29 +19,33 @@ import ImageIO
  *
  */
 
-func showAspectRatioOf(imageLink: String) {
-    let imageURL = URL(string: imageLink)!
-    let imageName = imageLink.split(separator: "/").last!.split(separator: ".").first!
-    let source = CGImageSourceCreateWithURL(imageURL as CFURL, nil)
-    let imageHeader = CGImageSourceCopyPropertiesAtIndex(source!, 0, nil)! as NSDictionary
-    if let imageWidth = imageHeader["PixelWidth"] as? Int,
-       let imageHeight = imageHeader["PixelHeight"] as? Int {
-        var minWidth = imageWidth
-        var minHeight = imageHeight
-        (1...min(imageWidth, imageHeight)).forEach { i in
-            if((imageWidth % i == 0) && (imageHeight % i == 0)) {
-                minWidth = imageWidth / i
-                minHeight = imageHeight / i
-            }
-        }
-        print("\(String(describing: imageName)) tiene \(minWidth):\(minHeight) de ratio")
-    } else {
-        print("No se ha podido calcular el ratio de \(String(describing: imageName))")
+func rationalAspectRatio(aspectRatio: Double) -> (num: Int, den: Int) {
+    let precision = 1.0E-6
+    var x = aspectRatio
+    var a = x.rounded(.down)
+    var (h1, k1, h, k) = (1, 0, Int(a), 1)
+
+    while x - a > precision * Double(k) * Double(k) {
+        x = 1.0 / (x - a)
+        a = x.rounded(.down)
+        (h1, k1, h, k) = (h, k, h1 + Int(a) * h, k1 + Int(a) * k)
+    }
+    return (h, k)
+}
+
+var aspectRationStr: String?
+
+if let url = URL(string: "https://raw.githubusercontent.com/mouredev/mouredev/master/mouredev_github_profile.png"), let data = try? Data(contentsOf: url) {
+    
+    let imagen = UIImage(data: data)
+    if let height = imagen?.size.height, let width = imagen?.size.width {
+        let aspectRatio = rationalAspectRatio(aspectRatio: height / width)
+        aspectRationStr = "\(aspectRatio.den):\(aspectRatio.num)"
     }
 }
 
-showAspectRatioOf(imageLink: "https://raw.githubusercontent.com/mouredev/mouredev/master/mouredev_github_profile.png")
-showAspectRatioOf(imageLink: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Aspect_ratio_16_9_example.jpg")
-showAspectRatioOf(imageLink: "https://upload.wikimedia.org/wikipedia/commons/4/43/Aspect_ratio_4_3_example.jpg")
-showAspectRatioOf(imageLink: "https://pbs.twimg.com/profile_images/918389307831934976/22ktBpnu_400x400.jpg")
-
+if let ratio = aspectRationStr {
+    print("El aspect ratio es \(ratio)")
+} else {
+    print("No se ha podido calcular el aspect ratio")
+}
