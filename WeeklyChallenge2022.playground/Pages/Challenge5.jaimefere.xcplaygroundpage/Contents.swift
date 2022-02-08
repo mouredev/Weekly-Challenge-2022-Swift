@@ -45,4 +45,3 @@ showAspectRatioOf(imageLink: "https://raw.githubusercontent.com/mouredev/mourede
 showAspectRatioOf(imageLink: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Aspect_ratio_16_9_example.jpg")
 showAspectRatioOf(imageLink: "https://upload.wikimedia.org/wikipedia/commons/4/43/Aspect_ratio_4_3_example.jpg")
 showAspectRatioOf(imageLink: "https://pbs.twimg.com/profile_images/918389307831934976/22ktBpnu_400x400.jpg")
-

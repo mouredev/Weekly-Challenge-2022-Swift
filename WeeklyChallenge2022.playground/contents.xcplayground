@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <playground version='6.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
     <pages>
-        <page name='Challenge0'/>
-        <page name='Challenge1'/>
         <page name='Readme'/>
+        <page name='Challenge0'/>
         <page name='Challenge0.jaimefere'/>
-        <page name='Challenge2'/>
+        <page name='Challenge1'/>
         <page name='Challenge1.jaimefere'/>
-        <page name='Challenge3'/>
+        <page name='Challenge2'/>
         <page name='Challenge2.jaimefere'/>
+        <page name='Challenge3'/>
         <page name='Challenge3.jaimefere'/>
         <page name='Challenge4'/>
         <page name='Challange4.jaimefere'/>
+        <page name='Challenge5'/>
+        <page name='Challenge5.jaimefere'/>
     </pages>
 </playground>
