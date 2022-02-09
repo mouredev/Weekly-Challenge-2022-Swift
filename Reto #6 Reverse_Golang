@@ -1,0 +1,20 @@
+package main
+
+import "fmt"
+
+func main() {
+	var str_entrada string
+	var str_salida string
+	var a int
+
+	str_salida = "a"
+	str_entrada = "Hola Mundo"
+	a = len(str_entrada) - 1
+
+	for a > -1 {
+		str_salida = str_salida + string(str_entrada[a])
+		a = a - 1
+	}
+
+	fmt.Println(str_salida)
+}
