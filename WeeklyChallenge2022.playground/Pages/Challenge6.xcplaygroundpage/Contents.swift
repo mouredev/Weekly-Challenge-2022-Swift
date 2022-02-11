@@ -17,3 +17,30 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+
+/**
+  Space Complexity: o(n)
+  Time Complexity: o(n)
+ */
+
+extension String {
+    var reversedString: String {
+        var array = Array(self)
+        
+        for i in 0..<array.count/2 {
+            let temp = array[i]
+            array[i] = array[array.count-1-i]
+            array[array.count-1-i] = temp
+        }
+        
+        return String(array)
+    }
+}
+
+
+"Hola mundo".reversedString == "odnum aloH" ? "✅" : "❌"
+"Desarrollo".reversedString == "ollorraseD" ? "✅" : "❌"
+"Twitch Channel".reversedString == "lennahC hctiwT" ? "✅" : "❌"
+"123456789".reversedString == "987654321" ? "✅" : "❌"
+"".reversedString == "" ? "✅" : "❌"
