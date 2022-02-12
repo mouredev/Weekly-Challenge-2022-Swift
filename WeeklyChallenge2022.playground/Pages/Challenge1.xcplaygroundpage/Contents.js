@@ -19,4 +19,27 @@
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+let word1 = "amor";
+let word2 = "roma";
 
+if (word1.length != word2.length) {
+    return false;
+}
+else {
+    word1 = word1.toLowerCase();
+    word2 = word2.toLowerCase();
+    let nTrue = 0;
+    for (let i=0;i<word1.length;i++) {
+        if (word1[i] === word2[word2.length - i - 1]){
+            nTrue ++;
+        }
+    }
+    if (nTrue === word1.length){
+        return true;
+    }
+    else {
+        return false;
+    }
+
+
+}
