@@ -1,4 +1,4 @@
-import Foundation
+
 
 /*
  * Reto #3
@@ -18,23 +18,23 @@ import Foundation
  *
  */
 
-func isPrime(number: Int) -> Bool {
-    
-    if number < 2 {
-        return false
+let numeros = [];
+let long = 100;
+let primo = 2;
+
+for (;primo < long;primo++){
+    if(isPrimo(primo)){
+        numeros.push(primo);
     }
-    
-    for i in 2 ..< number {
-        if number % i == 0 {
-            return false
-        }
-    }
-    
-    return true
 }
 
-(1...100).forEach { number in
-    if isPrime(number: number) {
-        print(number)
+function isPrimo (numero) {
+    for (let i = 2; i < numero;i++){
+        if (numero % i === 0){
+            return false;
+        }
     }
+    return numero !== 1;
 }
+
+console.log(numeros)
