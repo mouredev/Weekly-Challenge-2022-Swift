@@ -19,3 +19,35 @@
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+const triangulo = {
+    base: 10,
+    alt: 5
+}
+const cuadrado = {
+    lado: 4
+}
+const rectangulo = {
+    ladoPeq: 5,
+    ladoGra: 7
+}
+
+function calcArea (poligono) {
+    
+    if (poligono == triangulo) {
+        let area = (triangulo.base * triangulo.alt) / 2
+        return "El área del triangulo es " + area;
+    }
+    else if(poligono == cuadrado) {
+        let area = cuadrado.lado * cuadrado.lado;
+        return "El área del cuadrado es " + area;
+    }
+    else if (poligono == rectangulo) {
+        let area = rectangulo.ladoPeq * rectangulo.ladoGra;
+        return "El área del rectangulo es " + area;
+    }
+    else {
+        return "Valor incorrecto, introduzca un poligono válido (triangulo, cuadrado, rectangulo)" 
+    }
+}
+
