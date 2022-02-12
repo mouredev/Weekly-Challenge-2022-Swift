@@ -1,4 +1,4 @@
-import Foundation
+
 
 /*
  * Reto #4
@@ -20,56 +20,34 @@ import Foundation
  *
  */
 
-area(polygon: Triangle(base: 10.0, height: 5.0))
-area(polygon: Rectangle(length: 5.0, width: 7.0))
-area(polygon: Square(side: 4.0))
-
-protocol Polygon {
-
-    func area() -> Double
-    func printArea()
+const triangulo = {
+    base: 10,
+    alt: 5
+}
+const cuadrado = {
+    lado: 4
+}
+const rectangulo = {
+    ladoPeq: 5,
+    ladoGra: 7
 }
 
-struct Triangle: Polygon {
-
-    let base, height: Double
+function calcArea (poligono) {
     
-    func area() -> Double {
-        return (base * height) / 2
+    if (poligono == triangulo) {
+        let area = (triangulo.base * triangulo.alt) / 2
+        return "El área del triangulo es " + area;
     }
-
-    func printArea() {
-        print("El área del triángulo es \(area())")
+    else if(poligono == cuadrado) {
+        let area = cuadrado.lado * cuadrado.lado;
+        return "El área del cuadrado es " + area;
     }
-}
-
-struct Rectangle: Polygon {
-
-    let length, width: Double
-    
-    func area() -> Double {
-        return length * width
+    else if (poligono == rectangulo) {
+        let area = rectangulo.ladoPeq * rectangulo.ladoGra;
+        return "El área del rectangulo es " + area;
     }
-
-    func printArea() {
-        print("El área del rectángulo es \(area())")
+    else {
+        return "Valor incorrecto, introduzca un poligono válido (triangulo, cuadrado, rectangulo)" 
     }
 }
 
-struct Square: Polygon {
-
-    let side: Double
-    
-    func area() -> Double {
-        return side * side
-    }
-
-    func printArea() {
-        print("El área del cuadrado es \(area())")
-    }
-}
-
-func area(polygon: Polygon) -> Double {
-    polygon.printArea()
-    return polygon.area()
-}

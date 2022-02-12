@@ -1,4 +1,4 @@
-import Foundation
+
 
 /*
  * Reto #0
@@ -20,8 +20,26 @@ import Foundation
  *
  */
 
-for index in 1...100 {
-    let divisibleByThree = index % 3 == 0
-    let divisibleByFive = index % 5 == 0
-    print("\((divisibleByThree && divisibleByFive) ? "fizzbuzz" : (divisibleByThree ? "fizz" : (divisibleByFive ? "buzz" : index.description)))")
+let numeros = 101;
+let tres = 3;
+let cinco = 5;
+
+for (let i=1;i<numeros;i++) {
+
+    
+    if(i % tres == 0 && i % cinco == 0){
+        console.log("fizzbuzz")
+    }
+    else if (i % tres == 0){
+        console.log("fizz")
+    }
+    else if(i % cinco == 0){
+        console.log("buzz")
+    }
+    else console.log(i);
+
 }
+
+
+    
+

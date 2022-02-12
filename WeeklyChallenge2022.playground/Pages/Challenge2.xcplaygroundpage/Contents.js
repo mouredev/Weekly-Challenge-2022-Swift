@@ -1,4 +1,3 @@
-import Foundation
 
 /*
  * Reto #2
@@ -19,13 +18,14 @@ import Foundation
  *
  */
 
-var n0 = 0
-var n1 = 1
+let fibonacci = [0, 1];
 
-(1...50).forEach { _ in
-    print(n0)
-
-    let fib = n0 + n1
-    n0 = n1
-    n1 = fib
+for (let i=0;i < 48; i++){
+    let first = fibonacci[i];
+    let second = fibonacci[i + 1];
+    let third = first + second;
+    fibonacci.push(third);
 }
+
+console.log(fibonacci)
+
