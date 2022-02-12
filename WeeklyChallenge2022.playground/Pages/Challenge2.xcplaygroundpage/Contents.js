@@ -18,3 +18,14 @@
  *
  */
 
+let fibonacci = [0, 1];
+
+for (let i=0;i < 48; i++){
+    let first = fibonacci[i];
+    let second = fibonacci[i + 1];
+    let third = first + second;
+    fibonacci.push(third);
+}
+
+console.log(fibonacci)
+
