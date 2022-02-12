@@ -1,4 +1,4 @@
-import Foundation
+
 
 /*
  * Reto #1
@@ -20,8 +20,3 @@ import Foundation
  *
  */
 
-func isAnagram(wordOne: String, wordTwo: String) -> Bool {
-    return wordOne.lowercased() == wordTwo.lowercased() ? false : wordOne.lowercased().sorted().elementsEqual(wordTwo.lowercased().sorted())
-}
-
-print(isAnagram(wordOne: "amor", wordTwo: "roma"))
