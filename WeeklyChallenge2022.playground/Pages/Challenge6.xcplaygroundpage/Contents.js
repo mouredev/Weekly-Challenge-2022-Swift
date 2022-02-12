@@ -17,3 +17,13 @@
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+let mensajeOriginal = "Hola mundo"
+let mensajeModificado = "";
+
+for (let i=0; i< mensajeOriginal.length;i++){
+    mensajeModificado = mensajeModificado + mensajeOriginal[mensajeOriginal.length - i - 1];
+}
+
+return mensajeModificado;
+
