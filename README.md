@@ -19,7 +19,9 @@ Existen repositorios de código tanto para Swift/iOS como para Kotlin/Android en
 * **#2** - 10/01/22 - `LA SUCESIÓN DE FIBONACCI`
 * **#3** - 17/01/22 - `¿ES UN NÚMERO PRIMO?`
 * **#4** - 24/01/22 - `ÁREA DE UN POLÍGONO`
-* **#5** - 31/01/22 - `Publicación nuevo reto...`
+* **#5** - 01/02/22 - `ASPECT RATIO DE UNA IMAGEN`
+* **#6** - 07/02/22 - `INVIRTIENDO CADENAS`
+* **#7** - 14/02/22 - `Publicación nuevo reto...`
 
 ### ¿Cómo puedo participar?
 
