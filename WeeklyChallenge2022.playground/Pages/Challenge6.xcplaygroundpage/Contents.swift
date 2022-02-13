@@ -17,3 +17,22 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+// PHP
+//
+// Como siempre, la prueba se puede ver en:
+// https://poio.com.ar/retos_moure/6/
+// donde se puede poner cualquier frase para invertir su orden
+
+<?php //Funcion
+  $string = 'Hola Mundo!';
+
+  function invertirFrase($string){
+    $invertida = '';
+    for($s = strlen($string); $s >= 0; $s--){
+      $invertida .= substr($string, $s, 1);
+    }
+
+    return $invertida;
+  }
+?>
