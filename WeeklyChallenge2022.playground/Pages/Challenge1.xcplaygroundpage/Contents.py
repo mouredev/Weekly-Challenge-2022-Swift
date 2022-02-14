@@ -1,5 +1,5 @@
-import Foundation
 
+"""
 /*
  * Reto #1
  * ¿ES UN ANAGRAMA?
@@ -19,9 +19,31 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+"""
 
-func isAnagram(wordOne: String, wordTwo: String) -> Bool {
-    return wordOne.lowercased() == wordTwo.lowercased() ? false : wordOne.lowercased().sorted().elementsEqual(wordTwo.lowercased().sorted())
-}
+def anagrama(p1,p2):
+    
+    p1 = p1.lower().replace("á", "a").replace("à", "a").replace("é", "e").replace("è", "e").replace("í", "i").replace("ì", "i").replace("ó", "o").replace("ò", "o").replace("ú", "u").replace("ù", "u")
+    p2 = p2.lower().replace("á", "a").replace("à", "a").replace("é", "e").replace("è", "e").replace("í", "i").replace("ì", "i").replace("ó", "o").replace("ò", "o").replace("ú", "u").replace("ù", "u")
+    
+    aux1 = []
+    aux2 = []
+    
+    for i in p1:
+        aux1.append(i)
+        
+    for i in p2:
+        aux2.append(i)
+    
+    aux1.sort(),aux2.sort()
+    
+    if aux1 == aux2:
+        return True
+    else:
+        return False
 
-print(isAnagram(wordOne: "amor", wordTwo: "roma"))
+
+p1 = input("Primera palabra: ")
+p2 = input("Segunda palabra: ")
+
+print(anagrama(p1,p2))

@@ -1,5 +1,5 @@
-import Foundation
 
+"""
 /*
  * Reto #6
  * INVIRTIENDO CADENAS
@@ -17,3 +17,21 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+"""
+
+def invertir(palabra):
+    
+    laux = []
+    
+    for i in palabra:
+        laux.append(i)
+    
+    num = len(laux)
+    
+    for i in range(1, num + 1):
+        print(laux[num - i], end="")
+        
+    return " "
+        
+palabra = input("PALABRA: ")
+print(invertir(palabra))

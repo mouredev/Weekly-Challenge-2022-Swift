@@ -1,5 +1,5 @@
-import Foundation
 
+"""
 /*
  * Reto #2
  * LA SUCESIÓN DE FIBONACCI
@@ -18,14 +18,15 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+"""
 
-var n0 = 0
-var n1 = 1
+def Fibonacci(n):
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    else:
+        return Fibonacci(n-1) + Fibonacci(n-2)
 
-(1...50).forEach { _ in
-    print(n0)
-
-    let fib = n0 + n1
-    n0 = n1
-    n1 = fib
-}
+for i in range(50):
+    print(Fibonacci(i))
