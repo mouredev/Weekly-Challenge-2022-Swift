@@ -17,3 +17,27 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+import Foundation
+
+extension String {
+    func customReversed() -> String {
+        var result: String = ""
+        let text = self
+        var intIndex = text.count - 1
+        while intIndex >= 0 {
+            let index = text.index(text.startIndex, offsetBy: intIndex)
+            result += "\(text[index])"
+            intIndex -= 1
+        }
+        return result
+    }
+}
+
+func main(){
+    var inputString: String = "Hello World"
+    var outputString: String = inputString.customReversed()
+    print("Entrada: \(inputString) \nSalida: \(outputString)")
+}
+
+main()
