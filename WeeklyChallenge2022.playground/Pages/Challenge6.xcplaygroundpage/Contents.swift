@@ -17,3 +17,19 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+func invertir(_ str: String) -> String {
+    var frase = str
+    var esarf = ""
+    for _ in frase {
+        esarf.append(frase.popLast()!)
+    }
+    return esarf
+}
+
+let probando = "1..2..3.. hola hola probando"
+let vacio = ""
+let uno = "."
+
+print(invertir(probando).elementsEqual(probando.reversed()))
+print(invertir(vacio).elementsEqual(vacio.reversed()))
+print(invertir(uno).elementsEqual(uno.reversed()))
