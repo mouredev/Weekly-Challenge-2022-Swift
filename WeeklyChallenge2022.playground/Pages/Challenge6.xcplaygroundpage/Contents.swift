@@ -17,3 +17,21 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+extension String {
+    
+    func reverse() -> String {
+        let characters = Array(self)
+        var i: Int = characters.count - 1
+        var result = ""
+        while i >= 0 {
+            result += "\(characters[i])"
+            i = i - 1
+        }
+        return result
+    }
+
+}
+
+print("Hola mundo".reverse().elementsEqual("odnum aloH"))
+print("What is Lorem Ipsum?".reverse().elementsEqual("?muspI meroL si tahW"))
