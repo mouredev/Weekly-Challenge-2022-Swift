@@ -19,3 +19,28 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+use std::{collections::HashMap};
+
+fn main() {
+	let text = "Astronomer Amy Mainzer spent hours chatting with Leonardo DiCaprio for Netflix's 'Don't Look Up', Amy Mainzer chatting with Leonardo DiCaprio.";
+
+	let values = get_counter(text);
+
+	for (word, value) in values.iter() {
+		println!("{}: {}", word, value)
+	}
+}
+
+fn get_counter(text: &str) -> HashMap<String, u32> {
+    let mut word_values: HashMap<String, u32> = HashMap::new();
+	let lower_text = text.to_lowercase();
+	let words: Vec<&str> = lower_text.split(' ').collect();
+
+	for word in words {
+		let word_safe: String = word.chars().filter(|c|!c.is_ascii_punctuation()).collect();
+		let value = word_values.entry(word_safe).or_insert(0);
+		*value += 1;	
+	}
+
+	word_values
+}
