@@ -25,7 +25,6 @@ let texto = "El gato! gato esta encerrado con un perro que corre mas que el gato
 let separators = CharacterSet(charactersIn: "!,;- ")
 
 
-
 func cuentaPalabras(texto:String, separadores:CharacterSet) -> [String:Int] {
     let texto_divido = texto.lowercased().components(separatedBy: separators).filter { !$0.isEmpty}
     var recuentoPalabras:[String:Int] = [:]
@@ -40,7 +39,24 @@ func cuentaPalabras(texto:String, separadores:CharacterSet) -> [String:Int] {
     
 }
 
-cuentaPalabras(texto: texto, separadores: separators)
+
+func cuentaPalabrasMap(texto:String, separadores:CharacterSet) -> [String:Int] {
+let texto_divido = texto.lowercased().components(separatedBy: separators).filter { !$0.isEmpty}
+var recuentoPalabras:[String:Int] = [:]
+texto_divido.map { palabra in
+    if let rc_word = recuentoPalabras[palabra]  {
+        recuentoPalabras[palabra] = rc_word + 1
+    } else {
+        recuentoPalabras[palabra] = 1
+    }
+ 
+}
+return recuentoPalabras
+}
+print(cuentaPalabras(texto: texto, separadores: separators))
+print(cuentaPalabrasMap(texto: texto, separadores: separators))
+
+
 
 
 
