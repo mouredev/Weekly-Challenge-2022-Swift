@@ -20,56 +20,95 @@ import Foundation
  *
  */
 
-area(polygon: Triangle(base: 10.0, height: 5.0))
-area(polygon: Rectangle(length: 5.0, width: 7.0))
-area(polygon: Square(side: 4.0))
+// PHP
+// Se puede ver en https://poio.com.ar/retos_moure/4/ 
+//
+//   Pense 2 soluciones, la 1ra es la facil y la que mejor funcionaria 
+//   y la 2da agarrate de la silla porque es una locura que todavia
+//   hay que pulir.
+//
 
-protocol Polygon {
+// 1ra funcion/posibilidad
+<?php
+  function area($b, $h, $shape){
+    switch($shape){
+      case 'Cuadrado':
+      case 'Rectangulo':
+        $resultado = $b * $h;
+        break;
 
-    func area() -> Double
-    func printArea()
-}
+      case 'Triangulo';
+        $resultado = round( (($b * $h) / 2) , 2);
+        break;
 
-struct Triangle: Polygon {
-
-    let base, height: Double
-    
-    func area() -> Double {
-        return (base * height) / 2
+      default:
+        $resultado = 'Error: Falta seleccionar el poligono';
+        break;
     }
 
-    func printArea() {
-        print("El área del triángulo es \(area())")
+    return $resultado;
+  }
+?>
+
+// 2da funcion/posibilidad
+<?php //Funciones
+  function calcularArea($lado1, $lado2, $lado3){
+    // Array de lados
+    $_lados = array();
+      // Incluimos los valores al array
+      for($l = 1; $l <= 3; $l++){
+        if(${"lado$l"} > 0){ array_push($_lados, ${"lado$l"});}
+      }
+      // Ordenar valores de mayor a menor
+      arsort($_lados);
+
+      // Sacar valores 0 y vacio 
+      $zeros = array(0, '');
+      $lados = array_diff($_lados, $zeros);
+
+    // Empieza la Matematica
+    switch(count($lados)){
+      case 1:
+        //Cuadrado
+        $area_c = $lados[0] * $lados[0];
+
+        //Triangulo
+          // Semiperimetro
+          $s = ($lados[0] + $lados[0] + $lados[0]) / 2;
+
+          // Heron
+          $area_t = sqrt( $s * ($s - $lados[0]) * ($s - $lados[0]) * ($s - $lados[0]) );
+
+          // Respuesta
+          $respuesta = 'Si es un Cuadrado, su area es '.$area_c.'.<br />Si se trata de un Triangulo EQUILATERO, su area es '.$area_t;
+        break;
+      case 2:
+        //Cuadrado / Rectangulo
+        $area_c = $lados[0] * $lados[1];
+
+        //Triangulo
+          // Semiperimetro
+          $s = ($lados[0] + $lados[0] + $lados[1]) / 2;
+
+          // Heron
+          $area_t = sqrt( $s * ($s - $lados[0]) * ($s - $lados[0]) * ($s - $lados[1]) );
+
+          // Respuesta
+          $respuesta = 'Si es un Rectangulo, su area es '.$area_c.'.<br />Si se trata de un Triangulo ISOSELES, su area es '.$area_t;
+        break;
+      case 3:
+        // Semiperimetro
+        $s = ($lados[0] + $lados[1] + $lados[2]) / 2;
+
+        // Heron
+        $area = sqrt( $s * ($s - $lados[0]) * ($s - $lados[1]) * ($s - $lados[2]) );
+
+        // Respuesta
+        $respuesta = 'El area del Triangulo es: '.$area;
+        break;
     }
-}
 
-struct Rectangle: Polygon {
-
-    let length, width: Double
-    
-    func area() -> Double {
-        return length * width
-    }
-
-    func printArea() {
-        print("El área del rectángulo es \(area())")
-    }
-}
-
-struct Square: Polygon {
-
-    let side: Double
-    
-    func area() -> Double {
-        return side * side
-    }
-
-    func printArea() {
-        print("El área del cuadrado es \(area())")
-    }
-}
-
-func area(polygon: Polygon) -> Double {
-    polygon.printArea()
-    return polygon.area()
-}
+    //Devolver el resultado
+    return $respuesta;
+  }
+?>
