@@ -17,26 +17,24 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
-var numero = 1
 
-
-while numero < 100 {
+func isPrime(number: Int) -> Bool {
     
-    var divisor = 1
-    var nDivisiones = 0
+    if number < 2 {
+        return false
+    }
     
-    while divisor <= numero {
-        
-        if numero % divisor == 0{
-            nDivisiones += 1
+    for i in 2 ..< number {
+        if number % i == 0 {
+            return false
         }
-        divisor += 1
-    }
-    if nDivisiones ==  2 {
-        
-        print(numero)
     }
     
-    numero += 1
-    
+    return true
+}
+
+(1...100).forEach { number in
+    if isPrime(number: number) {
+        print(number)
+    }
 }
