@@ -36,3 +36,28 @@ import Foundation
     return $invertida;
   }
 ?>
+print(reverse(text: "Hola mundo"))
+print(recursiveReverse(text: "Hola mundo"))
+
+func reverse(text: String) -> String {
+    let textCount = text.count - 1
+    var reversedText = ""
+    let textArray = Array(text)
+    for index in 0...textCount {
+        reversedText += "\(textArray[textCount - index])"
+    }
+    return reversedText
+}
+
+// Sin un bucle, mediante una función recursiva
+func recursiveReverse(text: String, index: Int = 0, reversedText: String = "") -> String {
+    let textCount = text.count - 1
+    var newReversedText = reversedText
+    let textArray = Array(text)
+    newReversedText += "\(textArray[textCount - index])"
+    if index < textCount {
+        let newIndex = index + 1
+        newReversedText = recursiveReverse(text: text, index:newIndex, reversedText: newReversedText)
+    }
+    return newReversedText
+}
