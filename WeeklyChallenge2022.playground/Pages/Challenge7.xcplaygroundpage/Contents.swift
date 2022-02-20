@@ -28,7 +28,7 @@ extension String {
         var word = ""
         while i < characters.count {
             let character = characters[i]
-            if character.isASCIILetter() || character.isASCIINumber() {
+            if character.isValidWord() {
                 word += "\(characters[i])"
             } else if !word.isEmpty {
                 result.append(word)
@@ -59,6 +59,11 @@ extension Array where Element == String {
 }
 
 extension Character {
+
+    func isValidWord() -> Bool {
+        self.isASCIILetter() || self.isASCIINumber() || self.isASCIIMidDash()
+    }
+    
     func isASCIILetter() -> Bool {
         if let value = self.asciiValue {
             return (value >= 65 && value <= 90) || (value >= 97 && value <= 122) || value == 164 || value == 165
@@ -72,7 +77,14 @@ extension Character {
         }
         return false
     }
+    
+    func isASCIIMidDash() -> Bool {
+        if let value = self.asciiValue {
+            return value == 45
+        }
+        return false
+    }
 }
 
-print("Esto es una prueba. Es importante, contar las palabras de la PRUEBA".getWords().countOccurrences())
-print("There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.".getWords().countOccurrences())
+print("Esto es una prueba. Es impor-tante, contar las palabras de la PRUEBA".getWords().countOccurrences())
+print("There are many variations of passages of Lorem Ipsum available, but the majority have suffered-alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.".getWords().countOccurrences())
