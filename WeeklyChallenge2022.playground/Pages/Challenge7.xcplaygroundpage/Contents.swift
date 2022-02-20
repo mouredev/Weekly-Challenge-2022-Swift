@@ -19,3 +19,13 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func countWords(phrase: String) {
+    let text = phrase.lowercased().components(separatedBy: CharacterSet.punctuationCharacters).joined(separator: "")
+    Set(text.split(separator: " ")).forEach { word in
+        let wordOccurrences = text.components(separatedBy: word).count - 1
+        print("\(word.uppercased()) aparece \(wordOccurrences) \(wordOccurrences > 1 ? "veces" : "vez") en la frase")
+    }
+}
+
+countWords(phrase: "Hola Brais, yo no me llamo brais.")
