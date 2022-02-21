@@ -19,3 +19,37 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func countingWords(from string: String) -> [String: Int] {
+
+    var newDictionary: [String: Int] = [:]
+    let newString = replaceSpecialCharactersFrom(string: string.lowercased()).split(separator: " ")
+
+    for word in newString {
+        let newWord = String(word)
+        newDictionary[newWord] = newDictionary[newWord] == nil ? 1 : newDictionary[newWord]! + 1
+    }
+
+    return newDictionary
+}
+
+func replaceSpecialCharactersFrom(string: String) -> String {
+
+    return string.replacingOccurrences(of: ".", with: " ")
+        .replacingOccurrences(of: ",", with: " ")
+        .replacingOccurrences(of: ";", with: " ")
+        .replacingOccurrences(of: ":", with: " ")
+        .replacingOccurrences(of: "¡", with: " ")
+        .replacingOccurrences(of: "!", with: " ")
+        .replacingOccurrences(of: "¿", with: " ")
+        .replacingOccurrences(of: "?", with: " ")
+        .replacingOccurrences(of: "(", with: " ")
+        .replacingOccurrences(of: ")", with: " ")
+        .replacingOccurrences(of: "[", with: " ")
+        .replacingOccurrences(of: "]", with: " ")
+        .replacingOccurrences(of: "{", with: " ")
+        .replacingOccurrences(of: "}", with: " ")
+        .replacingOccurrences(of: "\"", with: " ")
+}
+
+print(countingWords(from: "hola,  ho.la h!ola !hola?"))
