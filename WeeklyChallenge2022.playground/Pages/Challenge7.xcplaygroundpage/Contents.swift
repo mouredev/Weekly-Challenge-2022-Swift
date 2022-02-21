@@ -28,7 +28,7 @@ extension String {
         var word = ""
         while i < characters.count {
             let character = characters[i]
-            if character.isValidWord() {
+            if character.isValidInsideWord() {
                 word += "\(characters[i])"
             } else if !word.isEmpty {
                 result.append(word)
@@ -60,7 +60,7 @@ extension Array where Element == String {
 
 extension Character {
 
-    func isValidWord() -> Bool {
+    func isValidInsideWord() -> Bool {
         self.isASCIILetter() || self.isASCIINumber() || self.isASCIIMidDash()
     }
     
