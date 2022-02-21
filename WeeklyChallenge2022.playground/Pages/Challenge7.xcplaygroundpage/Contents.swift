@@ -23,13 +23,11 @@ import Foundation
 func countingWords(from string: String) -> [String: Int] {
 
     var newDictionary: [String: Int] = [:]
-    let newString = string.lowercased().split(separator: " ")
+    let newString = replaceSpecialCharactersFrom(string: string.lowercased()).split(separator: " ")
 
     for word in newString {
-        let newWord = replaceSpecialCharactersFrom(string: String(word))
-        if !newWord.contains(" ") {
-            newDictionary[newWord] = newDictionary[newWord] == nil ? 1 : newDictionary[newWord]! + 1
-        }
+        let newWord = String(word)
+        newDictionary[newWord] = newDictionary[newWord] == nil ? 1 : newDictionary[newWord]! + 1
     }
 
     return newDictionary
@@ -52,5 +50,6 @@ func replaceSpecialCharactersFrom(string: String) -> String {
         .replacingOccurrences(of: "{", with: " ")
         .replacingOccurrences(of: "}", with: " ")
         .replacingOccurrences(of: "\"", with: " ")
-        .trimmingCharacters(in: .whitespaces)
 }
+
+print(countingWords(from: "hola,  ho.la h!ola !hola?"))
