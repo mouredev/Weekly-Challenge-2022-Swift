@@ -16,3 +16,23 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func toBinary(from number: Int) -> String {
+    var number = number
+    var result: String = ""
+    guard number > 0 else { return "0" }
+    while number > 0 {
+        result = "\(number % 2)\(result)"
+        number /= 2
+    }
+    return result
+}
+
+print("10 en binario es \(toBinary(from: 10))")
+print("11 en binario es \(toBinary(from: 11))")
+print("1 en binario es \(toBinary(from: 1))")
+print("2 en binario es \(toBinary(from: 2))")
+print("3 en binario es \(toBinary(from: 3))")
+print("512 en binario es \(toBinary(from: 512))")
+print("32 en binario es \(toBinary(from: 32))")
+print("15 en binario es \(toBinary(from: 15))")
