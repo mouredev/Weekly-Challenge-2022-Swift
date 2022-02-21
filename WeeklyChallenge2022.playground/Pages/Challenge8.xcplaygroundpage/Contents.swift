@@ -29,14 +29,14 @@ extension Int {
     
     func to(base: Int) -> String {
         let quotient = self / base
-        let mod = self.mod(base: base)
+        let remainder = self.remainder(base: base)
         if quotient == Int.zero {
-            return "\(mod)"
+            return "\(remainder)"
         }
-        return "\(quotient.to(base: base))\((mod))"
+        return "\(quotient.to(base: base))\((remainder))"
     }
     
-    func mod(base: Int) -> String {
+    func remainder(base: Int) -> String {
         let value = self % base
         if value <= 9 {
             return "\(value)"
