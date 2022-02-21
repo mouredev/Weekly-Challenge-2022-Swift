@@ -20,6 +20,7 @@ import Foundation
 func toBinary(from number: Int) -> String {
     var number = number
     var result: String = ""
+    guard number > 0 else { return "0" }
     while number > 0 {
         result = "\(number % 2)\(result)"
         number /= 2
