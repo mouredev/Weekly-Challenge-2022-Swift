@@ -18,15 +18,36 @@ import Foundation
  */
 
 extension Int {
+    private static let firstLetter = Int(Character("A").asciiValue!)
     func toBinary() -> String {
-        let quotient = self / 2
-        let mod = self % 2
+        return self.to(base: 2)
+    }
+    
+    func toHexadecimal() -> String {
+        return self.to(base: 16)
+    }
+    
+    func to(base: Int) -> String {
+        let quotient = self / base
+        let mod = self.mod(base: base)
         if quotient == Int.zero {
             return "\(mod)"
         }
-        return "\(quotient.toBinary())\((mod))"
+        return "\(quotient.to(base: base))\((mod))"
+    }
+    
+    func mod(base: Int) -> String {
+        let value = self % base
+        if value <= 9 {
+            return "\(value)"
+        }
+        return String(UnicodeScalar(UInt8(Int.firstLetter + value - 10)))
     }
 }
 
 print(48.toBinary().elementsEqual("110000"))
 print(869745.toBinary().elementsEqual("11010100010101110001"))
+print(72.to(base: 3).elementsEqual("2200"))
+print(38293.to(base: 7).elementsEqual("216433"))
+print(255.toHexadecimal().elementsEqual("FF"))
+print(83948422.toHexadecimal().elementsEqual("500F386"))
