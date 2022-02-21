@@ -19,3 +19,38 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func countingWords(from string: String) -> [String: Int] {
+
+    var newDictionary: [String: Int] = [:]
+    let newString = string.lowercased().split(separator: " ")
+
+    for word in newString {
+        let newWord = replaceSpecialCharactersFrom(string: String(word))
+        if !newWord.contains(" ") {
+            newDictionary[newWord] = newDictionary[newWord] == nil ? 1 : newDictionary[newWord]! + 1
+        }
+    }
+
+    return newDictionary
+}
+
+func replaceSpecialCharactersFrom(string: String) -> String {
+
+    return string.replacingOccurrences(of: ".", with: " ")
+        .replacingOccurrences(of: ",", with: " ")
+        .replacingOccurrences(of: ";", with: " ")
+        .replacingOccurrences(of: ":", with: " ")
+        .replacingOccurrences(of: "¡", with: " ")
+        .replacingOccurrences(of: "!", with: " ")
+        .replacingOccurrences(of: "¿", with: " ")
+        .replacingOccurrences(of: "?", with: " ")
+        .replacingOccurrences(of: "(", with: " ")
+        .replacingOccurrences(of: ")", with: " ")
+        .replacingOccurrences(of: "[", with: " ")
+        .replacingOccurrences(of: "]", with: " ")
+        .replacingOccurrences(of: "{", with: " ")
+        .replacingOccurrences(of: "}", with: " ")
+        .replacingOccurrences(of: "\"", with: " ")
+        .trimmingCharacters(in: .whitespaces)
+}
