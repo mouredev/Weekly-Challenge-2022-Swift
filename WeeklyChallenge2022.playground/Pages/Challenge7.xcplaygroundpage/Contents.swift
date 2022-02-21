@@ -65,8 +65,8 @@ extension Character {
     }
     
     func isASCIILetter() -> Bool {
-        if let value = self.asciiValue {
-            return (value >= 65 && value <= 90) || (value >= 97 && value <= 122) || value == 164 || value == 165
+        if let value = self.unicodeScalars.first?.value {
+            return value.lowercaseLetters() || value.uppercaseLetters() || value.isSpanishLetter() || value.accentedVowels() || value.vowelsWithUmlauts()
         }
         return false
     }
@@ -86,5 +86,36 @@ extension Character {
     }
 }
 
-print("Esto es una prueba. Es impor-tante, contar las palabras de la PRUEBA".getWords().countOccurrences())
+extension UInt32 {
+    
+    func lowercaseLetters() -> Bool {
+        (self >= 65 && self <= 90)
+    }
+    
+    func uppercaseLetters() -> Bool {
+        (self >= 97 && self <= 122)
+    }
+    
+    func isSpanishLetter() -> Bool {
+        self == 164 || self == 165
+    }
+    
+    func accentedVowels() -> Bool {
+        self == 160 || self == 130
+        || self == 161 || self == 162
+        || self == 163 || self == 181
+        || self == 144 || self == 214
+        || self == 224 || self == 233
+    }
+
+    func vowelsWithUmlauts() -> Bool {
+        self == 132 || self == 137
+        || self == 139 || self == 148
+        || self == 129 || self == 142
+        || self == 211 || self == 216
+        || self == 153 || self == 154
+    }
+}
+
+print("Esto és una prueba. Es impor-tante, contar las palabras de la PRUEBA".getWords().countOccurrences())
 print("There are many variations of passages of Lorem Ipsum available, but the majority have suffered-alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.".getWords().countOccurrences())
