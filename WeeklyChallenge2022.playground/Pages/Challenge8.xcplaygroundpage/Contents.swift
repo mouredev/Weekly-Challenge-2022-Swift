@@ -16,3 +16,17 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+extension Int {
+    func toBinary() -> String {
+        let quotient = self / 2
+        let mod = self % 2
+        if quotient == Int.zero {
+            return "\(mod)"
+        }
+        return "\(quotient.toBinary())\((mod))"
+    }
+}
+
+print(48.toBinary().elementsEqual("110000"))
+print(869745.toBinary().elementsEqual("11010100010101110001"))
