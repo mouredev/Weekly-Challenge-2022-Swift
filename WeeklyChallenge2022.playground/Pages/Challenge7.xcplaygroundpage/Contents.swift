@@ -19,3 +19,28 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func countWords(text: String) {
+
+    let mutableString = NSMutableString(string: text.lowercased())
+    
+    let regex = try! NSRegularExpression(pattern: "[^a-z0-9]", options: [])
+    regex.replaceMatches(in: mutableString, options: [], range: NSMakeRange(0, mutableString.length), withTemplate: " ")
+    
+    var words: [String:Int] = [:]
+    
+    String(mutableString).split(separator: " ").forEach { word in
+        let key = String(word)
+        if words[key] != nil {
+            words[key]! += 1
+        } else {
+            words[key] = 1
+        }
+    }
+    
+    words.forEach { key, value in
+        print("\(key) se ha repetido \(value) \(value == 1 ? "vez" : "veces")")
+    }
+}
+
+countWords(text: "Hola, mi nombre es brais. Mi nombre completo es Brais Moure (MoureDev).")
