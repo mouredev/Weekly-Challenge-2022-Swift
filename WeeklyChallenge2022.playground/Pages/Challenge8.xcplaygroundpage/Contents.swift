@@ -16,3 +16,38 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+extension Int {
+    private static let firstLetter = Int(Character("A").asciiValue!)
+    func toBinary() -> String {
+        return self.to(base: 2)
+    }
+    
+    func toHexadecimal() -> String {
+        return self.to(base: 16)
+    }
+    
+    func to(base: Int) -> String {
+        let quotient = self / base
+        let remainder = self.remainder(base: base)
+        if quotient == Int.zero {
+            return "\(remainder)"
+        }
+        return "\(quotient.to(base: base))\((remainder))"
+    }
+    
+    func remainder(base: Int) -> String {
+        let value = self % base
+        if value <= 9 {
+            return "\(value)"
+        }
+        return String(UnicodeScalar(UInt8(Int.firstLetter + value - 10)))
+    }
+}
+
+print(48.toBinary().elementsEqual("110000"))
+print(869745.toBinary().elementsEqual("11010100010101110001"))
+print(72.to(base: 3).elementsEqual("2200"))
+print(38293.to(base: 7).elementsEqual("216433"))
+print(255.toHexadecimal().elementsEqual("FF"))
+print(83948422.toHexadecimal().elementsEqual("500F386"))
