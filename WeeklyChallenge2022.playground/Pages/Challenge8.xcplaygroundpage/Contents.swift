@@ -16,3 +16,34 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+
+func transforToBinari(number: Int) {
+        
+    var  n = number
+    var x = 1
+    var binary = 0
+    
+    while n >= 1 {
+        
+        if n % 2 == 1 {
+            
+            binary += x
+        }
+        
+        n /= 2
+        x *= 10
+        
+    }
+    
+    print(binary)
+}
+
+transforToBinari(number: 4)
+
+
+
+
+
+
+
