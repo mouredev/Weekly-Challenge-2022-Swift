@@ -16,3 +16,20 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func resto(numero:Int, numBinario: inout String, divisor:Int = 2) {
+    if ( numero ) > 1 {
+        numBinario.append(String(numero % divisor))
+        resto(numero: numero / divisor, numBinario: &numBinario)
+    }else {
+        numBinario.append("1")
+    }
+    
+}
+
+
+var binario:String = ""
+resto(numero: 12548,numBinario: &binario)
+print(String(binario.reversed()))
+
+
