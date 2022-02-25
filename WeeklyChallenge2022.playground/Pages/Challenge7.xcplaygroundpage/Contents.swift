@@ -19,6 +19,7 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
 print(counter(text: "Hola mundo"))
 print(counter(text: textTest()))
 
@@ -28,7 +29,7 @@ func counter(text: String) -> String {
         .split(separator: " ")
     
     var worldDictionary : [String: Int] = [String: Int]()
-    
+
     for world in textAux {
         if worldDictionary[String(world)] != nil {
             worldDictionary[String(world)] = worldDictionary[String(world)]! + 1
