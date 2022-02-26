@@ -16,3 +16,19 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+Console.WriteLine(ConvertidorBinario.DecimalABinario(300));
+public class ConvertidorBinario
+{
+	public static string DecimalABinario(int Numero)
+	{
+		if (Numero <= 1)
+		{
+			return "1";
+		}
+
+		string Sobrante = (Numero % 2).ToString();
+
+		return DecimalABinario(Numero / 2) + Sobrante;
+
+	}
+}
