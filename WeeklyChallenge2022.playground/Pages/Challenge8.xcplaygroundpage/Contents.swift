@@ -16,3 +16,15 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func getBinary(decimal: Int) -> String {
+    if(decimal < 2) {
+        return "\(decimal % 2)"
+    } else {
+        return "\(getBinary(decimal: decimal / 2))\(decimal % 2)"
+    }
+}
+
+[1024, 432, 79, 25, 1, 0].forEach { num in
+    print("Binary of \(num) is \(getBinary(decimal: num))")
+}
