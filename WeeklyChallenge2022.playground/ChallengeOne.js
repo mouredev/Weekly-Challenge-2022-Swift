@@ -22,9 +22,8 @@ function isAnagrama(wordOne, wordTwo){
     wordOne = wordOne.toUpperCase();
     wordTwo = wordTwo.toUpperCase();
 
-    let wordOneArray = wordOne.split("");
+    let wordOneArray = wordOne.split("").sort().join("");
+    let wordTwoArray = wordTwo.split("").sort().join("");
 
-    let every = wordOneArray.every(word => wordTwo.includes(word)); 
-
-    return every && wordOne.length === wordTwo.length;
+    return wordOneArray === wordTwoArray;
 }
