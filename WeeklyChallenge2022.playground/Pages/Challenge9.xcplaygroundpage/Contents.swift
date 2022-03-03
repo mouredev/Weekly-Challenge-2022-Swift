@@ -20,7 +20,7 @@ import Foundation
  *
  */
 
-enum MorseCharacter: String {
+enum MorseCharacter: Character {
     case dot = "."
     case dash = "-"
     case space = " "
@@ -81,10 +81,50 @@ class Morse {
         let key = value.uppercased()
         if self.values.keys.contains(key) {
             self.values[key]?.forEach {
-                code += $0.rawValue
+                code += String($0.rawValue)
             }
         }
         return code
+    }
+    
+    func get(_ codes: [MorseCharacter]) -> String {
+        var value = ""
+        var word = [MorseCharacter]()
+        var last: MorseCharacter = .space
+        codes.forEach {
+            word.append($0)
+            if $0 == .space{
+                if last == .space {
+                    value += " "
+                } else {
+                    value += self.values.first(where: { (key, value) in
+                        return value.equals(word)
+                    })?.key ?? ""
+                }
+                word = [MorseCharacter]()
+            }
+            last = $0
+        }
+        value += self.values.first(where: { (key, value) in
+            return value.equals(word)
+        })?.key ?? ""
+        return value
+    }
+}
+
+extension Array where Element == MorseCharacter {
+    func equals(_ compare: [MorseCharacter]) -> Bool {
+        if self.count != compare.count {
+            return false
+        }
+        var count = 0
+        for value in self {
+            if value.rawValue != compare[count].rawValue {
+                return false
+            }
+            count += 1
+        }
+        return true
     }
 }
 
@@ -97,6 +137,17 @@ extension String {
         }
         return code
     }
+    func translateMorse() -> String {
+        var codes = [MorseCharacter]()
+        self.forEach {
+            if let code = MorseCharacter.init(rawValue: $0) {
+                codes.append(code)
+            }
+        }
+        
+        return Morse().get(codes)
+    }
 }
 
 print("sos 112".toMorse())
+print("... --- ...  .---- .---- ..--- ".translateMorse())
