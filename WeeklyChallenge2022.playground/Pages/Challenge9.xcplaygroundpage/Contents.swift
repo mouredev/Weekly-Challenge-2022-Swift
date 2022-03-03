@@ -19,3 +19,59 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+var diccionary = loadHashMap()
+
+print(translate(dictionary: diccionary, word: "Hola"))
+print(translate(dictionary: diccionary, word: "Mouredev"))
+
+func translate(dictionary: [String : String], word: String) -> String {
+    var finalTranslate = ""
+
+    for character in word.lowercased() {
+        finalTranslate += (dictionary[String(character)] ?? "") + " "
+    }
+
+    return finalTranslate
+}
+
+func loadHashMap() -> [String : String] {
+    var map = [String : String]()
+
+    map["a"] = ".-"
+    map["b"] = "-..."
+    map["c"] = "-.-."
+    map["d"] = "-.."
+    map["e"] = "."
+    map["f"] = "..-."
+    map["g"] = "--."
+    map["h"] = "...."
+    map["i"] = ".."
+    map["j"] = ".---"
+    map["k"] = "-.-"
+    map["l"] = ".-.."
+    map["m"] = "--"
+    map["n"] = "-."
+    map["o"] = "---"
+    map["p"] = ".--."
+    map["q"] = "--.-"
+    map["r"] = ".-."
+    map["s"] = "..."
+    map["t"] = "-"
+    map["u"] = "..-"
+    map["v"] = "...-"
+    map["w"] = ".--"
+    map["x"] = "-..-"
+    map["y"] = "-.--"
+    map["z"] = "--.."
+    map["1"] = ".----"
+    map["2"] = "..---"
+    map["3"] = "...--"
+    map["4"] = "....-"
+    map["5"] = "....."
+    map["6"] = "-...."
+    map["7"] = "--..."
+    map["8"] = "---.."
+    map["9"] = "----."
+    map["0"] = "-----"
+    return map
+}
