@@ -1,4 +1,5 @@
 import Foundation
+import AVFoundation
 
 /*
  * Reto #9
@@ -26,14 +27,22 @@ enum MorseCharacter: Character {
     case space = " "
 }
 
-class Morse {
+class Morse: NSObject {
+    var dotSound: URL
+    var dashSound: URL
     private var values: Dictionary<String, [MorseCharacter]>
-    init() {
+    private var sounds: [URL?] = [URL?]()
+    private var soundPlay: Int = Int.zero
+    private var player: AVAudioPlayer?
+    
+    override init() {
+        self.dotSound = URL(fileURLWithPath: Bundle.main.path(forResource: "dot.mp3", ofType:nil)!)
+        self.dashSound = URL(fileURLWithPath: Bundle.main.path(forResource: "dash.mp3", ofType:nil)!)
         self.values = Dictionary<String, [MorseCharacter]>()
         self.values["A"] = [.dot, .dash, .space]
         self.values["B"] = [.dash, .dot, .dot, .dot, .space]
         self.values["C"] = [.dash, .dot , .dash, .dot, .space]
-        self.values["CH"] = [.dash , .dash , .dash , .dash, .space]
+        self.values["CH"] = [.dash, .dash , .dash, .dash, .space]
         self.values["D"] = [.dash, .dot, .dot, .space]
         self.values["E"] = [.dot, .space]
         self.values["F"] = [.dot, .dot , .dash, .dot, .space]
@@ -76,17 +85,40 @@ class Morse {
         self.values[" "] = [.space]
     }
     
-    func get(_ value: Character) -> String {
+    func get(_ value: String) -> String {
         var code = ""
         let key = value.uppercased()
         if self.values.keys.contains(key) {
             self.values[key]?.forEach {
                 code += String($0.rawValue)
+                switch $0 {
+                case .dot:
+                    self.sounds.append(self.dotSound)
+                case .dash:
+                    self.sounds.append(self.dashSound)
+                case .space:
+                    self.sounds.append(nil)
+                }
             }
         }
         return code
     }
     
+    func play() {
+        if let url = self.sounds[self.soundPlay] {
+            var mySound: SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(url as CFURL, &mySound)
+            AudioServicesPlaySystemSound(mySound);
+            usleep(500000)
+        } else {
+            usleep(500000)
+        }
+        self.soundPlay += 1
+        if  self.soundPlay < self.sounds.count {
+            self.play()
+        }
+    }
+
     func get(_ codes: [MorseCharacter]) -> String {
         var value = ""
         var word = [MorseCharacter]()
@@ -105,11 +137,23 @@ class Morse {
             }
             last = $0
         }
+        word.append(.space)
         value += self.values.first(where: { (key, value) in
             return value.equals(word)
         })?.key ?? ""
         return value
     }
+}
+
+extension Morse: AVAudioPlayerDelegate {
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        self.soundPlay += 1
+        if  self.soundPlay < self.sounds.count {
+            self.play()
+        }
+    }
+    
 }
 
 extension Array where Element == MorseCharacter {
@@ -132,11 +176,23 @@ extension String {
     func toMorse() -> String {
         let morse = Morse()
         var code = ""
-        self.forEach {
-            code += morse.get($0)
+        var character = ""
+        var i = 0
+        while i < self.count {
+            character = self.get(i)
+            i += 1
+            if character.uppercased().elementsEqual("C") && self.get(i).uppercased().elementsEqual("H") {
+                character += self.get(i)
+                i += 1
+            }
+            code += morse.get(character)
+        }
+        DispatchQueue.main.async {
+            morse.play()
         }
         return code
     }
+    
     func translateMorse() -> String {
         var codes = [MorseCharacter]()
         self.forEach {
@@ -147,7 +203,27 @@ extension String {
         
         return Morse().get(codes)
     }
+    
+    func get(_ count: Int) -> String {
+        let start = self.index(self.startIndex, offsetBy: count)
+        let end = self.index(self.startIndex, offsetBy: count+1)
+        let range = start..<end
+        return String(self[range])
+    }
 }
 
-print("sos 112".toMorse())
-print("... --- ...  .---- .---- ..--- ".translateMorse())
+extension Character {
+    
+    func toString() -> String {
+        String(self)
+    }
+    
+}
+
+print("sos 112 Chueca".toMorse())
+print("... --- ...  .---- .---- ..---  ---- ..- . -.-. .-".translateMorse())
+
+//let player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "dash.mp3", ofType:nil)!))
+//player.numberOfLoops = 0
+//player.volume = 10
+//player.play()
