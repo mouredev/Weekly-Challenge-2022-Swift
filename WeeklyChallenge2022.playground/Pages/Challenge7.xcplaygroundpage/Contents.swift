@@ -19,28 +19,29 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
-func contarPalabras(frase: String) -> () {
 
-    var palabras = frase.split(whereSeparator: { (carater) in
-        
-        !carater.isLetter || carater == "-"
-    })
+func countWords(text: String) {
+
+    let mutableString = NSMutableString(string: text.lowercased())
     
-    var diccionario = [String: Int]()
+    let regex = try! NSRegularExpression(pattern: "[^a-z0-9]", options: [])
+    regex.replaceMatches(in: mutableString, options: [], range: NSMakeRange(0, mutableString.length), withTemplate: " ")
     
-    for palabra in palabras {
-        
-        if diccionario[palabra.description.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current)] == nil {
-            diccionario[palabra.description.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current)] = 1
-        }else{
-            
-            diccionario[palabra.description.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current)] = diccionario[palabra.description.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current)]! + 1
+    var words: [String:Int] = [:]
+    
+    String(mutableString).split(separator: " ").forEach { word in
+        let key = String(word)
+        if words[key] != nil {
+            words[key]! += 1
+        } else {
+            words[key] = 1
         }
-        
     }
     
-    return print(diccionario)
+    words.forEach { key, value in
+        print("\(key) se ha repetido \(value) \(value == 1 ? "vez" : "veces")")
+    }
 }
 
-contarPalabras(frase: "Dicho esto, no siempre es así, por lo que es fundamental releer un texto una vez escrito para comprobar que tiene coherencia y cohesión, que se transmite realmente lo deseado y asegurarse que el lector de ese texto puede comprenderlo. Para ello siempre será importante que tengáis en mente cuál es el argumento de vuestro texto, que podáis incluir palabras ricas pero comprensibles y accesibles al lector (teniendo en cuenta hacia quién va dirigido).")
+countWords(text: "Hola, mi nombre es brais. Mi nombre completo es Brais Moure (MoureDev).")
 
