@@ -19,3 +19,79 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func toMorse(alphabet: [String: String], input: String) -> String {
+    var output = input
+    alphabet.keys.forEach {
+        output = output.replacingOccurrences(of: $0, with: alphabet[$0]! + " ")
+    }
+    return output
+}
+
+func toStandard(alphabet: [String: String], input: String) -> String {
+    var output = ""
+    input.components(separatedBy: "  ").forEach { word in
+        word.split(separator: " ").forEach { morseSecuence in
+            output += alphabet.first{ $1 == morseSecuence }!.key
+        }
+        output += " "
+    }
+    return output
+}
+
+func translate(text: String) -> String {
+    var alphabet = [String: String]()
+        alphabet[" "] = ""
+        alphabet["CH"] = "————"
+        alphabet["A"] = "·—"
+        alphabet["B"] = "—···"
+        alphabet["C"] = "—·—·"
+        alphabet["D"] = "—··"
+        alphabet["E"] = "·"
+        alphabet["F"] = "··—·"
+        alphabet["G"] = "——·"
+        alphabet["H"] = "····"
+        alphabet["I"] = "··"
+        alphabet["J"] = "·———"
+        alphabet["K"] = "—·—"
+        alphabet["L"] = "·—··"
+        alphabet["M"] = "——"
+        alphabet["N"] = "—·"
+        alphabet["Ñ"] = "——·——"
+        alphabet["O"] = "———"
+        alphabet["P"] = "·——·"
+        alphabet["Q"] = "——·—"
+        alphabet["R"] = "·—·"
+        alphabet["S"] = "···"
+        alphabet["T"] = "—"
+        alphabet["U"] = "··—"
+        alphabet["V"] = "···—"
+        alphabet["W"] = "·——"
+        alphabet["X"] = "—··—"
+        alphabet["Y"] = "—·——"
+        alphabet["Z"] = "——··"
+        alphabet["0"] = "—————"
+        alphabet["1"] = "·————"
+        alphabet["2"] = "··———"
+        alphabet["3"] = "···——"
+        alphabet["4"] = "····—"
+        alphabet["5"] = "·····"
+        alphabet["6"] = "—····"
+        alphabet["7"] = "——···"
+        alphabet["8"] = "———··"
+        alphabet["9"] = "————·"
+        alphabet["."] = "·—·—·—"
+        alphabet[","] = "——··——"
+        alphabet["?"] = "··——··"
+        alphabet["\""] = "·—··—·"
+        alphabet["/"] = "—··—·"
+    
+    if(alphabet.keys.filter{ $0 != " " && text.contains($0) }.count > 0) {
+        return toMorse(alphabet: alphabet, input: text.uppercased())
+    } else {
+        return toStandard(alphabet: alphabet, input: text.uppercased())
+    }
+}
+
+print(translate(text: "De texto a Morse"))
+print(translate(text: "—·· ·  —— ——— ·—· ··· ·  ·—  — · —··— — ——— "))
