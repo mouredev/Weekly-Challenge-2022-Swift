@@ -1,0 +1,20 @@
+10 ON ERROR GOTO 200
+20 CLS
+30 LOCATE 1,1: PRINT "Introduce una expresion con {[()]}: ": INPUT A$
+40 S=INTSR(A$,"{")+INSTR(A$,"}")+INSTR(A$,"[")+INSTR(A$,"]")+INSTR(A$,"(")
+50 S=S+INSTR(A$,")")
+60 IF S=0 THEN CLS:LOCATE 1,1:PRINT "Expresion no valida":END
+70 FOR A=1 TO LEN(A$)
+80   IF MID$(A$,A,1)="{" THEN LL=LL+1
+90   IF MID$(A$,A,1)="[" THEN CO=CO+1
+100   IF MID$(A$,A,1)="(" THEN PA=PA+1
+110   IF MID$(A$,A,1)="}" THEN LL=LL-1
+120   IF MID$(A$,A,1)="]" THEN CO=CO-1
+130   IF MID$(A$,A,1)=")" THEN PA=PA-1
+140 NEXT A
+150 RE=LL+CO+PA
+160 CLS
+170 IF RE=0 THEN LOCATE 1,1: PRINT A$+" True" ELSE LOCATE 1,1: PRINT A$+" False"
+180 LOCATE 5,1:PRINT "¨Otra vez?":INPUT R$
+190 IF R$="S" OR R$="s" THEN GOTO 20 ELSE CLS
+200 CLS:LOCATE 1,1:PRINT "Expresion no valida":END
