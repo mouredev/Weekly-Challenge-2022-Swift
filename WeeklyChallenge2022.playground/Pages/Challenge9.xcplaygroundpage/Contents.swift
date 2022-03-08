@@ -220,7 +220,7 @@ extension Character {
     
 }
 
-print("sos 112 Chueca".toMorse())
+print("sos 112".toMorse())
 print("... --- ...  .---- .---- ..---  ---- ..- . -.-. .-".translateMorse())
 
 //let player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "dash.mp3", ofType:nil)!))
