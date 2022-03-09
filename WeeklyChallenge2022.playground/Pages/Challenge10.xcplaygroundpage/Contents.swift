@@ -20,3 +20,65 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+public class Open {
+    public static let parenthesis: Character = "("
+    public static let bracket: Character = "["
+    public static let key: Character = "{"
+    static func containsa(character: Character) -> Bool {
+        return Open.parenthesis == character
+        || Open.bracket == character
+        || Open.key == character
+    }
+}
+
+public class Close {
+    public static let parenthesis: Character = ")"
+    public static let bracket: Character = "]"
+    public static let key: Character = "}"
+    static func containsa(character: Character) -> Bool {
+        return Close.parenthesis == character
+        || Close.bracket == character
+        || Close.key == character
+    }
+}
+
+extension Character {
+    func equalsOpen(character: Character) -> Bool {
+        if Close.parenthesis == character {
+            return Open.parenthesis == self
+        } else if Close.bracket == character {
+            return Open.bracket == self
+        } else if Close.key == character {
+            return Open.key == self
+        }
+        return false
+    }
+}
+
+func isBalanced(value: String) -> Bool {
+    var marks: [Character] = [Character]()
+    var notFound = false
+    value.forEach {
+        if Close.containsa(character: $0) {
+            guard let last = marks.last else {
+                notFound = true
+                return
+            }
+            if last.equalsOpen(character: $0) {
+                marks.removeLast()
+            } else {
+                notFound = true
+            }
+        } else if (Open.containsa(character: $0)){
+            marks.append($0)
+        }
+    }
+    return !notFound && marks.count == 0
+}
+
+print(isBalanced(value: "{ [ a * ( c + d ) ] - 5 }"))
+print(isBalanced(value: "{ a * ( c + d ) ] - 5 }"))
+print(isBalanced(value: "]{ a * ( c + d ) ] - 5 }"))
+print(isBalanced(value: "{ a * ( c + d - 5"))
+print(isBalanced(value: "{(([{[[]]}]))}"))
