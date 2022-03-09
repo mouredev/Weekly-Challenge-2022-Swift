@@ -20,3 +20,71 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+#[test]
+fn test_balanced() {
+    let expression = "{ [ a * ( c + d ) ] - 5 }";
+    let is_balanced = is_balanced_expression(expression);
+    assert_eq!(is_balanced, true);
+
+    let expression = "{ a * ( c + d ) ] - 5 }";
+    let is_balanced = is_balanced_expression(expression);
+    assert_eq!(is_balanced, false);
+}
+
+fn is_balanced_expression(expression: &str) -> bool {
+    const PARENTHESIS_OPEN: char = '(';
+    const BRACE_OPEN: char = '{';
+    const BRACKET_OPEN: char = '[';
+    const PARENTHESIS_CLOSE: char = ')';
+    const BRACE_CLOSE: char = '}';
+    const BRACKET_CLOSE: char = ']';
+
+    let mut stack: Vec<char> = vec![];
+
+    let balanced = expression.chars().find(|c| {
+        let is_open = c.eq(&PARENTHESIS_OPEN) || c.eq(&BRACE_OPEN) || c.eq(&BRACKET_OPEN);
+        if is_open {
+            stack.push(*c);
+
+            return false
+        }
+
+        let err = match c {
+            &PARENTHESIS_CLOSE => {
+                let pop = stack.pop();
+                if let Some(character) = pop {
+                    if character.eq(&PARENTHESIS_OPEN) {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+            &BRACE_CLOSE => {
+                let pop = stack.pop();
+                if let Some(character) = pop {
+                    if character.eq(&BRACE_OPEN) {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+            &BRACKET_CLOSE => {
+                let pop = stack.pop();
+                if let Some(character) = pop {
+                    if character.eq(&BRACKET_OPEN) {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+            _ => false,
+        };
+
+        err 
+    });
+
+    balanced.is_none() && stack.len() == 0
+}
