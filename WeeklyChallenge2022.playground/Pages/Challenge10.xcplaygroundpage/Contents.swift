@@ -20,3 +20,29 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+print(equilibrada( word: "{ [ a * ( c + d ) ] - 5 }"))
+print(equilibrada( word: "{ a * ( c + d ) ] - 5 }"))
+
+
+func equilibrada(word: String) -> Bool {
+
+    var listaCaracters : Array<Character> = Array()
+    let delimitadores : [Character] = ["{", "[", "("]
+    let delimitadoresContrarios : [Character] = ["}", "]", ")"]
+
+    for char in word {
+        if (delimitadores.contains(char)){
+            listaCaracters.insert(char, at: listaCaracters.endIndex)
+        }
+        else if (delimitadoresContrarios.contains(char)){
+            if (delimitadores.firstIndex(of: listaCaracters.last!) == delimitadoresContrarios.firstIndex(of: char)){
+                listaCaracters.removeLast()
+            } else {
+                return false
+            }
+        }
+    }
+
+    return listaCaracters.isEmpty
+}
