@@ -18,3 +18,22 @@ import Foundation
  *
  */
 
+func isPrimeNumber(number: Int) -> Bool {
+    if (number < 2) {
+        return false
+    } else {
+        for i in 2..<number {
+            if (number % i == 0) {
+                return false
+            }
+        }
+    }
+    
+    return true
+}
+
+(1...100).forEach { number in
+    if (isPrimeNumber(number: number)) {
+        print("\(number) es primo")
+    }
+}
