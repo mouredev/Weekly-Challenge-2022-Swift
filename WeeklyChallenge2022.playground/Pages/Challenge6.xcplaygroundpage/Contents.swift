@@ -17,3 +17,16 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func reverse(text: String) -> String {
+    var textReversed = ""
+    let arrayText = Array(text).reversed()
+    
+    arrayText.forEach { character in
+        textReversed += String(character)
+    }
+    
+    return textReversed
+}
+
+reverse(text: "Hola mundo")
