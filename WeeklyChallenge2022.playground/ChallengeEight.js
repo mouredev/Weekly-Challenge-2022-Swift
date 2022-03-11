@@ -19,6 +19,8 @@ function intToBinary(integer)
 {
     let result = '';
     
+    if(!integer) return '0'; 
+
     while(integer > 0){
         if(integer == 1){
             result = result.toString() + "1"; 
