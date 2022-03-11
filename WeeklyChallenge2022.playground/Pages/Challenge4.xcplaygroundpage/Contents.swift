@@ -19,3 +19,56 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+protocol Polygon {
+    func area() -> Double
+    func printArea()
+}
+
+struct Triangle: Polygon {
+    let base, height: Double
+    
+    func area() -> Double {
+        base * height
+    }
+    
+    func printArea() {
+        print("El area del triangulo es \(area())")
+    }
+}
+
+struct Square: Polygon {
+    let side: Double
+    
+    func area() -> Double {
+        side * side
+    }
+    
+    func printArea() {
+        print("El area del cuadrado es \(area())")
+    }
+}
+
+struct Rectangle: Polygon {
+    let side, height: Double
+    
+    func area() -> Double {
+        side * height
+    }
+    
+    func printArea() {
+        print("El area del rectangulo es \(area())")
+    }
+}
+
+func calculate(polygon: Polygon) -> Double {
+    polygon.printArea()
+    return polygon.area()
+}
+
+let triangle = Triangle(base: 10, height: 20)
+let square = Square(side: 15)
+let rectangle = Rectangle(side: 8, height: 5)
+
+calculate(polygon: triangle)
+calculate(polygon: square)
+calculate(polygon: rectangle)
