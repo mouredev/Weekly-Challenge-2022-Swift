@@ -16,3 +16,20 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func convertToBinary(_ decimal: Int) -> String {
+    var binary = ""
+    
+    var number = decimal
+    
+    while number != 0 {
+        let reminder = number % 2
+        number /= 2
+        
+        binary = "\(reminder)\(binary)"
+    }
+    
+    return binary.isEmpty ? "0" : binary
+}
+
+print(convertToBinary(10))
