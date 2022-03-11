@@ -20,3 +20,65 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+func cadenaEquilibrada(text: String) {
+
+    let corcheteAbierto = "{"
+    let parentesisAbierto = "("
+    let llaveAbierta = "["
+    let corcheteCerrado = "}"
+    let parentesisCerrado = ")"
+    let llaveCerrada = "]"
+  
+    var myArray = [String]()
+    
+    var continuar = true
+    var index = 0
+    
+    while continuar && index < text.count{
+        let caracterActual = String(Array(text)[index])
+
+        if caracterActual == corcheteAbierto || caracterActual == parentesisAbierto || caracterActual == llaveAbierta {
+
+            myArray.append(caracterActual)
+            
+        } else if caracterActual == corcheteCerrado || caracterActual == parentesisCerrado || caracterActual == llaveCerrada {
+
+            let caracterAnterior = myArray[myArray.count - 1]
+            
+            switch caracterAnterior {
+            case corcheteAbierto:
+                if corcheteCerrado == caracterActual {
+                    myArray.remove(at: myArray.count-1)
+                }else {
+                    continuar = false
+                }
+            case parentesisAbierto:
+                if parentesisCerrado == caracterActual {
+                    myArray.remove(at: myArray.count-1)
+                }else {
+                    continuar = false
+                }
+            case llaveAbierta:
+                if llaveCerrada == caracterActual {
+                    myArray.remove(at: myArray.count-1)
+                }else {
+                    continuar = false
+                }
+            default:
+                <#code#>
+            }
+        }
+        index = index + 1
+    }
+    
+    if myArray.count == 0 {
+        print("La cadena " + text + " está equilibrada")
+    }else{
+        print("La cadena " + text + " no está equilibrada")
+    }
+}
+ 
+cadenaEquilibrada(text: "{[a*(c+d)]-5}")
+cadenaEquilibrada(text: "{ a * ( c + d ) ] - 5 }")
+cadenaEquilibrada(text: "{ [ a )* ( c + d ) ] - 5 }")
+
