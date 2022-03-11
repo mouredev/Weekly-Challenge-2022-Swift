@@ -18,34 +18,3 @@ import UIKit
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
-
-func rationalAspectRatio(aspectRatio: Double) -> (num: Int, den: Int) {
-    let precision = 1.0E-6
-    var x = aspectRatio
-    var a = x.rounded(.down)
-    var (h1, k1, h, k) = (1, 0, Int(a), 1)
-
-    while x - a > precision * Double(k) * Double(k) {
-        x = 1.0 / (x - a)
-        a = x.rounded(.down)
-        (h1, k1, h, k) = (h, k, h1 + Int(a) * h, k1 + Int(a) * k)
-    }
-    return (h, k)
-}
-
-var aspectRationStr: String?
-
-if let url = URL(string: "https://raw.githubusercontent.com/mouredev/mouredev/master/mouredev_github_profile.png"), let data = try? Data(contentsOf: url) {
-    
-    let imagen = UIImage(data: data)
-    if let height = imagen?.size.height, let width = imagen?.size.width {
-        let aspectRatio = rationalAspectRatio(aspectRatio: height / width)
-        aspectRationStr = "\(aspectRatio.den):\(aspectRatio.num)"
-    }
-}
-
-if let ratio = aspectRationStr {
-    print("El aspect ratio es \(ratio)")
-} else {
-    print("No se ha podido calcular el aspect ratio")
-}
