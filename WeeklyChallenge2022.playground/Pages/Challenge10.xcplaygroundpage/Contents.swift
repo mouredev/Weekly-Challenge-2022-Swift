@@ -20,3 +20,52 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func isBalanced(text: String) -> Bool {
+    var parenthesis: [String] = []
+    var keys: [String] = []
+    var brackets: [String] = []
+    
+    var balanced = true
+    
+    Array(text).forEach { char in
+        let character = String(char)
+        
+        switch(character) {
+        case "{":
+            keys.append(character)
+        case "}":
+            if (keys.count != 0) {
+                keys.removeFirst()
+            } else {
+                balanced = false
+            }
+        case "[":
+            brackets.append(character)
+        case "]":
+            if (brackets.count != 0) {
+                brackets.removeFirst()
+            } else {
+                balanced = false
+            }
+        case "(":
+            parenthesis.append(character)
+        case ")":
+            if (parenthesis.count != 0) {
+                parenthesis.removeFirst()
+            } else {
+                balanced = false
+            }
+        default:
+            print("Caracter no reconocido")
+        }
+    }
+    
+    if (balanced && keys.count == 0 && parenthesis.count == 0 && brackets.count == 0) {
+        return true
+    } else {
+        return false
+    }
+}
+
+isBalanced(text: "{ [ a * ( c + d ) ] - 5 }")
