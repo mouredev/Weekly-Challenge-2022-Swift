@@ -33,6 +33,7 @@ func cadenaEquilibrada(text: String) {
     
     var continuar = true
     var index = 0
+    
     while continuar && index < text.count{
         let caracterActual = String(Array(text)[index])
 
@@ -43,7 +44,6 @@ func cadenaEquilibrada(text: String) {
         } else if caracterActual == corcheteCerrado || caracterActual == parentesisCerrado || caracterActual == llaveCerrada {
 
             let caracterAnterior = myArray[myArray.count - 1]
-
             
             switch caracterAnterior {
             case corcheteAbierto:
@@ -68,9 +68,7 @@ func cadenaEquilibrada(text: String) {
                 <#code#>
             }
         }
-        
         index = index + 1
-        
     }
     
     if myArray.count == 0 {
