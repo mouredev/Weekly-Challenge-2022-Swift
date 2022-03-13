@@ -19,3 +19,32 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+extension String {
+    var wordList: [String] {
+        return components(separatedBy: CharacterSet.alphanumerics.inverted).filter { !$0.isEmpty }
+    }
+}
+
+func repeatedWords(text: String) {
+    var wordsList: [String:Int] = [:]
+    let words = text.lowercased().wordList
+    
+    if !words.isEmpty {
+        words.forEach { word in
+            if wordsList[word] != nil {
+                wordsList.updateValue(1 + 1, forKey: word)
+            } else {
+                wordsList[word] = 1
+            }
+        }
+        
+        wordsList.forEach { key, value in
+            print("La palabra '\(key)' se ha repetido \(value) veces")
+        }
+    } else {
+        print("Debes introducir al menos una palabra")
+    }
+}
+
+repeatedWords(text: "Hola, mi nombre es edu. Mi nombre completo es Edu Martin.")

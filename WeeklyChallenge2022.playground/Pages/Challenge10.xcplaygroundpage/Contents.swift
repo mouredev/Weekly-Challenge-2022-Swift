@@ -53,7 +53,7 @@ func isBalanced(text: String) -> Bool {
         case ")":
             if (parenthesis.count != 0) {
                 parenthesis.removeFirst()
-            } else {
+            } else {
                 balanced = false
             }
         default:
