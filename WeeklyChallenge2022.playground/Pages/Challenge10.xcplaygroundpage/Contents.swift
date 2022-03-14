@@ -20,3 +20,33 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func isBalanced(expression: String) -> Bool {
+    let openBrackets = ["{","(","["]
+    let closeBrackets = ["}",")","]"]
+    let onlyBrackets = expression.filter{ openBrackets.contains(String($0)) || closeBrackets.contains(String($0)) }
+
+    if(onlyBrackets.count == 2) {
+        return (onlyBrackets == "{}" || onlyBrackets == "()" || onlyBrackets == "[]")
+    } else {
+        let firstCloseBracketIndex = onlyBrackets.firstIndex(where: { closeBrackets.contains(String($0)) } )
+        if(firstCloseBracketIndex == nil || onlyBrackets[...firstCloseBracketIndex!].count < 2) {
+            return false
+        } else {
+            let currentCouple = String(onlyBrackets[onlyBrackets.index(firstCloseBracketIndex!, offsetBy: -1)..<onlyBrackets.index(firstCloseBracketIndex!, offsetBy: 1)])
+            let prevExpression = String(onlyBrackets[..<onlyBrackets.index(firstCloseBracketIndex!, offsetBy: -1)])
+            let restExpression = String(onlyBrackets[onlyBrackets.index(firstCloseBracketIndex!, offsetBy: 1)..<onlyBrackets.endIndex])
+            return isBalanced(expression: currentCouple) && isBalanced(expression: "\(prevExpression)\(restExpression)")
+        }
+    }
+}
+
+let balancedExpressions = ["{ [ a * ( c + d ) ] - 5 }", "[()]{}{[()()]()}", "{[{}{}]}[()]", "{{}{}}", "[]{}()"]
+balancedExpressions.forEach { exp in
+    print("\(exp) \(!isBalanced(expression: exp) ? "NO " : "")está balanceada")
+}
+print()
+let notBalancedExpressions = ["{ a * ( c + d ) ] - 5 }", "[(])", "{()}[)", "{(})", "{"]
+notBalancedExpressions.forEach { exp in
+    print("\(exp) \(!isBalanced(expression: exp) ? "NO " : "")está balanceada")
+}
