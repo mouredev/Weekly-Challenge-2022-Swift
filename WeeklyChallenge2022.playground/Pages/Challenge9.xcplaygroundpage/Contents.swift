@@ -20,78 +20,74 @@ import Foundation
  *
  */
 
-func toMorse(alphabet: [String: String], input: String) -> String {
-    var output = input
-    alphabet.keys.forEach {
-        output = output.replacingOccurrences(of: $0, with: alphabet[$0]! + " ")
-    }
-    return output
-}
+func decoder(input: String) -> String {
 
-func toStandard(alphabet: [String: String], input: String) -> String {
-    var output = ""
-    input.components(separatedBy: "  ").forEach { word in
-        word.split(separator: " ").forEach { morseSecuence in
-            output += alphabet.first{ $1 == morseSecuence }!.key
+    var decodedInput = ""
+
+    let naturalDict = ["A":".—", "N":"—.", "0":"—————",
+                           "B":"—...", "Ñ":"——.——", "1":".————",
+                           "C":"—.—.", "O":"———", "2":"..———",
+                           "CH":"————", "P":".——.", "3":"...——",
+                           "D":"—..", "Q":"——.—", "4":"....—",
+                           "E":".", "R":".—.", "5":".....",
+                           "F":"..—.", "S":"...", "6":"—....",
+                           "G":"——.", "T":"—", "7":"——...",
+                           "H":"....", "U":"..—", "8":"———..",
+                           "I":"..", "V":"...—", "9":"————.",
+                           "J":".———", "W":".——", ".":".—.—.—",
+                           "K":"—.—", "X":"—..—", ",":"——..——",
+                           "L":".—..", "Y":"—.——", "?":"..——..",
+                           "M":"——", "Z":"——..", "\"":".—..—.", "/":"—..—."]
+
+    var morseDict: [String: String] = [:]
+    naturalDict.forEach { key, value in
+        morseDict[value] = key
+    }
+
+    if input.rangeOfCharacter(from: CharacterSet.letters) != nil || input.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil {
+
+        // Natural
+
+        var index = 0
+        var ch = false
+
+        input.uppercased().forEach { character in
+            if !ch && character != " " {
+                let nextIndex = index + 1
+                if character == "C" && nextIndex < input.count && Array(input.uppercased())[nextIndex] == "H" {
+                    decodedInput += naturalDict["CH"] ?? ""
+                    ch = true
+                } else {
+                    decodedInput += naturalDict[character.description] ?? ""
+                }
+
+                decodedInput += " "
+            } else {
+                if (!ch) {
+                    decodedInput += " "
+                }
+                ch = false
+            }
+
+            index += 1
         }
-        output += " "
+
+    } else if (input.contains(".") || input.contains("—")) {
+
+        // Morse
+
+        input.components(separatedBy: "  ").forEach { word in
+            word.components(separatedBy: " ").forEach { symbols in
+                decodedInput += morseDict[symbols] ?? ""
+            }
+            decodedInput += " "
+        }
     }
-    return output
+
+    return decodedInput
 }
 
-func translate(text: String) -> String {
-    var alphabet = [String: String]()
-        alphabet[" "] = ""
-        alphabet["CH"] = "————"
-        alphabet["A"] = "·—"
-        alphabet["B"] = "—···"
-        alphabet["C"] = "—·—·"
-        alphabet["D"] = "—··"
-        alphabet["E"] = "·"
-        alphabet["F"] = "··—·"
-        alphabet["G"] = "——·"
-        alphabet["H"] = "····"
-        alphabet["I"] = "··"
-        alphabet["J"] = "·———"
-        alphabet["K"] = "—·—"
-        alphabet["L"] = "·—··"
-        alphabet["M"] = "——"
-        alphabet["N"] = "—·"
-        alphabet["Ñ"] = "——·——"
-        alphabet["O"] = "———"
-        alphabet["P"] = "·——·"
-        alphabet["Q"] = "——·—"
-        alphabet["R"] = "·—·"
-        alphabet["S"] = "···"
-        alphabet["T"] = "—"
-        alphabet["U"] = "··—"
-        alphabet["V"] = "···—"
-        alphabet["W"] = "·——"
-        alphabet["X"] = "—··—"
-        alphabet["Y"] = "—·——"
-        alphabet["Z"] = "——··"
-        alphabet["0"] = "—————"
-        alphabet["1"] = "·————"
-        alphabet["2"] = "··———"
-        alphabet["3"] = "···——"
-        alphabet["4"] = "····—"
-        alphabet["5"] = "·····"
-        alphabet["6"] = "—····"
-        alphabet["7"] = "——···"
-        alphabet["8"] = "———··"
-        alphabet["9"] = "————·"
-        alphabet["."] = "·—·—·—"
-        alphabet[","] = "——··——"
-        alphabet["?"] = "··——··"
-        alphabet["\""] = "·—··—·"
-        alphabet["/"] = "—··—·"
-    
-    if(alphabet.keys.filter{ $0 != " " && text.contains($0) }.count > 0) {
-        return toMorse(alphabet: alphabet, input: text.uppercased())
-    } else {
-        return toStandard(alphabet: alphabet, input: text.uppercased())
-    }
-}
-
-print(translate(text: "De texto a Morse"))
-print(translate(text: "—·· ·  —— ——— ·—· ··· ·  ·—  — · —··— — ——— "))
+let naturalText = "Chocapic. Es una marca de cereales?"
+let morseText = decoder(input: naturalText)
+print(morseText)
+print(decoder(input: morseText))
