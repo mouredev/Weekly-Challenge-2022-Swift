@@ -17,6 +17,66 @@
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+Object.prototype.findKeyByValue = function(value){
+    let result = null;
+    let self = this; 
+
+    for(key in self){
+        if(self[key] == value){
+            result = key; 
+            break;
+        }
+    }
+
+    return result; 
+}
+
+const charactersInMorse = {
+    'A': '·—', 
+    'N': '—·',
+    '0': '—————',
+    'B': '—···', 	  	
+    'Ñ': '——·——',  	
+    '1': '·————',
+    'C': '—·—·',
+    'O': '———',
+    '2': '··———',
+    'CH': '————',
+    'P': '·——·',
+    '3': '···——',
+    'D': '—··',
+    'Q':'——·—',
+    '4':'····—',
+    'E':'·',
+    'R':'·—·',
+    '5':'·····',
+    'F':'··—·',
+    'S':'···',
+    '6':'—····',
+    'G':'——·',
+    'T':'—',
+    '7':'——···',
+    'H':'····',
+    'U':'··—',
+    '8':'———··',
+    'I':'··',
+    'V':'···—',
+    '9':'————·',
+    'J':'·———',
+    'W':'·——',
+    '.':'·—·—·—',
+    'K':'—·—',
+    'X':'—··—',
+    ',':'——··——',
+    'L':'·—··',
+    'Y':'—·——',
+    '?':'··——··',
+    'M':'——',
+    'Z':'——··',
+    '"':'·—··—·',	
+    '/':'—··—·',
+};
+
 class MorseEncrypter
 {
      
