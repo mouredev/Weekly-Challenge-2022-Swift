@@ -28,7 +28,7 @@ const rectangulo = {
     alto: 5,
     largo: 10,
     calcularArea(){
-        return this.lado ** 2; 
+        return this.alto * this.largo; 
     }
 }
 
