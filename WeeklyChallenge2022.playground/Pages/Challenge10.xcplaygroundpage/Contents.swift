@@ -20,3 +20,62 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+
+let expresionT = "{ [ a * ( c + d ) ] - 5 }"
+let expresionF = "{ a * ( c + d ) ] - 5 }"
+let apertura = ["[", "{" , "("]
+let cierre = ["]", "}" , ")"]
+
+
+final class Pila {
+    var pila:[String] = []
+    var vacia:Bool { pila.isEmpty}
+    var elementos:Int {pila.count}
+    
+    func push(_ element:String) -> Int {
+        pila.append(element)
+        return elementos
+    }
+    
+    func pop(_ element:String) -> Int? {
+        if !pila.isEmpty {
+            pila.removeLast()
+            return elementos
+        }
+        
+        return nil
+        
+    }
+    
+    
+}
+
+func revisa(_ expresion:String) -> Bool{
+    let pila = Pila()
+    var errorPila = false
+    expresion.forEach { caracter in
+        
+        if apertura.contains(String(caracter)) {
+            pila.push(String(caracter))
+        }
+        
+        if cierre.contains(String(caracter)) {
+            if (pila.pop(String(caracter)) == nil ) {
+                errorPila = true
+            }
+        }
+        
+    }
+    if !pila.vacia || errorPila {
+        return false
+    }
+    
+    return true
+    
+    
+}
+
+revisa(expresionF)
+revisa(expresionT)
+
