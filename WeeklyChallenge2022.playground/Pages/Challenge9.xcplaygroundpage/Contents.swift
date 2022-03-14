@@ -20,6 +20,7 @@ import Foundation
  *
  */
 
+<<<<<<< HEAD
 let frase = "EN UN LUGAR DE LA MANCHA DE CUYO NOMBRE NO QUIERO ACORDARME"
 let latinToMorse = ["A":"._", "B":"_...","C":"_._.","CH":"____", "D":"_..","E":".","F":".._.","G":"__.","H":"....","I":"..","J":".___","K":"_._","L":"._..","M":"__","N":"_.","Ñ":"__.__","O":"___","P":".__.","Q":"__._","R":"._.","S":"...","T":"_","U":".._","V":"..._","W":".__","X":"_.._","Y":"_.__","Z":"__.."]
 let MorseToLatin = ["._":"A", "_...":"B","_._.":"C","____":"CH", "_..":"D",".":"E",".._.":"F","__.":"G","....":"H","..":"I",".___":"J","_._":"K","._..":"L","__":"M","_.":"N","__.__":"Ñ","___":"O",".__.":"P","__._":"Q","._.":"R","...":"S","_":"T",".._":"U","..._":"V",".__":"W","_.._":"X","_.__":"Y","__..":"Z"]
@@ -52,3 +53,76 @@ print(fraseToMorse(fase: frase, diccionario: latinToMorse))
 print(palabraLatin(palabra: fraseToMorse(fase: frase, diccionario: latinToMorse), dicionario: MorseToLatin))
 print(palabraLatin(palabra: "._ _... _._. _.. . .._. __. .... .. .___ _._ ._.. __ _. ___ .__. __._ ._. ... _ .._ .__ _.._ _.__ __..", dicionario: MorseToLatin))
 
+=======
+func decoder(input: String) -> String {
+
+    var decodedInput = ""
+
+    let naturalDict = ["A":".—", "N":"—.", "0":"—————",
+                           "B":"—...", "Ñ":"——.——", "1":".————",
+                           "C":"—.—.", "O":"———", "2":"..———",
+                           "CH":"————", "P":".——.", "3":"...——",
+                           "D":"—..", "Q":"——.—", "4":"....—",
+                           "E":".", "R":".—.", "5":".....",
+                           "F":"..—.", "S":"...", "6":"—....",
+                           "G":"——.", "T":"—", "7":"——...",
+                           "H":"....", "U":"..—", "8":"———..",
+                           "I":"..", "V":"...—", "9":"————.",
+                           "J":".———", "W":".——", ".":".—.—.—",
+                           "K":"—.—", "X":"—..—", ",":"——..——",
+                           "L":".—..", "Y":"—.——", "?":"..——..",
+                           "M":"——", "Z":"——..", "\"":".—..—.", "/":"—..—."]
+
+    var morseDict: [String: String] = [:]
+    naturalDict.forEach { key, value in
+        morseDict[value] = key
+    }
+
+    if input.rangeOfCharacter(from: CharacterSet.letters) != nil || input.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil {
+
+        // Natural
+
+        var index = 0
+        var ch = false
+
+        input.uppercased().forEach { character in
+            if !ch && character != " " {
+                let nextIndex = index + 1
+                if character == "C" && nextIndex < input.count && Array(input.uppercased())[nextIndex] == "H" {
+                    decodedInput += naturalDict["CH"] ?? ""
+                    ch = true
+                } else {
+                    decodedInput += naturalDict[character.description] ?? ""
+                }
+
+                decodedInput += " "
+            } else {
+                if (!ch) {
+                    decodedInput += " "
+                }
+                ch = false
+            }
+
+            index += 1
+        }
+
+    } else if (input.contains(".") || input.contains("—")) {
+
+        // Morse
+
+        input.components(separatedBy: "  ").forEach { word in
+            word.components(separatedBy: " ").forEach { symbols in
+                decodedInput += morseDict[symbols] ?? ""
+            }
+            decodedInput += " "
+        }
+    }
+
+    return decodedInput
+}
+
+let naturalText = "Chocapic. Es una marca de cereales?"
+let morseText = decoder(input: naturalText)
+print(morseText)
+print(decoder(input: morseText))
+>>>>>>> a232f2e659634e0c91f2e9b5be912986bff92faf
