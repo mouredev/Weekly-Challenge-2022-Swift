@@ -21,51 +21,33 @@ import Foundation
  *
  */
 
-func isBalanced(text: String) -> Bool {
-    var parenthesis: [String] = []
-    var keys: [String] = []
-    var brackets: [String] = []
-    
-    var balanced = true
-    
-    Array(text).forEach { char in
-        let character = String(char)
+
+print(isBalanced(expression: "{a + b [c] * (2x2)}}}}"))
+print(isBalanced(expression: "{ [ a * ( c + d ) ] - 5 }"))
+print(isBalanced(expression: "{ a * ( c + d ) ] - 5 }"))
+print(isBalanced(expression: "{a^4 + (((ax4)}"))
+print(isBalanced(expression: "{ ] a * ( c + d ) + ( 2 - 3 )[ - 5 }"))
+print(isBalanced(expression: "{{{{{{(}}}}}}"))
+print(isBalanced(expression: "(a"))
+
+func isBalanced(expression: String) -> Bool {
+
+    let symbols = ["{":"}", "[":"]", "(":")"]
+    var stack = [String]()
+
+    for character in expression {
         
-        switch(character) {
-        case "{":
-            keys.append(character)
-        case "}":
-            if (keys.count != 0) {
-                keys.removeFirst()
-            } else {
-                balanced = false
+        let symbol = character.description
+        let containsKey = symbols.keys.contains(symbol)
+        
+        if containsKey || symbols.values.contains(symbol) {
+            if containsKey {
+                stack.append(symbol)
+            } else if stack.isEmpty || symbol != symbols[stack.popLast() ?? ""] {
+                return false
             }
-        case "[":
-            brackets.append(character)
-        case "]":
-            if (brackets.count != 0) {
-                brackets.removeFirst()
-            } else {
-                balanced = false
-            }
-        case "(":
-            parenthesis.append(character)
-        case ")":
-            if (parenthesis.count != 0) {
-                parenthesis.removeFirst()
-            } else {
-                balanced = false
-            }
-        default:
-            print("Caracter no reconocido")
         }
     }
-    
-    if (balanced && keys.count == 0 && parenthesis.count == 0 && brackets.count == 0) {
-        return true
-    } else {
-        return false
-    }
-}
 
-isBalanced(text: "{ [ a * ( c + d ) ] - 5 }")
+    return stack.isEmpty
+}
