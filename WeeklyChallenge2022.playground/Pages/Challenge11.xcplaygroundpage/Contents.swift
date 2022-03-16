@@ -19,3 +19,25 @@ import Foundation
  *
  */
 
+extension String {
+    
+    func remove(compare: String) -> String {
+        var copy = self
+        compare.uppercased().forEach {
+            if let index = copy.uppercased().firstIndex(of: $0) {
+                copy.remove(at: index)
+            }
+        }
+        return copy
+    }
+}
+
+func removeCharacter(first: String, second: String){
+    print(first.remove(compare: second))
+    print(second.remove(compare: first))
+}
+
+removeCharacter(first: "hola", second: "lados")
+removeCharacter(first: "Esto es una prueba con una larga", second: "Mañana estoy en una prueba")
+print("hola".remove(compare: "lados").elementsEqual("h"))
+print("lados".remove(compare: "hola").elementsEqual("ds"))
