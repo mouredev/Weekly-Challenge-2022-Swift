@@ -19,3 +19,22 @@ import Foundation
  *
  */
 
+ /*
+ SOLUCION
+ - funcion filter devuelve aquellos que no esten en el otro array, indexOf devuelve -1 si no encuentra elemento
+ - funcion "join" une los elementos de array y devuelve una cadena
+ */
+
+function output(str1: string, str2:string) : string[] {
+
+    //convertir a minuscula y luego convertir cadena en array con split
+    let a1 = str1.trim().toLowerCase().split("")
+    let a2 = str2.trim().toLowerCase().split("")
+
+    return  [a1.filter(value =>  a2.indexOf(value)<0).join(""),
+            a2.filter(value => a1.indexOf(value) <0).join("")]
+}
+
+
+console.log(output("hola","romaaa"))
+//out : ["hl","rm"]
