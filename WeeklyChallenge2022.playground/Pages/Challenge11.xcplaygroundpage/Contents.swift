@@ -19,3 +19,27 @@ import Foundation
  *
  */
 
+string str1 = "ABCDFUH";
+string str2 = "BCAASMN";
+
+DiffStrings(str1,str2);
+
+static void DiffStrings(string str1, string str2)
+{
+	var group1 = str1.Select(i => Diff(str2, i));
+	var group2 = str2.Select(i => Diff(str1, i));
+	Print(group1);
+	Console.WriteLine("-----------------------------------");
+	Print(group2);
+}
+
+static void Print(IEnumerable<char> Array)
+{
+	string S = new string(Array.ToArray());
+	Console.WriteLine(S);
+}
+
+static char Diff(string Compared,char c)
+{
+	return Compared.Contains(c) ? '\0' : c;
+}
