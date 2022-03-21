@@ -19,3 +19,27 @@ import Foundation
  *
  */
 
+fn main() {
+    get_unique_characters("hola", "lados")
+}
+
+fn get_unique_characters(str1: &str, str2: &str) {
+
+    let n_str1: String = str1
+        .chars()
+        .filter(|c| {
+            let value = str2.find(*c);
+            value.is_none()
+        })
+        .collect();
+
+    let n_str2: String = str2
+    .chars()
+    .filter(|c| {
+        let value = str1.find(*c);
+        value.is_none()
+    })
+    .collect();
+
+    println!("{} {}", n_str1, n_str2);
+}
