@@ -21,32 +21,33 @@ import Foundation
  *
  */
 
-func isBalanced(expression: String) -> Bool {
-    let openBrackets = ["{","(","["]
-    let closeBrackets = ["}",")","]"]
-    let onlyBrackets = expression.filter{ openBrackets.contains(String($0)) || closeBrackets.contains(String($0)) }
+print(isBalanced(expression: "{a + b [c] * (2x2)}}}}"))
+print(isBalanced(expression: "{ [ a * ( c + d ) ] - 5 }"))
+print(isBalanced(expression: "{ a * ( c + d ) ] - 5 }"))
+print(isBalanced(expression: "{a^4 + (((ax4)}"))
+print(isBalanced(expression: "{ ] a * ( c + d ) + ( 2 - 3 )[ - 5 }"))
+print(isBalanced(expression: "{{{{{{(}}}}}}"))
+print(isBalanced(expression: "(a"))
 
-    if(onlyBrackets.count == 2) {
-        return (onlyBrackets == "{}" || onlyBrackets == "()" || onlyBrackets == "[]")
-    } else {
-        let firstCloseBracketIndex = onlyBrackets.firstIndex(where: { closeBrackets.contains(String($0)) } )
-        if(firstCloseBracketIndex == nil || onlyBrackets[...firstCloseBracketIndex!].count < 2) {
-            return false
-        } else {
-            let currentCouple = String(onlyBrackets[onlyBrackets.index(firstCloseBracketIndex!, offsetBy: -1)..<onlyBrackets.index(firstCloseBracketIndex!, offsetBy: 1)])
-            let prevExpression = String(onlyBrackets[..<onlyBrackets.index(firstCloseBracketIndex!, offsetBy: -1)])
-            let restExpression = String(onlyBrackets[onlyBrackets.index(firstCloseBracketIndex!, offsetBy: 1)..<onlyBrackets.endIndex])
-            return isBalanced(expression: currentCouple) && isBalanced(expression: "\(prevExpression)\(restExpression)")
+func isBalanced(expression: String) -> Bool {
+
+    let symbols = ["{":"}", "[":"]", "(":")"]
+    var stack = [String]()
+
+    for character in expression {
+        
+        let symbol = character.description
+        let containsKey = symbols.keys.contains(symbol)
+        
+        if containsKey || symbols.values.contains(symbol) {
+            if containsKey {
+                stack.append(symbol)
+            } else if stack.isEmpty || symbol != symbols[stack.popLast() ?? ""] {
+                return false
+            }
         }
     }
 }
 
-let balancedExpressions = ["{ [ a * ( c + d ) ] - 5 }", "[()]{}{[()()]()}", "{[{}{}]}[()]", "{{}{}}", "[]{}()"]
-balancedExpressions.forEach { exp in
-    print("\(exp) \(!isBalanced(expression: exp) ? "NO " : "")está balanceada")
-}
-print()
-let notBalancedExpressions = ["{ a * ( c + d ) ] - 5 }", "[(])", "{()}[)", "{(})", "{"]
-notBalancedExpressions.forEach { exp in
-    print("\(exp) \(!isBalanced(expression: exp) ? "NO " : "")está balanceada")
+    return stack.isEmpty
 }
