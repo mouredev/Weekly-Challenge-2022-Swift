@@ -19,3 +19,38 @@ import Foundation
  *
  */
 
+// PHP
+// Volvi con el codigo del horror! 
+//
+// Para chequear funcionamiento: https://poio.com.ar/retos_moure/11/
+
+<?php
+function delChar($str1, $str2){
+  // Array de cada string
+  $array_string_1 = array();
+  $array_string_2 = array();
+
+  // 1
+  for($a = 0; $a <= strlen($str1); $a++){
+    // Enviamos cada caracter al array correspondiente, salvo los espacios.
+    if(substr($str1, $a, 1) != ' '){
+      array_push($array_string_1, substr($str1, $a, 1));    
+    }
+  }
+
+  // 2
+  for($a = 0; $a <= strlen($str2); $a++){
+    if(substr($str2, $a, 1) != ' '){
+      array_push($array_string_2, substr($str2, $a, 1));
+    }
+  }
+
+  // "Reemplazamos" cada caracter del otro array por un '' (vacio), asi lo borramos
+  $out1 = str_replace($array_string_2, '', $str1); 
+  $out2 = str_replace($array_string_1, '', $str2);
+
+  return 'Cadena reformateada 1: '.$out1.'.<br \>Cadena reformateada 2: '.$out2;
+}
+
+echo delChar('Hola Mundo!', 'Mi nombre es Fedex');
+?>  
