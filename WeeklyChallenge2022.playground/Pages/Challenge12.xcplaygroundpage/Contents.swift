@@ -19,3 +19,26 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+print(palindroma(text: "arozzora"))
+print(palindroma(text: "ada"))
+print(palindroma(text: "hola como estas satse omoc aloh"))
+print(palindroma(text: "hola"))
+print(palindroma(text: "àna lleva al oso la avellana"))
+
+
+func palindroma(text: String) -> Bool {
+    let charArray = Array<Character>(text.folding(options: .diacriticInsensitive, locale: .current).lowercased().replacingOccurrences(of: " ", with: ""))
+
+    var i = 0
+    var j = charArray.count - 1
+
+    while (i != charArray.count){
+        if (charArray[i] != charArray[j]){
+            return false
+        }
+        i += 1
+        j -= 1
+    }
+    return true
+}

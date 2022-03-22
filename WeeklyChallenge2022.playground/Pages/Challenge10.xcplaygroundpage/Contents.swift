@@ -21,32 +21,27 @@ import Foundation
  *
  */
 
-print(isBalanced(expression: "{a + b [c] * (2x2)}}}}"))
-print(isBalanced(expression: "{ [ a * ( c + d ) ] - 5 }"))
-print(isBalanced(expression: "{ a * ( c + d ) ] - 5 }"))
-print(isBalanced(expression: "{a^4 + (((ax4)}"))
-print(isBalanced(expression: "{ ] a * ( c + d ) + ( 2 - 3 )[ - 5 }"))
-print(isBalanced(expression: "{{{{{{(}}}}}}"))
-print(isBalanced(expression: "(a"))
+print(equilibrada( word: "{ [ a * ( c + d ) ] - 5 }"))
+print(equilibrada( word: "{ a * ( c + d ) ] - 5 }"))
 
-func isBalanced(expression: String) -> Bool {
 
-    let symbols = ["{":"}", "[":"]", "(":")"]
-    var stack = [String]()
+func equilibrada(word: String) -> Bool {
 
-    for character in expression {
-        
-        let symbol = character.description
-        let containsKey = symbols.keys.contains(symbol)
-        
-        if containsKey || symbols.values.contains(symbol) {
-            if containsKey {
-                stack.append(symbol)
-            } else if stack.isEmpty || symbol != symbols[stack.popLast() ?? ""] {
+    var listaCaracters : Array<Character> = Array()
+    let delimitadores : [Character] = ["{", "[", "("]
+    let delimitadoresContrarios : [Character] = ["}", "]", ")"]
+
+    for char in word {
+        if (delimitadores.contains(char)){
+            listaCaracters.insert(char, at: listaCaracters.endIndex)
+        }
+        else if (delimitadoresContrarios.contains(char)){
+            if (delimitadores.firstIndex(of: listaCaracters.last!) == delimitadoresContrarios.firstIndex(of: char)){
+                listaCaracters.removeLast()
+            } else {
                 return false
             }
         }
     }
-
-    return stack.isEmpty
+    return listaCaracters.isEmpty
 }

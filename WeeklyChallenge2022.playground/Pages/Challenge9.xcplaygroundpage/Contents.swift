@@ -19,75 +19,59 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+var diccionary = loadHashMap()
 
-func decoder(input: String) -> String {
+print(translate(dictionary: diccionary, word: "Hola"))
+print(translate(dictionary: diccionary, word: "Mouredev"))
 
-    var decodedInput = ""
+func translate(dictionary: [String : String], word: String) -> String {
+    var finalTranslate = ""
 
-    let naturalDict = ["A":".—", "N":"—.", "0":"—————",
-                           "B":"—...", "Ñ":"——.——", "1":".————",
-                           "C":"—.—.", "O":"———", "2":"..———",
-                           "CH":"————", "P":".——.", "3":"...——",
-                           "D":"—..", "Q":"——.—", "4":"....—",
-                           "E":".", "R":".—.", "5":".....",
-                           "F":"..—.", "S":"...", "6":"—....",
-                           "G":"——.", "T":"—", "7":"——...",
-                           "H":"....", "U":"..—", "8":"———..",
-                           "I":"..", "V":"...—", "9":"————.",
-                           "J":".———", "W":".——", ".":".—.—.—",
-                           "K":"—.—", "X":"—..—", ",":"——..——",
-                           "L":".—..", "Y":"—.——", "?":"..——..",
-                           "M":"——", "Z":"——..", "\"":".—..—.", "/":"—..—."]
-
-    var morseDict: [String: String] = [:]
-    naturalDict.forEach { key, value in
-        morseDict[value] = key
+    for character in word.lowercased() {
+        finalTranslate += (dictionary[String(character)] ?? "") + " "
     }
 
-    if input.rangeOfCharacter(from: CharacterSet.letters) != nil || input.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil {
-
-        // Natural
-
-        var index = 0
-        var ch = false
-
-        input.uppercased().forEach { character in
-            if !ch && character != " " {
-                let nextIndex = index + 1
-                if character == "C" && nextIndex < input.count && Array(input.uppercased())[nextIndex] == "H" {
-                    decodedInput += naturalDict["CH"] ?? ""
-                    ch = true
-                } else {
-                    decodedInput += naturalDict[character.description] ?? ""
-                }
-
-                decodedInput += " "
-            } else {
-                if (!ch) {
-                    decodedInput += " "
-                }
-                ch = false
-            }
-
-            index += 1
-        }
-
-    } else if (input.contains(".") || input.contains("—")) {
-
-        // Morse
-
-        input.components(separatedBy: "  ").forEach { word in
-            word.components(separatedBy: " ").forEach { symbols in
-                decodedInput += morseDict[symbols] ?? ""
-            }
-            decodedInput += " "
-        }
-    }
-
-    return decodedInput
+    return finalTranslate
 }
 
-let naturalText = "Chocapic. Es una marca de cereales?"
-let morseText = decoder(input: naturalText)
-print(morseText)
-print(decoder(input: morseText))
+func loadHashMap() -> [String : String] {
+    var map = [String : String]()
+
+    map["a"] = ".-"
+    map["b"] = "-..."
+    map["c"] = "-.-."
+    map["d"] = "-.."
+    map["e"] = "."
+    map["f"] = "..-."
+    map["g"] = "--."
+    map["h"] = "...."
+    map["i"] = ".."
+    map["j"] = ".---"
+    map["k"] = "-.-"
+    map["l"] = ".-.."
+    map["m"] = "--"
+    map["n"] = "-."
+    map["o"] = "---"
+    map["p"] = ".--."
+    map["q"] = "--.-"
+    map["r"] = ".-."
+    map["s"] = "..."
+    map["t"] = "-"
+    map["u"] = "..-"
+    map["v"] = "...-"
+    map["w"] = ".--"
+    map["x"] = "-..-"
+    map["y"] = "-.--"
+    map["z"] = "--.."
+    map["1"] = ".----"
+    map["2"] = "..---"
+    map["3"] = "...--"
+    map["4"] = "....-"
+    map["5"] = "....."
+    map["6"] = "-...."
+    map["7"] = "--..."
+    map["8"] = "---.."
+    map["9"] = "----."
+    map["0"] = "-----"
+    return map
+}

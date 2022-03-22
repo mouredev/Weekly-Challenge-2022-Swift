@@ -17,21 +17,33 @@ import Foundation
  *
  */
 
-func decimalToBinary(_ decimal: Int) -> String {
-    
-    var number = decimal
-    var binary = ""
-    
-    while number != 0 {
-        
-        let reminder = number % 2
-        number /= 2
-        
-        binary = "\(reminder)\(binary)"
+var decimal = 102323
+
+print(convert_manual(decimal: decimal))
+print(convert_auto(decimal: decimal))
+print(convert_manual_recursivo(decimal: decimal, binary: 0, count: 1))
+
+func convert_manual(decimal: Int) -> Int {
+    var decimalAux = decimal
+    var binary = 0
+    var count = 1
+
+    while (decimalAux != 0) {
+        binary += ((decimalAux % 2) * count)
+        decimalAux /= 2
+        count *= 10
     }
-    
-    return binary.isEmpty ? "0" : binary
+    return binary
 }
 
-print(decimalToBinary(387))
-print(decimalToBinary(0))
+func convert_manual_recursivo(decimal: Int, binary: Int, count: Int) -> String {
+    if (decimal != 0){
+        return convert_manual_recursivo(decimal: decimal / 2, binary: binary + ((decimal % 2) * count), count: count * 10)
+    } else {
+        return String(binary)
+    }
+}
+
+func convert_auto(decimal: Int) -> String {
+    return String(decimal, radix: 2)
+}

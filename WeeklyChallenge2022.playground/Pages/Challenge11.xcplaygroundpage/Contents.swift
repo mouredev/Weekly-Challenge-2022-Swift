@@ -19,33 +19,11 @@ import Foundation
  *
  */
 
+printNonCommon(str1: "brais",str2: "moure")
+printNonCommon(str1: "Me gusta Java",str2: "Me gusta Kotlin")
+
 func printNonCommon(str1: String, str2: String) {
-    print("out1: \(findNonCommon(str1: str1, str2: str2))")
-    print("out2: \(findNonCommon(str1: str2, str2: str1))")
+    let out1 = str1.filter { !str2.contains($0) }
+    let out2 = str2.filter { !str1.contains($0) }
+    print(out1 + "\n" + out2 + "\n")
 }
-
-func findNonCommon(str1: String, str2: String) -> String {
-
-    var out = ""
-
-    str1.lowercased().forEach {
-        if (!str2.lowercased().contains($0)) {
-            out += $0.description
-        }
-    }
-
-    return out
-}
-
-func printNonCommonWithFilter(str1: String, str2: String) {
-    print("out1: \(str1.lowercased().filter { !str2.lowercased().contains($0) })")
-    print("out2: \(str2.lowercased().filter { !str1.lowercased().contains($0) })")
-}
-
-printNonCommon(str1: "brais", str2: "moure")
-printNonCommon(str1: "Me gusta Objective-C", str2: "Me gusta Swift")
-printNonCommon(str1: "Usa el canal de nuestro discord (https://mouredev.com/discord) \"🔁reto-semanal\" para preguntas, dudas o prestar ayuda a la comunidad.",
-               str2: "Puedes hacer un Fork del repo y una Pull Request al repo original para que veamos tu solución aportada.")
-
-// Otra solución utilizando funciones de orden superior
-printNonCommonWithFilter(str1: "Usa el canal de nuestro discord (https://mouredev.com/discord) \"🔁reto-semanal\" para preguntas, dudas o prestar ayuda a la comunidad.", str2: "Puedes hacer un Fork del repo y una Pull Request al repo original para que veamos tu solución aportada.")
