@@ -43,6 +43,5 @@ func equilibrada(word: String) -> Bool {
             }
         }
     }
-
     return listaCaracters.isEmpty
 }
