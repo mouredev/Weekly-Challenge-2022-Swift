@@ -19,3 +19,30 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+Console.WriteLine(IsPalindromeIzzi("Anita lava la tina"));
+//Solucion 1
+bool IsPalindromeIzzi(string Text)
+{
+	string LowerText = Format(Text);
+	string OriginalText = Format(Text);
+	return new string(LowerText.Reverse().ToArray()) == OriginalText;
+}
+
+string Format(string Text)
+{
+	return Text.ToLower().Replace(" ", string.Empty);
+}
+//Solucion 2
+bool IsPalindrome(string Text)
+{
+	string LowerText = Format(Text);
+	for (int i = 0; i < LowerText.Length / 2; i++)
+	{
+		if (LowerText[i] != LowerText[(LowerText.Length - 1) - i])
+		{
+			return false;
+		}
+	}
+	return true;
+}
