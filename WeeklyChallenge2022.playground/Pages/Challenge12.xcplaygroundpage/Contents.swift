@@ -19,3 +19,42 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+ // PHP
+ // 
+ // Solucion disponible en https://poio.com.ar/retos_moure/12/
+
+<?php
+function checkPalindromo($string){
+  //Todo a Minuscula
+  $frase_limpia = strtolower($string);
+
+  //Eliminamos Simbolos y espacios
+  $simbolos = array(' ', ',' , '.' , ';' , '-' , '¿' , '?' , '¡' , '!');
+  $frase_limpia = str_replace($simbolos, '', $frase_limpia);
+
+  //Reemplazamos acentos
+  $con_tilde = array('á', 'é', 'í', 'ó', 'ú');
+  $sin_tilde = array('a', 'e', 'i', 'o', 'u');
+  $frase_limpia = str_replace($con_tilde, $sin_tilde, $frase_limpia);
+
+  //Chequeo
+  $palindromo = 0; 
+  for($i = 1; $i <= strlen($frase_limpia); $i++){
+    if( substr($frase_limpia, ($i-1),1) == substr($frase_limpia, ($i*-1),1) ){
+      $palindromo += 1;
+    }
+  }
+
+  //Si la suma da la cantidad de caracteres, quiere decir que es un palindromo
+  if( $palindromo == strlen($frase_limpia)){
+    $resultado = ': ES UN PALINDROMO ';
+  } else {
+    $resultado = ': NO ES UN PALINDROMO';
+  }
+
+return $string.$resultado;
+}
+
+echo checkPalindromo('Ana lleva al oso la avellana.');
+?>
