@@ -19,3 +19,14 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func isPalindrome(phrase: String) -> Bool {
+    var text = phrase.lowercased()
+    text = text.components(separatedBy: CharacterSet.punctuationCharacters).joined(separator: "")
+    text = text.components(separatedBy: " ").joined(separator: "")
+    text = text.folding(options: .diacriticInsensitive, locale: .current)
+    return text == String(text.reversed())
+}
+
+print(isPalindrome(phrase: "Ana lleva al oso la avellana."))
+print(isPalindrome(phrase: "Allí ves Sevilla"))
