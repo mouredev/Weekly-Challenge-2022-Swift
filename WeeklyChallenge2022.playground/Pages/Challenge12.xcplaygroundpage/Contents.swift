@@ -19,3 +19,25 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+extension String {
+    func isPalindrome() -> Bool {
+        return self.uppercased().clear().elementsEqual(self.uppercased().clear().reversed())
+    }
+    
+    func clear() -> String {
+        var clearValue = ""
+        self.forEach {
+            if $0.isLetter || $0.isNumber {
+                clearValue = clearValue + String($0)
+            }
+        }
+        return clearValue
+    }
+   
+}
+
+print("Ana lleva al oso la avellana.".clear().elementsEqual("Anallevaalosolaavellana"))
+print("Ana lleva al oso la avellana.".isPalindrome())
+print("Esta cadena no es un palindromo, atse".isPalindrome())
+print("abc de<H hEdcbA".isPalindrome())
