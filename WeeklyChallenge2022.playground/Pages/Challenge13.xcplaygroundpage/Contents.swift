@@ -16,3 +16,14 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func calculateFactorial(number: Int) -> Int {
+    if(number == 1) {
+        return 1
+    } else {
+        return number * calculateFactorial(number: number-1)
+    }
+}
+
+let number = 5
+print("\(number)! = \(calculateFactorial(number: number))")
