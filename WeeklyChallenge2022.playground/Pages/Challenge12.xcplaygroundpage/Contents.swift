@@ -20,13 +20,22 @@ import Foundation
  *
  */
 
-func isPalindrome(phrase: String) -> Bool {
-    var text = phrase.lowercased()
-    text = text.components(separatedBy: CharacterSet.punctuationCharacters).joined(separator: "")
-    text = text.components(separatedBy: " ").joined(separator: "")
-    text = text.folding(options: .diacriticInsensitive, locale: .current)
-    return text == String(text.reversed())
+func isPalindrome(text: String) -> Bool {
+    
+    let normalizedText = NSMutableString(string: text.lowercased().folding(options: .diacriticInsensitive, locale: .current)).toRegex(pattern: "[^a-z0-9]", replacement: "")
+    return normalizedText.description == String(normalizedText.description.reversed())
 }
 
-print(isPalindrome(phrase: "Ana lleva al oso la avellana."))
-print(isPalindrome(phrase: "Allí ves Sevilla"))
+extension NSMutableString {
+    
+    func toRegex(pattern: String, replacement: String) -> NSMutableString {
+        let regex = try! NSRegularExpression(pattern: pattern, options: [])
+        regex.replaceMatches(in: self, options: [], range: NSMakeRange(0, self.length), withTemplate: replacement)
+        return self
+    }
+    
+}
+
+print(isPalindrome(text: "Ana lleva al oso la avellana."))
+print(isPalindrome(text: "Adivina ya te opina, ya ni miles origina, ya ni cetro me domina, ya ni monarcas, a repaso ni mulato carreta, acaso nicotina, ya ni cita vecino, anima cocina, pedazo gallina, cedazo terso nos retoza de canilla goza, de pánico camina, ónice vaticina, ya ni tocino saca, a terracota luminosa pera, sacra nómina y ánimo de mortecina, ya ni giros elimina, ya ni poeta, ya ni vida"))
+print(isPalindrome(text: "¿Qué os ha parecido el reto?"))
