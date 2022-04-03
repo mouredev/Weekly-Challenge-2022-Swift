@@ -16,3 +16,17 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+int number = 8;
+
+int Factorial(int Number)
+{
+	if (Number <= 1)
+	{
+		return Number;
+	}
+
+	return Number * Factorial(Number - 1);
+}
+
+Console.WriteLine(Factorial(number));
