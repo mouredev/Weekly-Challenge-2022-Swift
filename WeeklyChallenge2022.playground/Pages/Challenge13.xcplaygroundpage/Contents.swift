@@ -16,3 +16,19 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+fn main() {
+    println!("{}", factorial(0));
+    println!("{}", factorial(1));
+    println!("{}", factorial(2));
+    println!("{}", factorial(3));
+    println!("{}", factorial(4));
+    println!("{}", factorial(5));
+}
+
+fn factorial(num: u64) -> u64 {
+    match num {
+        0 => 1,
+        1 => num,
+        _ => num * factorial(num - 1),
+    }
+}
