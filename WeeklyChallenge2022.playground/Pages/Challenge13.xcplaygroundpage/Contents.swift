@@ -16,3 +16,22 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+package RetoSemanal;
+
+import java.util.Scanner;
+public class Factorial {
+    public static int factorial( int numero ) {
+      if (numero == 0) {
+          return 1;
+      }
+      return numero * factorial(numero - 1);
+    }
+    public static void main(String[] args) {
+        int numero;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingresa un numero: ");
+        numero = sc.nextInt();
+        System.out.println("El factorial de "+numero+" es "+factorial(numero));
+    }
+
+}
