@@ -16,3 +16,13 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+public class Main {
+
+
+     static int solution(int num) {
+         return  num > 0 ? num * solution(num-1): 1;
+       }
+    public static void main(String[] args) {
+        System.out.println(solution(4));
+    }
+}
