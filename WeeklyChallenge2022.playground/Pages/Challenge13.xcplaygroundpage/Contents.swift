@@ -23,6 +23,10 @@ int Factorial(int Number)
 {
 	if (Number <= 1)
 	{
+		if(Number < 0){
+			return Number;
+		}
+		
 		return 1;
 	}
 
