@@ -17,3 +17,21 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+extension Int {
+    
+    func isArmstrong() -> Bool {
+        let digits = "\(self)"
+        let potencia = digits.count
+        var sum = Double.zero
+        digits.forEach {
+            sum += pow(Double("\($0)") ?? Double.zero, Double(potencia))
+        }
+        return self == Int(sum)
+    }
+}
+
+print(371.isArmstrong())
+print(8208.isArmstrong())
+print(4210818.isArmstrong())
+print(4210810.isArmstrong())
