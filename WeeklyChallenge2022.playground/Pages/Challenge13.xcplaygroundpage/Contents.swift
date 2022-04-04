@@ -16,3 +16,18 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+
+
+func factorial(_ n: Int) -> Int {
+    var result = 0
+    if n == 0 || n == 1 {
+        result = 1
+    }
+    if n>1 {
+        result = n * factorial(n - 1)
+    }
+    return result
+}
+
+print(factorial(12))
