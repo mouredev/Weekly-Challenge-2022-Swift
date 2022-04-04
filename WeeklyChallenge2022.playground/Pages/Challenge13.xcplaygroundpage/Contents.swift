@@ -16,3 +16,13 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func factorial(n: Int) -> Int? {
+    return n < 0 ? nil : n <= 1 ? 1 : n * (factorial(n: n - 1)!)
+}
+
+print(factorial(n: 0) ?? "No tiene factorial")
+print(factorial(n: 7) ?? "No tiene factorial")
+print(factorial(n: 10) ?? "No tiene factorial")
+print(factorial(n: 1) ?? "No tiene factorial")
+print(factorial(n: -1) ?? "No tiene factorial")
