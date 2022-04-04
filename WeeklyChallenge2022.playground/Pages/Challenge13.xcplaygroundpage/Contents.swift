@@ -23,7 +23,7 @@ int Factorial(int Number)
 {
 	if (Number <= 1)
 	{
-		return Number;
+		return 1;
 	}
 
 	return Number * Factorial(Number - 1);
