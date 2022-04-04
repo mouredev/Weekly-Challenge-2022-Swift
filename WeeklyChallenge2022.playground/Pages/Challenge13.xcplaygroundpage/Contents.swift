@@ -16,3 +16,22 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+// PHP
+//
+// https://poio.com.ar/retos_moure/13/
+
+<?php 
+function factorial($numero){
+  $n = intval($numero);
+  $resultado = $n;
+
+  for ($i = ($n-1); $i >= 2; $i--){
+    $resultado = ($resultado * $i);
+  }
+
+  return $resultado;
+}
+
+echo '<pre>'.factorial(20).'</pre>';
+echo '<pre>'.factorial(5).'</pre>';
+?>
