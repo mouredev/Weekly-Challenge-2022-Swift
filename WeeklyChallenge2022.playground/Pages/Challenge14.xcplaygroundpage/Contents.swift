@@ -17,3 +17,55 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+extension Int {
+    
+    var length: Int {
+        get {
+            "\(self)".count
+        }
+    }
+    
+    func isArmstrong() -> Bool {
+        if self <= 0 {
+            return false
+        }
+        let raised = self.length
+        var sum = Int.zero
+        self.digits().forEach {
+            sum += $0.pow(raised)
+        }
+        return self == sum
+    }
+
+    func digits() -> [Int] {
+        if self < 0 {
+            return "\(self)".dropFirst().map({$0.toInt()})
+        }
+        return "\(self)".map({$0.toInt()})
+    }
+    
+    func pow(_ raised: Int) -> Int {
+        if raised <= 0 {
+            return 0
+        }
+        var value = self
+        for _ in 1..<raised {
+            value = value * self
+        }
+        return value
+    }
+}
+
+extension Character {
+    func toInt() -> Int {
+        Int("\(self)") ?? Int.zero
+    }
+}
+
+print((-371).isArmstrong())
+print(0.isArmstrong())
+print(371.isArmstrong())
+print(8208.isArmstrong())
+print(4210818.isArmstrong())
+print(4210810.isArmstrong())
