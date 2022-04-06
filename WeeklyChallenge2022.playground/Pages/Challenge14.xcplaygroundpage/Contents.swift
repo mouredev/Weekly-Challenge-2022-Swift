@@ -20,18 +20,29 @@ import Foundation
 
 extension Int {
     
+    var length: Int {
+        get {
+            "\(self)".count
+        }
+    }
+    
     func isArmstrong() -> Bool {
         if self <= 0 {
             return false
         }
-        let digits = "\(self)"
-        let raised = digits.count
+        let raised = self.length
         var sum = Int.zero
-        digits.forEach {
-            //sum += pow(Double("\($0)") ?? Double.zero, Double(potencia))
-            sum += $0.toInt().pow(raised)
+        self.digits().forEach {
+            sum += $0.pow(raised)
         }
         return self == sum
+    }
+
+    func digits() -> [Int] {
+        if self < 0 {
+            return "\(self)".dropFirst().map({$0.toInt()})
+        }
+        return "\(self)".map({$0.toInt()})
     }
     
     func pow(_ raised: Int) -> Int {
