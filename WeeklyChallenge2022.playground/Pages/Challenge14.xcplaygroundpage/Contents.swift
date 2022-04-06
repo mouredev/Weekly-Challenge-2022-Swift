@@ -25,12 +25,30 @@ extension Int {
             return false
         }
         let digits = "\(self)"
-        let potencia = digits.count
-        var sum = Double.zero
+        let raised = digits.count
+        var sum = Int.zero
         digits.forEach {
-            sum += pow(Double("\($0)") ?? Double.zero, Double(potencia))
+            //sum += pow(Double("\($0)") ?? Double.zero, Double(potencia))
+            sum += $0.toInt().pow(raised)
         }
-        return self == Int(sum)
+        return self == sum
+    }
+    
+    func pow(_ raised: Int) -> Int {
+        if raised <= 0 {
+            return 0
+        }
+        var value = self
+        for _ in 1..<raised {
+            value = value * self
+        }
+        return value
+    }
+}
+
+extension Character {
+    func toInt() -> Int {
+        Int("\(self)") ?? Int.zero
     }
 }
 
