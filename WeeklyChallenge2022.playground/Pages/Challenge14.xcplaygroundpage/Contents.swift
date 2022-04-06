@@ -21,6 +21,9 @@ import Foundation
 extension Int {
     
     func isArmstrong() -> Bool {
+        if self <= 0 {
+            return false
+        }
         let digits = "\(self)"
         let potencia = digits.count
         var sum = Double.zero
@@ -31,6 +34,8 @@ extension Int {
     }
 }
 
+print((-371).isArmstrong())
+print(0.isArmstrong())
 print(371.isArmstrong())
 print(8208.isArmstrong())
 print(4210818.isArmstrong())
