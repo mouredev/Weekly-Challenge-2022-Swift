@@ -17,13 +17,12 @@ import Foundation
  *
  */
 
-func calculateFactorial(number: Int) -> Int {
-    if(number == 1) {
-        return 1
-    } else {
-        return number * calculateFactorial(number: number-1)
-    }
+func factorial(n: Int) -> Int? {
+    return n < 0 ? nil : n <= 1 ? 1 : n * (factorial(n: n - 1)!)
 }
 
-let number = 5
-print("\(number)! = \(calculateFactorial(number: number))")
+print(factorial(n: 0) ?? "No tiene factorial")
+print(factorial(n: 7) ?? "No tiene factorial")
+print(factorial(n: 10) ?? "No tiene factorial")
+print(factorial(n: 1) ?? "No tiene factorial")
+print(factorial(n: -1) ?? "No tiene factorial")
