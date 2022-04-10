@@ -17,3 +17,18 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func isArmstrong(number: Int) -> Bool {
+    var summatory = 0.0
+    String(number).forEach {
+        summatory += pow(Double(String($0))!, Double(String(number).count))
+    }
+    return Int(summatory) == number
+}
+
+print(isArmstrong(number: 123))
+print(isArmstrong(number: 153))
+print(isArmstrong(number: 371))
+print(isArmstrong(number: 1080))
+print(isArmstrong(number: 1634))
+print(isArmstrong(number: 8208))
