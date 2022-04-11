@@ -17,3 +17,21 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+ulong x = 28116440335967UL;
+
+Console.WriteLine(IsArmstrong(x));
+
+
+bool IsArmstrong(ulong Number)
+{
+	string StringNumber = Number.ToString();
+	long Lenght = StringNumber.Length;
+
+	long ArmstrongNumber = StringNumber.Sum((i) =>
+	{
+		long N = (long)char.GetNumericValue(i);
+		return (long)Math.Pow(N, Lenght);
+	});
+
+	return (ulong)ArmstrongNumber == Number;
+}
