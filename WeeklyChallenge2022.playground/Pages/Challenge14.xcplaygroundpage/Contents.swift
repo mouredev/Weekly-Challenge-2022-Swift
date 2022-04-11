@@ -17,3 +17,37 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+fn main() {
+    println!("{}", is_armstrong_number(371));
+    println!("{}", is_armstrong_number(8208));
+    println!("{}", is_armstrong_number(4210818));
+    println!("{}", is_armstrong_number(2015));
+}
+
+fn is_armstrong_number(number: u32) -> bool {
+    let num_str = number.to_string();
+    let num_len = num_str.len() as u32;
+
+    let sum = num_str.chars()
+        .map(|c| c.to_digit(10).unwrap())
+        .map(|d| d.pow(num_len))
+        .sum();
+
+    number == sum
+}
+
+/* fn is_armstrong_number(number: u64) -> bool {
+    let mut raised = 0;
+    let power = number.to_string().len() as u32;
+
+    let mut number_in = number;
+
+    while number_in != 0 {
+        let remaining = number_in % 10;
+        raised += remaining.pow(power);
+        number_in /= 10;
+    }
+
+    raised == number
+} */
