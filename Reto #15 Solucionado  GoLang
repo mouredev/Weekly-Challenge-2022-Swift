@@ -1,0 +1,117 @@
+######################################################################
+###          Resolucion del Reto #15 en Golang y otros             ###
+###                   Primero en SQL                               ###
+######################################################################
+### MySQQL
+SELECT DATEDIFF('2022/04/13','2022/01/01');
+### PostgreSLQ
+SELECT age('2022/04/13','2022/01/01');
+### SQL Server
+SELECT DATEDIFF(DAY,'2022/01/01','2022/04/13');
+### PL/SQL
+SELECT TO_DATE('2022/04/13','YYYY-MM-DD')-TO_DATE('2022/01/01','YYYY-MM-DD') FROM dual;
+######################################################################
+###     Ejecucion de MySQL, PostgreSQL, SQL Server                 ###
+###     https://sqliteonline.com/                                  ###
+###                                                                ###
+###     Ejecucion de PL/SQL (Se necesita Cuenta)                   ###
+###     https://livesql.oracle.com                                 ###
+######################################################################
+
+######################################################################
+###               Ahora en GoLang                                  ###
+###     Si lo quereis probar: https://paiza.io/                    ###
+######################################################################
+
+package main
+import (
+  "fmt"
+  "strings"
+  "strconv"
+  "reflect"
+)
+
+func Abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
+func es_fecha(f1 string, f2 string) int {
+    var barra int
+    var resultado int
+    var res int
+    var bisi int
+    // Pimero evvriguamos el formato si es correcto
+    barra=strings.Count(f1, "/")+strings.Count(f2, "/")
+    if barra==4 {
+        // En principio es fecha, seguimos
+        // Suponemos el formato de fecha requerido dd/mm/yyyy, pues lo aplicamos
+        fecha1 := strings.Split(f1,"/")
+        fecha2 := strings.Split(f2,"/")
+        
+        dia1 := fecha1[0]
+        mes1 := fecha1[1]
+        amo1 := fecha1[2]
+        dia2 := fecha2[0]
+        mes2 := fecha2[1]
+        amo2 := fecha2[2]       
+       //fmt.Println(f,dia, mes, amo)
+        idia1, err := strconv.Atoi(dia1)
+        imes1, err := strconv.Atoi(mes1)
+        iamo1, err := strconv.Atoi(amo1)
+        idia2, err := strconv.Atoi(dia2)
+        imes2, err := strconv.Atoi(mes2)
+        iamo2, err := strconv.Atoi(amo2)        
+        if err == nil {
+            resultado=0
+            if reflect.TypeOf(iamo1).Kind()==reflect.Int {
+                if iamo1>iamo2 {
+                    resultado = (iamo1-iamo2)*365
+                } else {
+                    resultado = (iamo2-iamo1)*365
+                }
+            }
+            if reflect.TypeOf(imes1).Kind()==reflect.Int {
+                bisi=28
+                for a:=imes1; a<imes2; a++ {
+                    if a==2 {
+                        for b:=iamo1; b<iamo2-1; b++ {
+                            if b%4==0 {
+                                bisi=29
+                            } 
+                        }
+                        
+                    }
+                    switch a {
+                        case 1,3,5,7,8,10,12: res=res+(31)
+                        case 2: res=res+(bisi)
+                        default: res=res+(30)
+                    }
+                }
+                resultado=resultado+res
+            }
+            if reflect.TypeOf(idia1).Kind()==reflect.Int {
+                if idia1>idia2 {
+                    resultado=resultado+((idia1-idia2))
+                } else {
+                    resultado=resultado+((idia2-idia1))
+                }
+            }
+        }
+        //Es fecha coherente
+        return resultado
+        
+    }
+    return 0
+}
+func main(){
+    // Your code here!
+    fmt.Println(Abs(es_fecha("01/02/2021", "13/04/2022")))
+    fmt.Println(Abs(es_fecha("01/02/2022", "13/04/2022")))
+    fmt.Println(Abs(es_fecha("13/03/2022", "13/04/2022")))
+    fmt.Println(Abs(es_fecha("13/03/2022", "13/042022")))
+    fmt.Println(Abs(es_fecha("12/04/2022", "13/04/2022")))
+
+}
