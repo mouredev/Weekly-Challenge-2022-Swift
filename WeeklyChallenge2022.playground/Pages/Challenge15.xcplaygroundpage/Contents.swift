@@ -20,3 +20,33 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+class InvalidAnyDates: Error {}
+
+extension String {
+    func toDate() -> Date? {
+        let format = DateFormatter()
+        format.dateFormat = "dd/MM/yyyy"
+        return format.date(from: self)
+    }
+}
+
+extension Calendar {
+    func daysBetween(from: Date, to: Date) -> Int {
+        dateComponents([.day], from: from, to: to).day!
+    }
+}
+
+func howManyDates(from: String, to: String) throws -> Int {
+    if let fromDate = from.toDate(), let toDate = to.toDate() {
+        return abs(Calendar.current.daysBetween(from: fromDate, to: toDate))
+    }
+    throw InvalidAnyDates()
+}
+
+do {
+    print(try howManyDates(from: "01/02/2004", to: "01/03/2004"))
+    print(try howManyDates(from: "01/02/2005", to: "01/03/2005"))
+} catch {
+    print(error)
+}
