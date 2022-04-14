@@ -1,4 +1,4 @@
-import Foundation
+
 
 /*
  * Reto #7
@@ -20,27 +20,43 @@ import Foundation
  *
  */
 
-func countWords(text: String) {
+function countWords (text) {
 
-    let mutableString = NSMutableString(string: text.lowercased())
-    
-    let regex = try! NSRegularExpression(pattern: "[^a-z0-9]", options: [])
-    regex.replaceMatches(in: mutableString, options: [], range: NSMakeRange(0, mutableString.length), withTemplate: " ")
-    
-    var words: [String:Int] = [:]
-    
-    String(mutableString).split(separator: " ").forEach { word in
-        let key = String(word)
-        if words[key] != nil {
-            words[key]! += 1
-        } else {
-            words[key] = 1
+    let palabras = [];
+    let signos = [".", ",", ":", "¿", "?", "(", ")"]
+
+    // Eliminar signos
+    for (let i = 0; i < text.length; i++) {
+        if (signos.includes(text[i])) {
+            text2 = text.replace(text[i], "");
+            text = text2;
         }
     }
-    
-    words.forEach { key, value in
-        print("\(key) se ha repetido \(value) \(value == 1 ? "vez" : "veces")")
-    }
+
+    let arrText = text.toLowerCase().split(" ");
+    console.log(arrText)
+    let total = ""
+    let repeticion = 0;
+
+// Extraer las palabras
+    for (let i = 0; i < arrText.length; i++) {
+        if (!palabras.includes(arrText[i])) {
+            palabras.push(arrText[i])
+        }
+        else {
+            let posicion = palabras.indexOf(arrText[i]);           
+            repeticion++;
+        }        
 }
 
-countWords(text: "Hola, mi nombre es brais. Mi nombre completo es Brais Moure (MoureDev).")
+
+console.log(repeticion)
+console.log(palabras.indexOf("hola"))
+// Contar las palabras cuantas veces se repiten
+console.log(palabras)
+}
+
+let text = "Hola. que hola hola"
+let text2 = "Hola, mi nombre es brais. Mi nombre completo es Brais Moure (MoureDev)."
+
+countWords(text)

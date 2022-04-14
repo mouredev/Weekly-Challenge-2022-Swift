@@ -13,6 +13,10 @@ Existen repositorios de código tanto para Swift/iOS como para Kotlin/Android en
 [![Xcode](https://img.shields.io/badge/Xcode-13-blue.svg?longCache=true&style=popout-square)](https://developer.apple.com/xcode)
 [![iOS](https://img.shields.io/badge/iOS-15-red.svg?longCache=true&style=popout-square)](https://www.apple.com/es/ios)
 
+## Vídeo explicación retos
+
+<a href="https://youtu.be/14v4IINunvY"><img src="http://i3.ytimg.com/vi/14v4IINunvY/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
+
 ## Listado de retos
 * **#0** - 27/12/21 - `EL FAMOSO "FIZZ BUZZ"`
 * **#1** - 03/01/22 - `¿ES UN ANAGRAMA?`
@@ -21,7 +25,16 @@ Existen repositorios de código tanto para Swift/iOS como para Kotlin/Android en
 * **#4** - 24/01/22 - `ÁREA DE UN POLÍGONO`
 * **#5** - 01/02/22 - `ASPECT RATIO DE UNA IMAGEN`
 * **#6** - 07/02/22 - `INVIRTIENDO CADENAS`
-* **#7** - 14/02/22 - `Publicación nuevo reto...`
+* **#7** - 14/02/22 - `CONTANDO PALABRAS`
+* **#8** - 18/02/22 - `DECIMAL A BINARIO`
+* **#9** - 02/03/22 - `CÓDIGO MORSE`
+* **#10** - 07/03/22 - `EXPRESIONES EQUILIBRADAS`
+* **#11** - 14/03/22 - `ELIMINANDO CARACTERES`
+* **#12** - 21/03/22 - `¿ES UN PALÍNDROMO?`
+* **#13** - 28/03/22 - `FACTORIAL RECURSIVO`
+* **#14** - 04/04/22 - `¿ES UN NÚMERO DE ARMSTRONG?`
+* **#15** - 11/04/22 - `¿CUÁNTOS DÍAS?`
+* **#16** - 18/04/22 - `Publicación nuevo reto...`
 
 ### ¿Cómo puedo participar?
 
