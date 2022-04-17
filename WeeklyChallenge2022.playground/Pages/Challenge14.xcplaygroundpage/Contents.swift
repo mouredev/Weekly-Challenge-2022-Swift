@@ -19,16 +19,22 @@ import Foundation
  */
 
 func isArmstrong(number: Int) -> Bool {
-    var summatory = 0.0
-    String(number).forEach {
-        summatory += pow(Double(String($0))!, Double(String(number).count))
+
+    if number < 0 {
+        return false
     }
-    return Int(summatory) == number
+    
+    var sum = 0
+    let powValue = Double(number.description.count)
+    
+    number.description.forEach { character in
+        sum += Int(pow(Double(character.description) ?? 0, powValue))
+    }
+
+    return number == sum
 }
 
-print(isArmstrong(number: 123))
-print(isArmstrong(number: 153))
 print(isArmstrong(number: 371))
-print(isArmstrong(number: 1080))
-print(isArmstrong(number: 1634))
-print(isArmstrong(number: 8208))
+print(isArmstrong(number: -371))
+print(isArmstrong(number: 372))
+print(isArmstrong(number: 0))
