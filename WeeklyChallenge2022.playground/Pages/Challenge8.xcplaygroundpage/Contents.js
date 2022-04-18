@@ -1,5 +1,3 @@
-import Foundation
-
 /*
  * Reto #8
  * DECIMAL A BINARIO
@@ -17,21 +15,19 @@ import Foundation
  *
  */
 
-func decimalToBinary(_ decimal: Int) -> String {
-    
-    var number = decimal
-    var binary = ""
-    
-    while number != 0 {
-        
-        let reminder = number % 2
-        number /= 2
-        
-        binary = "\(reminder)\(binary)"
-    }
-    
-    return binary.isEmpty ? "0" : binary
-}
+// 128 64 32 16 8 4 2 1
+// 0   0  0  0  0 0 0 0 
 
-print(decimalToBinary(387))
-print(decimalToBinary(0))
+function decimalToBinary (decimal) {
+    let num = decimal;
+    let binary = (num % 2).toString();
+    for (; num > 1; ) {
+        num = parseInt(num / 2);
+        binary = (num % 2) + (binary)
+    }
+    return binary
+}
+console.log(decimalToBinary(2))
+console.log(decimalToBinary(3))
+console.log(decimalToBinary(8))
+console.log(decimalToBinary(128))
