@@ -1,4 +1,3 @@
-import Foundation
 
 /*
  * Reto #15
@@ -20,3 +19,4 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
