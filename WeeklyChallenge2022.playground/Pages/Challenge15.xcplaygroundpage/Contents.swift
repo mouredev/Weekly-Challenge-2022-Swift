@@ -38,7 +38,7 @@ public class EasyWay
 		{
 			DateTime _Date1 = DateTime.Parse(Date1, new CultureInfo("es-MX"));
 			DateTime _Date2 = DateTime.Parse(Date2, new CultureInfo("es-MX"));
-			return (int)_Date2.Subtract(_Date1).TotalDays;
+			return Math.Abs((int)_Date2.Subtract(_Date1).TotalDays);
 		}
 		catch (Exception ex)
 		{
