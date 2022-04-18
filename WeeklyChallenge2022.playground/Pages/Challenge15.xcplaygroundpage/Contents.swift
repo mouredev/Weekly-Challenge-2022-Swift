@@ -20,3 +20,22 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+private func daysInterval(dateText1: String, dateText2: String) -> Int {
+    let daySeconds = 60 * 60 * 24
+    let formatter = DateFormatter()
+    formatter.dateFormat = "dd/MM/yyyy"
+    if let date1 = formatter.date(from: dateText1), let date2 = formatter.date(from: dateText2) {
+        return Int(abs(date1.timeIntervalSince(date2))) / daySeconds
+    } else {
+        print("Alguna de las dos fechas de entrada es errónea")
+        return -1
+    }
+}
+
+print(daysInterval(dateText1: "16/04/2022", dateText2: "16-04-2022"))
+print(daysInterval(dateText1: "16/04/2022", dateText2: "16/13/2022"))
+print(daysInterval(dateText1: "16/04/2022", dateText2: "32/04/2022"))
+print(daysInterval(dateText1: "16/04/2022", dateText2: "17/04/2022"))
+print(daysInterval(dateText1: "17/04/2022", dateText2: "16/04/2022"))
+print(daysInterval(dateText1: "17/04/2022", dateText2: "16/04/2023"))
