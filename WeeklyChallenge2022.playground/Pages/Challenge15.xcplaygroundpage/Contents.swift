@@ -20,3 +20,29 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+using System.Globalization;
+using System.Text.RegularExpressions;
+
+//Asignamos el formato dd/mm/yyyy
+Thread.CurrentThread.CurrentCulture = new CultureInfo("es-MX");
+
+EasyWay Easy = new EasyWay();
+
+Easy.DateDayDiff("10/01/2004", "13/12/2012")
+
+public class EasyWay
+{
+	public int DateDayDiff(string Date1, string Date2)
+	{
+		try
+		{
+			DateTime _Date1 = DateTime.Parse(Date1, new CultureInfo("es-MX"));
+			DateTime _Date2 = DateTime.Parse(Date2, new CultureInfo("es-MX"));
+			return (int)_Date2.Subtract(_Date1).TotalDays;
+		}
+		catch (Exception ex)
+		{
+			throw new Exception(ex.Message);
+		}
+	}
+}
