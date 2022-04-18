@@ -25,36 +25,18 @@ package main
 import (
 	"fmt"
 	"math"
-	"strconv"
-	"strings"
 	"time"
 )
 
-// Go Playground Online https://go.dev/play/p/c3GnHUTvQXS
-func main() {
-	days, err := getNumberDays("15/04/2022", "18/04/2022")
-	fmt.Println(days, err)
-
-	days, err = getNumberDays("18/04/2022", "15/04/2022")
-	fmt.Println(days, err)
-
-	days, err = getNumberDays("18/100/2022", "15/04/2022")
-	fmt.Println(days, err)
-}
-
 func getNumberDays(firstDate, lastDate string) (int, error) {
-	const layoutTimeFormat = "2006-01-02"
+	const layoutTimeFormat = "02/01/2006"
 
-	nFirstDate := reverseDate(firstDate)
-
-	firstTime, err := time.ParseInLocation(layoutTimeFormat, nFirstDate, time.UTC)
+	firstTime, err := time.ParseInLocation(layoutTimeFormat, firstDate, time.UTC)
 	if err != nil {
 		return 0, err
 	}
 
-	nLastDate := reverseDate(lastDate)
-
-	lastTime, err := time.ParseInLocation(layoutTimeFormat, nLastDate, time.UTC)
+	lastTime, err := time.ParseInLocation(layoutTimeFormat, lastDate, time.UTC)
 	if err != nil {
 		return 0, err
 	}
@@ -66,14 +48,13 @@ func getNumberDays(firstDate, lastDate string) (int, error) {
 	return days, nil
 }
 
-func reverseDate(str string) string {
-	input := strings.Split(str, "/")
+func main() {
+	days, err := getNumberDays("15/04/2022", "18/04/2022")
+	fmt.Println(days, err)
 
-	var output []string
+	days, err = getNumberDays("18/04/2022", "15/04/2022")
+	fmt.Println(days, err)
 
-	for i := len(input) - 1; i >= 0; i-- {
-		output = append(output, input[i])
-	}
-
-	return strings.Join(output, "-")
+	days, err = getNumberDays("18/100/2022", "15/04/2022")
+	fmt.Println(days, err)
 }
