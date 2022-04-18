@@ -20,3 +20,60 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+package main
+
+import (
+	"fmt"
+	"math"
+	"strconv"
+	"strings"
+	"time"
+)
+
+// Go Playground Online https://go.dev/play/p/c3GnHUTvQXS
+func main() {
+	days, err := getNumberDays("15/04/2022", "18/04/2022")
+	fmt.Println(days, err)
+
+	days, err = getNumberDays("18/04/2022", "15/04/2022")
+	fmt.Println(days, err)
+
+	days, err = getNumberDays("18/100/2022", "15/04/2022")
+	fmt.Println(days, err)
+}
+
+func getNumberDays(firstDate, lastDate string) (int, error) {
+	const layoutTimeFormat = "2006-01-02"
+
+	nFirstDate := reverseDate(firstDate)
+
+	firstTime, err := time.ParseInLocation(layoutTimeFormat, nFirstDate, time.UTC)
+	if err != nil {
+		return 0, err
+	}
+
+	nLastDate := reverseDate(lastDate)
+
+	lastTime, err := time.ParseInLocation(layoutTimeFormat, nLastDate, time.UTC)
+	if err != nil {
+		return 0, err
+	}
+
+	duration := firstTime.Sub(lastTime)
+	daysF64 := math.Abs(duration.Hours() / 24.0)
+	days := int(daysF64)
+
+	return days, nil
+}
+
+func reverseDate(str string) string {
+	input := strings.Split(str, "/")
+
+	var output []string
+
+	for i := len(input) - 1; i >= 0; i-- {
+		output = append(output, input[i])
+	}
+
+	return strings.Join(output, "-")
+}
