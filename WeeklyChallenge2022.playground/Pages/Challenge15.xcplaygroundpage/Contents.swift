@@ -23,19 +23,39 @@ import Foundation
 
 private func daysInterval(dateText1: String, dateText2: String) -> Int {
     let daySeconds = 60 * 60 * 24
+enum DaysBetweenError: Error {
+    case dateFormat
+}
+
+func daysBetween(firstDate: String, secondDate: String) throws -> Int {
+    
     let formatter = DateFormatter()
     formatter.dateFormat = "dd/MM/yyyy"
-    if let date1 = formatter.date(from: dateText1), let date2 = formatter.date(from: dateText2) {
-        return Int(abs(date1.timeIntervalSince(date2))) / daySeconds
-    } else {
-        print("Alguna de las dos fechas de entrada es errónea")
-        return -1
+    
+    let regex = try! NSRegularExpression(pattern: "^([0-9]){2}[/]([0-9]){2}[/]([0-9]){4}$", options: [])
+    
+    if regex.firstMatch(in: firstDate, range: NSMakeRange(0, firstDate.count)) != nil,
+       regex.firstMatch(in: secondDate, range: NSMakeRange(0, secondDate.count)) != nil,
+       let firstParsedDate = formatter.date(from: firstDate),
+       let secondParsedDate = formatter.date(from: secondDate),
+       let days = Calendar.current.dateComponents([.day], from: firstParsedDate, to: secondParsedDate).day {
+       
+        return abs(days)
+    }
+    
+    throw DaysBetweenError.dateFormat
+}
+
+func printDaysBetween(firstDate: String, secondDate: String) {
+    do {
+        print(try daysBetween(firstDate: firstDate, secondDate: firstDate))
+    } catch DaysBetweenError.dateFormat {
+        print("Error en el formato de alguna fecha")
+    } catch {
+        print("Error en el parse de alguna fecha")
     }
 }
 
-print(daysInterval(dateText1: "16/04/2022", dateText2: "16-04-2022"))
-print(daysInterval(dateText1: "16/04/2022", dateText2: "16/13/2022"))
-print(daysInterval(dateText1: "16/04/2022", dateText2: "32/04/2022"))
-print(daysInterval(dateText1: "16/04/2022", dateText2: "17/04/2022"))
-print(daysInterval(dateText1: "17/04/2022", dateText2: "16/04/2022"))
-print(daysInterval(dateText1: "17/04/2022", dateText2: "16/04/2023"))
+printDaysBetween(firstDate: "18/05/2022", secondDate: "29/05/2022")
+printDaysBetween(firstDate: "mouredev", secondDate: "29/04/2022")
+printDaysBetween(firstDate: "18/5/2022", secondDate: "29/04/2022")
