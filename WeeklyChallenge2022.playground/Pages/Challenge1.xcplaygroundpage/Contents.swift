@@ -20,8 +20,15 @@ import Foundation
  *
  */
 
-func isAnagram(wordOne: String, wordTwo: String) -> Bool {
-    return wordOne.lowercased() == wordTwo.lowercased() ? false : wordOne.lowercased().sorted().elementsEqual(wordTwo.lowercased().sorted())
+func isAnagram(word1: String, word2: String) -> Bool {
+    
+    if (word1.lowercased() == word2.lowercased()) {
+        return false
+    } else if (word1.lowercased().sorted().elementsEqual(word2.lowercased().sorted())) {
+        return true
+    }
+    
+    return false
 }
 
-print(isAnagram(wordOne: "amor", wordTwo: "roma"))
+isAnagram(word1: "amor", word2: "roma")
