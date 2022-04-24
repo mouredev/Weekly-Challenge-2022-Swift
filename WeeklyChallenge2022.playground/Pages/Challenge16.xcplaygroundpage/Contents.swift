@@ -18,3 +18,26 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func capitalizeWords(text: String) -> String {
+    let wordSeparators = [" ","\n"]
+    var result = ""
+    for charIndex in 0..<text.count {
+        let currentChar = text[text.index(text.startIndex, offsetBy: charIndex)]
+        if(charIndex == 0) {
+            result += currentChar.uppercased()
+        } else {
+            let previousChar = text[text.index(text.startIndex, offsetBy: charIndex-1)]
+            result += wordSeparators.contains(String(previousChar)) ? currentChar.uppercased() : currentChar.lowercased()
+        }
+    }
+    return result
+}
+
+
+print(capitalizeWords(text: ""))
+print(capitalizeWords(text: "palabra"))
+print(capitalizeWords(text: "varias palabras"))
+print(capitalizeWords(text: "varias palabras, con puntuación."))
+print(capitalizeWords(text: "varias palabras, con puntuación y MAYÚSCULAS."))
+print(capitalizeWords(text: "varias palabras, con puntuación y MAYÚSCULAS\nen varias líneas."))

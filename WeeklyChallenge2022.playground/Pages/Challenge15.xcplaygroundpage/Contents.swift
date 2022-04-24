@@ -21,8 +21,6 @@ import Foundation
  *
  */
 
-private func daysInterval(dateText1: String, dateText2: String) -> Int {
-    let daySeconds = 60 * 60 * 24
 enum DaysBetweenError: Error {
     case dateFormat
 }
