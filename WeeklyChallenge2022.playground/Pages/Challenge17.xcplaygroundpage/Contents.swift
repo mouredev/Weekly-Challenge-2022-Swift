@@ -1,4 +1,4 @@
-import Foundation
+//import Foundation
 
 /*
  * Reto #17
@@ -27,3 +27,88 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+
+fn resultado_carrera(acciones: &Vec::<String>, pista: &mut String) -> Result<bool, String> {
+
+    let chars_pista = pista.chars();
+    let z = chars_pista.zip(acciones.iter());
+
+    let mut result: Result<bool, String> = Ok(true);
+
+    let pista_modificada : String= z.map (|(p, a)| {
+
+            let r : Result<bool, String> = result.clone();
+            if p == '_' {
+                if a ==  "jump" {
+                    result = Ok(false);
+                    return 'x';          
+                }
+                else if a == "run" {
+                    result = r.and_then(|x| { Ok(x && true)});
+                }
+                else {
+                    result = Err("Accion invalida".to_string());
+                }
+            }
+
+            else if p == '|' {
+
+                if a == "run" {
+                    result = Ok(false);
+                    return '/';
+                }
+                else if a == "jump" {
+                    result = r.and_then(|x| {Ok(x && true)});
+                }
+                else {
+                    result = Err("Accion invalida".to_string());
+                }
+                
+            }
+            else {
+                result = Err("Pista invalida".to_string());
+            }
+            return p; 
+        })
+        .collect();
+
+    *pista = pista_modificada.clone();
+    result
+ }
+
+
+ fn main() {
+ }
+
+ #[test]
+ fn test1() {
+    let s_run = "run".to_string();
+    let s_jump = "jump".to_string();
+    let mut pista1 = "___|__|_|_|_|_".to_string();
+    let mut pista2 = "_|_|__|_|_|___".to_string();
+    let accion : Vec<String> = Vec::from([
+        s_run.clone(),
+        s_run.clone(),
+        s_run.clone(),
+        s_jump.clone(),
+        s_run.clone(),
+        s_run.clone(),
+        s_jump.clone(),
+        s_run.clone(),
+        s_jump.clone(),
+        s_run.clone(),
+        s_jump.clone(),
+        s_run.clone(),
+        s_jump.clone(),
+        s_run.clone()]);
+
+    let resultado1 = resultado_carrera(&accion, &mut pista1);
+    let resultado2 = resultado_carrera(&accion, &mut pista2);
+
+    assert_eq!(resultado1, Ok(true));
+    assert_eq!(resultado2, Ok(false));
+    assert_eq!(pista2, "_/_|__|_|_|_x_");
+
+ }
+
