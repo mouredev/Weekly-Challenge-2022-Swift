@@ -27,3 +27,69 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+bool IsValid = new Solution().IsPathValid(new string[]{"run","run","run","jump","jump","jump","run","jump","run"},"___|||_|_",out string Result);
+
+Console.WriteLine($"Es valido: {IsValid}   Camino corregido: {Result}");
+//imprime true y ___|||_|_
+
+bool IsValid = new Solution().IsPathValid(new string[]{"run","run","run","jump","jump","jump","run",""},"___|||_|_",out string Result);
+
+Console.WriteLine($"Es valido: {IsValid}   Camino corregido: {Result}");
+//imprime false y ___|||_/x
+
+bool IsValid = new Solution().IsPathValid(new string[]{"run","run","run","jump","jump","jump","run"},"___",out string Result);
+
+Console.WriteLine($"Es valido: {IsValid}   Camino corregido: {Result}");
+//imprime true y ___
+
+bool IsValid = new Solution().IsPathValid(new string[]{"run","run","run","jump","jump","jump","run",""},"__!p|||_|_",out string Result);
+
+Console.WriteLine($"Es valido: {IsValid}   Camino corregido: {Result}");
+//imprime false y __!p|||_|_
+
+bool IsValid = new Solution().IsPathValid(new string[]{"run"},"___|||_|_",out string Result);
+
+Console.WriteLine($"Es valido: {IsValid}   Camino corregido: {Result}");
+//imprime false y _xx///x/x
+
+public class Solution
+{
+	Dictionary<char,string> Acctions = new Dictionary<char, string>()
+	{
+		['_'] = "run",
+		['|'] = "jump",
+	};
+	Dictionary<char, char> Errors = new Dictionary<char, char>()
+	{
+		['_'] = 'x',
+		['|'] = '/',
+	};
+	public bool IsPathValid(string[] Acctions, string Path, out string Result)
+	{
+		if (!IsPathValid(Path))
+		{
+			Result = Path;
+			return false;
+		}
+		string[] _Acctions = (string[]) Acctions.Clone();
+		Array.Resize(ref _Acctions,Path.Length);
+		bool IsValid = true;
+		char[] ResultArray = Path.ToCharArray();
+		for (int i = 0; i < Path.Length; i++)
+		{
+			if (this.Acctions[char.ToLower(Path[i])] != _Acctions[i]?.ToLower())
+			{
+				IsValid = false;
+				ResultArray[i] = Errors[Path[i]];
+			}
+		}
+		Result = new string(ResultArray);
+		return IsValid;
+	}
+	private bool IsPathValid(string Path)
+	{
+		return !string.IsNullOrEmpty(Path) && Path.All(i => Acctions.Keys.Contains(i));
+	}
+
+}
