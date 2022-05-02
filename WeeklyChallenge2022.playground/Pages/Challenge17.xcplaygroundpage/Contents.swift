@@ -27,3 +27,44 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+public class Solution
+{
+	Dictionary<char,string> Acctions = new Dictionary<char, string>()
+	{
+		['_'] = "run",
+		['|'] = "jump",
+	};
+	Dictionary<char, char> Errors = new Dictionary<char, char>()
+	{
+		['_'] = 'x',
+		['|'] = '/',
+	};
+	public bool IsPathValid(string[] Acctions, string Path, out string Result)
+	{
+		if (!IsPathValid(Path))
+		{
+			Result = Path;
+			return false;
+		}
+		string[] _Acctions = (string[]) Acctions.Clone();
+		Array.Resize(ref _Acctions,Path.Length);
+		bool IsValid = true;
+		char[] ResultArray = Path.ToCharArray();
+		for (int i = 0; i < Path.Length; i++)
+		{
+			if (this.Acctions[char.ToLower(Path[i])] != _Acctions[i]?.ToLower())
+			{
+				IsValid = false;
+				ResultArray[i] = Errors[Path[i]];
+			}
+		}
+		Result = new string(ResultArray);
+		return IsValid;
+	}
+	private bool IsPathValid(string Path)
+	{
+		return !string.IsNullOrEmpty(Path) && Path.All(i => Acctions.Keys.Contains(i));
+	}
+
+}
