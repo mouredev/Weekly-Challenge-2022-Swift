@@ -28,6 +28,31 @@ import Foundation
  *
  */
 
+bool IsValid = new Solution().IsPathValid(new string[]{"run","run","run","jump","jump","jump","run","jump","run"},"___|||_|_",out string Result);
+
+Console.WriteLine($"Es valido: {IsValid}   Camino corregido: {Result}");
+//imprime true y ___|||_|_
+
+bool IsValid = new Solution().IsPathValid(new string[]{"run","run","run","jump","jump","jump","run",""},"___|||_|_",out string Result);
+
+Console.WriteLine($"Es valido: {IsValid}   Camino corregido: {Result}");
+//imprime false y ___|||_/x
+
+bool IsValid = new Solution().IsPathValid(new string[]{"run","run","run","jump","jump","jump","run"},"___",out string Result);
+
+Console.WriteLine($"Es valido: {IsValid}   Camino corregido: {Result}");
+//imprime true y ___
+
+bool IsValid = new Solution().IsPathValid(new string[]{"run","run","run","jump","jump","jump","run",""},"__!p|||_|_",out string Result);
+
+Console.WriteLine($"Es valido: {IsValid}   Camino corregido: {Result}");
+//imprime false y __!p|||_|_
+
+bool IsValid = new Solution().IsPathValid(new string[]{"run"},"___|||_|_",out string Result);
+
+Console.WriteLine($"Es valido: {IsValid}   Camino corregido: {Result}");
+//imprime false y _xx///x/x
+
 public class Solution
 {
 	Dictionary<char,string> Acctions = new Dictionary<char, string>()
