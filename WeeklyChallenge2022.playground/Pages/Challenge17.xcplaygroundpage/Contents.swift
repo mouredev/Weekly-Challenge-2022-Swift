@@ -27,3 +27,80 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+const JUM: &str = "jum";
+const RUN: &str = "run";
+const GROUND: char = '_';
+const FENCE: char = '|';
+const SLASH: char = '/';
+const X: char = 'x';
+
+fn is_race_overcame(actions: &[&str], track: &str) -> bool {
+    let track_elements: Vec<char> = track
+        .chars()
+        .collect();
+
+    let actions_size = actions.len();
+    let track_size = track_elements.len();
+
+    let mut is_ok = actions_size == track_size;
+
+    let new_track: String = track_elements
+        .iter()
+        .enumerate()
+        .map(|(i, c)| {
+            let mut action: &str = "";
+            if i < actions_size {
+                action = actions[i];
+            }
+
+            let character: char = match *c {
+                GROUND => {
+                    if action != RUN {
+                        is_ok = false;
+
+                        return X;
+                    }
+
+                    return *c;
+                }
+                FENCE => {
+                    if action != JUM {
+                        is_ok = false;
+
+                        return SLASH;
+                    }
+
+                    return *c;
+                }
+                _ => *c,
+            };
+
+            character
+        })
+        .collect();
+
+    println!("{:?}", new_track);
+
+    is_ok
+}
+
+fn main() {
+    let track: &str = "__|_";
+    let actions: [&str; 4] = ["run", "run", "jum", "run"];
+    let res = is_race_overcame(&actions, track);
+
+    println!("{}", res);
+
+    let track: &str = "__|_";
+    let actions: [&str; 4] = ["jum", "run", "run", "run"];
+    let res = is_race_overcame(&actions, track);
+
+    println!("{}", res);
+
+    let track: &str = "___";
+    let actions: [&str; 4] = ["jum", "run", "run", "run"];
+    let res = is_race_overcame(&actions, track);
+
+    println!("{}", res);
+}
