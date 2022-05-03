@@ -19,26 +19,25 @@ import Foundation
  *
  */
 
-func capitalizeWords(text: String) -> String {
-    let wordSeparators = text.filter{ !$0.isLetter }
-    var result = ""
-    for charIndex in 0..<text.count {
-        let currentChar = text[text.index(text.startIndex, offsetBy: charIndex)]
-        if(charIndex == 0) {
-            result += currentChar.uppercased()
-        } else {
-            let previousChar = text[text.index(text.startIndex, offsetBy: charIndex-1)]
-            result += wordSeparators.contains(String(previousChar)) ? currentChar.uppercased() : String(currentChar)
-        }
+func capitalize(text: String) -> String {
+    
+    var capitalizedText = text
+
+    let clearText = NSMutableString(string: text)
+    let regex = try! NSRegularExpression(pattern: "[^A-zÀ-ú]", options: [])
+    regex.replaceMatches(in: clearText, options: [], range: NSMakeRange(0, clearText.length), withTemplate: " ")
+   
+    clearText.components(separatedBy: " ").forEach { word in
+                
+        let firstChar = word.prefix(1).description.uppercased()
+        let otherChars = word.dropFirst()
+        
+        capitalizedText = capitalizedText.replacingOccurrences(of: word, with: "\(firstChar)\(otherChars)")
     }
-    return result
+    
+    return capitalizedText
 }
 
-
-print(capitalizeWords(text: ""))
-print(capitalizeWords(text: "palabra"))
-print(capitalizeWords(text: "varias palabras"))
-print(capitalizeWords(text: "varias palabras, con puntuación."))
-print(capitalizeWords(text: "varias palabras, con puntuación y MAYÚSCULAS."))
-print(capitalizeWords(text: "varias palabras, con puntuación y MAYÚSCULAS\nen varias líneas."))
-print(capitalizeWords(text: "¡última hora! ¿hay novedades?"))
+print(capitalize(text: "¿hola qué tal estás?"))
+print(capitalize(text: "¿hola      qué tal estás?"))
+print(capitalize(text: "El niño ñoño"))

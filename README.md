@@ -35,7 +35,9 @@ Existen repositorios de código tanto para Swift/iOS como para Kotlin/Android en
 * **#14** - 04/04/22 - `¿ES UN NÚMERO DE ARMSTRONG?`
 * **#15** - 11/04/22 - `¿CUÁNTOS DÍAS?`
 * **#16** - 18/04/22 - `EN MAYÚSCULA`
-* **#17** - 25/04/22 - `Publicación nuevo reto...`
+* **#17** - 25/04/22 - `LA CARRERA DE OBSTÁCULOS`
+* **#18** - 02/05/22 - `TRES EN RAYA`
+* **#19** - 09/05/22 - `Publicación nuevo reto...`
 
 ### ¿Cómo puedo participar?
 
