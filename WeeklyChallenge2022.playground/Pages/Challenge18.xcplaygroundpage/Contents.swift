@@ -21,3 +21,47 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+//enum Player: String, CaseIterable {
+//    case one = "X"
+//    case two = "O"
+//
+//    func getTries(board: [[String]]) -> Int {
+//        return board.compactMap{ $0.filter{ $0 == self.rawValue }.count }.reduce(0,+)
+//    }
+//}
+
+enum Player: String, CaseIterable {
+    case X
+    case O
+    
+    func getTries(board: [[String]]) -> Int {
+        return board.compactMap{ $0.filter{ $0 == self.rawValue }.count }.reduce(0,+)
+    }
+}
+
+func playVeryRayy(board: [[String]]) -> String {
+    var result = "Nulo"
+    if((board.compactMap{ $0.count }.reduce(0,+) == 9) && (abs(Player.X.getTries(board: board) - Player.O.getTries(board: board)) == 1)) {
+        result = "Empate"
+        Player.allCases.forEach { player in
+            if(board[0].filter{ $0 == player.rawValue }.count == 3) || (board[1].filter{ $0 == player.rawValue }.count == 3) || (board[2].filter{ $0 == player.rawValue }.count == 3) ||
+                (board.filter{ $0[0] == player.rawValue }.count == 3) || (board.filter{ $0[1] == player.rawValue }.count == 3) || (board.filter{ $0[2] == player.rawValue }.count == 3) ||
+                (board[0][0] == player.rawValue && board[1][1] == player.rawValue && board[2][2] == player.rawValue) || (board[0][2] == player.rawValue && board[1][1] == player.rawValue && board[2][0] == player.rawValue) {
+                result = player.rawValue
+            }
+        }
+    }
+    return result
+}
+
+print(playVeryRayy(board: [["","",""],["","",""],["","",""]]))
+print(playVeryRayy(board: [["","",""],["","",""],["",""]]))
+print(playVeryRayy(board: [["X","O",""],["","",""],["","",""]]))
+print(playVeryRayy(board: [["X","X","X"],["O","",""],["","",""]]))
+print(playVeryRayy(board: [["X","X","X"],["O","O","O"],["","",""]]))
+print(playVeryRayy(board: [["X","X","X"],["O","O",""],["","",""]]))
+print(playVeryRayy(board: [["X","O",""],["X","O",""],["X","",""]]))
+print(playVeryRayy(board: [["X","O",""],["O","X",""],["","","X"]]))
+print(playVeryRayy(board: [["","O","X"],["","X","O"],["X","",""]]))
+print(playVeryRayy(board: [["O","O","X"],["X","X","O"],["O","X","O"]]))
