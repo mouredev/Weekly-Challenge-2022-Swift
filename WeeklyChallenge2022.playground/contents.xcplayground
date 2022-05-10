@@ -3,24 +3,24 @@
     <pages>
         <page name='Readme'/>
         <page name='Challenge0'/>
-        <page name='Challenge1'/>
-        <page name='Challenge2'/>
-        <page name='Challenge3'/>
-        <page name='Challenge4'/>
-        <page name='Challenge5'/>
-        <page name='Challenge6'/>
-        <page name='Challenge7'/>
-        <page name='Challenge8'/>
-        <page name='Challenge9'/>
-        <page name='Challange4.jaimefere'/>
         <page name='Challenge0.jaimefere'/>
+        <page name='Challenge1'/>
         <page name='Challenge1.jaimefere'/>
+        <page name='Challenge2'/>
         <page name='Challenge2.jaimefere'/>
+        <page name='Challenge3'/>
         <page name='Challenge3.jaimefere'/>
+        <page name='Challenge4'/>
+        <page name='Challange4.jaimefere'/>
+        <page name='Challenge5'/>
         <page name='Challenge5.jaimefere'/>
+        <page name='Challenge6'/>
         <page name='Challenge6.jaimefere'/>
+        <page name='Challenge7'/>
         <page name='Challenge7.jaimefere'/>
+        <page name='Challenge8'/>
         <page name='Challenge8.jaimefere'/>
+        <page name='Challenge9'/>
         <page name='Challenge9.jaimefere'/>
         <page name='Challenge10'/>
         <page name='Challenge10.jaimefere'/>
@@ -30,14 +30,16 @@
         <page name='Challenge12.jaimefere'/>
         <page name='Challenge13'/>
         <page name='Challenge13.jaimefere'/>
-        <page name='Challenge14.jaimefere'/>
         <page name='Challenge14'/>
+        <page name='Challenge14.jaimefere'/>
         <page name='Challenge15'/>
         <page name='Challenge15.jaimefere'/>
         <page name='Challenge16'/>
         <page name='Challenge16.jaimefere'/>
-        <page name='Challenge18'/>
         <page name='Challenge17'/>
         <page name='Challenge17.jaimefere'/>
+        <page name='Challenge18'/>
+        <page name='Challenge18.jaimefere'/>
+        <page name='Challenge19'/>
     </pages>
 </playground>

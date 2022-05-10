@@ -22,51 +22,84 @@ import Foundation
  *
  */
 
-//enum Player: String, CaseIterable {
-//    case one = "X"
-//    case two = "O"
-//
-//    func getTries(board: [[String]]) -> Int {
-//        return board.compactMap{ $0.filter{ $0 == self.rawValue }.count }.reduce(0,+)
-//    }
-//}
-
-enum Player: String, CaseIterable {
-    case X
-    case O
-    func getTries(board: [[String]]) -> Int {
-        return board.compactMap{ $0.filter{ $0 == self.rawValue }.count }.reduce(0,+)
-    }
+enum TicTacToeValue {
+    case X, O, empty
 }
 
-func checkThreeInARow(board: [[String]]) -> String {
-    var result = "Nulo"
-    if((board.filter{ $0.count == 3 }.count == 3) && (abs(Player.X.getTries(board: board) - Player.O.getTries(board: board)) < 2)) {
-        result = "Empate"
-        if(Player.X.getTries(board: board) != Player.O.getTries(board: board)) {
-            Player.allCases.forEach { player in
-                if(board[0].filter{ $0 == player.rawValue }.count == 3) || (board[1].filter{ $0 == player.rawValue }.count == 3) || (board[2].filter{ $0 == player.rawValue }.count == 3) || (board.filter{ $0[0] == player.rawValue }.count == 3) || (board.filter{ $0[1] == player.rawValue }.count == 3) || (board.filter{ $0[2] == player.rawValue }.count == 3) || (board[0][0] == player.rawValue && board[1][1] == player.rawValue && board[2][2] == player.rawValue) || (board[0][2] == player.rawValue && board[1][1] == player.rawValue && board[2][0] == player.rawValue) {
-                    result = player.rawValue
-                }
+enum TicTacToeResult {
+    case X, O, draw, null
+}
+
+func checkTicTacToe(board: [[TicTacToeValue]]) -> TicTacToeResult {
+           
+    // Null
+    
+    if board.count != 3 {
+        return .null
+    }
+    
+    var xCount = 0
+    var oCount = 0
+    
+    var flatBoard: [TicTacToeValue] = []
+    for row in board {
+        flatBoard.append(contentsOf: row)
+        
+        if row.count != 3 {
+            return .null
+        }
+        
+        for col in row {
+            if col == .X {
+                xCount += 1
+            } else if col == .O {
+                oCount += 1
             }
         }
     }
+    
+    if abs(xCount - oCount) > 1 {
+        return .null
+    }
+    
+    // Win or Draw
+    
+    let winCombinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+    
+    var result = TicTacToeResult.draw
+    
+    for winCombination in winCombinations {
+        
+        if flatBoard[winCombination[0]] != .empty
+            && flatBoard[winCombination[0]] == flatBoard[winCombination[1]]
+            && flatBoard[winCombination[0]] == flatBoard[winCombination[2]] {
+            
+            let winner = flatBoard[winCombination[0]]
+            
+            if result != .draw
+                && (result == .O ? TicTacToeValue.O : TicTacToeValue.X) != winner {
+                return .null
+            }
+                
+            result = winner == .X ? .X : .O
+        }
+    }
+    
     return result
 }
 
+print(checkTicTacToe(board: [[.X, .O, .X],
+                             [.O, .X, .O],
+                             [.O, .O, .X]]))
 
-print(checkThreeInARow(board: [["X","X","X"],
-                               ["O",""],
-                               ["","0","",""]]))
+print(checkTicTacToe(board: [[.empty, .O, .X],
+                             [.empty, .X, .O],
+                             [.empty, .O, .X]]))
 
-print(checkThreeInARow(board: [["X","X","X"],
-                               ["O","O","O"],
-                               ["","",""]]))
+print(checkTicTacToe(board: [[.O, .O, .O],
+                             [.O, .X, .X],
+                             [.O, .X, .X]]))
 
-print(checkThreeInARow(board: [["X","X","X"],
-                               ["O","O",""],
-                               ["","",""]]))
-
-print(checkThreeInARow(board: [["O","O","O"],
-                               ["O","X","X"],
-                               ["O","X","X"]]))
+print(checkTicTacToe(board: [[.X, .O, .X],
+                             [.X, .X, .O],
+                             [.X, .X, .X]]))
