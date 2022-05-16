@@ -16,3 +16,10 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func getMillis(days: Int, hours: Int, minutes: Int, seconds: Int) -> Int {
+    return (abs(days) * 86400 + abs(hours) * 3600 + abs(minutes) * 60 + abs(seconds)) * 1000
+}
+
+print(getMillis(days: -365, hours: 0, minutes: 0, seconds: 0))
+print(getMillis(days: 365, hours: 0, minutes: 0, seconds: 0))
