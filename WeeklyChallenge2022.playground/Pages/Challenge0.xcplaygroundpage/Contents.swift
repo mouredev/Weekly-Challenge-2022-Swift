@@ -20,8 +20,24 @@ import Foundation
  *
  */
 
-for index in 1...100 {
-    let divisibleByThree = index % 3 == 0
-    let divisibleByFive = index % 5 == 0
-    print("\((divisibleByThree && divisibleByFive) ? "fizzbuzz" : (divisibleByThree ? "fizz" : (divisibleByFive ? "buzz" : index.description)))")
+func fizzBuzz() {
+    for i in 1...100 {
+        let isMultipleOfThree = i.isMultiple(of: 3)
+        let isMultipleOfFive = i.isMultiple(of: 5)
+        var statement = ""
+        
+        if isMultipleOfThree && isMultipleOfFive {
+            statement = "fizzbuzz"
+        } else if isMultipleOfThree {
+            statement = "fizz"
+        } else if isMultipleOfFive {
+            statement = "buzz"
+        } else {
+            statement = "\(i)"
+        }
+        
+        print(statement)
+    }
 }
+
+fizzBuzz()

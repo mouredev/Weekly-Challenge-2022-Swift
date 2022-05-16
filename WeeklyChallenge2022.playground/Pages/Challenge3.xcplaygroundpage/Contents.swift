@@ -18,14 +18,11 @@ import Foundation
  *
  */
 
-func isPrime(number: Int) -> Bool {
+func isPrime(_ number: Int) -> Bool {
+    guard number > 1 else { return false }
     
-    if number < 2 {
-        return false
-    }
-    
-    for i in 2 ..< number {
-        if number % i == 0 {
+    for i in 2 ... number {
+        if number.isMultiple(of: i) && i != 1 && i != number {
             return false
         }
     }
@@ -33,8 +30,8 @@ func isPrime(number: Int) -> Bool {
     return true
 }
 
-(1...100).forEach { number in
-    if isPrime(number: number) {
-        print(number)
+for number in 1...100 {
+    if isPrime(number) {
+        print("\(number) is prime.")
     }
 }
