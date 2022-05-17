@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 /*
  * Reto #20
@@ -18,3 +18,26 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func asyncSum(numA: Int, numB: Int, ellapsedTime: Double, completion: @escaping (Result<Int, Error>) -> Void) {
+    DispatchQueue.global(qos: .background).async {
+        Thread.sleep(until: .now + ellapsedTime)
+        completion(.success(numA + numB))
+    }
+}
+
+func printSum(numA: Int, numB: Int, ellapsedTime: Double) {
+    asyncSum(numA: numA, numB: numB, ellapsedTime: ellapsedTime) { result in
+        switch result {
+        case .failure(let error):
+            print("ERROR: \(error.localizedDescription)")
+        case .success(let result):
+            print("Después de \(ellapsedTime) segundos, \(numA) + \(numB) = \(result)")
+        }
+    }
+}
+
+printSum(numA: 1, numB: 1, ellapsedTime: 10)
+printSum(numA: 1, numB: 2, ellapsedTime: 8)
+printSum(numA: 2, numB: 2, ellapsedTime: 3)
+printSum(numA: 1, numB: 3, ellapsedTime: 5)

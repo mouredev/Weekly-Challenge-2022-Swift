@@ -20,8 +20,26 @@ import Foundation
  *
  */
 
-func isAnagram(wordOne: String, wordTwo: String) -> Bool {
-    return wordOne.lowercased() == wordTwo.lowercased() ? false : wordOne.lowercased().sorted().elementsEqual(wordTwo.lowercased().sorted())
+func isAnagram(wordA: String, wordB: String) -> Bool {
+    wordA != wordB && wordA.sorted() == wordB.sorted()
 }
 
-print(isAnagram(wordOne: "amor", wordTwo: "roma"))
+var wordA = "Hola"
+var wordB = "aloH"
+var result = isAnagram(wordA: wordA, wordB: wordB)
+print("\(wordA) and \(wordB) are \(result ? "" : "not ")an anagram.")
+
+wordA = "Hola"
+wordB = "aloh"
+result = isAnagram(wordA: wordA, wordB: wordB)
+print("\(wordA) and \(wordB) are \(result ? "" : "not ")an anagram.")
+
+wordA = "Hola"
+wordB = "Hola"
+result = isAnagram(wordA: wordA, wordB: wordB)
+print("\(wordA) and \(wordB) are \(result ? "" : "not ")an anagram.")
+
+wordA = "paro"
+wordB = "ropa"
+result = isAnagram(wordA: wordA, wordB: wordB)
+print("\(wordA) and \(wordB) are \(result ? "" : "not ")an anagram.")

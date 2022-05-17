@@ -20,56 +20,37 @@ import Foundation
  *
  */
 
-area(polygon: Triangle(base: 10.0, height: 5.0))
-area(polygon: Rectangle(length: 5.0, width: 7.0))
-area(polygon: Square(side: 4.0))
-
 protocol Polygon {
-
     func area() -> Double
-    func printArea()
 }
 
 struct Triangle: Polygon {
-
-    let base, height: Double
+    var width: Double
+    var height: Double
     
     func area() -> Double {
-        return (base * height) / 2
-    }
-
-    func printArea() {
-        print("El área del triángulo es \(area())")
-    }
-}
-
-struct Rectangle: Polygon {
-
-    let length, width: Double
-    
-    func area() -> Double {
-        return length * width
-    }
-
-    func printArea() {
-        print("El área del rectángulo es \(area())")
+        (height * width) / 2
     }
 }
 
 struct Square: Polygon {
-
-    let side: Double
+    var sideLength: Double
     
-    func area() -> Double {
-        return side * side
-    }
-
-    func printArea() {
-        print("El área del cuadrado es \(area())")
-    }
+    func area() -> Double { pow(sideLength, 2) }
 }
 
-func area(polygon: Polygon) -> Double {
-    polygon.printArea()
-    return polygon.area()
+struct Rectangle: Polygon {
+    var width: Double
+    var height: Double
+    
+    func area() -> Double { width * height }
 }
+
+let rectangle = Rectangle(width: 4, height: 2)
+print("Rectangle (\(rectangle.width) x \(rectangle.height)) = \(rectangle.area())")
+
+let square = Square(sideLength: 4)
+print("Square (\(square.sideLength)) = \(square.area())")
+
+let triangle = Triangle(width: 4, height: 2)
+print("Triangle (\(triangle.width) x \(triangle.height)) = \(triangle.area())")

@@ -19,13 +19,16 @@ import Foundation
  *
  */
 
-var n0 = 0
-var n1 = 1
-
-(1...50).forEach { _ in
-    print(n0)
-
-    let fib = n0 + n1
-    n0 = n1
-    n1 = fib
+func fibonacci() {
+    var a = 0
+    var b = 1
+    
+    for _ in 1...50 {
+        print(a)
+        let sum = a + b
+        a = b
+        b = sum
+    }
 }
+
+fibonacci()
