@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 /*
  * Reto #20
@@ -18,3 +19,18 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func delayedAddition(num1: Int, num2: Int, seconds: Int, completion: @escaping ((Int) -> Void)) async throws {
+    DispatchQueue.main.asyncAfter(deadline: .now() + Double(seconds)) {
+        completion(num1 + num2)
+    }
+}
+
+Task {
+    try await delayedAddition(num1: 10, num2: 30, seconds: 5) { result in
+        print(result)
+    }
+    try await delayedAddition(num1: 15, num2: 35, seconds: 6) { result in
+        print(result)
+    }
+}
