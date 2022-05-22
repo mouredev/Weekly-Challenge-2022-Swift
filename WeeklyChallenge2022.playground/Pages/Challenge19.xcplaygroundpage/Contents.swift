@@ -17,9 +17,16 @@ import Foundation
  *
  */
 
-func getMillis(days: Int, hours: Int, minutes: Int, seconds: Int) -> Int {
-    return (abs(days) * 86400 + abs(hours) * 3600 + abs(minutes) * 60 + abs(seconds)) * 1000
+func timeToMillis(days: Int, hours: Int, minutes: Int, seconds: Int) -> Int {
+
+    let daysInMillis = days * 24 * 60 * 60 * 1000
+    let hoursInMillis = hours * 60 * 60 * 1000
+    let minutesInMillis = minutes * 60 * 1000
+    let secondsToMillis = seconds * 1000
+
+    return daysInMillis + hoursInMillis + minutesInMillis + secondsToMillis
 }
 
-print(getMillis(days: -365, hours: 0, minutes: 0, seconds: 0))
-print(getMillis(days: 365, hours: 0, minutes: 0, seconds: 0))
+print(timeToMillis(days: 0, hours: 0, minutes: 0, seconds: 10))
+print(timeToMillis(days: 2, hours: 5, minutes: -45, seconds: 10))
+print(timeToMillis(days: 2000000000, hours: 5, minutes: 45, seconds: 10))
