@@ -18,3 +18,24 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+Task<int> t1 = SumAsync(10, 20, 30);
+Task<int> t2 = SumAsync(10, 80, 20);
+Task<int> t3 = SumAsync(25, 90, 60);
+int Result = await t3;
+
+Console.WriteLine(Result);
+
+//Console.WriteLine();
+
+async Task<int> SumAsync(int Number1, int Number2, int Seconds)
+{
+	//Se crea una task (Un hilo).
+	Task<int> t = new Task<int>(() => Number1 + Number2);
+	//Se Inicia la tarea.
+	t.Start();
+	//Se retraza la tarea por el numero de segundos que el usuario introduce
+	await Task.Delay(Seconds * 1000);
+	//y aqui se espera el resultado de la tarea
+	return await t;
+}
