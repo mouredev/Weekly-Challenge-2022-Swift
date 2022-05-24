@@ -25,58 +25,78 @@
 
 from enum import Enum
 
-class Operations(Enum):
+
+class Operation(Enum):
     NONE = 0
     ADDITION = 1
     SUBTRACTION = 2
     MULTIPLY = 3
     SPLIT = 4
 
-class Challenge21:
+
+class Challenge21LinesOnMemory:
     # Constructor
     def __init__(self, path: str):
         self.number: float = 0
         self.path: str = path
         self.Lines = []
-        self.ReadFile()
+        self.operation = Operation.ADDITION
+        self.read_file()
+        self.calculate()
 
     # Read all lines in txt and stores on Lines array
-    def ReadFile(self):
+    def read_file(self):
         with open(self.path) as file:
             self.Lines = file.readlines()
 
-        self.ArrangeDecimals()
-        self.ArrangeLines()
+        self.remove_last_char()
+        self.arrange_lines()
 
-    # Change all decimal indicators into python-verified decimal
-    def ArrangeDecimals(self):
-        for line in self.Lines:
-            line.replace(',', '.')
-            line.replace('\'', '.')
+    def remove_last_char(self):
+        for i in range(len(self.Lines)):
+            if len(self.Lines[i]) > 1:
+                self.Lines[i] = self.Lines[i][:-1]
 
     # Check line by line if is number or operation and parse it from str
-    def ArrangeLines(self):
+    def arrange_lines(self):
         operations = {
-            "+": Operations.ADDITION,
-            "-": Operations.SUBTRACTION,
-            "*": Operations.MULTIPLY,
-            "/": Operations.SPLIT
+            "+": Operation.ADDITION,
+            "-": Operation.SUBTRACTION,
+            "*": Operation.MULTIPLY,
+            "/": Operation.SPLIT
         }
 
-        for line in self.Lines:
-            print("line... " + line)
-            print(type(line))
-            print(operations.get(line))
+        for i in range(len(self.Lines)):
+            if operations.get(self.Lines[i]) is not None:
+                self.Lines[i] = operations.get(self.Lines[i])
+            else:
+                try:
+                    self.Lines[i] = int(self.Lines[i])
+                except ValueError:
+                    self.Lines[i] = float(self.Lines[i])
 
     # Perform calculator operations
-    def Calculate(self):
+    def calculate(self):
         for line in self.Lines:
-            print("a")
+            if self.operation == Operation.NONE:
+                self.operation = line
+            else:
+                if self.operation == Operation.ADDITION:
+                    self.number += line
+                elif self.operation == Operation.SUBTRACTION:
+                    self.number -= line
+                elif self.operation == Operation.MULTIPLY:
+                    self.number *= line
+                elif self.operation == Operation.SPLIT:
+                    self.number /= line
+
+                self.operation = Operation.NONE
+
+        print(self.number)
 
 
 if __name__ == '__main__':
     # Path to txt
     path: str = "Resources/Challenge21.txt"
-    challenge = Challenge21(path)
-    challenge.Calculate()
+    challenge = Challenge21LinesOnMemory(path)
 
