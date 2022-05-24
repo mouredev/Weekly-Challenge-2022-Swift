@@ -22,3 +22,82 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+do {
+    let result = try calculate(fromFile: "Challenge21")
+    print(result)
+} catch {
+    if let error = error as? FileError {
+        print("ERROR: \(error.description)")
+    } else {
+        print(error.localizedDescription)
+    }
+}
+
+enum OperationType: String {
+    case sum = "+", subtraction = "-" , multiplication = "*" , division = "/"
+}
+
+enum FileError: Error {
+    case notFound, cannotRead, incorrectFormat
+    
+    var description: String {
+        switch self {
+        case .notFound: return "The file wasn't found."
+        case .cannotRead: return "The file couldn't be read."
+        case .incorrectFormat: return "The file content has an incorrect format."
+        }
+    }
+}
+
+func calculate(fromFile fileName: String) throws -> Double {
+    var lines = [String]()
+    lines = try readLines(fromFile: fileName)
+    
+    var currentResult = 0.0
+    var currentOperationType: OperationType?
+    
+    for (index, line) in lines.enumerated() {
+        // Even lines should contain a number.
+        if index.isMultiple(of: 2) {
+            guard let number = Double(line) else {
+                throw FileError.incorrectFormat
+            }
+            
+            currentResult = (currentOperationType == nil)
+                                ? number
+                                : operate(withType: currentOperationType!, numA: currentResult, numB: number)
+        } else {
+            // Odd lines should contain the operation type.
+            guard let operationType = OperationType(rawValue: line) else {
+                throw FileError.incorrectFormat
+            }
+            
+            currentOperationType = operationType
+        }
+    }
+    
+    return currentResult
+}
+
+func readLines(fromFile fileName: String) throws -> [String]  {
+    guard let bundleURL = Bundle.main.url(forResource: fileName, withExtension: ".txt") else {
+        throw FileError.notFound
+    }
+    
+    guard let fileContent = try? String(contentsOf: bundleURL).trimmingCharacters(in: .whitespacesAndNewlines) else {
+        throw FileError.cannotRead
+    }
+    
+    let lines = fileContent.components(separatedBy: "\n")
+    return lines
+}
+
+func operate(withType operationType: OperationType, numA: Double, numB: Double) -> Double {
+    switch operationType {
+    case .sum: return numA + numB
+    case .subtraction: return numA - numB
+    case .multiplication: return numA * numB
+    case .division: return numA / numB
+    }
+}
