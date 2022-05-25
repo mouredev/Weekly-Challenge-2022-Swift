@@ -22,3 +22,79 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+/**************************************************
+ * Solucion en PHP para el Reto Semanal #21
+ * by fedex (fgarciadelrio)
+ * 
+ * Se puede ver funcionando en:
+ * https://poio.com.ar/retos_moure/21/
+ **************************************************/
+
+<?php
+function leerArchivo($file){
+  // Variables
+  $signo = 0;
+  $linea = 1;
+  $operador = '';
+
+  // Array de operadores
+  $operadoresValidos = array('+', '-', '*', '/');
+
+  // Leer linea a linea
+  $lectura = fopen($file, "r");
+  while($l = fgets($lectura) ){
+    $l = str_replace("\n","", $l);
+    echo '<pre>'.$linea.': '.$l.'</pre>';
+
+    if($signo == 0) { // Deberia ser un signo ? 0 == NO / 1 == SI
+      $l = str_replace(',', '.', $l); // Si hay algun numero con , se convierte a . para que lo tome como numero.
+
+      if( is_numeric($l) ) { // Si no es un numero, retorna error
+        switch($operador){ // Switch al valor que se le asigno a la variable para ver que cuenta hacer. En el primer paso es '' (vacio)
+          case "+":
+            $valor = $valor + $l;
+            break;
+
+          case "-":
+            $valor = $valor - $l;
+            break;
+
+          case "*":
+            $valor = $valor * $l;
+            break;
+
+          case "/":
+            $valor = $valor / $l;
+            break;
+
+          case '':
+            $valor = $l;
+            break;
+
+          default:
+            return '<b>[ ! ]</b> Error: Error inesperado en la linea '.$linea.' => '.$operador.'.';
+            break;
+        }
+      } else {
+        return '<b>[ ! ]</b> Error: se esperaba un valor numerico en la linea '.$linea.' => '.$l.'.';
+      }
+      $signo = 1;
+      
+    } else {
+      if( in_array($l, $operadoresValidos) ){ // Si no es un operador aritmetico dentro del array definido, retorna error
+        $operador = $l;
+        $signo = 0;
+      } else {
+        return '<b>[ ! ]</b> Error: se esperaba un operador aritmetico ( + - * / ) en la linea '.$linea.' => '.$l.'.';
+      }
+    }
+    $linea = $linea + 1;
+  }
+  return '<hr /><b>Resultado:</b> '.$valor;
+  fclose($file);
+} // END leerArchivo()
+
+echo '<b>Leer el archivo:</b><hr />';
+echo leerArchivo("Resources/Challenge21.txt");
+?>
