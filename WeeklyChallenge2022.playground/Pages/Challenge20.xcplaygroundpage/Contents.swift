@@ -20,17 +20,17 @@ import SwiftUI
  *
  */
 
-func delayedAddition(num1: Int, num2: Int, seconds: Int, completion: @escaping ((Int) -> Void)) async throws {
-    DispatchQueue.main.asyncAfter(deadline: .now() + Double(seconds)) {
-        completion(num1 + num2)
-    }
+func asyncSum(numberOne: Int, numberTwo: Int, seconds: Int, result: @escaping (Int) -> Void) {
+    
+    DispatchQueue.global().asyncAfter(deadline: .now() + Double(seconds), execute: {
+        result(numberOne + numberTwo)
+    })
 }
 
-Task {
-    try await delayedAddition(num1: 10, num2: 30, seconds: 5) { result in
-        print(result)
-    }
-    try await delayedAddition(num1: 15, num2: 35, seconds: 6) { result in
-        print(result)
-    }
+asyncSum(numberOne: 5, numberTwo: 2, seconds: 10) { result in
+    print(result)
+}
+
+asyncSum(numberOne: 1, numberTwo: 3, seconds: 5) { result in
+    print(result)
 }
