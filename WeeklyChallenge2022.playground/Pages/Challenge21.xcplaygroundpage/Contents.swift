@@ -23,60 +23,57 @@ import Foundation
  *
  */
 
-enum Operation {
-    case add, div, mul, sub, error
-}
+func calculate(filePath: String, fileType: String) -> String {
 
-func isNumber(symbol: String?) -> Bool {
-    return symbol != nil && symbol!.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil
-}
+    var fileError = false
+    var result: Double?
+    var lastOperator: String?
 
-func getOperation(symbol: String) -> Operation {
-    switch(symbol) {
-    case "+": return Operation.add
-    case "-": return Operation.sub
-    case "*": return Operation.mul
-    case "/": return Operation.div
-    default: return Operation.error
-    }
-}
-
-func processOperations(fileName: String) -> String {
-    let BAD_RESPONSE = "Las operaciones no han podido ser resueltas."
-    do {
-        if let operationsFilePath = Bundle.main.path(forResource:fileName, ofType: "txt") {
-            let operationSymbols = try String(contentsOfFile: operationsFilePath, encoding: String.Encoding.utf8).components(separatedBy: "\n").dropLast()
-            if(isNumber(symbol: operationSymbols.first)) {
-                var result = Double(operationSymbols.first!)!
-                for index in stride(from: 1, to: operationSymbols.count, by: 2) {
-                    if((getOperation(symbol: operationSymbols[index]) != Operation.error) && (index + 1 < operationSymbols.count) && isNumber(symbol: operationSymbols[index+1])) {
-                        switch(getOperation(symbol: operationSymbols[index])) {
-                        case .add:
-                            result = result + Double(operationSymbols[index+1])!
-                        case .div:
-                            result = result / Double(operationSymbols[index+1])!
-                        case .mul:
-                            result = result * Double(operationSymbols[index+1])!
-                        default:
-                            result = result - Double(operationSymbols[index+1])!
-                        }
+    if let path = Bundle.main.path(forResource: filePath, ofType: fileType) {
+        do {
+            let content = try String(contentsOfFile: path, encoding: .utf8).components(separatedBy: "\n")
+            
+            for line in content {
+                if let number = Double(line) {
+                    
+                    if result == nil {
+                        result = number
                     } else {
-                        return BAD_RESPONSE
+                        switch lastOperator {
+                        case "+":
+                            result! += number
+                        case "-":
+                            result! -= number
+                        case "*":
+                            result! *= number
+                        case "/":
+                            result! /= number
+                        default:
+                            fileError = true
+                            break
+                        }
+                        lastOperator = nil
                     }
+                    
+                } else if lastOperator == nil {
+                    lastOperator = line
+                } else {
+                    fileError = true
+                    break
                 }
                 return "\(result)"
             } else {
                 return BAD_RESPONSE
             }
+        } catch {
+            fileError = true
         }
         return BAD_RESPONSE
     } catch {
         return BAD_RESPONSE
     }
+    
+    return fileError || lastOperator != nil ? "No se han podido resolver las operaciones" : result!.description
 }
 
-print(processOperations(fileName: "Challenge21"))
-print(processOperations(fileName: "OneValue"))
-print(processOperations(fileName: "TooNumbers"))
-print(processOperations(fileName: "TooOperators"))
-print(processOperations(fileName: "WithDecimals"))
+print(calculate(filePath: "Challenge21", fileType: "txt"))
