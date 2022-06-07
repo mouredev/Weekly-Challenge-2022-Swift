@@ -20,6 +20,7 @@ import Foundation
  *
  */
 
+<<<<<<< HEAD
 print(pickAll(commonElements: false, fromArrayA: ["A", "B", "D"], andArrayB: ["B", "C"]))
 print(pickAll(commonElements: true, fromArrayA: [2, 4, 6], andArrayB: [1, 2, 3, 4, 5, 6]))
 
@@ -44,3 +45,39 @@ func pick<T: Hashable>(commonElements: Bool, fromFirstArray array1: [T], inSecon
         return nil
     }
 }
+=======
+func calculateSet(first: [Int], second: [Int], common: Bool) -> [Int] {
+    
+    var commonResult: [Int] = []
+    
+    for firstValue in first {
+        if !commonResult.contains(firstValue) {
+            for secondValue in second {
+                if firstValue == secondValue && !commonResult.contains(firstValue) {
+                    commonResult.append(firstValue)
+                    break
+                }
+            }
+        }
+    }
+    
+    if common {
+        return commonResult
+    } else {
+        var nonCommonResult: [Int] = []
+        nonCommonResult.append(contentsOf: first)
+        nonCommonResult.append(contentsOf: second)
+        
+        commonResult.forEach { commonValue in
+            nonCommonResult.removeAll { nonCommonValue in
+                return commonValue == nonCommonValue
+            }
+        }
+        
+        return nonCommonResult
+    }
+}
+
+print(calculateSet(first: [1, 2, 3, 3, 4], second: [2, 2, 3, 3, 3, 4, 6], common: true))
+print(calculateSet(first: [1, 2, 3, 3, 4], second: [2, 2, 3, 3, 3, 4, 6], common: false))
+>>>>>>> main
