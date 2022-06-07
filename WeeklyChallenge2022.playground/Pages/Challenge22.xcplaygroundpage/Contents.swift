@@ -19,3 +19,38 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func calculateSet(first: [Int], second: [Int], common: Bool) -> [Int] {
+    
+    var commonResult: [Int] = []
+    
+    for firstValue in first {
+        if !commonResult.contains(firstValue) {
+            for secondValue in second {
+                if firstValue == secondValue && !commonResult.contains(firstValue) {
+                    commonResult.append(firstValue)
+                    break
+                }
+            }
+        }
+    }
+    
+    if common {
+        return commonResult
+    } else {
+        var nonCommonResult: [Int] = []
+        nonCommonResult.append(contentsOf: first)
+        nonCommonResult.append(contentsOf: second)
+        
+        commonResult.forEach { commonValue in
+            nonCommonResult.removeAll { nonCommonValue in
+                return commonValue == nonCommonValue
+            }
+        }
+        
+        return nonCommonResult
+    }
+}
+
+print(calculateSet(first: [1, 2, 3, 3, 4], second: [2, 2, 3, 3, 3, 4, 6], common: true))
+print(calculateSet(first: [1, 2, 3, 3, 4], second: [2, 2, 3, 3, 3, 4, 6], common: false))
