@@ -19,3 +19,16 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func findItems(array1: [AnyObject], array2: [AnyObject], commons: Bool) -> [AnyObject] {
+    if(commons) {
+        return array1.filter{ item in array2.contains(where: {$0 === item}) }
+    } else {
+        return array1.filter{ item in array2.filter{ $0 === item }.count == 0 } + array2.filter{ item in array1.filter{ $0 === item }.count == 0 }
+    }
+}
+
+print("Elementos comunes: \(findItems(array1: ["manzana", "pera", "mango"] as [AnyObject], array2: ["manzana", "melón"] as [AnyObject], commons: true))")
+print("Elementos distintos: \(findItems(array1: ["manzana", "pera", "mango"] as [AnyObject], array2: ["manzana", "melón"] as [AnyObject], commons: false))")
+print("Elementos comunes: \(findItems(array1: [2, "pera", 5] as [AnyObject], array2: ["manzana", 5] as [AnyObject], commons: true))")
+print("Elementos distintos: \(findItems(array1: [2, "pera", 5] as [AnyObject], array2: ["manzana", 5] as [AnyObject], commons: false))")

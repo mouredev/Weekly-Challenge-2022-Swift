@@ -61,16 +61,10 @@ func calculate(filePath: String, fileType: String) -> String {
                     fileError = true
                     break
                 }
-                return "\(result)"
-            } else {
-                return BAD_RESPONSE
             }
         } catch {
             fileError = true
         }
-        return BAD_RESPONSE
-    } catch {
-        return BAD_RESPONSE
     }
     
     return fileError || lastOperator != nil ? "No se han podido resolver las operaciones" : result!.description
