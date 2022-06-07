@@ -19,3 +19,28 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+public class Solution
+{
+	static Dictionary<object,int> _Results = new Dictionary<object, int>();
+	public static object[] SolutionMethod(object[] Array1, object[] Array2, bool FindCommon = true)
+	{
+		List<object> List1 = Array1.Distinct().ToList();
+		List<object> List2 = Array2.Distinct().ToList();
+		Add(List1);
+    Add(List2);
+		return FindCommon ? _Results.Where(i => i.Value > 1).Select(i => i.Key).ToArray() 
+			: _Results.Where(i => i.Value == 1).Select(i => i.Key).ToArray();
+	}
+
+	private static void Add(List<object> Array1)
+	{
+		foreach (object item in  Array1)
+		{
+			if (!_Results.TryAdd(item,1))
+			{
+				_Results[item] += 1;
+			}
+		}
+	}
+}
