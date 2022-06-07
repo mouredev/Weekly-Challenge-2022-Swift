@@ -20,6 +20,32 @@ import Foundation
  *
  */
 
+<<<<<<< HEAD
+print(pickAll(commonElements: false, fromArrayA: ["A", "B", "D"], andArrayB: ["B", "C"]))
+print(pickAll(commonElements: true, fromArrayA: [2, 4, 6], andArrayB: [1, 2, 3, 4, 5, 6]))
+
+func pickAll<T>(commonElements: Bool, fromArrayA arrayA: [T], andArrayB arrayB: [T]) -> [T] where T: Hashable, T: Comparable {
+    var pickedElements = [T]()
+    
+    pickedElements += pick(commonElements: commonElements, fromFirstArray: arrayA, inSecondArray: arrayB)
+    pickedElements += pick(commonElements: commonElements, fromFirstArray: arrayB, inSecondArray: arrayA)
+    
+    return Array(Set(pickedElements)).sorted()
+}
+
+func pick<T: Hashable>(commonElements: Bool, fromFirstArray array1: [T], inSecondArray array2: [T]) -> [T] {
+    array1.compactMap { element in
+        let isCommonAndRequested = array2.contains(element) && commonElements
+        let isNotCommonAndRequested = !array2.contains(element) && !commonElements
+        
+        if isCommonAndRequested || isNotCommonAndRequested  {
+            return element
+        }
+        
+        return nil
+    }
+}
+=======
 func calculateSet(first: [Int], second: [Int], common: Bool) -> [Int] {
     
     var commonResult: [Int] = []
@@ -54,3 +80,4 @@ func calculateSet(first: [Int], second: [Int], common: Bool) -> [Int] {
 
 print(calculateSet(first: [1, 2, 3, 3, 4], second: [2, 2, 3, 3, 3, 4, 6], common: true))
 print(calculateSet(first: [1, 2, 3, 3, 4], second: [2, 2, 3, 3, 3, 4, 6], common: false))
+>>>>>>> main

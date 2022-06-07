@@ -23,6 +23,7 @@ import Foundation
  *
  */
 
+<<<<<<< HEAD
 do {
     let result = try calculate(fromFile: "Challenge21")
     print(result)
@@ -100,3 +101,4 @@ func operate(withType operationType: OperationType, numA: Double, numB: Double) 
     case .multiplication: return numA * numB
     case .division: return numA / numB
     }
+}
