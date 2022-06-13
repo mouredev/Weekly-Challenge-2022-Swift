@@ -17,3 +17,36 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+
+private func calculateMCD(n1: Int, n2: Int) -> Int {
+    for i in stride(from: min(n1, n2), to: 1, by: -1) {
+        if(n1 % i == 0 && n2 % i == 0) {
+            return i
+        }
+    }
+    return 1
+}
+
+private func calculateMCM(n1: Int, n2: Int) -> Int {
+    var multiplierN1 = 1
+    var multiplierN2 = 1
+    var result = n1 * multiplierN1
+    while(n1 * multiplierN1 != n2 * multiplierN2) {
+        if(n1 * multiplierN1 < n2 * multiplierN2) {
+            multiplierN1 += 1
+            result = n1 * multiplierN1
+        } else {
+            multiplierN2 += 1
+            result = n2 * multiplierN2
+        }
+    }
+    return result
+}
+
+print(calculateMCD(n1: 6, n2: 9))
+print(calculateMCD(n1: 24, n2: 36))
+print(calculateMCD(n1: 8, n2: 8))
+print(calculateMCM(n1: 8, n2: 8))
+print(calculateMCM(n1: 51, n2: 27))
+print(calculateMCM(n1: 180, n2: 324))
