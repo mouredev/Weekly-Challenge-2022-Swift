@@ -20,15 +20,37 @@ import Foundation
  *
  */
 
-func findItems(array1: [AnyObject], array2: [AnyObject], commons: Bool) -> [AnyObject] {
-    if(commons) {
-        return array1.filter{ item in array2.contains(where: {$0 === item}) }
+func calculateSet(first: [Int], second: [Int], common: Bool) -> [Int] {
+    
+    var commonResult: [Int] = []
+    
+    for firstValue in first {
+        if !commonResult.contains(firstValue) {
+            for secondValue in second {
+                if firstValue == secondValue && !commonResult.contains(firstValue) {
+                    commonResult.append(firstValue)
+                    break
+                }
+            }
+        }
+    }
+    
+    if common {
+        return commonResult
     } else {
-        return array1.filter{ item in array2.filter{ $0 === item }.count == 0 } + array2.filter{ item in array1.filter{ $0 === item }.count == 0 }
+        var nonCommonResult: [Int] = []
+        nonCommonResult.append(contentsOf: first)
+        nonCommonResult.append(contentsOf: second)
+        
+        commonResult.forEach { commonValue in
+            nonCommonResult.removeAll { nonCommonValue in
+                return commonValue == nonCommonValue
+            }
+        }
+        
+        return nonCommonResult
     }
 }
 
-print("Elementos comunes: \(findItems(array1: ["manzana", "pera", "mango"] as [AnyObject], array2: ["manzana", "melón"] as [AnyObject], commons: true))")
-print("Elementos distintos: \(findItems(array1: ["manzana", "pera", "mango"] as [AnyObject], array2: ["manzana", "melón"] as [AnyObject], commons: false))")
-print("Elementos comunes: \(findItems(array1: [2, "pera", 5] as [AnyObject], array2: ["manzana", 5] as [AnyObject], commons: true))")
-print("Elementos distintos: \(findItems(array1: [2, "pera", 5] as [AnyObject], array2: ["manzana", 5] as [AnyObject], commons: false))")
+print(calculateSet(first: [1, 2, 3, 3, 4], second: [2, 2, 3, 3, 3, 4, 6], common: true))
+print(calculateSet(first: [1, 2, 3, 3, 4], second: [2, 2, 3, 3, 3, 4, 6], common: false))
