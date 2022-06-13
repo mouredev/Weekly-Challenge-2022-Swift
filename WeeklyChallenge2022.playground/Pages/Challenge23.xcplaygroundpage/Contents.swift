@@ -17,3 +17,34 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func mcm(_ number1: Int, _ number2: Int) -> Int {
+    var max = number1 > number2 ? number1 : number2
+    var min = number1 < number2 ? number1 : number2
+    let incrementMax = max
+    let incrementMin = min
+    
+    while(max != min) {
+        if (max < min) { max += incrementMax }
+        else { min += incrementMin }
+    }
+    
+    return min
+}
+
+func mcd(_ number1: Int, _ number2: Int) -> Int {
+    let min = number1 < number2 ? number1 : number2
+    var mcd = 1
+    
+    for i in (1...min).reversed() {
+        if ((number1%i == 0) && (number2%i == 0)) {
+            mcd = i
+            break
+        }
+    }
+    
+    return mcd
+}
+
+print(mcm(5, 8))
+print(mcd(1203, 345))
