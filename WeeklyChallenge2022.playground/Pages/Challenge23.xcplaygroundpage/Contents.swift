@@ -18,23 +18,28 @@ import Foundation
  *
  */
 
-
-private func calculateMCD(n1: Int, n2: Int) -> Int {
-    for i in stride(from: min(n1, n2), to: 1, by: -1) {
-        if(n1 % i == 0 && n2 % i == 0) {
-            return i
-        }
+func mcd(firstNumber: Int, secondNumber: Int) -> Int {
+    
+    var a = firstNumber
+    var b = secondNumber
+    
+    while a != 0 && b != 0 {
+        let temp = b
+        b = a % b
+        a = temp
     }
-    return 1
+    
+    return a + b
 }
 
-private func calculateMCM(n1: Int, n2: Int) -> Int {
-    return n1 * n2 / calculateMCD(n1: n1, n2: n2)
+func mcm(firstNumber: Int, secondNumber: Int) -> Int {
+    return (firstNumber * secondNumber) / mcd(firstNumber: firstNumber, secondNumber: secondNumber)
 }
 
-print(calculateMCD(n1: 6, n2: 9))
-print(calculateMCD(n1: 24, n2: 36))
-print(calculateMCD(n1: 8, n2: 8))
-print(calculateMCM(n1: 8, n2: 8))
-print(calculateMCM(n1: 51, n2: 27))
-print(calculateMCM(n1: 180, n2: 324))
+func mcdRecursive(firstNumber: Int, secondNumber: Int) -> Int {
+    return (firstNumber == 0 || secondNumber == 0) ? (firstNumber + secondNumber) : mcdRecursive(firstNumber: secondNumber, secondNumber: firstNumber % secondNumber)
+}
+
+print(mcd(firstNumber: 56, secondNumber: 180))
+print(mcdRecursive(firstNumber: 56, secondNumber: 180))
+print(mcm(firstNumber: 56, secondNumber: 180))
