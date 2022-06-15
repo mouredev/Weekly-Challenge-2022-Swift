@@ -1,4 +1,4 @@
-import Foundation
+""" import Foundation
 
 /*
  * Reto #2
@@ -17,9 +17,16 @@ import Foundation
  * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
- */
+ */ """
+enCero = 0
+enUno = 1
+sumatoria = 0
+for i in range(51):
+    print(i," ",end="")
+    if i==1:
+      print("Hola")
 
-var n0 = 0
+""" var n0 = 0
 var n1 = 1
 
 (1...50).forEach { _ in
@@ -29,3 +36,4 @@ var n1 = 1
     n0 = n1
     n1 = fib
 }
+ """

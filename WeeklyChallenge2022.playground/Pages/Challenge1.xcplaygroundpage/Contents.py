@@ -20,11 +20,14 @@
  *
  */ """
 def anagrama(wordOne:str,wordTwo:str):
-    if wordOne.lower()==wordTwo.lower()[::-1]:
+    if wordOne.lower().strip()==wordTwo.lower().strip()[::-1]:
         return True
     else:
         return False
-print(anagrama("amor", "roma"))
+entrada=input("Ingrese la primera palabra: ")
+entradaDos=input("Ingrese la segunda palabra: ")
+print(anagrama(entrada, entradaDos))
+#print(anagrama("amor", "roma"))
 
 
 """ func isAnagram(wordOne: String, wordTwo: String) -> Bool {
