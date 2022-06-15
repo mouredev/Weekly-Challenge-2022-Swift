@@ -18,13 +18,19 @@
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */ """
-enCero = 0
-enUno = 1
-sumatoria = 0
-for i in range(51):
-    print(i," ",end="")
-    if i==1:
-      print("Hola")
+
+numero = 0
+lista = [0, 1]
+for i in range(48):  # 0, 1, 1, 2, 3, 5, 8, 13...
+    actual = numero+lista[-1]
+    numero = lista[-1]
+    lista.append(actual)
+    print(f"{lista[i]}",end="")
+    if i<47:
+      print(", ",end="")
+    
+
+
 
 """ var n0 = 0
 var n1 = 1
