@@ -1,4 +1,4 @@
-import Foundation
+""" import Foundation
 
 /*
  * Reto #4
@@ -18,9 +18,25 @@ import Foundation
  * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
- */
+ */ """
+triangulo = {"Nombre": "triangulo", "Base": 10, "Altura": 5}
+rectangulo = {"Nombre": "rectangulo", "Largo": 10, "Ancho": 5}
+cuadrado = {"Nombre": "cuadrado", "Lado": 4}
+# print(cuadrado["Nombre"])
+def areaPoligono(diccionario):
+    area=0
+    if diccionario["Nombre"] == "triangulo":
+        area=diccionario["Base"]*diccionario["Altura"]
+    elif diccionario["Nombre"] == "rectangulo":
+        area=diccionario["Largo"]*diccionario["Ancho"]
+    elif diccionario["Nombre"] == "cuadrado":
+        area=diccionario["Lado"]**2
+    else:
+        print("Error")
+    return area
 
-area(polygon: Triangle(base: 10.0, height: 5.0))
+print(areaPoligono(triangulo))
+""" area(polygon: Triangle(base: 10.0, height: 5.0))
 area(polygon: Rectangle(length: 5.0, width: 7.0))
 area(polygon: Square(side: 4.0))
 
@@ -73,3 +89,4 @@ func area(polygon: Polygon) -> Double {
     polygon.printArea()
     return polygon.area()
 }
+ """
