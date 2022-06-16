@@ -1,4 +1,4 @@
-import Foundation
+""" import Foundation
 
 /*
  * Reto #6
@@ -16,9 +16,18 @@ import Foundation
  * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
- */
+ */ """
 
-print(reverse(text: "Hola mundo"))
+
+def invertirOrdenCadena(palabra: str):
+    longitud=len(palabra)
+    resultado=""
+    for i in range(longitud-1,-1,-1):
+        #print(palabra[i],end="")
+        resultado+=palabra[i]
+    return resultado
+print(invertirOrdenCadena("Hola mundo"))
+""" print(reverse(text: "Hola mundo"))
 print(recursiveReverse(text: "Hola mundo"))
 
 func reverse(text: String) -> String {
@@ -43,3 +52,4 @@ func recursiveReverse(text: String, index: Int = 0, reversedText: String = "") -
     }
     return newReversedText
 }
+ """

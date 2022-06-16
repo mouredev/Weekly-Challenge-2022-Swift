@@ -30,7 +30,7 @@ def esPrimo(numero:int):
     return cadena
 
 for i in range(1,101):
-    cadena=esPrimo(i)#Cadena = Solo los números primos    
+    cadena=esPrimo(i)#Cadena = Solo los números primos, -> return cadena    
     if cadena !="":
         print(cadena)
 
