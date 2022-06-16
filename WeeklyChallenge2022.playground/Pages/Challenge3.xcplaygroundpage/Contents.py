@@ -1,4 +1,4 @@
-import Foundation
+""" import Foundation
 
 /*
  * Reto #3
@@ -16,9 +16,25 @@ import Foundation
  * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
- */
+ */ """
 
-func isPrime(number: Int) -> Bool {
+
+def esPrimo(numero:int):
+    contador = 0
+    cadena=""
+    for i in range(1, numero+1):
+        if numero % i == 0:
+            contador += 1
+    if contador == 2:
+        cadena=(f"Es primo {numero}")
+    return cadena
+
+for i in range(1,101):
+    cadena=esPrimo(i)#Cadena = Solo los números primos    
+    if cadena !="":
+        print(cadena)
+
+""" func isPrime(number: Int) -> Bool {
     
     if number < 2 {
         return false
@@ -37,4 +53,5 @@ func isPrime(number: Int) -> Bool {
     if isPrime(number: number) {
         print(number)
     }
-}
+} 
+ """
