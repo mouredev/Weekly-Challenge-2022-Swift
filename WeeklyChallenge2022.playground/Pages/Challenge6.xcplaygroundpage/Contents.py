@@ -18,8 +18,27 @@
  *
  */ """
 
-
+'''
+hola
+0123
+dando la vuelta
+laoh
+3210
+'''
 def invertirOrdenCadena(palabra: str):
+    '''
+    Funcion para invertir el orden de una cadena 
+
+    Parameters
+    ----------
+    palabra : str
+        cadena de texto.
+
+    Returns
+    -------
+    resultado : retorna la cadena invertida.
+
+    '''
     longitud=len(palabra)
     resultado=""
     for i in range(longitud-1,-1,-1):
