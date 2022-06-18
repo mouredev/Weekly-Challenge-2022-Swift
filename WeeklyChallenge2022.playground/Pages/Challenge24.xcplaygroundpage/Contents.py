@@ -1,4 +1,4 @@
-import Foundation
+""" import Foundation
 
 /*
  * Reto #24
@@ -16,3 +16,28 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+"""
+# Primera Forma
+for i in range(1, 101):
+    print(i)
+# Segunda Forma
+""" for i in range(1,101):
+    print(i) """
+# Tercera Forma
+""" i=0
+while i <=100:
+    print(i)
+    i+=1 """
+# Cuarta Forma
+""" for i in range(1,101,1):
+    print(i) """
+# Quinta Forma
+""" lista=[]
+for i in range(0,101):
+    lista.append(i)
+for i in range(1,len(lista)):
+    print(lista[i]) """
+# Sexta Forma
+""" rango = list(range(101))
+for i in rango:
+    print(i) """

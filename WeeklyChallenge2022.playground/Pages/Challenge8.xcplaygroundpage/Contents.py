@@ -1,4 +1,4 @@
-import Foundation
+""" import Foundation
 
 /*
  * Reto #8
@@ -15,9 +15,24 @@ import Foundation
  * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
- */
+ */ """
 
-func decimalToBinary(_ decimal: Int) -> String {
+
+def binario_A_Decimal(numero: int):
+    listaModulo = []
+    while numero != 0:
+        modulo = numero % 2
+        cociente = numero//2
+        listaModulo.append(modulo)
+        numero = cociente
+    
+
+    return listaModulo[::-1]
+
+for i in binario_A_Decimal(108):
+    print(i,end="")
+
+""" func decimalToBinary(_ decimal: Int) -> String {
     
     var number = decimal
     var binary = ""
@@ -35,3 +50,4 @@ func decimalToBinary(_ decimal: Int) -> String {
 
 print(decimalToBinary(387))
 print(decimalToBinary(0))
+"""

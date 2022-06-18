@@ -1,6 +1,6 @@
-import Foundation
 
-/*
+
+""" /*
  * Reto #0
  * EL FAMOSO "FIZZ BUZZ"
  * Fecha publicación enunciado: 27/12/21
@@ -18,10 +18,22 @@ import Foundation
  * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
- */
+ */ """
+for i in range(1,101):
+    
+    if i%3==0 and i%5==0:
+        print("fizzbuzz")
+        continue
+    elif i%5==0:
+        print("buzz")
+        continue
+    elif i%3==0:
+        print("fizz")
+        continue
+    print(i)
 
-for index in 1...100 {
+""" for index in 1...100 {
     let divisibleByThree = index % 3 == 0
     let divisibleByFive = index % 5 == 0
     print("\((divisibleByThree && divisibleByFive) ? "fizzbuzz" : (divisibleByThree ? "fizz" : (divisibleByFive ? "buzz" : index.description)))")
-}
+} """

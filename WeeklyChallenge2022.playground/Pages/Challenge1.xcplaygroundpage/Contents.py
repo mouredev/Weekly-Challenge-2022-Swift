@@ -1,6 +1,6 @@
-import Foundation
 
-/*
+
+""" /*
  * Reto #1
  * ¿ES UN ANAGRAMA?
  * Fecha publicación enunciado: 03/01/22
@@ -18,10 +18,20 @@ import Foundation
  * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
- */
+ */ """
+def anagrama(wordOne:str,wordTwo:str):
+    if wordOne.lower().strip()==wordTwo.lower().strip()[::-1]:
+        return True
+    else:
+        return False
+entrada=input("Ingrese la primera palabra: ")
+entradaDos=input("Ingrese la segunda palabra: ")
+print(anagrama(entrada, entradaDos))
+#print(anagrama("amor", "roma"))
 
-func isAnagram(wordOne: String, wordTwo: String) -> Bool {
+
+""" func isAnagram(wordOne: String, wordTwo: String) -> Bool {
     return wordOne.lowercased() == wordTwo.lowercased() ? false : wordOne.lowercased().sorted().elementsEqual(wordTwo.lowercased().sorted())
 }
 
-print(isAnagram(wordOne: "amor", wordTwo: "roma"))
+print(isAnagram(wordOne: "amor", wordTwo: "roma")) """

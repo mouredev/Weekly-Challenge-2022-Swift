@@ -1,4 +1,4 @@
-import Foundation
+""" import Foundation
 
 /*
  * Reto #2
@@ -17,9 +17,22 @@ import Foundation
  * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
- */
+ */ """
 
-var n0 = 0
+numero = 0
+lista = [0, 1]
+for i in range(48):  # 0, 1, 1, 2, 3, 5, 8, 13...
+    actual = numero+lista[-1]
+    numero = lista[-1]
+    lista.append(actual)
+    print(f"{lista[i]}",end="")
+    if i<47:
+      print(", ",end="")
+    
+
+
+
+""" var n0 = 0
 var n1 = 1
 
 (1...50).forEach { _ in
@@ -29,3 +42,4 @@ var n1 = 1
     n0 = n1
     n1 = fib
 }
+ """

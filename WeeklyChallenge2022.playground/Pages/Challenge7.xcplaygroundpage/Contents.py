@@ -1,4 +1,4 @@
-import Foundation
+""" import Foundation
 
 /*
  * Reto #7
@@ -18,17 +18,49 @@ import Foundation
  * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
- */
+ */ """
 
-func countWords(text: String) {
+
+def separadorPalabras(palabra: str):
+    listaPalabra = []
+    i = 0
+    while i < len(palabra):
+        cadena = ""
+        if palabra[i] != " " and palabra[i] != "," and palabra[i] != ".":
+            while palabra[i] != "," and palabra[i] != "." and palabra[i] != " " and i < len(palabra):
+                cadena += palabra[i]
+                i += 1
+                if i == len(palabra):
+                    break
+            listaPalabra.append(cadena)
+        i += 1
+    return(listaPalabra)
+
+
+lista = separadorPalabras("Hola emill logroño hola hola ivan logroño hola")
+listaComprobacion = []
+for i in range(0, len(lista)):
+    cadena = lista[i].lower()
+    contador = 0
+    for j in range(0, len(lista)):
+        if cadena in listaComprobacion:
+            a = 0
+        elif lista[j] == cadena:
+            contador += 1
+    listaComprobacion.append(cadena)
+    if contador != 0:
+        print(f"La palabra {cadena} se repite {contador}")
+
+
+""" func countWords(text: String) {
 
     let mutableString = NSMutableString(string: text.lowercased())
-    
+
     let regex = try! NSRegularExpression(pattern: "[^a-z0-9]", options: [])
     regex.replaceMatches(in: mutableString, options: [], range: NSMakeRange(0, mutableString.length), withTemplate: " ")
-    
+
     var words: [String:Int] = [:]
-    
+
     String(mutableString).split(separator: " ").forEach { word in
         let key = String(word)
         if words[key] != nil {
@@ -37,10 +69,10 @@ func countWords(text: String) {
             words[key] = 1
         }
     }
-    
+
     words.forEach { key, value in
         print("\(key) se ha repetido \(value) \(value == 1 ? "vez" : "veces")")
     }
 }
 
-countWords(text: "Hola, mi nombre es brais. Mi nombre completo es Brais Moure (MoureDev).")
+countWords(text: "Hola, mi nombre es brais. Mi nombre completo es Brais Moure (MoureDev).") """
