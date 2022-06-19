@@ -16,3 +16,36 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+private func oneHundredFor() {
+    for i in 1...100 {
+        print(i)
+    }
+}
+
+private func oneHundredForEach() {
+    (1...100).forEach { i in
+        print(i)
+    }
+}
+
+private func oneHundredWhile() {
+    var i = 1
+    while(i<=100) {
+        print(i)
+        i += 1
+    }
+}
+
+private func oneHundredDoWhile() {
+    var i = 0
+    repeat {
+        i += 1
+        print(i)
+    } while(i<100)
+}
+
+oneHundredFor()
+oneHundredForEach()
+oneHundredWhile()
+oneHundredDoWhile()
