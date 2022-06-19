@@ -15,3 +15,18 @@
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+const isPrime = (number) => {
+	if (number <= 1) return false;
+
+	for (let i = 2; i < number; i++) {
+		if (number % i === 0) return false;
+	}
+
+	return true;
+};
+
+console.log('*** Numero Primos ***');
+for (let i = 1; i < 100; i++) {
+	if (isPrime(i)) console.log(`${i} = ${isPrime(i)}`);
+}
