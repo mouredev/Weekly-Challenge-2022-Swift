@@ -1,4 +1,4 @@
-""" import Foundation
+""" 
 
 /*
  * Reto #3
@@ -34,24 +34,4 @@ for i in range(1,101):
     if cadena !="":
         print(cadena)
 
-""" func isPrime(number: Int) -> Bool {
-    
-    if number < 2 {
-        return false
-    }
-    
-    for i in 2 ..< number {
-        if number % i == 0 {
-            return false
-        }
-    }
-    
-    return true
-}
 
-(1...100).forEach { number in
-    if isPrime(number: number) {
-        print(number)
-    }
-} 
- """

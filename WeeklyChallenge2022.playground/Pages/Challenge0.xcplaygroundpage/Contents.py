@@ -32,8 +32,4 @@ for i in range(1,101):
         continue
     print(i)
 
-""" for index in 1...100 {
-    let divisibleByThree = index % 3 == 0
-    let divisibleByFive = index % 5 == 0
-    print("\((divisibleByThree && divisibleByFive) ? "fizzbuzz" : (divisibleByThree ? "fizz" : (divisibleByFive ? "buzz" : index.description)))")
-} """
+
