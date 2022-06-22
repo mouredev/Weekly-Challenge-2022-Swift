@@ -29,74 +29,62 @@ def expresion(expresion_a_definir: str):
     contadorMalvado = 1
     diccionarioInicioDeExpresion = {"{", "[", "("}
     diccionarioFinalDeExpresion = {"}", "]", ")"}
-
+    resultado = True
     for i in range(0, len(expresion_a_definir)):
-        if expresion_a_definir[i] != "" and expresion_a_definir[i] != " ":
+        if(resultado == True):
             if expresion_a_definir[i] in diccionarioInicioDeExpresion:
                 if expresion_a_definir[i] == '{':
                     buscador = '}'
-                    contador += 1
+                    x = Buscador(buscador, i, expresion_a_definir, lista)#Se iguala x a la funcion Buscador para saber su lista que ya no se debe buscar y su resultado True o False
+                    lista = x['lista']
+                    resultado = x['resultado']
                 elif expresion_a_definir[i] == '[':
                     buscador = ']'
-                    contador += 1
+                    x = Buscador(buscador, i, expresion_a_definir, lista)
+                    lista = x['lista']
+                    resultado = x['resultado']
                 elif expresion_a_definir[i] == '(':
                     buscador = ')'
-                    contador += 1
-                for j in range(i+1, len(expresion_a_definir)):
-                    if expresion_a_definir[j] == buscador and j not in lista:
-                        lista.append(j)
-                        contador += 1
-                        break
+                    x = Buscador(buscador, i, expresion_a_definir, lista)
+                    lista = x['lista']
+                    resultado = x['resultado']
             elif expresion_a_definir[i] in diccionarioFinalDeExpresion:
-                if expresion_a_definir[i] == '}':
-                    contadorMalvado += 2
-                elif expresion_a_definir[i] == ']':
-                    contadorMalvado += 2
-                elif expresion_a_definir[i] == ')':
-                    contadorMalvado += 2
-            """ elif i not in lista:
-                contador = 3
-                break """
-    print(contador, contadorMalvado, "\n", len(lista), "\n", lista)
-    if contador % 2 == 0 and contador != 0:
-        return contador
-    else:
-        return contadorMalvado
+                if i not in lista:
+                    resultado = False
+                    break
+                else:
+                    continue
 
+        elif resultado == False:#Si retorna falso ya no se vuelve hacer
+            break
 
-if expresion("{a^4 + (((ax4)}") % 2 == 0:
-    print("Bien")
-else:
-    print("Mal")
+    return resultado #Tru si esta bien, False si no encontro
 
+#Funcion busca la expresion de cierre
+def Buscador(buscador: str, i: int, expresion_a_definir: str, lista: list):
+    resultado = False
+    for j in range(i+1, len(expresion_a_definir)):
+        if expresion_a_definir[j] == buscador and j not in lista:
+            resultado = True
+            lista.append(j)
+            break
 
-""" print(isBalanced(expression: "{a + b [c] * (2x2)}}}}"))
+    return {'lista': lista, 'resultado': resultado}#Retorna la lista para no volver a buscar y el resultado True o False
+"""
+print(isBalanced(expression: "{a + b [c] * (2x2)}}}}"))
 print(isBalanced(expression: "{ [ a * ( c + d ) ] - 5 }"))
 print(isBalanced(expression: "{ a * ( c + d ) ] - 5 }"))
 print(isBalanced(expression: "{a^4 + (((ax4)}"))
 print(isBalanced(expression: "{ ] a * ( c + d ) + ( 2 - 3 )[ - 5 }"))
 print(isBalanced(expression: "{{{{{{(}}}}}}"))
 print(isBalanced(expression: "(a"))
+"""
+resultado = expresion("(([{5*65456556*5224}]))")
 
-func isBalanced(expression: String) -> Bool {
+if resultado == True:
+    print("Expresion Válida")
+else:
+    print("Expresion Inválida")
 
-    let symbols = ["{":"}", "[":"]", "(":")"]
-    var stack = [String]()
 
-    for character in expression {
-        
-        let symbol = character.description
-        let containsKey = symbols.keys.contains(symbol)
-        
-        if containsKey || symbols.values.contains(symbol) {
-            if containsKey {
-                stack.append(symbol)
-            } else if stack.isEmpty || symbol != symbols[stack.popLast() ?? ""] {
-                return false
-            }
-        }
-    }
 
-    return stack.isEmpty
-}
- """
