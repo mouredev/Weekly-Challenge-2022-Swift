@@ -25,8 +25,6 @@
 def expresion(expresion_a_definir: str):
     lista = []
     buscador = ""
-    contador = 0
-    contadorMalvado = 1
     diccionarioInicioDeExpresion = {"{", "[", "("}
     diccionarioFinalDeExpresion = {"}", "]", ")"}
     resultado = True
@@ -54,10 +52,8 @@ def expresion(expresion_a_definir: str):
                     break
                 else:
                     continue
-
         elif resultado == False:#Si retorna falso ya no se vuelve hacer
             break
-
     return resultado #Tru si esta bien, False si no encontro
 
 #Funcion busca la expresion de cierre
@@ -68,7 +64,6 @@ def Buscador(buscador: str, i: int, expresion_a_definir: str, lista: list):
             resultado = True
             lista.append(j)
             break
-
     return {'lista': lista, 'resultado': resultado}#Retorna la lista para no volver a buscar y el resultado True o False
 """
 print(isBalanced(expression: "{a + b [c] * (2x2)}}}}"))
@@ -80,7 +75,6 @@ print(isBalanced(expression: "{{{{{{(}}}}}}"))
 print(isBalanced(expression: "(a"))
 """
 resultado = expresion("(([{5*65456556*5224}]))")
-
 if resultado == True:
     print("Expresion Válida")
 else:
