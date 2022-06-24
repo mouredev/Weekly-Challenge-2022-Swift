@@ -1,6 +1,4 @@
-import Foundation
-
-/*
+""" *
  * Reto #14
  * ¿ES UN NÚMERO DE ARMSTRONG?
  * Fecha publicación enunciado: 04/04/22
@@ -16,9 +14,27 @@ import Foundation
  * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
- */
+ * """
 
-func isArmstrong(number: Int) -> Bool {
+
+def numeroArmstrong(numero: str):
+    longitudNumero = len(numero)
+    suma = 0
+    for i in numero:
+        i = int(i)# i se convierte en string porque arriba es int. 
+        suma += i**(longitudNumero)
+    if numero == str(suma):
+        return True
+    else:
+        return False
+
+
+print(numeroArmstrong("15"))
+
+
+""" for i in range(0,len(numero)):
+    print(i) """
+""" func isArmstrong(number: Int) -> Bool {
 
     if number < 0 {
         return false
@@ -32,9 +48,10 @@ func isArmstrong(number: Int) -> Bool {
     }
 
     return number == sum
-}
+} """
 
-print(isArmstrong(number: 371))
+""" print(isArmstrong(number: 371))
 print(isArmstrong(number: -371))
 print(isArmstrong(number: 372))
 print(isArmstrong(number: 0))
+ """
