@@ -21,37 +21,18 @@ def numeroArmstrong(numero: str):
     longitudNumero = len(numero)
     suma = 0
     for i in numero:
-        i = int(i)# i se convierte en string porque arriba es int. 
+        if i == "-":
+            continue
+        i = int(i)  # i se convierte en string porque arriba es int.
         suma += i**(longitudNumero)
     if numero == str(suma):
         return True
     else:
         return False
 
-
-print(numeroArmstrong("15"))
-
-
-""" for i in range(0,len(numero)):
-    print(i) """
-""" func isArmstrong(number: Int) -> Bool {
-
-    if number < 0 {
-        return false
-    }
-    
-    var sum = 0
-    let powValue = Double(number.description.count)
-    
-    number.description.forEach { character in
-        sum += Int(pow(Double(character.description) ?? 0, powValue))
-    }
-
-    return number == sum
-} """
-
+print(numeroArmstrong("371"))
 """ print(isArmstrong(number: 371))
 print(isArmstrong(number: -371))
 print(isArmstrong(number: 372))
 print(isArmstrong(number: 0))
- """
+"""
