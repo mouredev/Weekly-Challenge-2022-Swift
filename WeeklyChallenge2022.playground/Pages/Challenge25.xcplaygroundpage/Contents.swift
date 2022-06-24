@@ -20,3 +20,29 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+enum Move {
+    case ROCK, PAPER, SCISSOR
+}
+
+func playRockPaperScissor(moves: [(first: Move, second: Move)]) -> String {
+    var playerOneWins = 0
+    var playerTwoWins = 0
+
+    moves.forEach { move in
+        if((move.first == Move.SCISSOR && move.second == Move.PAPER) || (move.first == Move.PAPER && move.second == Move.ROCK) || (move.first == Move.ROCK && move.second == Move.SCISSOR)) {
+            playerOneWins += 1
+        }
+        if((move.second == Move.SCISSOR && move.first == Move.PAPER) || (move.second == Move.PAPER && move.first == Move.ROCK) || (move.second == Move.ROCK && move.first == Move.SCISSOR)) {
+            playerTwoWins += 1
+        }
+    }
+
+    if(playerOneWins == playerTwoWins) {
+        return "Tie"
+    } else {
+        return playerOneWins > playerTwoWins ? "Player 1" : "Player 2"
+    }
+}
+
+print(playRockPaperScissor(moves: [(Move.ROCK, Move.SCISSOR), (Move.SCISSOR, Move.ROCK), (Move.PAPER, Move.SCISSOR)]))
