@@ -20,3 +20,79 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+RockPaperScissorsGame S = new RockPaperScissorsGame();
+
+var Result= S.WhoWon(new List<Match>()
+{
+	new Match(RockPaperScissors.Paper,RockPaperScissors.Rock),
+	new Match(RockPaperScissors.Rock,RockPaperScissors.Scissors),
+});
+
+public enum RockPaperScissors
+{
+	Rock, Paper, Scissors
+}
+
+public class RockPaperScissorsGame
+{
+
+	Dictionary<RockPaperScissors, RockPaperScissors> Rules = new Dictionary<RockPaperScissors, RockPaperScissors>()
+	{
+		[RockPaperScissors.Rock] = RockPaperScissors.Scissors,
+		[RockPaperScissors.Paper] = RockPaperScissors.Rock,
+		[RockPaperScissors.Scissors] = RockPaperScissors.Paper
+	};
+
+	int Player1MatchesWon = 0;
+	int Player2MatchesWon = 0;
+
+	public string WhoWon(List<Match> Game)
+	{
+		if (Game.Count < 1)
+		{
+			return "Error, The Game is empty";
+		}
+		foreach (Match item in Game)
+		{
+			if (Rules[item.Player1] == item.Player2)
+			{
+				Player1MatchesWon++;
+				continue;
+			}
+
+			if (Rules[item.Player2] == item.Player1)
+			{
+				Player2MatchesWon++;
+				continue;
+			}
+		}
+		return Result();
+	}
+
+	private string Result()
+	{
+		if (Player1MatchesWon > Player2MatchesWon)
+		{
+			return "Player 1";
+		}
+
+		if (Player2MatchesWon > Player1MatchesWon)
+		{
+			return "Player 2";
+		}
+
+		return "Tie";
+	}
+}
+
+public class Match
+{
+	public readonly RockPaperScissors Player1;
+	public readonly RockPaperScissors Player2;
+
+	public Match(RockPaperScissors Player1, RockPaperScissors Player2)
+	{
+		this.Player1 = Player1;
+		this.Player2 = Player2;
+	}
+}
