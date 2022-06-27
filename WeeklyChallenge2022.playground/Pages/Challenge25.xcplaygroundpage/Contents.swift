@@ -50,7 +50,7 @@ public class RockPaperScissorsGame
 	{
 		if (Game.Count < 1)
 		{
-			return "Error, el juego esta vacio";
+			return "Error, The Game is empty";
 		}
 		foreach (Match item in Game)
 		{
@@ -73,12 +73,12 @@ public class RockPaperScissorsGame
 	{
 		if (Player1MatchesWon > Player2MatchesWon)
 		{
-			return "Player1";
+			return "Player 1";
 		}
 
 		if (Player2MatchesWon > Player1MatchesWon)
 		{
-			return "Player2";
+			return "Player 2";
 		}
 
 		return "Tie";
