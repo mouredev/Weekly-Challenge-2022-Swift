@@ -1,0 +1,13 @@
+def to_bin(n):
+	dec = n
+	bin_reverse = []
+	while n > 0:
+		bin_reverse.append(n % 2)
+		n //= 2
+	bin = bin_reverse[::-1]
+	str_bin = list(map(str, bin))
+	print(f"Decimal: {dec} <=> Binary: {''.join(str_bin)}")
+	return bin
+
+num = input('Type the decimal number to convert to binary: ')
+to_bin(num)
