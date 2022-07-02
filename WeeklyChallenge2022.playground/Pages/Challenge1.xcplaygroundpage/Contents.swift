@@ -20,6 +20,20 @@ import Foundation
  *
  */
 
+//MARK: - MI SOLUCION
+func isAnagram(between word1: String, and word2: String) -> Bool {
+    
+    let word1Array = word1.lowercased().sorted()
+    let word2Array = word2.lowercased().sorted()
+    
+    return word1 == word2 ? false : word1Array == word2Array
+}
+
+isAnagram(between: "Astro", and: "Ortas")
+
+
+
+//MARK: - SOLUCION MOURE
 func isAnagram(wordOne: String, wordTwo: String) -> Bool {
     return wordOne.lowercased() == wordTwo.lowercased() ? false : wordOne.lowercased().sorted().elementsEqual(wordTwo.lowercased().sorted())
 }

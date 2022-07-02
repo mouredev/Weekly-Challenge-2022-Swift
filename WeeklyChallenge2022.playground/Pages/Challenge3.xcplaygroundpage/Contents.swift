@@ -18,6 +18,36 @@ import Foundation
  *
  */
 
+//MARK: - SOLUCION CON FILTER (MENOS EFICIENTE)
+
+func isPrime(_ number: Int) -> Bool {
+    if number < 2 {
+        return false
+    }
+    
+    for prime in 2..<number {
+        if number % prime == 0 {
+            return false
+        }
+    }
+        return true
+}
+
+(2...100).forEach { number in
+    if isPrime(number) == true {
+        print(number)
+    }
+}
+
+let itisPrime = (0...100).filter { numberPrime in
+    return isPrime(numberPrime) == true
+}
+itisPrime.forEach { number in
+    print(number)
+}
+
+//MARK: - SOLUCION MOURE
+
 func isPrime(number: Int) -> Bool {
     
     if number < 2 {

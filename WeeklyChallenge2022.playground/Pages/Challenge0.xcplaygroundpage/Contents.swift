@@ -20,8 +20,34 @@ import Foundation
  *
  */
 
-for index in 1...100 {
-    let divisibleByThree = index % 3 == 0
-    let divisibleByFive = index % 5 == 0
-    print("\((divisibleByThree && divisibleByFive) ? "fizzbuzz" : (divisibleByThree ? "fizz" : (divisibleByFive ? "buzz" : index.description)))")
+// MARK: - SOLUCION CON IF
+
+//for number in 1...100 {
+//    if number % 3 == 0 && number % 5 == 0 {
+//        print("fizzbuzz")
+//    } else if number % 3 == 0 {
+//        print("fizz")
+//    } else if number % 5 == 0 {
+//        print("buzz")
+//    } else {
+//        print(number)
+//    }
+//}
+
+// MARK: - SOLUCION CON SWITCH
+for number in 1...100 {
+    switch number {
+    case let fizzbuzz where fizzbuzz % 3 == 0 && fizzbuzz % 5 == 0: print("fizzbuzz")
+    case let fizz where fizz % 3 == 0: print("fizz")
+    case let buzz where buzz % 5 == 0: print("buzz")
+    default: print(number)
+    }
 }
+
+
+// MARK: - SOLUCION CON OPERADOR TERNARIO (MOURE)
+//for index in 1...100 {
+//    let divisibleByThree = index % 3 == 0
+//    let divisibleByFive = index % 5 == 0
+//    print("\((divisibleByThree && divisibleByFive) ? "fizzbuzz" : (divisibleByThree ? "fizz" : (divisibleByFive ? "buzz" : index.description)))")
+//}

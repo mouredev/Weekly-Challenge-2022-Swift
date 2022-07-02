@@ -19,13 +19,28 @@ import Foundation
  *
  */
 
-var n0 = 0
-var n1 = 1
+//MARK: - LLEGUÉ A LA MISMA SOLUCION
+var num0 = 0
+var num1 = 1
 
 (1...50).forEach { _ in
-    print(n0)
-
-    let fib = n0 + n1
-    n0 = n1
-    n1 = fib
+    
+    print(num0)
+    
+    let fib = num0 + num1
+    num0 = num1
+    num1 = fib
 }
+
+
+//
+//var n0 = 0
+//var n1 = 1
+//
+//(1...50).forEach { _ in
+//    print(n0)
+//
+//    let fib = n0 + n1
+//    n0 = n1
+//    n1 = fib
+//}
