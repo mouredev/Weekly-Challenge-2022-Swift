@@ -22,24 +22,35 @@ import Foundation
  */
 
 enum Move {
-    case ROCK, PAPER, SCISSOR
+    case rock, scissors, paper
 }
 
-func playRockPaperScissor(moves: [(first: Move, second: Move)]) -> String {
-    var playerOneWins = 0
-    var playerTwoWins = 0
+func rockScissorsPaper(games: [(Move, Move)]) -> String {
 
-    moves.forEach { move in
-        if(move.first != move.second) {
-            if((move.first == Move.SCISSOR && move.second == Move.PAPER) || (move.first == Move.PAPER && move.second == Move.ROCK) || (move.first == Move.ROCK && move.second == Move.SCISSOR)) {
-                playerOneWins += 1
+    var playerOneGames = 0
+    var playerTwoGames = 0
+    
+    games.forEach { playerOneMove, playerTwoMove in
+
+        if (playerOneMove != playerTwoMove) {
+
+            if playerOneMove == .rock && playerTwoMove == .scissors
+                || playerOneMove == .scissors && playerTwoMove == .paper
+                || playerOneMove == .paper && playerTwoMove == .rock {
+                
+                playerOneGames += 1
             } else {
-                playerTwoWins += 1
+                playerTwoGames += 1
             }
         }
     }
-    return playerOneWins == playerTwoWins ? "Tie" : playerOneWins > playerTwoWins ? "Player 1" : "Player 2"
+    
+    return playerOneGames == playerTwoGames ? "Tie" : playerOneGames > playerTwoGames ? "Player 1" : "Player 2"
 }
 
-print(playRockPaperScissor(moves: [(Move.ROCK, Move.SCISSOR), (Move.SCISSOR, Move.ROCK), (Move.PAPER, Move.SCISSOR)]))
-print(playRockPaperScissor(moves: [(Move.ROCK, Move.ROCK), (Move.SCISSOR, Move.SCISSOR), (Move.PAPER, Move.PAPER)]))
+print(rockScissorsPaper(games: [(.rock, .rock)]))
+print(rockScissorsPaper(games: [(.rock, .scissors)]))
+print(rockScissorsPaper(games: [(.paper, .scissors)]))
+print(rockScissorsPaper(games: [(.rock, .rock), (.scissors, .scissors), (.paper, .paper)]))
+print(rockScissorsPaper(games: [(.rock, .scissors), (.scissors, .paper), (.scissors, .rock)]))
+print(rockScissorsPaper(games: [(.rock, .paper), (.scissors, .rock), (.paper, .scissors)]))
