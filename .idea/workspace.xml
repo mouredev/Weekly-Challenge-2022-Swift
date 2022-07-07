@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="addf0df9-44df-4153-ae9f-e4de2388ac53" name="Changes" comment="Solution Challenge 27 in Dart 🎯&#10;&#10;Solution Challenge 27 with Dart Language.&#10;&#10;### `/lib/challenge27.dart`&#10;- Vector class with method `isOrthogonal(Vector other)`.&#10;&#10;### `/bin/challenge27.dart`&#10;- CLI App.&#10;&#10;## How to run?&#10;Run `dart bin/challenge27.dart --help`&#10;&#10;### Tests&#10;Run `dart test`.&#10;Testing file: `test/challenge27_test.dart`" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Challenge26" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2BUH0UIZOilL9yIoQ3NuN7CcqtP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "dart.settings",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/WeeklyChallenge2022.playground/Pages/Challenge26.xcplaygroundpage" />
+      <recent name="$PROJECT_DIR$/WeeklyChallenge2022.playground/Pages/Challenge26.xcplaygroundpage/bin" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Dart Test.No Orthogonal vectors in challenge27_test.dart">
+    <configuration name="No Orthogonal vectors in challenge27_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/WeeklyChallenge2022.playground/Pages/Challenge27.xcplaygroundpage/challenge27/test/challenge27_test.dart" />
+      <option name="scope" value="GROUP_OR_TEST_BY_NAME" />
+      <option name="testName" value="No Orthogonal vectors" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Orthogonal vectors in challenge27_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/WeeklyChallenge2022.playground/Pages/Challenge27.xcplaygroundpage/challenge27/test/challenge27_test.dart" />
+      <option name="scope" value="GROUP_OR_TEST_BY_NAME" />
+      <option name="testName" value="Orthogonal vectors" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in challenge26_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/WeeklyChallenge2022.playground/Pages/Challenge26.xcplaygroundpage/challenge26/test/challenge26_test.dart" />
+      <option name="testName" value="challenge26_test.dart" />
+      <method v="2" />
+    </configuration>
+    <configuration name="draw diamond in challenge26_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/WeeklyChallenge2022.playground/Pages/Challenge26.xcplaygroundpage/challenge26/test/challenge26_test.dart" />
+      <option name="scope" value="GROUP_OR_TEST_BY_NAME" />
+      <option name="testName" value="draw diamond" />
+      <method v="2" />
+    </configuration>
+    <configuration name="draw triangle in challenge26_test.dart" type="DartTestRunConfigurationType" factoryName="Dart Test" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/WeeklyChallenge2022.playground/Pages/Challenge26.xcplaygroundpage/challenge26/test/challenge26_test.dart" />
+      <option name="scope" value="GROUP_OR_TEST_BY_NAME" />
+      <option name="testName" value="draw triangle" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Weekly-Challenge-2022-Dart" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Weekly-Challenge-2022-Dart" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Dart Test.No Orthogonal vectors in challenge27_test.dart" />
+        <item itemvalue="Dart Test.Orthogonal vectors in challenge27_test.dart" />
+        <item itemvalue="Dart Test.draw diamond in challenge26_test.dart" />
+        <item itemvalue="Dart Test.draw triangle in challenge26_test.dart" />
+        <item itemvalue="Dart Test.Tests in challenge26_test.dart" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="addf0df9-44df-4153-ae9f-e4de2388ac53" name="Changes" comment="" />
+      <created>1656953520812</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1656953520812</updated>
+      <workItem from="1656953522028" duration="5850000" />
+      <workItem from="1656960595788" duration="210000" />
+      <workItem from="1656991392023" duration="953000" />
+      <workItem from="1657038061331" duration="4754000" />
+      <workItem from="1657230032147" duration="1075000" />
+      <workItem from="1657231112228" duration="1175000" />
+      <workItem from="1657232291322" duration="29000" />
+      <workItem from="1657232324859" duration="64000" />
+      <workItem from="1657232401867" duration="333000" />
+      <workItem from="1657232738993" duration="53000" />
+      <workItem from="1657232798711" duration="2687000" />
+    </task>
+    <task id="LOCAL-00001" summary="Setup Dart project">
+      <created>1656954359508</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1656954359508</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Setup Dart project">
+      <created>1656958750816</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1656958750816</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Solution Challenge 26 in Dart 🎯&#10;&#10;Solution Challenge 26 with Dart Language.&#10;&#10;### `/lib/challenge26.dart`&#10;- Draw Square Function.&#10;- Draw Triangle Function.&#10;&#10;### `/bin/challenge26.dart`&#10;- CLI App.&#10;## How to run?&#10;Run `dart bin/challenge26.dart --help`&#10;&#10;### Test&#10;Run `dart test`.&#10;Testing file: `test/challenge26_test.dart`">
+      <created>1656958767376</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1656958767376</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Solution Challenge 26 in Dart 🎯&#10;&#10;Solution Challenge 26 with Dart Language.&#10;&#10;### `/lib/challenge26.dart`&#10;- Draw Square Function.&#10;- Draw Triangle Function.&#10;&#10;### `/bin/challenge26.dart`&#10;- CLI App.&#10;## How to run?&#10;Run `dart bin/challenge26.dart --help`&#10;&#10;### Test&#10;Run `dart test`.&#10;Testing file: `test/challenge26_test.dart`">
+      <created>1656960634599</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1656960634599</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Solution Challenge 26 in Dart 🎯&#10;&#10;Solution Challenge 26 with Dart Language.&#10;&#10;### `/lib/challenge26.dart`&#10;- Draw Square Function.&#10;- Draw Triangle Function.&#10;- Draw Diamond Function.&#10;&#10;### `/bin/challenge26.dart`&#10;- CLI App.&#10;## How to run?&#10;Run `dart bin/challenge26.dart --help`&#10;&#10;### Test&#10;Run `dart test`.&#10;Testing file: `test/challenge26_test.dart`">
+      <created>1657042550928</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1657042550928</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Solution Challenge 26 in Dart 🎯&#10;&#10;Solution Challenge 26 with Dart Language.&#10;&#10;### `/lib/challenge26.dart`&#10;- Draw Square Function.&#10;- Draw Triangle Function.&#10;- Draw Diamond Function.&#10;&#10;### `/bin/challenge26.dart`&#10;- CLI App.&#10;## How to run?&#10;Run `dart bin/challenge26.dart --help`&#10;&#10;### Test&#10;Run `dart test`.&#10;Testing file: `test/challenge26_test.dart`">
+      <created>1657042761881</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1657042761881</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Solution Challenge 27 in Dart 🎯&#10;&#10;Solution Challenge 27 with Dart Language.&#10;&#10;### `/lib/challenge27.dart`&#10;- Vector class with method `isOrthogonal(Vector other)`.&#10;&#10;### `/bin/challenge27.dart`&#10;- CLI App.&#10;&#10;## How to run?&#10;Run `dart bin/challenge27.dart --help`&#10;&#10;### Tests&#10;Run `dart test`.&#10;Testing file: `test/challenge27_test.dart`">
+      <created>1657235458427</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1657235458427</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Setup Dart project" />
+    <MESSAGE value="Solution Challenge 26 in Dart &#10;&#10;Solution Challenge 26 with Dart Language.&#10;&#10;### `/lib/challenge26.dart`&#10;- Draw Square Function.&#10;- Draw Triangle Function.&#10;&#10;### `/bin/challenge26.dart`&#10;- CLI App.&#10;## How to run?&#10;Run `dart bin/challenge26.dart --help`&#10;&#10;### Test&#10;Run `dart test`.&#10;Testing file: `test/challenge26_test.dart`" />
+    <MESSAGE value="Solution Challenge 26 in Dart &#10;&#10;Solution Challenge 26 with Dart Language.&#10;&#10;### `/lib/challenge26.dart`&#10;- Draw Square Function.&#10;- Draw Triangle Function.&#10;&#10;### `/bin/challenge26.dart`&#10;- CLI App.&#10;## How to run?&#10;Run `dart bin/challenge26.dart --help`&#10;&#10;### Test&#10;Run `dart test`.&#10;Testing file: `test/challenge26_test.dart`" />
+    <MESSAGE value="Solution Challenge 26 in Dart &#10;&#10;Solution Challenge 26 with Dart Language.&#10;&#10;### `/lib/challenge26.dart`&#10;- Draw Square Function.&#10;- Draw Triangle Function.&#10;- Draw Diamond Function.&#10;&#10;### `/bin/challenge26.dart`&#10;- CLI App.&#10;## How to run?&#10;Run `dart bin/challenge26.dart --help`&#10;&#10;### Test&#10;Run `dart test`.&#10;Testing file: `test/challenge26_test.dart`" />
+    <MESSAGE value="Solution Challenge 26 in Dart &#10;&#10;Solution Challenge 26 with Dart Language.&#10;&#10;### `/lib/challenge26.dart`&#10;- Draw Square Function.&#10;- Draw Triangle Function.&#10;- Draw Diamond Function.&#10;&#10;### `/bin/challenge26.dart`&#10;- CLI App.&#10;## How to run?&#10;Run `dart bin/challenge26.dart --help`&#10;&#10;### Test&#10;Run `dart test`.&#10;Testing file: `test/challenge26_test.dart`" />
+    <MESSAGE value="Solution Challenge 27 in Dart &#10;&#10;Solution Challenge 27 with Dart Language.&#10;&#10;### `/lib/challenge27.dart`&#10;- Vector class with method `isOrthogonal(Vector other)`.&#10;&#10;### `/bin/challenge27.dart`&#10;- CLI App.&#10;&#10;## How to run?&#10;Run `dart bin/challenge27.dart --help`&#10;&#10;### Tests&#10;Run `dart test`.&#10;Testing file: `test/challenge27_test.dart`" />
+    <option name="LAST_COMMIT_MESSAGE" value="Solution Challenge 27 in Dart &#10;&#10;Solution Challenge 27 with Dart Language.&#10;&#10;### `/lib/challenge27.dart`&#10;- Vector class with method `isOrthogonal(Vector other)`.&#10;&#10;### `/bin/challenge27.dart`&#10;- CLI App.&#10;&#10;## How to run?&#10;Run `dart bin/challenge27.dart --help`&#10;&#10;### Tests&#10;Run `dart test`.&#10;Testing file: `test/challenge27_test.dart`" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
