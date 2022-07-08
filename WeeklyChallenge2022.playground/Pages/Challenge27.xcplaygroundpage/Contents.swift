@@ -16,3 +16,28 @@
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func checkOrthogonalVectors(vectorA: [Int], vectorB: [Int]) {
+    guard
+        vectorA.count == vectorB.count
+    else { return print("-----\n❗️The vectors must have the same length.\n-----") }
+    guard
+        vectorA.count > 1,
+        vectorB.count > 1
+    else { return print("-----\n❗️The length of both vectors must be greater than 1\n-----") }
+    
+    let dotProduct = zip(vectorA, vectorB).map { $0 * $1 }.reduce(0) { $0 + $1}
+    let orthogonal = dotProduct == 0
+    
+    print("The vectors \(vectorA) and \(vectorB) \n are "
+          + (orthogonal ? "✅ " : "❌ not ")
+          + "orthogonal \n - Its dot product is \(dotProduct)")
+    print("----")
+}
+
+checkOrthogonalVectors(vectorA: [2], vectorB: [-2])
+checkOrthogonalVectors(vectorA: [3, 2], vectorB: [-2])
+checkOrthogonalVectors(vectorA: [3, 2], vectorB: [-2, 3])
+checkOrthogonalVectors(vectorA: [3, 2], vectorB: [-2, 4])
+checkOrthogonalVectors(vectorA: [1, 1, -1], vectorB: [-1, 2, 1])
+
