@@ -16,3 +16,10 @@
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+private func areOrthogonals(vectorA: [Int], vectorB: [Int]) -> Bool {
+    return vectorA[0] * vectorB[0] + vectorA[1] * vectorB[1] == 0
+}
+
+print(areOrthogonals(vectorA: [-1, 2], vectorB: [2, 1]))
+print(areOrthogonals(vectorA: [2, 3], vectorB: [3, 2]))
