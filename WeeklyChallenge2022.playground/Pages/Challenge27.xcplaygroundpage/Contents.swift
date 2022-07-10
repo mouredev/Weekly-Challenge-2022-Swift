@@ -16,3 +16,12 @@
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+func areOrthogonal(first:[Int], second:[Int]) -> Bool{
+
+    return ((first[0] * second[0]) - (first[1]*second[1]) == 0)
+    
+}
+
+
+areOrthogonal(first: [2,0], second: [0,2])
+areOrthogonal(first: [2,0], second: [-1,2])
