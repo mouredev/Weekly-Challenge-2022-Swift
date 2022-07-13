@@ -121,7 +121,8 @@ buySomething(input: InputData(product: 23, cashIn: Cash()))
 
 // TESTCASE: No se insertan monedas
 // --------- COMPORTAMIENTO: Se considera que se han introducido 0 céntimos
-// --------- SALIDA: Se muestra mensaje de error de importe insuficiente para comprar el producto
+// --------- SALIDA: ERROR: Saldo insuficiente: 0  -> [Producto seleccionado: producto1, Precio del producto: 100]
+//                   Se han devuelto 0 céntimos en las siguientes monedas: Cash(inputCoins: (coin5: 0, coin10: 0, coin50: 0, coin100: 0, coin200: 0))
 print("### TESTCASE: No se insertan monedas ###")
 buySomething(input: InputData(product: 1, cashIn: Cash()))
 
