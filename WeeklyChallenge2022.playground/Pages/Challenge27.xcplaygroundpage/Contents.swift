@@ -1,3 +1,5 @@
+import Foundation
+
 /*
  * Reto #27
  * VECTORES ORTOGONALES
@@ -17,11 +19,9 @@
  *
  */
 
-private func areOrthogonals(vectorA: [Int], vectorB: [Int]) -> Bool {
-    return vectorA.count != 2 || vectorB.count != 2 ? false : vectorA[0] * vectorB[0] + vectorA[1] * vectorB[1] == 0
+func areOrthogonal(vectorOne: (first: Int, second: Int), vectorTwo: (first: Int, second: Int)) -> Bool {
+    return vectorOne.first * vectorTwo.first + vectorOne.second * vectorTwo.second == 0
 }
 
-print(areOrthogonals(vectorA: [-1, 2], vectorB: [2, 1]))
-print(areOrthogonals(vectorA: [2, 3], vectorB: [3, 2]))
-print(areOrthogonals(vectorA: [], vectorB: [3, 2]))
-print(areOrthogonals(vectorA: [1, 2, 3], vectorB: [3, 2]))
+print(areOrthogonal(vectorOne: (first: 1, second: 2), vectorTwo: (first: 2, second: 1)))
+print(areOrthogonal(vectorOne: (first: 2, second: 1), vectorTwo: (first: -1, second: 2)))
