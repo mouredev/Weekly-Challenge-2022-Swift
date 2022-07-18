@@ -19,3 +19,49 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+enum SortBy {
+    case Asc
+    case Desc
+    
+    func compareValue<T: Comparable>(num: T, with: T) -> Bool {
+        switch self {
+        case .Asc:
+            return num > with
+        case .Desc:
+            return num < with
+        }
+    }
+}
+
+func sort<T: Comparable>(array: [T], by: SortBy) -> [T] {
+    var arrayTmp = array
+    var switched = 0
+    repeat {
+        var tmp = 0
+        for index in 0..<arrayTmp.count {
+            if index+1 < arrayTmp.count {
+                if by.compareValue(num: arrayTmp[index], with: arrayTmp[index+1]) {
+                    tmp += 1
+                    let a = arrayTmp[index]
+                    arrayTmp[index] = arrayTmp[index+1]
+                    arrayTmp[index+1] = a
+                }
+            }
+        }
+        switched = tmp
+    } while switched != 0
+    return arrayTmp
+}
+
+var arrayInt = [1, 4, 2, 5, 3, 6, 7, 4, 0]
+print(sort(array: arrayInt, by: .Asc))
+print(sort(array: arrayInt, by: .Desc))
+
+var arrayDouble = [1.3, 4.2, 2.2, 5.5, 3.2, 6.3, 7.1, 4.6, 0.9]
+print(sort(array: arrayDouble, by: .Asc))
+print(sort(array: arrayDouble, by: .Desc))
+
+var arrayString = ["A", "P", "C", "D", "Q", "X", "O", "Y", "V"]
+print(sort(array: arrayString, by: .Asc))
+print(sort(array: arrayString, by: .Desc))
