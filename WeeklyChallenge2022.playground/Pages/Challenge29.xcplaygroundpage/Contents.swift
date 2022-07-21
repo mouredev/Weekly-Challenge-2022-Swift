@@ -19,3 +19,44 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+let myIntArray = [2, 4, 10, 8, 9, 14, 1, -5]
+
+enum Orden {
+    case Asc
+    case Desc
+}
+
+func ordenarLista(lista: [Int], param: Orden) -> [Int] {
+    
+    var myTempArray = [Int]()
+    
+    if let varMin = lista.min() {
+        if let varMax = lista.max() {
+            
+            if param == .Asc {
+                for index in varMin...varMax {
+                    for item in lista {
+                        if item == index {
+                            myTempArray.append(item)
+                        }
+                    }
+                }
+            }
+            
+            if param == .Desc {
+                for index in (varMin...varMax).reversed() {
+                    for item in lista {
+                        if item == index {
+                            myTempArray.append(item)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    return myTempArray
+}
+
+print(ordenarLista(lista: myIntArray, param: .Asc))
+print(ordenarLista(lista: myIntArray, param: .Desc))
