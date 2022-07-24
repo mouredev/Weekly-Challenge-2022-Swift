@@ -23,65 +23,61 @@ import Foundation
  *
  */
 
-enum Coin: Int, CaseIterable, Comparable {
+enum Money: Int, CaseIterable {
+    
     case five = 5
     case ten = 10
     case fifty = 50
     case oneHundred = 100
     case twoHundred = 200
     
-    static func < (lhs: Coin, rhs: Coin) -> Bool {
-        return lhs.rawValue < rhs.rawValue
-    }
 }
 
-struct Product {
-    var name: String
-    var number: Int
-    var value: Int
+func buy(code: Int, money: [Money]) -> (name: String, money: [Money]) {
     
-    init(name: String, number: Int, value: Int) {
-        self.name = name
-        self.number = number
-        self.value = value
-    }
-}
-
-func getExchange(value: Int) -> [Coin] {
-    var rest = value
-    var result: [Coin] = []
-    repeat {
-        let biggestCoin = Coin.allCases.filter{ $0.rawValue <= rest }.sorted().last!
-        rest = rest - biggestCoin.rawValue
-        result.append(biggestCoin)
-    } while(rest > 0)
-    return result
-}
-
-func getProduct(productNumber: Int, money: [Coin]) -> (productName: String, exchange: [Coin]) {
-    let machineProducts = [
-        Product.init(name: "Estrella Galicia", number: 1, value: 120),
-        Product.init(name: "Alhambra Lager Singular", number: 2, value: 120),
-        Product.init(name: "Estrella Galicia 1906", number: 3, value: 180),
-        Product.init(name: "Alhambra Reserva 1900", number: 4, value: 180),
-        Product.init(name: "Heineken", number: 5, value: 20)
-    ]
+    let products = [1: (name: "Agua", money: 50),
+                    2: (name: "Coca-Cola", money: 100),
+                    4: (name: "Cerveza", money: 155),
+                    5: (name: "Pizza", money: 200),
+                    10: (name: "Donut", money: 75)]
     
-    let selectedProducts = machineProducts.filter{ $0.number == productNumber}
-    if(selectedProducts.count == 0) {
-        print("Ningún producto tiene el identificador \(productNumber)")
-        return ("", money)
-    } else if(selectedProducts[0].value > money.compactMap{ $0.rawValue }.reduce(0,+)) {
-        print("Saldo insuficiente")
-        return ("", money)
-    } else {
-        return (selectedProducts[0].name, getExchange(value: money.compactMap{ $0.rawValue }.reduce(0,+) - selectedProducts[0].value))
+    if let product = products[code] {
+        
+        let totalMoney = money.map{ $0.rawValue }.reduce(0, +)
+        
+        if totalMoney < product.money {
+            return ("El producto con código [\(code)] tiene un coste \(product.money). Has introducido \(totalMoney).", money)
+        }
+        
+        let pendingMoney = totalMoney - product.money
+        
+        return (product.name, returnMoney(pendingMoney: pendingMoney))
     }
+    
+    return ("El producto con código [\(code)] no existe.", money)
 }
 
-var product = getProduct(productNumber: 7, money: [Coin.fifty])
-print(product.productName.isEmpty ? "" : "Producto: \(product.productName) - monedas: \(product.exchange.compactMap{ $0.rawValue })")
-product = getProduct(productNumber: 1, money: [Coin.fifty, Coin.fifty])
-print(product.productName.isEmpty ? "" : "Producto: \(product.productName) - monedas: \(product.exchange.compactMap{ $0.rawValue })")
-product = getProduct(productNumber: 2, money: [Coin.twoHundred])
-print(product.productName.isEmpty ? "" : "Producto: \(product.productName) - monedas: \(product.exchange.compactMap{ $0.rawValue })")
+func returnMoney(pendingMoney: Int, money: [Money] = []) -> [Money] {
+    
+    if pendingMoney == 0 {
+        return money
+    }
+    
+    var newPendingMoney = pendingMoney
+    var newMoney = money
+    
+    for coin in Money.allCases.reversed() {
+        if coin.rawValue <= pendingMoney {
+            newPendingMoney -= coin.rawValue
+            newMoney.append(coin)
+            break
+        }
+    }
+    
+    return returnMoney(pendingMoney: newPendingMoney, money: newMoney)
+}
+
+print(buy(code: 1, money: [.five, .five, .ten, .ten, .ten, .five]))
+print(buy(code: 3, money: [.five, .five, .ten, .ten, .ten, .five]))
+print(buy(code: 1, money: [.five, .five, .ten, .ten, .ten, .five, .fifty]))
+print(buy(code: 5, money: [.twoHundred]))
