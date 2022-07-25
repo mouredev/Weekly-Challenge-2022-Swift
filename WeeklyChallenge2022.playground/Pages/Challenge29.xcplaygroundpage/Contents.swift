@@ -19,3 +19,44 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+enum SortOrderType {
+    case ASC
+    case DESC
+}
+
+func customSort(order: SortOrderType, data: [Int]) {
+    
+    var outputData = data
+    
+    for firstIterationIndex in 0 ..< outputData.count {
+        for secondIterationIndex in 0 ..< outputData.count {
+            if compareWorkingValues(orderType: order, val1: outputData[firstIterationIndex], val2: outputData[secondIterationIndex]) {
+                let aux = outputData[firstIterationIndex]
+                outputData[firstIterationIndex] = outputData[secondIterationIndex]
+                outputData[secondIterationIndex] = aux
+            }
+        }
+    }
+    
+    print("##### orden: \(order) - inputData: \(data) - outputData: \(outputData) #####")
+}
+
+func compareWorkingValues(orderType: SortOrderType, val1: Int, val2: Int) -> Bool {
+    switch orderType {
+    case .ASC:
+        return val1 < val2
+    case .DESC:
+        return val1 > val2
+    }
+}
+
+
+
+// MARK: TEST CASES
+
+customSort(order: .ASC, data: [5, 12, 8, 3, 1, 5, 9, 10, 7, 2])
+// SALIDA: ##### orden: ASC - inputData: [5, 12, 8, 3, 1, 5, 9, 10, 7, 2] - outputData: [1, 2, 3, 5, 5, 7, 8, 9, 10, 12] #####
+
+customSort(order: .DESC, data: [5, 12, 8, 3, 1, 5, 9, 10, 7, 2])
+// SALIDA: ##### orden: DESC - inputData: [5, 12, 8, 3, 1, 5, 9, 10, 7, 2] - outputData: [12, 10, 9, 8, 7, 5, 5, 3, 2, 1] #####
