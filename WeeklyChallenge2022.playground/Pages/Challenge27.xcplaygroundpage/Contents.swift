@@ -18,7 +18,6 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
-
 func areOrthogonal(vectorOne: (first: Int, second: Int), vectorTwo: (first: Int, second: Int)) -> Bool {
     return vectorOne.first * vectorTwo.first + vectorOne.second * vectorTwo.second == 0
 }
