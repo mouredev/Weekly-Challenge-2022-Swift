@@ -19,41 +19,31 @@ import Foundation
  *
  */
 
-enum PolygonType {
-    case square, triangle, diamond
+
+private enum Figure {
+    case SQUARE
+    case TRIANGLE
 }
 
-func drawPolygon(size: Int, type: PolygonType) {
-
-    if size < 2 {
-        print("El tamaño debe ser mayor a 1")
-    }
-    
-    var totalSize = size
-    if type == .diamond {
-        totalSize *= 2
-    }
-
-    for value in 1...totalSize {
-        switch type {
-        case .square:
-            print(String(repeating: "* ", count: totalSize))
-        case .triangle:
-            print(String(repeating: "* ", count: value))
-        case .diamond:
-            if value <= size {
-                print(String(repeating: "* ", count: value))
-            } else {
-                print("\(String(repeating: "  ", count: value - size))\(String(repeating: "* ", count: totalSize - value))")
+private func drawPolygon(side: Int, figure: Figure) {
+    if(side < 2) {
+        print("La figura debe tener al menos 2 de lado\n")
+    } else {
+        (1...side).forEach { row in
+            var rowLine = ""
+            (1...side).forEach { column in
+                if(figure == Figure.SQUARE || column <= row) {
+                    rowLine += "* "
+                }
             }
             print(rowLine)
         }
         print()
     }
-
-    print("")
 }
 
-drawPolygon(size: 10, type: .square)
-drawPolygon(size: 15, type: .triangle)
-drawPolygon(size: 12, type: .diamond)
+drawPolygon(side: 1, figure: Figure.SQUARE)
+drawPolygon(side: 2, figure: Figure.SQUARE)
+drawPolygon(side: 2, figure: Figure.TRIANGLE)
+drawPolygon(side: 5, figure: Figure.SQUARE)
+drawPolygon(side: 5, figure: Figure.TRIANGLE)
