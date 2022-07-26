@@ -19,3 +19,29 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+func orderList(unorder: [Int], type: String) -> [Int] {
+    var otherList : [Int] = unorder
+    for item in 0..<otherList.count {
+        for item2 in 0..<otherList.count {
+            if(type=="Desc"){
+                if(otherList[item] > otherList[item2]){
+                    let temp : Int = otherList[item]
+                    otherList[item] = otherList[item2]
+                    otherList[item2] = temp
+                }
+            }
+            if(type=="Asc"){
+                if(otherList[item] < otherList[item2]){
+                    let temp : Int = otherList[item]
+                    otherList[item] = otherList[item2]
+                    otherList[item2] = temp
+                }
+            }
+        }
+    }
+    return otherList
+}
+
+orderList(unorder: [2,4,1,5], type: "Desc")
+orderList(unorder: [2,4,1,5], type: "Asc")
+orderList(unorder: [], type: "Assc")
