@@ -25,3 +25,35 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+var arrayInput = [String]()
+var maxArray: Int
+var asteriskString: String = ""
+var spaceString: String
+
+if let strInput = readLine() {
+    arrayInput = strInput.components(separatedBy: " ")
+    
+    if let maxArray = arrayInput.max(by: {$1.count > $0.count })?.count {
+        
+        for _ in 1...maxArray+4 {
+            asteriskString += "*"
+        }
+        
+        print(asteriskString)
+        
+        for item in arrayInput {
+            let difValue = maxArray - item.count
+            spaceString = ""
+            
+            for _ in 0...difValue {
+                spaceString += " "
+            }
+            print("* \(item)\(spaceString)*")   
+        }
+        
+        print(asteriskString)
+    }
+}
+
+
