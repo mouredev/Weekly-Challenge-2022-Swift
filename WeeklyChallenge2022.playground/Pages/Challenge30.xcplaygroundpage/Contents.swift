@@ -25,3 +25,31 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+printWordsInIndividualLines(from: "¿Qué te parece el reto?")
+
+func printWordsInIndividualLines(from string: String) {
+    let words = string.components(separatedBy: .whitespacesAndNewlines)
+    guard let maxWordLength = words.max(by: { $0.count < $1.count })?.count else {
+        return
+    }
+    
+    // The horizontal divider contains as many * as the longest word's number of characters
+    // it contains, plus an exactly leading space and another trailing one.
+    let horizontalDivider = String(repeating: "*", count: maxWordLength + 2)
+    print(delimit(horizontalDivider))
+    
+    for word in words {
+        let leadingSpace = " "
+        let trailingSpacingCount = maxWordLength - word.count + 1
+        let trailingSpace = String(repeating: " ", count: trailingSpacingCount)
+        
+        print(delimit("\(leadingSpace)\(word)\(trailingSpace)"))
+    }
+    
+    print(delimit(horizontalDivider))
+}
+
+func delimit(_ line: String) -> String {
+    "*\(line)*"
+}
