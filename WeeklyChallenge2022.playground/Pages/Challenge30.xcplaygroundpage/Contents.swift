@@ -25,3 +25,35 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+let symbol = "*"
+let prefix = "\(symbol) "
+let suffix = " \(symbol)"
+
+private func printSymbolsLine(count: Int) {
+    print(String(repeating: symbol, count: count + prefix.count + suffix.count))
+}
+
+func putInAFrame(text: String) {
+    let words = text.split(separator: " ")
+    
+    guard let longestWordCount = words.max(by: { lhs, rhs in
+        lhs.count < rhs.count
+    })?.count else { return }
+    
+    printSymbolsLine(count: longestWordCount)
+    
+    words.forEach { word in
+        let remainingCharsToFill = abs(word.count - longestWordCount)
+        let whitespaces = String(repeating: " ", count: remainingCharsToFill)
+        
+        print(prefix + word + whitespaces + suffix)
+    }
+    
+    printSymbolsLine(count: longestWordCount)
+}
+
+let text1 = "¿Qué te parece el reto de la semana?"
+let text2 = "Dale limosna, mujer, que no hay en la vida nada como la pena de ser ciego en Granada."
+
+putInAFrame(text: text2)
