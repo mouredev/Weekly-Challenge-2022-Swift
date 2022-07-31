@@ -20,79 +20,30 @@ import Foundation
  *
  */
 
-func quickSort(numbers: [Int], first: Int = 0, last: Int) -> [Int] {
-    let p = numbers[(first + last) / 2]
-    var i = first
-    var j = last
-    var result = numbers
-    
-    repeat {
-        while(result[i] < p) { i += 1 }
-        while(p < result[j]) { j -= 1 }
-        if(i <= j) {
-            let aux = result[i]
-            result[i] = result[j]
-            result[j] = aux
-            i += 1
-            j -= 1
-        }
-    } while(i <= j)
-    if(first < j) {
-        result = quickSort(numbers: result, first: first, last: j)
-    }
-    if(i < last) {
-        result = quickSort(numbers: result, first: i, last: last)
-    }
-    
-    return result
-}
+func sort(numbers: [Int], asc: Bool) -> [Int] {
 
-func bubbleSort(numbers: [Int]) -> [Int] {
-    var result = numbers
+    var sortedNumbers: [Int] = []
     
-    (1...result.count-1).forEach { _ in
-        (0..<result.count-1).forEach { i in
-            if(result[i] > result[i+1]) {
-                let aux = result[i]
-                result[i] = result[i+1]
-                result[i+1] = aux
+    for number in numbers {
+        
+        var added = false
+        
+        for (index, sortedNumber) in sortedNumbers.enumerated() {
+            
+            if asc ? number < sortedNumber : number > sortedNumber {
+                sortedNumbers.insert(number, at: index)
+                added = true
+                break
             }
         }
-    }
-    
-    return result
-}
-
-func insertionSort(numbers: [Int]) -> [Int] {
-    var result = numbers
-    
-    (1..<result.count).forEach { i in
-        let aux = result[i]
-        var j = i - 1
-        while(j >= 0 && result[j] > aux) {
-            result[j+1] = result[j]
-            j -= 1
-            result[j+1] = aux
+        
+        if !added {
+            sortedNumbers.append(number)
         }
     }
     
-    return result
+    return sortedNumbers
 }
 
-func sortNumbers(numbers: [Int], order: String) {
-    if(order == "Asc") {
-        print("Quicksort: \(quickSort(numbers: numbers, last: numbers.count - 1))")
-        print("Bubble: \(bubbleSort(numbers: numbers))")
-        print("Insertion: \(insertionSort(numbers: numbers))")
-        print()
-    } else {
-        print("Quicksort: \(Array(quickSort(numbers: numbers, last: numbers.count - 1).reversed()))")
-        print("Bubble: \(Array(bubbleSort(numbers: numbers).reversed()))")
-        print("Insertion: \(Array(insertionSort(numbers: numbers).reversed()))")
-        print()
-    }
-}
-
-sortNumbers(numbers: [8, 4, 2, 9, 1], order: "Asc")
-sortNumbers(numbers: [9, 8, 0, 2, 5, 1, 3, 2, 9], order: "Desc")
-sortNumbers(numbers: [3, 10, 1, 8, 15, 5, 12, 6, 5, 4], order: "Asc")
+print(sort(numbers: [4, 6, 1, 8, 2], asc: true)) // 1, 2, 4, 6, 8
+print(sort(numbers: [4, 6, 1, 8, 2], asc: false)) // 8, 6, 4, 2, 1
