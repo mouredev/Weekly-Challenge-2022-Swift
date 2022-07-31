@@ -25,3 +25,21 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func printFramedPhrase(sentence: String) {
+    let words = sentence.split(separator: " ")
+    let largestWord = words.map{ $0.count }.sorted().last!
+    var line = ""
+    (1...(largestWord + 4)).forEach { _ in line.append("*") }
+    print(line)
+    words.forEach { word in
+        line = "* \(word)"
+        (word.count...largestWord).forEach{ _ in line.append(" ") }
+        print("\(line)*")
+    }
+    line = ""
+    (1...(largestWord + 4)).forEach { _ in line.append("*") }
+    print(line)
+}
+
+printFramedPhrase(sentence: "¿Qué te parece el reto?")
