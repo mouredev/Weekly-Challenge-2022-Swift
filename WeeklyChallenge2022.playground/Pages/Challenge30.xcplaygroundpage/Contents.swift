@@ -1,4 +1,6 @@
-import Foundation
+#!/usr/bin/env ruby
+
+#import Foundation
 
 /*
  * Reto #30
@@ -25,3 +27,28 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+
+def word_frame (sentence) 
+  max_len = 0
+  words = sentence.split
+  words.each do |word|
+    if word.length > max_len
+      max_len = word.length
+    end
+  end
+
+  # top line
+  puts "*" * (max_len + 4)
+
+  # core lines
+  words.each do |word|
+    puts "* " + word + " " * (max_len - word.length) + " *"
+  end
+
+  # bottom line
+  puts "*" * (max_len + 4)
+
+end
+
+word_frame "Dos cosas son infinitas: la estupidez humana y el universo. Y de lo segundo ¡no estoy seguro!"
