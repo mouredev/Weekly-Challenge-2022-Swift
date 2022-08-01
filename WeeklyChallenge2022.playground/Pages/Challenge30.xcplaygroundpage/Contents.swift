@@ -59,5 +59,4 @@ func asterisksTextBox(text: String) {
     print(asterisksLine)
 }
 
-asterisksTextBox(text: "¡Hola mundo! ¿Cómo estás?")
 
