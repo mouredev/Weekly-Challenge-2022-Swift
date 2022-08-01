@@ -25,3 +25,40 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+public enum Constants {
+    static let linePrefix: String = "* "
+    static let lineSufix: String = " *"
+    static let asterisk: String = "*"
+    static let space: String = " "
+    static let nextLine: String = "\n"
+    static let marginLength: Int = 4
+}
+
+public func generateTextFrame(withText inputText: String) {
+    let wordsArray = inputText.components(separatedBy: Constants.space)
+    let maxLenght: Int = wordsArray.map{ $0.count }.max() ?? 0
+    let topBottomFrame = String(repeating: Constants.asterisk, count: (maxLenght) + Constants.marginLength)
+    var outputText: String = topBottomFrame + Constants.nextLine
+    
+    for word in wordsArray {
+        let marginFill = String(repeating: Constants.space, count: maxLenght - word.count)
+        outputText += Constants.linePrefix + word + marginFill + Constants.lineSufix + Constants.nextLine
+    }
+    
+    outputText += topBottomFrame
+    
+    print(outputText)
+}
+
+
+
+generateTextFrame(withText: "¡Un saludo desde Alicante Moure!")
+
+// ************
+// * ¡Un      *
+// * saludo   *
+// * desde    *
+// * Alicante *
+// * Moure!   *
+// ************
