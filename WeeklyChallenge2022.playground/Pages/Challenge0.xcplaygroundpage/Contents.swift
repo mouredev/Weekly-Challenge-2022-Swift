@@ -21,7 +21,13 @@ import Foundation
  */
 
 for index in 1...100 {
-    let divisibleByThree = index % 3 == 0
-    let divisibleByFive = index % 5 == 0
-    print("\((divisibleByThree && divisibleByFive) ? "fizzbuzz" : (divisibleByThree ? "fizz" : (divisibleByFive ? "buzz" : index.description)))")
+    print(index % 3 == 0 && index % 5 == 0 ? "fizzbuzz" : index % 3 == 0 ? "fizz" : index % 5 == 0 ? "buzz" : "\(index)")
 }
+
+//Mouredev solution
+//
+//for index in 1...100 {
+//    let divisibleByThree = index % 3 == 0
+//    let divisibleByFive = index % 5 == 0
+//    print("\((divisibleByThree && divisibleByFive) ? "fizzbuzz" : (divisibleByThree ? "fizz" : (divisibleByFive ? "buzz" : index.description)))")
+//}

@@ -19,13 +19,26 @@ import Foundation
  *
  */
 
-var n0 = 0
-var n1 = 1
 
-(1...50).forEach { _ in
-    print(n0)
 
-    let fib = n0 + n1
-    n0 = n1
-    n1 = fib
-}
+
+
+
+
+
+
+
+
+
+//Mouredev Solution
+//
+//var n0 = 0
+//var n1 = 1
+//
+//(1...50).forEach { _ in
+//    print(n0)
+//
+//    let fib = n0 + n1
+//    n0 = n1
+//    n1 = fib
+//}

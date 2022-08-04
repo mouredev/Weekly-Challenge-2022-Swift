@@ -20,8 +20,29 @@ import Foundation
  *
  */
 
-func isAnagram(wordOne: String, wordTwo: String) -> Bool {
-    return wordOne.lowercased() == wordTwo.lowercased() ? false : wordOne.lowercased().sorted().elementsEqual(wordTwo.lowercased().sorted())
+func anagramTester (firstWord: String, secondWord: String) -> Bool {
+    var result: Bool = true
+// Comprobamos que ambas palabras no son la misma, si no false
+    if firstWord.lowercased() == secondWord.lowercased() {
+        result = false
+    } else {
+        // Comprobamos que contienen las mismas letras, si no false
+        for character in firstWord.lowercased() {
+            if secondWord.lowercased().contains(character) == false {
+                result = false
+            }
+        }
+    }
+    print(result)
+    return result
 }
 
-print(isAnagram(wordOne: "amor", wordTwo: "roma"))
+anagramTester(firstWord: "Roma", secondWord: "amor")
+
+//Muuredev Solution
+//
+//func isAnagram(wordOne: String, wordTwo: String) -> Bool {
+//    return wordOne.lowercased() == wordTwo.lowercased() ? false : wordOne.lowercased().sorted().elementsEqual(wordTwo.lowercased().sorted())
+//}
+//
+//print(isAnagram(wordOne: "amor", wordTwo: "roma"))
