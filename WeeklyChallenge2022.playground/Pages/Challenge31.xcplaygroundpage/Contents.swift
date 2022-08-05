@@ -23,16 +23,17 @@ func nextThirtyLeapYears (initialYear: Int) {
     var yearConsult = initialYear
     
     while leapYears.count < 30 {
-        if yearConsult % 4 == 0 {
-            if yearConsult % 100 != 0 {
-                leapYears.append(yearConsult)
-            } else if yearConsult % 400 == 0 {
-                    leapYears.append(yearConsult)
-            }
+        if isLeapYear(year: yearConsult) {
+            leapYears.append(yearConsult)
         }
         yearConsult += 1
     }
     print(leapYears)
 }
 
-nextThirtyLeapYears(initialYear: 1928)
+// Función que evalua si el número es bisiesto
+func isLeapYear (year: Int) -> Bool {
+    return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
+}
+
+nextThirtyLeapYears(initialYear: 1989)
