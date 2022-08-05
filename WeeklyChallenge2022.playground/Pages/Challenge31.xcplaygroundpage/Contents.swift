@@ -18,12 +18,12 @@ import Foundation
  *
  */
 
+
 func nextThirtyLeapYears (initialYear: Int) {
-    var leapYears: [Int] = []
-    var yearConsult = initialYear
+    var leapYears: [Int] = [], yearConsult = initialYear
     
     while leapYears.count < 30 {
-        if isLeapYear(year: yearConsult) {
+        if (yearConsult % 4 == 0 && (yearConsult % 100 != 0 || yearConsult % 400 == 0)) {
             leapYears.append(yearConsult)
         }
         yearConsult += 1
@@ -31,9 +31,3 @@ func nextThirtyLeapYears (initialYear: Int) {
     print(leapYears)
 }
 
-// Función que evalua si el número es bisiesto
-func isLeapYear (year: Int) -> Bool {
-    return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0))
-}
-
-nextThirtyLeapYears(initialYear: 1989)
