@@ -26,20 +26,27 @@ import Foundation
  *
  */
 
-func printFramedPhrase(sentence: String) {
-    let words = sentence.split(separator: " ")
-    let largestWord = words.map{ $0.count }.sorted().last!
-    var line = ""
-    (1...(largestWord + 4)).forEach { _ in line.append("*") }
-    print(line)
+func drawFrame(text: String) {
+
+    let words = text.components(separatedBy: " ")
+    var maxLength = 0
     words.forEach { word in
-        line = "* \(word)"
-        (word.count...largestWord).forEach{ _ in line.append(" ") }
-        print("\(line)*")
+        if word.count > maxLength {
+            maxLength = word.count
+        }
     }
-    line = ""
-    (1...(largestWord + 4)).forEach { _ in line.append("*") }
-    print(line)
+
+    print(String(repeating: "*", count: maxLength + 4))
+
+    words.forEach { word in
+        if !word.isEmpty {
+            print("* \(word)\(String(repeating: " ", count: maxLength - word.count)) *")
+        }
+    }
+
+    print(String(repeating: "*", count: maxLength + 4))
 }
 
-printFramedPhrase(sentence: "¿Qué te parece el reto?")
+drawFrame(text: "¿Qué te parece el reto?")
+drawFrame(text: "¿Qué te     parece el reto?")
+drawFrame(text: "¿Cuántos retos de código de la comunidad has resuelto?")
