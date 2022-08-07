@@ -17,3 +17,14 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func getNextThirtyLeapYears(year: Int) {
+    (year + 1 ... year + 120).forEach {
+        if($0 % 4 == 0) {
+            print($0)
+        }
+    }
+}
+
+getNextThirtyLeapYears(year: 2022)
+getNextThirtyLeapYears(year: -2022)
