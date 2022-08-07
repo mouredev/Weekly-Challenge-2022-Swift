@@ -30,4 +30,3 @@ func nextThirtyLeapYears (initialYear: Int) {
     }
     print(leapYears)
 }
-
