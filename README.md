@@ -1,17 +1,26 @@
-# Code Weekly Challenge Swift/iOS 2022
-## Proyecto de retos semanales de la comunidad **[MoureDev](https://moure.dev)** para practicar [Swift](https://github.com/apple/swift) e iOS.
+# Retos de programación semanales en Swift 2022
+## Proyecto de retos semanales de la comunidad **[MoureDev](https://moure.dev)** para practicar [Swift](https://github.com/apple/swift).
+### Todos nuestros retos en **[retosdeprogramacion.com/semanales2022](https://retosdeprogramacion.com/semanales2022)**
 
-![https://mouredev.com/discord](https://github.com/mouredev/mouredev/blob/master/mouredev_weekly_challenge.png)
+Si quieres realizar los retos de programación en otro lenguaje, utiliza el repositorio de retos semanales principal.
 
-Existen repositorios de código tanto para Swift/iOS como para Kotlin/Android en los que se publicarán semanalmente los mismos retos. Así podrás elegir el que mejor se adapta a tus necesidades (o practicar en ambos).
+[![GitHub Kotlin](https://img.shields.io/github/stars/mouredev/Weekly-Challenge-2022-Kotlin?label=Repositorio%20retos%20Semanales&style=social)](https://github.com/mouredev/Weekly-Challenge-2022-Kotlin)
 
-[![GitHub Followers](https://img.shields.io/github/stars/mouredev/Weekly-Challenge-2022-Swift?label=Repositorio%20público%20retos%20Swift/iOS&style=social)](https://github.com/mouredev/Weekly-Challenge-2022-Swift)
-[![GitHub Followers](https://img.shields.io/github/stars/mouredev/Weekly-Challenge-2022-Kotlin?label=Repositorio%20público%20retos%20Kotlin/Android&style=social)](https://github.com/mouredev/Weekly-Challenge-2022-Kotlin)
+También puedes unirte a nuestra actividad mensual de creación de aplicaciones.
 
-### Requisitos mínimos
+[![GitHub App](https://img.shields.io/github/stars/mouredev/Monthly-App-Challenge-2022?label=Repositorio%20retos%20Mensuales&style=social)](https://github.com/mouredev/Weekly-Challenge-2022-Kotlin)
+
+## Información importante
+
+El proyecto principal de retos de programación semanales en Swift se ha creado utilizando Xcode.
+
 [![Swift](https://img.shields.io/badge/Swift-5-orange.svg?longCache=true&style=popout-square)](https://swift.org)
 [![Xcode](https://img.shields.io/badge/Xcode-13-blue.svg?longCache=true&style=popout-square)](https://developer.apple.com/xcode)
 [![iOS](https://img.shields.io/badge/iOS-15-red.svg?longCache=true&style=popout-square)](https://www.apple.com/es/ios)
+
+Tienes las soluciones de la comunidad en **[Pull Requests](https://github.com/mouredev/Weekly-Challenge-2022-Swift/pulls)**.
+
+Tienes toda la información extendida sobre los retos de programación semanales y mensuales en **[retosdeprogramacion.com](https://retosdeprogramacion.com/)**.
 
 ## Vídeo explicación retos
 
@@ -50,7 +59,8 @@ Existen repositorios de código tanto para Swift/iOS como para Kotlin/Android en
 * **#29** - 18/07/22 - `ORDENA LA LISTA`
 * **#30** - 26/07/22 - `MARCO DE PALABRAS`
 * **#31** - 01/08/22 - `AÑOS BISIESTOS`
-* **#32** - 08/08/22 - `Publicación nuevo reto...`
+* **#32** - 08/08/22 - `EL SEGUNDO`
+* **#33** - 15/08/22 - `Publicación nuevo reto...`
 
 <a href="https://youtu.be/ydH_B5KuqGs"><img src="http://i3.ytimg.com/vi/ydH_B5KuqGs/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 
