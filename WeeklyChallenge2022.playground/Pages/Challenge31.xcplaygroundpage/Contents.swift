@@ -17,3 +17,36 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+// MARK: SOLUTION WITHOUT CALENDAR
+private func getNextThirtyLeapYearsWithoutCalendarFrom(year: Int) {
+    var inputYear: Int = year
+    var numberOfLeapYearsFinded: Int = 0
+    while numberOfLeapYearsFinded < 30 {
+        if (inputYear % 4 == 0) && (inputYear % 100 != 0) || (inputYear % 4 == 0) && (inputYear % 100 == 0) && (inputYear % 400 == 0) {
+            numberOfLeapYearsFinded += 1
+            print("\(numberOfLeapYearsFinded)) - LeapYear: \(inputYear)")
+        }
+        inputYear += 1
+    }
+}
+
+// MARK: SOLUTION WITH CALENDAR
+private func getNextThirtyLeapYearsWithCalendarFrom(year: Int) {
+    var inputYear: Int = year
+    var numberOfLeapYearsFinded: Int = 0
+    while numberOfLeapYearsFinded < 30 {
+        if let date = Calendar.current.date(from: DateComponents(year: inputYear)), let numDays = Calendar.current.range(of: .day, in: .year, for: date)?.count, numDays > 365 {
+            numberOfLeapYearsFinded += 1
+            print("\(numberOfLeapYearsFinded)) - LeapYear: \(inputYear)")
+        }
+        inputYear += 1
+    }
+}
+
+
+
+
+
+getNextThirtyLeapYearsWithCalendarFrom(year: 1900)
+getNextThirtyLeapYearsWithoutCalendarFrom(year: 1900)
