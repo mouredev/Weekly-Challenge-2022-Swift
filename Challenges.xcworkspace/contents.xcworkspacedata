@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:WeeklyChallenge05.playground">
+   </FileRef>
+   <FileRef
+      location = "group:WeeklyChallenge04.playground">
+   </FileRef>
+   <FileRef
+      location = "group:WeeklyChallenge00.playground">
+   </FileRef>
+   <FileRef
+      location = "group:WeeklyChallenge03.playground">
+   </FileRef>
+   <FileRef
+      location = "group:WeeklyChallenge02.playground">
+   </FileRef>
+   <FileRef
+      location = "group:WeeklyChallenge01.playground">
+   </FileRef>
+</Workspace>
