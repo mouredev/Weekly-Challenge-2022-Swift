@@ -70,6 +70,6 @@ func area(poligono: Polygon) -> Double {
     return poligono.area()
 }
 
-area(poligono: Triangulo(base: 2, altura: 5))
-area(poligono: Rectangulo(ancho: 45, alto: 7) )
-area(poligono: Cuadrado(lado: 4))
+//area(poligono: Triangulo(base: 2, altura: 5))
+//area(poligono: Rectangulo(ancho: 45, alto: 7) )
+//area(poligono: Cuadrado(lado: 4))
