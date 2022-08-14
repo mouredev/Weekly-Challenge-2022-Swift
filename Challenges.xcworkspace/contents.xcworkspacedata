@@ -2,6 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:WeeklyChallenge17.playground">
+   </FileRef>
+   <FileRef
+      location = "group:WeeklyChallenge16.playground">
+   </FileRef>
+   <FileRef
+      location = "group:WeeklyChallenge15.playground">
+   </FileRef>
+   <FileRef
       location = "group:WeeklyChallenge14.playground">
    </FileRef>
    <FileRef
