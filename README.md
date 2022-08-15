@@ -2,6 +2,8 @@
 ## Proyecto de retos semanales de la comunidad **[MoureDev](https://moure.dev)** para practicar [Swift](https://github.com/apple/swift).
 ### Todos nuestros retos en **[retosdeprogramacion.com/semanales2022](https://retosdeprogramacion.com/semanales2022)**
 
+<a href="https://youtu.be/8HuQXzJl_1I"><img src="http://i3.ytimg.com/vi/8HuQXzJl_1I/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
+
 Si quieres realizar los retos de programación en otro lenguaje, utiliza el repositorio de retos semanales principal.
 
 [![GitHub Kotlin](https://img.shields.io/github/stars/mouredev/Weekly-Challenge-2022-Kotlin?label=Repositorio%20retos%20Semanales&style=social)](https://github.com/mouredev/Weekly-Challenge-2022-Kotlin)
@@ -28,42 +30,43 @@ Tienes toda la información extendida sobre los retos de programación semanales
 
 ## Listado de retos
 
-### [Aquí](https://github.com/mouredev/Weekly-Challenge-2022-Swift/tree/main/WeeklyChallenge2022.playground/Pages) tienes un fichero con el enunciado y el código por cada reto
+### [Aquí](https://github.com/mouredev/Weekly-Challenge-2022-Swift/tree/main/WeeklyChallenge2022.playground/Pages) tienes un fichero con el enunciado y el código para cada reto
 
-* **#0** - 27/12/21 - `EL FAMOSO "FIZZ BUZZ"`
-* **#1** - 03/01/22 - `¿ES UN ANAGRAMA?`
-* **#2** - 10/01/22 - `LA SUCESIÓN DE FIBONACCI`
-* **#3** - 17/01/22 - `¿ES UN NÚMERO PRIMO?`
-* **#4** - 24/01/22 - `ÁREA DE UN POLÍGONO`
-* **#5** - 01/02/22 - `ASPECT RATIO DE UNA IMAGEN`
-* **#6** - 07/02/22 - `INVIRTIENDO CADENAS`
-* **#7** - 14/02/22 - `CONTANDO PALABRAS`
-* **#8** - 18/02/22 - `DECIMAL A BINARIO`
-* **#9** - 02/03/22 - `CÓDIGO MORSE`
-* **#10** - 07/03/22 - `EXPRESIONES EQUILIBRADAS`
-* **#11** - 14/03/22 - `ELIMINANDO CARACTERES`
-* **#12** - 21/03/22 - `¿ES UN PALÍNDROMO?`
-* **#13** - 28/03/22 - `FACTORIAL RECURSIVO`
-* **#14** - 04/04/22 - `¿ES UN NÚMERO DE ARMSTRONG?`
-* **#15** - 11/04/22 - `¿CUÁNTOS DÍAS?`
-* **#16** - 18/04/22 - `EN MAYÚSCULA`
-* **#17** - 25/04/22 - `LA CARRERA DE OBSTÁCULOS`
-* **#18** - 02/05/22 - `TRES EN RAYA`
-* **#19** - 09/05/22 - `CONVERSOR TIEMPO`
-* **#20** - 16/05/22 - `PARANDO EL TIEMPO`
-* **#21** - 23/05/22 - `CALCULADORA .TXT` 
-* **#22** - 01/06/22 - `CONJUNTOS` 
-* **#23** - 07/06/22 - `MÁXIMO COMÚN DIVISOR Y MÍNIMO COMÚN MÚLTIPLO` 
-* **#24** - 13/06/22 - `ITERATION MASTER` 
-* **#25** - 20/06/22 - `PIEDRA, PAPEL, TIJERA` 
-* **#26** - 27/06/22 - `CUADRADO Y TRIÁNGULO 2D` 
-* **#27** - 07/07/22 - `VECTORES ORTOGONALES`
-* **#28** - 11/07/22 - `MÁQUINA EXPENDEDORA`
-* **#29** - 18/07/22 - `ORDENA LA LISTA`
-* **#30** - 26/07/22 - `MARCO DE PALABRAS`
-* **#31** - 01/08/22 - `AÑOS BISIESTOS`
-* **#32** - 08/08/22 - `EL SEGUNDO`
-* **#33** - 15/08/22 - `Publicación nuevo reto...`
+* **#0** - 27/12/21 - [`EL FAMOSO "FIZZ BUZZ"`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge0.xcplaygroundpage/Contents.swift)
+* **#1** - 03/01/22 - [`¿ES UN ANAGRAMA?`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge1.xcplaygroundpage/Contents.swift)
+* **#2** - 10/01/22 - [`LA SUCESIÓN DE FIBONACCI`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge2.xcplaygroundpage/Contents.swift)
+* **#3** - 17/01/22 - [`¿ES UN NÚMERO PRIMO?`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge3.xcplaygroundpage/Contents.swift)
+* **#4** - 24/01/22 - [`ÁREA DE UN POLÍGONO`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge4.xcplaygroundpage/Contents.swift)
+* **#5** - 01/02/22 - [`ASPECT RATIO DE UNA IMAGEN`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge5.xcplaygroundpage/Contents.swift)
+* **#6** - 07/02/22 - [`INVIRTIENDO CADENAS`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge6.xcplaygroundpage/Contents.swift)
+* **#7** - 14/02/22 - [`CONTANDO PALABRAS`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge7.xcplaygroundpage/Contents.swift)
+* **#8** - 18/02/22 - [`DECIMAL A BINARIO`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge8.xcplaygroundpage/Contents.swift)
+* **#9** - 02/03/22 - [`CÓDIGO MORSE`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge9.xcplaygroundpage/Contents.swift)
+* **#10** - 07/03/22 - [`EXPRESIONES EQUILIBRADAS`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge10.xcplaygroundpage/Contents.swift)
+* **#11** - 14/03/22 - [`ELIMINANDO CARACTERES`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge11.xcplaygroundpage/Contents.swift)
+* **#12** - 21/03/22 - [`¿ES UN PALÍNDROMO?`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge12.xcplaygroundpage/Contents.swift)
+* **#13** - 28/03/22 - [`FACTORIAL RECURSIVO`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge13.xcplaygroundpage/Contents.swift)
+* **#14** - 04/04/22 - [`¿ES UN NÚMERO DE ARMSTRONG?`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge14.xcplaygroundpage/Contents.swift)
+* **#15** - 11/04/22 - [`¿CUÁNTOS DÍAS?`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge15.xcplaygroundpage/Contents.swift)
+* **#16** - 18/04/22 - [`EN MAYÚSCULA`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge16.xcplaygroundpage/Contents.swift)
+* **#17** - 25/04/22 - [`LA CARRERA DE OBSTÁCULOS`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge17.xcplaygroundpage/Contents.swift)
+* **#18** - 02/05/22 - [`TRES EN RAYA`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge18.xcplaygroundpage/Contents.swift)
+* **#19** - 09/05/22 - [`CONVERSOR TIEMPO`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge19.xcplaygroundpage/Contents.swift)
+* **#20** - 16/05/22 - [`PARANDO EL TIEMPO`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge20.xcplaygroundpage/Contents.swift)
+* **#21** - 23/05/22 - [`CALCULADORA .TXT` ](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge21.xcplaygroundpage/Contents.swift)
+* **#22** - 01/06/22 - [`CONJUNTOS` ](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge22.xcplaygroundpage/Contents.swift)
+* **#23** - 07/06/22 - [`MÁXIMO COMÚN DIVISOR Y MÍNIMO COMÚN MÚLTIPLO`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge23.xcplaygroundpage/Contents.swift) 
+* **#24** - 13/06/22 - [`ITERATION MASTER` ](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge24.xcplaygroundpage/Contents.swift)
+* **#25** - 20/06/22 - [`PIEDRA, PAPEL, TIJERA` ](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge25.xcplaygroundpage/Contents.swift)
+* **#26** - 27/06/22 - [`CUADRADO Y TRIÁNGULO 2D` ](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge26.xcplaygroundpage/Contents.swift)
+* **#27** - 07/07/22 - [`VECTORES ORTOGONALES`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge27.xcplaygroundpage/Contents.swift)
+* **#28** - 11/07/22 - [`MÁQUINA EXPENDEDORA`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge28.xcplaygroundpage/Contents.swift)
+* **#29** - 18/07/22 - [`ORDENA LA LISTA`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge29.xcplaygroundpage/Contents.swift)
+* **#30** - 26/07/22 - [`MARCO DE PALABRAS`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge30.xcplaygroundpage/Contents.swift)
+* **#31** - 01/08/22 - [`AÑOS BISIESTOS`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge31.xcplaygroundpage/Contents.swift)
+* **#32** - 08/08/22 - [`EL SEGUNDO`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge32.xcplaygroundpage/Contents.swift)
+* **#33** - 15/08/22 - [`CICLO SEXAGENARIO CHINO`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge33.xcplaygroundpage/Contents.swift)
+* **#34** - 22/08/22 - `Publicación nuevo reto...`
 
 <a href="https://youtu.be/ydH_B5KuqGs"><img src="http://i3.ytimg.com/vi/ydH_B5KuqGs/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 
