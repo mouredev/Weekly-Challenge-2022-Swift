@@ -15,13 +15,36 @@ import Foundation
  *
  */
 
-func segundoMayor(listado: [Double])->Double {
-    let listadoOrdenado = listado.sorted(by: >)
-    return listadoOrdenado[1]
+
+
+func segundoMayor(listado: [Int])->Int? {
+    
+    var listaOrdenada : [Int] = []
+    
+    for number in listado {
+        var found = false
+        for (index, numOrdenado) in listaOrdenada.enumerated() {
+            if number >= numOrdenado {
+                if number != numOrdenado {
+                    listaOrdenada.insert(number, at: index)
+                }
+                found = true
+                break
+            }
+        }
+        if !found {
+            listaOrdenada.append(number)
+        }
+    }
+    
+    return listaOrdenada.count >= 2 ? listaOrdenada[1] : nil
+//    let listadoOrdenado = listado.sorted(by: >)
+//
+//    return listadoOrdenado[1]
     
 }
 
 
-let numeros = [34,56,123.41,789.834,1243.12,675.756,12243.545]
+let numeros = [34,56,123,789,1243,675,12243, 12243]
 
 segundoMayor(listado: numeros)
