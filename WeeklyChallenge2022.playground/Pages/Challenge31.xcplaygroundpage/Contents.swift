@@ -18,13 +18,21 @@ import Foundation
  *
  */
 
-func getNextThirtyLeapYears(year: Int) {
-    (year + 1 ... year + 120).forEach {
-        if($0 % 4 == 0) {
-            print($0)
+func thirtyLeapYears(year: Int) {
+
+    var currentYear = year + 1
+    var yearCount = 0
+
+    while yearCount < 30 {
+
+        if currentYear % 4 == 0 && (currentYear % 100 != 0 || currentYear % 400 == 0) {
+            print(currentYear)
+            yearCount += 1
         }
+
+        currentYear += 1
     }
 }
 
-getNextThirtyLeapYears(year: 2022)
-getNextThirtyLeapYears(year: -2022)
+thirtyLeapYears(year: 1999)
+thirtyLeapYears(year: -500)
