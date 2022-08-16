@@ -22,3 +22,19 @@ import Foundation
  *
  */
 
+let yinYang = ["Yang", "Yin"]  //los yin son los impares, de ahí que cambie el orden
+let heavenlyStems = ["Metal", "Agua", "Madera", "Fuego", "Tierra"]  //orden correcto
+let eartlyBranches = [  "Mono", "Gallo", "Perro", "Cerdo", "Rata", "Toro", "Tigre", "Conejo", "Dragón", "Serpiente", "Caballo", "Oveja"]  //orden correcto
+
+
+func calculateChineseSexagenaryCicleByYear(year: Int) -> String {
+    
+    return yinYang[year%2] + " " + heavenlyStems[(year/2)%5] + " " + eartlyBranches[year%12]
+}
+
+//Comprobación desde 1984 a 2043
+for i in 1984...2043
+{
+    print(String(i) + ": " + calculateChineseSexagenaryCicleByYear(year: i))
+}
+
