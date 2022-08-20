@@ -15,26 +15,34 @@ import Foundation
  *
  */
 
-func getTheBigestTwo(numbers: [Int]) -> Int? {
-    if(numbers.count < 2) {
-        print("¡El listado debe contener al menos 2 números!")
-        return nil
-    } else {
-        var biggest = numbers[0]
-        var result = numbers[0]
-        numbers.forEach {
-            if($0 > biggest) {
-                result = biggest
-                biggest = $0
+func findSecondGreater(numbers: [Int]) -> Int? {
+
+    var sortedNumbers: [Int] = []
+
+    for number in numbers {
+
+        var found = false
+
+        for (index, sortedNumber) in sortedNumbers.enumerated() {
+
+            if number >= sortedNumber {
+                if number != sortedNumber {
+                    sortedNumbers.insert(number, at: index)
+                }
+                found = true
+                break
             }
         }
-        return result
+
+        if !found {
+            sortedNumbers.append(number)
+        }
     }
+
+    return sortedNumbers.count >= 2 ? sortedNumbers[1] : nil
 }
 
-print(getTheBigestTwo(numbers: []) ?? "")
-print(getTheBigestTwo(numbers: [4]) ?? "")
-print(getTheBigestTwo(numbers: [4, 4]) ?? "")
-print(getTheBigestTwo(numbers: [4, 6, 1, 8, 2]) ?? "")
-
-
+print(findSecondGreater(numbers: [4, 6, 1, 8, 2]) ?? "No se ha encontrado un valor")
+print(findSecondGreater(numbers: [4, 6, 8, 8, 6]) ?? "No se ha encontrado un valor")
+print(findSecondGreater(numbers: [4, 4]) ?? "No se ha encontrado un valor")
+print(findSecondGreater(numbers: []) ?? "No se ha encontrado un valor")
