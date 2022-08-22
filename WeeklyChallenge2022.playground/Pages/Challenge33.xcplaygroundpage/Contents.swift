@@ -22,3 +22,43 @@ import Foundation
  *
  */
 
+enum Animal: Int, CaseIterable {
+    case rat = 0
+    case ox = 1
+    case tiger = 2
+    case rabbit = 3
+    case dragon = 4
+    case snake = 5
+    case horse = 6
+    case sheep = 7
+    case monkey = 8
+    case roaster = 9
+    case dog = 10
+    case pig = 11
+}
+
+enum Element: Int, CaseIterable {
+    case wood = 0
+    case fire = 2
+    case earth = 4
+    case metal = 6
+    case water = 8
+}
+
+func getAnimalBy(sexagenarianCycleIndex: Int) -> Animal {
+    return Animal.allCases.first{ $0.rawValue == (sexagenarianCycleIndex % Animal.allCases.count) }!
+}
+
+func getElementBy(sexagenarianCycleIndex: Int) -> Element {
+    return Element.allCases.first{ $0.rawValue == (sexagenarianCycleIndex % (Element.allCases.count * 2)) || $0.rawValue + 1 == (sexagenarianCycleIndex % (Element.allCases.count * 2)) }!
+}
+
+func getChineseZodiacSymbolsBy(year: Int) -> String {
+    let sexagenarianCycleIndex = abs(year - 1924)
+    return "Para el año \(year) el animal es \(getAnimalBy(sexagenarianCycleIndex: sexagenarianCycleIndex)) y el elemento es \(getElementBy(sexagenarianCycleIndex: sexagenarianCycleIndex))"
+}
+
+print(getChineseZodiacSymbolsBy(year: 1924))
+print(getChineseZodiacSymbolsBy(year: 1940))
+print(getChineseZodiacSymbolsBy(year: 1969))
+print(getChineseZodiacSymbolsBy(year: 1983))
