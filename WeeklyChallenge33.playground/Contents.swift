@@ -105,7 +105,7 @@ func sexagenaryCycle(year: Int) -> String {
     var result : SexagenaryCycle = SexagenaryCycle(zodiacSign: ZodiacSign.rat, wuXing: WuXing.wood)
     
     // Primero determinar posición en el ciclo:
-    // Ejemplo 1967:
+    // Ejemplo 1980:
     // 1980 - 3 = 1977
     // 1977 / 60 = 32
     // abs (1977 ( 60 * 32)) = 57
@@ -113,6 +113,8 @@ func sexagenaryCycle(year: Int) -> String {
     var position = year - 3
     let remainder: Int  = position / 60
     position = abs(position - ( 60 * remainder))
+    
+    // Usar dos arrays, ir avanzando animales dropeando el primero e insertando al final. Avanzar elementos cuando el número sea par mod 2 ==0
     
     for i in 1...position {
         
@@ -131,7 +133,7 @@ func sexagenaryCycle(year: Int) -> String {
 
     }
     
-    // Usar dos arrays, ir avanzando animales dropeando el primero e insertando al final. Avanzar elementos cuando el número sea par mod 2 ==0
+   
 
     return "El signo sexagenario de \(year) es: \(result.zodiacSign.description) | \(result.wuXing.description)"
 }
