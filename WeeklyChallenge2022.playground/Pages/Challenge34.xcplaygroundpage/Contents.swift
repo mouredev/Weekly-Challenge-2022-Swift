@@ -15,3 +15,35 @@ import Foundation
  * - Tienes toda la información sobre los retos semanales en https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+/*func losNumerosPerdidos(numbers: Array)->Array {
+    return numbers
+}
+losNumerosPerdidos(numbers: [1,2,3,5])*/
+
+func losNumerosPerdidos(myArray: Array<Int>)-> Bool {
+
+    /*let myArray = [1,2,5,10,14,14]*/
+    var i=0
+    var k=0
+    var nuevoArray = [Int]()
+    
+
+    if myArray.sorted() != myArray{
+        print("Error, los numeros deben de estar ordenados")
+        return false
+    }
+    while i < myArray.count-1{
+        if myArray[i] == myArray[i+1]{
+        print("Error hay un numero repetido")
+        return false
+        }
+    i=i+1
+    }
+    
+    for i in myArray.min()!...myArray.max()!{
+            print(i)
+    }
+    return true
+}
+print(losNumerosPerdidos(myArray: [3,5,6,10]))
