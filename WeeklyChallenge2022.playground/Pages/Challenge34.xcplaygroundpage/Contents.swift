@@ -16,32 +16,30 @@ import Foundation
  *
  */
 
-//¿Estan ordenados?
-func ordenado(myArray:Array<Int>)->Bool{
-    if myArray.sorted() != myArray{
-        print("Error, los numeros deben de estar ordenados")
+func losNumerosPerdidos(firstArray: Array<Int>)->Bool{
+  if firstArray.sorted() != firstArray{
+        print("❌ Error, los numeros deben de estar ordenados de Menor a Mayor ❌")
         return false
     }
-    return true
-}
-
-//¿Hay elementos repetidos?
-func repetidos(myArray:Array<Int>)->Bool{
-    if myArray.sorted() != myArray{
-        print("Error, los numeros deben de estar ordenados")
+var i = 0
+while i < (firstArray.count-1) {
+    if firstArray[i] == firstArray[i+1] {
+        print("❌ Error, los numeros no deben de repetirse ❌")
         return false
     }
-    return true
+    i=i+1
 }
-
-
-var firstArray = [2,5,8]
 var secondArray: [Int] = []
-
-
 for i in firstArray.min()!...firstArray.max()!{
     secondArray.append(i)}
-
 secondArray.removeAll(where: {firstArray.contains($0)})
-print(firstArray)
-print(secondArray)
+print("✅ Los números perdidos para el array \(firstArray) son \(secondArray) ✅")
+return true
+}
+
+losNumerosPerdidos(firstArray: [1,2,5])
+losNumerosPerdidos(firstArray: [3,8,15])
+losNumerosPerdidos(firstArray: [-8,1,5])
+losNumerosPerdidos(firstArray: [4,6,6,10])
+losNumerosPerdidos(firstArray: [1,1,5])
+losNumerosPerdidos(firstArray: [10,2,5])
