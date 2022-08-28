@@ -66,7 +66,8 @@ Tienes toda la información extendida sobre los retos de programación semanales
 * **#31** - 01/08/22 - [`AÑOS BISIESTOS`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge31.xcplaygroundpage/Contents.swift)
 * **#32** - 08/08/22 - [`EL SEGUNDO`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge32.xcplaygroundpage/Contents.swift)
 * **#33** - 15/08/22 - [`CICLO SEXAGENARIO CHINO`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge33.xcplaygroundpage/Contents.swift)
-* **#34** - 22/08/22 - `Publicación nuevo reto...`
+* **#34** - 22/08/22 - [`LOS NÚMEROS PERDIDOS`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge34.xcplaygroundpage/Contents.swift)
+* **#35** - 29/08/22 - `Publicación nuevo reto...`
 
 <a href="https://youtu.be/ydH_B5KuqGs"><img src="http://i3.ytimg.com/vi/ydH_B5KuqGs/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 
@@ -75,6 +76,10 @@ Tienes toda la información extendida sobre los retos de programación semanales
 <a href="https://youtu.be/Y_Gej0lbfD0"><img src="http://i3.ytimg.com/vi/Y_Gej0lbfD0/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 
 *Corección retos del 5 al 10 en vídeo*
+
+<a href="https://youtu.be/YPdhP60Tt08"><img src="http://i3.ytimg.com/vi/YPdhP60Tt08/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
+
+*Corección retos del 11 al 20 en vídeo*
 
 ### ¿Cómo puedo participar?
 
@@ -90,6 +95,10 @@ Tienes toda la información extendida sobre los retos de programación semanales
 	*Si no dispones de un editor de código como Xcode, puedes usar un playground online ([http://online.swiftplayground.run/](http://online.swiftplayground.run/)) para probar tu código.*
 	
 	*Si utilizas un editor como Xcode, puedes ejecutar el código pulsando el símbolo "play ►" en el lateral.*
+
+#### Puedes apoyar mi trabajo haciendo "☆ Star" en el repo o nominarme a "GitHub Star". ¡Gracias!
+
+[![GitHub Star](https://img.shields.io/badge/GitHub-Nominar_a_star-yellow?style=for-the-badge&logo=github&logoColor=white&labelColor=101010)](https://stars.github.com/nominate/)
 
 Si quieres unirte a nuestra comunidad de desarrollo, aprender programación de Apps, mejorar tus habilidades y ayudar a la continuidad del proyecto, puedes encontrarnos en:
 
