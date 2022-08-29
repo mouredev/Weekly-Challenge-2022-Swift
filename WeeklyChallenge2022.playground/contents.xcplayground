@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <playground version='6.0' target-platform='ios' buildActiveScheme='true' importAppTypes='true'>
     <pages>
-        <page name='Readme'/>
         <page name='Challenge0'/>
+        <page name='Readme'/>
         <page name='Challenge1'/>
         <page name='Challenge2'/>
         <page name='Challenge3'/>
@@ -16,26 +16,5 @@
         <page name='Challenge11'/>
         <page name='Challenge12'/>
         <page name='Challenge13'/>
-        <page name='Challenge14'/>
-        <page name='Challenge15'/>
-        <page name='Challenge16'/>
-        <page name='Challenge17'/>
-        <page name='Challenge18'/>
-        <page name='Challenge19'/>
-        <page name='Challenge20'/>
-        <page name='Challenge21'/>
-        <page name='Challenge22'/>
-        <page name='Challenge23'/>
-        <page name='Challenge24'/>
-        <page name='Challenge25'/>
-        <page name='Challenge26'/>
-        <page name='Challenge27'/>
-        <page name='Challenge28'/>
-        <page name='Challenge29'/>
-        <page name='Challenge30'/>
-        <page name='Challenge31'/>
-        <page name='Challenge32'/>
-        <page name='Challenge33'/>
-        <page name='Challenge34'/>
     </pages>
 </playground>
