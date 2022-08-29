@@ -42,4 +42,5 @@ cicloSexagenario(year: 1924)
 cicloSexagenario(year: 2024)
 cicloSexagenario(year: 1000)
 cicloSexagenario(year: 500)
+
 //Solucionado
