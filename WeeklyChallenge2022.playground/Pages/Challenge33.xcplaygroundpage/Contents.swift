@@ -22,26 +22,24 @@ import Foundation
  *
  */
 
-private func chineseZodiac(year: Int) -> String {
+let zodiaco=["rata 🐀", "buey 🐂", "tigre 🐅", "conejo 🐇", "dragón 🐉", "serpiente 🐍","caballo 🐎", "oveja 🐑", "mono 🐒", "gallo 🐓", "perro 🦮", "cerdo 🐖"]
+let elemento=["madera 🪵", "fuego 🔥", "tierra 🪨", "metal ㊎", "agua 💧" ]
 
-    let elements = ["madera", "fuego", "tierra", "metal", "agua"]
-    let animals = ["rata", "buey", "tigre", "conejo", "dragón", "serpiente", "caballo", "oveja", "mono", "gallo", "perro", "cerdo"]
-
+func cicloSexagenario (year: Int)->Bool {
     if year < 604 {
-        return "El ciclo sexagenario comenzó en el año 604."
+    print ("El ciclo sexagenario se adoptó oficialmente en el año 604, introduce un año mayor.❌ ")
+    return false
+    }else{
+        let newYear = ((year-4) % 60)
+        let newZodiaco = ((newYear) % 12)
+        let newElemento = (((newYear) % 10)/2)
+        print ("En el ciclo sexagenario chino, para el año \(year), corresponde el Signo \(zodiaco[newZodiaco]) y el elemento \(elemento[newElemento])")
     }
-
-    let sexagenaryYear = (year - 4) % 60
-    let element = elements[(sexagenaryYear % 10) / 2]
-    let animal = animals[sexagenaryYear % 12]
-
-    return "\(year): \(element) \(animal)"
+    return true
 }
-
-print(chineseZodiac(year: 1924))
-print(chineseZodiac(year: 1946))
-print(chineseZodiac(year: 1984))
-print(chineseZodiac(year:604))
-print(chineseZodiac(year:603))
-print(chineseZodiac(year: 1987))
-print(chineseZodiac(year: 2022))
+cicloSexagenario(year: 1980)
+cicloSexagenario(year: 1924)
+cicloSexagenario(year: 2024)
+cicloSexagenario(year: 1000)
+cicloSexagenario(year: 500)
+//Solucionado
