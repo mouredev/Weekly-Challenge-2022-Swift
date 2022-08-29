@@ -43,3 +43,6 @@ losNumerosPerdidos(firstArray: [-8,1,5])
 losNumerosPerdidos(firstArray: [4,6,6,10])
 losNumerosPerdidos(firstArray: [1,1,5])
 losNumerosPerdidos(firstArray: [10,2,5])
+
+
+//Solucionado
