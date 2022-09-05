@@ -16,50 +16,58 @@ import Foundation
  *
  */
 
-enum WrongArrayError: Error {
-    case empty
-    case nonUniqueValues
-    case unsorted
-}
-
-func getMissedValues(numbers: Array<Int>) throws -> Array<Int> {
-    var missedValues: Array<Int> = []
-    if(numbers.isEmpty) {
-        throw WrongArrayError.empty
-    }
-    var index = 0
-    try numbers.sorted().forEach { number in
-        if(number != numbers[index]) {
-            throw WrongArrayError.unsorted
-        }
-        index += 1
-    }
-    if(Array(Set(numbers)).count != numbers.count) {
-        throw WrongArrayError.nonUniqueValues
-    }
-    (0...(numbers.last! - numbers.first!)).forEach { index in
-        if(!numbers.contains(index + numbers.first!)) {
-            missedValues.append(index + numbers.first!)
+enum LostNumbers: Error {
+    case numbersError
+    
+    var description: String {
+        switch self {
+        case .numbersError:
+            return "El listado no puede poseer repetidos ni estar desordenado, y debe tener mínimo 2 valores."
         }
     }
-    return missedValues
 }
 
-func printMissedValues(numbers: Array<Int>) {
-    do {
-        print(try getMissedValues(numbers: numbers))
-    } catch WrongArrayError.unsorted {
-        print("El array no es válido porque los elementos no están correctamente ordenados")
-    } catch WrongArrayError.nonUniqueValues {
-        print("El array no es válido porque tiene elementos repetidos")
-    } catch {
-        print("El array está vacío")
+func lostNumbers(numbers: [Int]) throws -> [Int] {
+
+    // Errors
+    if numbers.count < 2 {
+        throw LostNumbers.numbersError
     }
+    
+    let first = numbers.first!
+    let last = numbers.last!
+    let asc = first < last
+    
+    var prev: Int?
+    try numbers.forEach { number in
+        if let prev = prev {
+            if asc ? number <= prev : number >= prev {
+                throw LostNumbers.numbersError
+            }
+        }
+        prev = number
+    }
+
+    // Lost
+    var lost: [Int] = []
+
+    ((asc ? first : last)...(asc ? last : first)).forEach { number in
+        if !numbers.contains(number) {
+            lost.append(number)
+        }
+    }
+
+    return lost
 }
 
-printMissedValues(numbers: [5,5,6,7,8])
-printMissedValues(numbers: [8,7,6,5])
-printMissedValues(numbers: [])
-printMissedValues(numbers: [5])
-printMissedValues(numbers: [5,6,7,8])
-printMissedValues(numbers: [5,8])
+do {
+    print(try lostNumbers(numbers: [1, 3, 5]))
+    print(try lostNumbers(numbers: [5, 3, 1]))
+    print(try lostNumbers(numbers: [5, 1]))
+    print(try lostNumbers(numbers: [-5, 1]))
+    //print(try lostNumbers(numbers: [1, 3, 3, 5]))
+    //print(try lostNumbers(numbers: [5, 7, 1]))
+    print(try lostNumbers(numbers: [10, 7, 7, 1]))
+} catch LostNumbers.numbersError {
+    print(LostNumbers.numbersError.description)
+}
