@@ -68,7 +68,8 @@ Tienes toda la información extendida sobre los retos de programación semanales
 * **#33** - 15/08/22 - [`CICLO SEXAGENARIO CHINO`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge33.xcplaygroundpage/Contents.swift)
 * **#34** - 22/08/22 - [`LOS NÚMEROS PERDIDOS`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge34.xcplaygroundpage/Contents.swift)
 * **#35** - 29/08/22 - [`BATALLA POKÉMON`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge35.xcplaygroundpage/Contents.swift)
-* **#36** - 29/08/22 - `Publicación nuevo reto...`
+* **#36** - 06/09/22 - [`LOS ANILLOS DE PODER`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge36.xcplaygroundpage/Contents.swift)
+* **#37** - 14/09/22 - `Publicación nuevo reto...`
 
 <a href="https://youtu.be/ydH_B5KuqGs"><img src="http://i3.ytimg.com/vi/ydH_B5KuqGs/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 
