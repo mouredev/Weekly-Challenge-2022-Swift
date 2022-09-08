@@ -3,7 +3,7 @@ import Foundation
 /*
  * Reto #36
  * LOS ANILLOS DE PODER
- * Fecha publicación enunciado: 06/09/22
+ * Fecha publicación enunciado: 06/08/22
  * Fecha publicación resolución: 14/09/22
  * Dificultad: MEDIA
  *
@@ -26,3 +26,38 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+var bond_race = ["Pelosos","Sureños buenos","Enanos","Númenóreanos","Elfos"]
+var bond_str = [1,2,3,4,5]
+var malv_race = ["Sureños malos","Orcos","Goblins","Huargos","Trolls"]
+var malv_str = [2,2,2,3,5]
+
+var arm_bond = ["Pelosos","Pelosos","Pelosos","Pelosos","Elfos"]
+var arm_malv = ["Orcos", "Goblins","Trolls"]
+
+var arm_b_tot = 0
+var arm_m_tot = 0
+
+for bond in arm_bond{
+    if let i = bond_race.firstIndex(of: bond){
+        arm_b_tot += bond_str[i]
+    }
+}
+
+for malv in arm_malv{
+    if let i = malv_race.firstIndex(of: malv){
+        arm_m_tot += malv_str[i]
+    }
+}
+print("Razas bondadosas: \(arm_b_tot)")
+print("Razas malvadas: \(arm_m_tot)")
+if (arm_b_tot > arm_m_tot){
+    print("Ganador Razas bondadosas")
+}
+    else if (arm_b_tot < arm_m_tot){
+        print("Ganador Razas malvadas")
+    }
+    else{
+        print("Empate")
+    }
+
