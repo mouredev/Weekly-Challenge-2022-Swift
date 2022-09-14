@@ -25,48 +25,48 @@ import Foundation
  *
  */
 
-enum PokemonType {
-    case electric
-    case fire
-    case plant
-    case water
-    
-    func getEffectivity(opponent: PokemonType) -> Double {
-        switch(self) {
-        case .electric: switch(opponent) {
-            case .electric: return 0.5
-            case .fire: return 1.0
-            case .plant: return 0.5
-            case .water: return 2.0
-            }
-        case .fire: switch(opponent) {
-            case .electric: return 1.0
-            case .fire: return 0.5
-            case .plant: return 2.0
-            case .water: return 0.5
-            }
-        case .plant: switch(opponent) {
-            case .electric: return 1.0
-            case .fire: return 0.5
-            case .plant: return 0.5
-            case .water: return 2.0
-            }
-        case .water: switch(opponent) {
-            case .electric: return 1.0
-            case .fire: return 2.0
-            case .plant: return 0.5
-            case .water: return 0.5
-            }
-        }
-    }
+enum PokemonType: String {
+    case water = "Agua"
+    case fire = "Fuego"
+    case grass = "Planta"
+    case electric = "Eléctrico"
 }
 
-func getAttackDamage(attacker: PokemonType, defender: PokemonType, attack: Int, defence: Int) -> String {
-    if(attack < 1 || attack > 100) || (defence < 1 || defence > 100) {
-        return (attack < 1 || attack > 100) ? "El ataque no tiene un valor correcto" : "La defensa no tiene un valor correcto"
+struct PokemonChart {
+    let effective: PokemonType
+    let notEffective: PokemonType
+}
+
+func battle(attacker: PokemonType, defender: PokemonType, attack: Int, defense: Int) -> Double? {
+
+    if attack <= 0 || attack > 100 || defense <= 0 || defense > 100 {
+        print("El ataque o la defensa contiene un valor incorrecto")
+        return nil
+    }
+
+    let typeChart: [PokemonType:PokemonChart] = [
+        .water:PokemonChart(effective: .fire, notEffective: .grass),
+        .fire:PokemonChart(effective: .grass, notEffective: .water),
+        .grass:PokemonChart(effective: .water, notEffective: .fire),
+        .electric:PokemonChart(effective: .water, notEffective: .grass)]
+
+
+    var effectivity = 1.0
+    if attacker == defender || typeChart[attacker]!.notEffective  == defender {
+        effectivity = 0.5
+        print("No es muy efectivo")
+    } else if typeChart[attacker]!.effective  == defender {
+        effectivity = 2.0
+        print("Es súper efectivo")
     } else {
-        return "El daño de la pelea es \(50.0 * (Double(attack) / Double(defence)) * attacker.getEffectivity(opponent: defender))"
+        print("Es neutro")
     }
+
+    return 50 * Double(attack) / Double(defense) * effectivity
 }
 
-print(getAttackDamage(attacker: PokemonType.fire, defender: PokemonType.plant, attack: 30, defence: 60))
+print(battle(attacker: .water, defender: .fire, attack: 50, defense: 30) ?? "Error")
+print(battle(attacker: .water, defender: .fire, attack: 101, defense: -10) ?? "Error")
+print(battle(attacker: .fire, defender: .water, attack: 50, defense: 30) ?? "Error")
+print(battle(attacker: .fire, defender: .fire, attack: 50, defense: 30) ?? "Error")
+print(battle(attacker: .grass, defender: .electric, attack: 30, defense: 50) ?? "Error")
