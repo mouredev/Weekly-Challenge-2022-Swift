@@ -26,3 +26,41 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+enum BattleResult {
+    case draw, evil, good
+}
+
+enum GoodRace: Int {
+    case Pelosos = 1
+    case SureñosBuenos = 2
+    case Enanos = 3
+    case Numenoreanos = 4
+    case Elfos = 5
+    
+    func strength() -> Int {
+        return self.rawValue
+    }
+}
+
+enum EvilRace {
+    case SureñosMalos, Orcos, Goblins, Huargos, Trolls
+    
+    func strength() -> Int {
+        switch(self) {
+        case .SureñosMalos, .Orcos, .Goblins: return 2
+        case .Huargos: return 3
+        case .Trolls: return 5
+        }
+    }
+}
+
+func battle(goodArmy: [GoodRace : Int], evilArmy: [EvilRace : Int]) -> BattleResult {
+    let goodStrength = goodArmy.map({ $0.key.strength() * $0.value }).reduce(0, +)
+    let evilStrength = evilArmy.map({ $0.key.strength() * $0.value }).reduce(0, +)
+    return goodStrength == evilStrength ? .draw : (goodStrength > evilStrength ? .good : .evil)
+}
+
+print(battle(goodArmy: [.Pelosos: 1], evilArmy: [.Orcos:1]))
+print(battle(goodArmy: [.Pelosos: 2], evilArmy: [.Orcos:1]))
+print(battle(goodArmy: [.Pelosos: 3], evilArmy: [.Orcos:1]))
