@@ -19,9 +19,3 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
-
-for index in 1...100 {
-    let divisibleByThree = index % 3 == 0
-    let divisibleByFive = index % 5 == 0
-    print("\((divisibleByThree && divisibleByFive) ? "fizzbuzz" : (divisibleByThree ? "fizz" : (divisibleByFive ? "buzz" : index.description)))")
-}

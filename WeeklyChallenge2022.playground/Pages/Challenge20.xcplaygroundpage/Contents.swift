@@ -18,18 +18,3 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
-
-func asyncSum(numberOne: Int, numberTwo: Int, seconds: Int, result: @escaping (Int) -> Void) {
-    
-    DispatchQueue.global().asyncAfter(deadline: .now() + Double(seconds), execute: {
-        result(numberOne + numberTwo)
-    })
-}
-
-asyncSum(numberOne: 5, numberTwo: 2, seconds: 10) { result in
-    print(result)
-}
-
-asyncSum(numberOne: 1, numberTwo: 3, seconds: 5) { result in
-    print(result)
-}

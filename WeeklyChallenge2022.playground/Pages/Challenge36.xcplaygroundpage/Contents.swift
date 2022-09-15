@@ -27,77 +27,62 @@ import Foundation
  *
  */
 
-enum KindArmy {
-    
-    case harfoot, southener, dwarf, numenorean, elf
-    
-    var bravery: Int {
+enum Bondadosas: Int {
+    case Pelosos
+    case SureñosBuenos
+    case Enanos
+    case Numenoreanos
+    case Elfos
+    var puntos: Int {
         switch self {
-        case .harfoot:
-            return 1
-        case .southener:
-            return 2
-        case .dwarf:
-            return 3
-        case .numenorean:
-            return 4
-        case .elf:
-            return 5
+        case .Pelosos: return 1
+        case .SureñosBuenos: return 2
+        case .Enanos: return 3
+        case .Numenoreanos: return 4
+        case .Elfos: return 5
         }
     }
 }
 
-enum EvilArmy {
-
-    case southener, orc, goblin, warg, troll
-
-    var bravery: Int {
+enum Malvadas {
+    case SureñosMalos
+    case Orcos
+    case Goblins
+    case Huargos
+    case Trolls
+    var puntos: Int {
         switch self {
-        case .southener, .orc, .goblin:
-            return 2
-        case .warg:
-            return 3
-        case .troll:
-            return 5
+        case .SureñosMalos: return 2
+        case .Orcos: return 2
+        case .Goblins: return 2
+        case .Huargos: return 3
+        case .Trolls: return 5
         }
     }
 }
 
-func battleForTheMiddleEarth(kindArmy: [(KindArmy, Int)], evilArmy: [(EvilArmy, Int)]) {
 
-    var kindArmyPoints = 0
-    var evilArmyPoints = 0
-
-    kindArmy.forEach { army, size in
-        kindArmyPoints += army.bravery * size
+func batalla(buenos: [Bondadosas:Int], malos: [Malvadas:Int]){
+    
+    var puntosBuenos = 0
+    var puntosMalos = 0
+    
+    for (tipo, soldados) in buenos {
+        puntosBuenos += tipo.puntos * soldados
     }
     
-    evilArmy.forEach { army, size in
-        evilArmyPoints += army.bravery * size
+    for (tipo, soldados) in malos {
+        puntosMalos += tipo.puntos * soldados
     }
-
-    if kindArmyPoints > evilArmyPoints {
-        print("Gana el bien")
-    } else if evilArmyPoints > kindArmyPoints {
-        print("Gana el mal")
+    
+    print("Puntos buenos-> \(puntosBuenos) - Puntos malos-> \(puntosMalos)")
+    if puntosBuenos > puntosMalos {
+        print("Ganan los buenos")
+    } else if puntosBuenos < puntosMalos {
+        print("Ganan los malos")
     } else {
-        print("Empate")
+        print("Empatan")
     }
-
 }
-    
-battleForTheMiddleEarth(
-    kindArmy: [(.elf, 1)],
-    evilArmy: [(.troll, 1)])
 
-battleForTheMiddleEarth(
-    kindArmy: [(.elf, 1), (.harfoot, 1)],
-    evilArmy: [(.troll, 1)])
-
-battleForTheMiddleEarth(
-    kindArmy: [(.elf, 1), (.harfoot, 1)],
-    evilArmy: [(.troll, 1), (.orc, 1)])
-
-battleForTheMiddleEarth(
-    kindArmy: [(.elf, 56), (.harfoot, 80), (.dwarf, 5)],
-    evilArmy: [(.troll, 17), (.orc, 51), (.warg, 10), (.southener, 2)])
+batalla(buenos:[Bondadosas.Elfos:2, Bondadosas.Enanos:25], malos:[Malvadas.Orcos:2, Malvadas.SureñosMalos:55])
