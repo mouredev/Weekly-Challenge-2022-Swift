@@ -25,6 +25,7 @@ import Foundation
  *
  */
 
+
 enum TipoPokemon {
     case agua
     case fuego
