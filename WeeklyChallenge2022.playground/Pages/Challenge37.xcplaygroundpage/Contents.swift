@@ -21,3 +21,22 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+enum Zeldas: String {
+    case TheLegendOfZelda_OcarinaOfTime = "11/12/1998"
+    case Zelda_MajoraSMask = "17/11/2000"
+    case TheLegendOfZelda_ALinkToThePast = "23/03/2007"
+    
+}
+
+func daysBetween(start: String, end: String) {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "mm/dd/YYYY"
+    dateFormatter.locale = Locale(identifier: "es_ES")
+    dateFormatter.dateStyle = .short
+    
+    var result = Calendar.current.dateComponents([.day,.year], from: dateFormatter.date(from: start) ?? Date(), to: dateFormatter.date(from: end) ?? Date())
+    print("Han pasado \(result.year!) años y \(result.day!) días entre estos dos juegos de Zelda")
+}
+
+daysBetween(start: Zeldas.TheLegendOfZelda_OcarinaOfTime.rawValue, end: Zeldas.TheLegendOfZelda_ALinkToThePast.rawValue)
