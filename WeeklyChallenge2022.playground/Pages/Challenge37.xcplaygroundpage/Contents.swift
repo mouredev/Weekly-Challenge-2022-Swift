@@ -35,7 +35,7 @@ func daysBetween(start: String, end: String) {
     dateFormatter.locale = Locale(identifier: "es_ES")
     dateFormatter.dateStyle = .short
     
-    var result = Calendar.current.dateComponents([.day,.year], from: dateFormatter.date(from: start) ?? Date(), to: dateFormatter.date(from: end) ?? Date())
+    let result = Calendar.current.dateComponents([.day,.year], from: dateFormatter.date(from: start)!, to: dateFormatter.date(from: end)!)
     print("Han pasado \(result.year!) años y \(result.day!) días entre estos dos juegos de Zelda")
 }
 
