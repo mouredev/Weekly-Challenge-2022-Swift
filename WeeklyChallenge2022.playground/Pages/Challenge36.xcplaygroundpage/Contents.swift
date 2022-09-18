@@ -27,40 +27,77 @@ import Foundation
  *
  */
 
-enum BattleResult {
-    case draw, evil, good
-}
-
-enum GoodRace: Int {
-    case Pelosos = 1
-    case SureñosBuenos = 2
-    case Enanos = 3
-    case Numenoreanos = 4
-    case Elfos = 5
+enum KindArmy {
     
-    func strength() -> Int {
-        return self.rawValue
-    }
-}
-
-enum EvilRace {
-    case SureñosMalos, Orcos, Goblins, Huargos, Trolls
+    case harfoot, southener, dwarf, numenorean, elf
     
-    func strength() -> Int {
-        switch(self) {
-        case .SureñosMalos, .Orcos, .Goblins: return 2
-        case .Huargos: return 3
-        case .Trolls: return 5
+    var bravery: Int {
+        switch self {
+        case .harfoot:
+            return 1
+        case .southener:
+            return 2
+        case .dwarf:
+            return 3
+        case .numenorean:
+            return 4
+        case .elf:
+            return 5
         }
     }
 }
 
-func battle(goodArmy: [GoodRace : Int], evilArmy: [EvilRace : Int]) -> BattleResult {
-    let goodStrength = goodArmy.map({ $0.key.strength() * $0.value }).reduce(0, +)
-    let evilStrength = evilArmy.map({ $0.key.strength() * $0.value }).reduce(0, +)
-    return goodStrength == evilStrength ? .draw : (goodStrength > evilStrength ? .good : .evil)
+enum EvilArmy {
+
+    case southener, orc, goblin, warg, troll
+
+    var bravery: Int {
+        switch self {
+        case .southener, .orc, .goblin:
+            return 2
+        case .warg:
+            return 3
+        case .troll:
+            return 5
+        }
+    }
 }
 
-print(battle(goodArmy: [.Pelosos: 1], evilArmy: [.Orcos:1]))
-print(battle(goodArmy: [.Pelosos: 2], evilArmy: [.Orcos:1]))
-print(battle(goodArmy: [.Pelosos: 3], evilArmy: [.Orcos:1]))
+func battleForTheMiddleEarth(kindArmy: [(KindArmy, Int)], evilArmy: [(EvilArmy, Int)]) {
+
+    var kindArmyPoints = 0
+    var evilArmyPoints = 0
+
+    kindArmy.forEach { army, size in
+        kindArmyPoints += army.bravery * size
+    }
+    
+    evilArmy.forEach { army, size in
+        evilArmyPoints += army.bravery * size
+    }
+
+    if kindArmyPoints > evilArmyPoints {
+        print("Gana el bien")
+    } else if evilArmyPoints > kindArmyPoints {
+        print("Gana el mal")
+    } else {
+        print("Empate")
+    }
+
+}
+    
+battleForTheMiddleEarth(
+    kindArmy: [(.elf, 1)],
+    evilArmy: [(.troll, 1)])
+
+battleForTheMiddleEarth(
+    kindArmy: [(.elf, 1), (.harfoot, 1)],
+    evilArmy: [(.troll, 1)])
+
+battleForTheMiddleEarth(
+    kindArmy: [(.elf, 1), (.harfoot, 1)],
+    evilArmy: [(.troll, 1), (.orc, 1)])
+
+battleForTheMiddleEarth(
+    kindArmy: [(.elf, 56), (.harfoot, 80), (.dwarf, 5)],
+    evilArmy: [(.troll, 17), (.orc, 51), (.warg, 10), (.southener, 2)])
