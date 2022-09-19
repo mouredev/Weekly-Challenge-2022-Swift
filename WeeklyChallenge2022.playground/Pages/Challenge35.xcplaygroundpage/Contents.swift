@@ -25,48 +25,49 @@ import Foundation
  *
  */
 
-enum PokemonType: String {
-    case water = "Agua"
-    case fire = "Fuego"
-    case grass = "Planta"
-    case electric = "Eléctrico"
+
+enum TipoPokemon {
+    case agua
+    case fuego
+    case planta
+    case electrico
 }
 
-struct PokemonChart {
-    let effective: PokemonType
-    let notEffective: PokemonType
+struct PokemonRanking {
+    let efectivo: TipoPokemon
+    let noEfectivo: TipoPokemon
 }
 
-func battle(attacker: PokemonType, defender: PokemonType, attack: Int, defense: Int) -> Double? {
-
-    if attack <= 0 || attack > 100 || defense <= 0 || defense > 100 {
+func batalla(atacante: TipoPokemon, defensor: TipoPokemon, ataque: Int,  defensa: Int) -> Double? {
+    
+    if ataque <= 0 || ataque > 100 || defensa <= 0 || defensa > 100 {
         print("El ataque o la defensa contiene un valor incorrecto")
         return nil
     }
-
-    let typeChart: [PokemonType:PokemonChart] = [
-        .water:PokemonChart(effective: .fire, notEffective: .grass),
-        .fire:PokemonChart(effective: .grass, notEffective: .water),
-        .grass:PokemonChart(effective: .water, notEffective: .fire),
-        .electric:PokemonChart(effective: .water, notEffective: .grass)]
-
-
-    var effectivity = 1.0
-    if attacker == defender || typeChart[attacker]!.notEffective  == defender {
-        effectivity = 0.5
+    
+    let ranking: [TipoPokemon : PokemonRanking] = [
+        TipoPokemon.agua : PokemonRanking(efectivo: .fuego, noEfectivo: .planta),
+        TipoPokemon.fuego : PokemonRanking(efectivo: .planta, noEfectivo: .agua),
+        TipoPokemon.planta : PokemonRanking(efectivo: .agua, noEfectivo: .fuego),
+        TipoPokemon.electrico : PokemonRanking(efectivo: .agua, noEfectivo: .planta),
+    ]
+    
+    var efectividad = 1.0
+    if atacante == defensor || ranking[atacante]?.noEfectivo == defensor {
+        efectividad = 0.5
         print("No es muy efectivo")
-    } else if typeChart[attacker]!.effective  == defender {
-        effectivity = 2.0
-        print("Es súper efectivo")
+    } else if ranking[atacante]?.efectivo == defensor {
+        efectividad = 2.0
+        print("Es super efectivo")
     } else {
         print("Es neutro")
     }
-
-    return 50 * Double(attack) / Double(defense) * effectivity
+    
+    return 50 * Double(ataque) / Double(defensa) * efectividad
+    
 }
 
-print(battle(attacker: .water, defender: .fire, attack: 50, defense: 30) ?? "Error")
-print(battle(attacker: .water, defender: .fire, attack: 101, defense: -10) ?? "Error")
-print(battle(attacker: .fire, defender: .water, attack: 50, defense: 30) ?? "Error")
-print(battle(attacker: .fire, defender: .fire, attack: 50, defense: 30) ?? "Error")
-print(battle(attacker: .grass, defender: .electric, attack: 30, defense: 50) ?? "Error")
+print((batalla(atacante: .agua, defensor: .fuego, ataque: 50, defensa: 30)) ?? "Error")
+print((batalla(atacante: .fuego, defensor: .agua, ataque: 50, defensa: 30)) ?? "Error")
+print((batalla(atacante: .planta, defensor: .electrico, ataque: 50, defensa: 30)) ?? "Error")
+print((batalla(atacante: .electrico, defensor: .planta, ataque: 50, defensa: 30)) ?? "Error")

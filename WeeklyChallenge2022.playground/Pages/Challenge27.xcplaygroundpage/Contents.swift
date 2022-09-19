@@ -18,10 +18,3 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
-
-func areOrthogonal(vectorOne: (first: Int, second: Int), vectorTwo: (first: Int, second: Int)) -> Bool {
-    return vectorOne.first * vectorTwo.first + vectorOne.second * vectorTwo.second == 0
-}
-
-print(areOrthogonal(vectorOne: (first: 1, second: 2), vectorTwo: (first: 2, second: 1)))
-print(areOrthogonal(vectorOne: (first: 2, second: 1), vectorTwo: (first: -1, second: 2)))

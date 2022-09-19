@@ -20,37 +20,3 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
-
-enum Move {
-    case rock, scissors, paper
-}
-
-func rockScissorsPaper(games: [(Move, Move)]) -> String {
-
-    var playerOneGames = 0
-    var playerTwoGames = 0
-    
-    games.forEach { playerOneMove, playerTwoMove in
-
-        if (playerOneMove != playerTwoMove) {
-
-            if playerOneMove == .rock && playerTwoMove == .scissors
-                || playerOneMove == .scissors && playerTwoMove == .paper
-                || playerOneMove == .paper && playerTwoMove == .rock {
-                
-                playerOneGames += 1
-            } else {
-                playerTwoGames += 1
-            }
-        }
-    }
-    
-    return playerOneGames == playerTwoGames ? "Tie" : playerOneGames > playerTwoGames ? "Player 1" : "Player 2"
-}
-
-print(rockScissorsPaper(games: [(.rock, .rock)]))
-print(rockScissorsPaper(games: [(.rock, .scissors)]))
-print(rockScissorsPaper(games: [(.paper, .scissors)]))
-print(rockScissorsPaper(games: [(.rock, .rock), (.scissors, .scissors), (.paper, .paper)]))
-print(rockScissorsPaper(games: [(.rock, .scissors), (.scissors, .paper), (.scissors, .rock)]))
-print(rockScissorsPaper(games: [(.rock, .paper), (.scissors, .rock), (.paper, .scissors)]))

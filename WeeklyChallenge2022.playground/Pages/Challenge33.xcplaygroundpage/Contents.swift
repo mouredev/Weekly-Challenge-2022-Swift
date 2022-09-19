@@ -21,27 +21,3 @@ import Foundation
  * - Tienes toda la información sobre los retos semanales en https://retosdeprogramacion.com/semanales2022.
  *
  */
-
-private func chineseZodiac(year: Int) -> String {
-
-    let elements = ["madera", "fuego", "tierra", "metal", "agua"]
-    let animals = ["rata", "buey", "tigre", "conejo", "dragón", "serpiente", "caballo", "oveja", "mono", "gallo", "perro", "cerdo"]
-
-    if year < 604 {
-        return "El ciclo sexagenario comenzó en el año 604."
-    }
-
-    let sexagenaryYear = (year - 4) % 60
-    let element = elements[(sexagenaryYear % 10) / 2]
-    let animal = animals[sexagenaryYear % 12]
-
-    return "\(year): \(element) \(animal)"
-}
-
-print(chineseZodiac(year: 1924))
-print(chineseZodiac(year: 1946))
-print(chineseZodiac(year: 1984))
-print(chineseZodiac(year:604))
-print(chineseZodiac(year:603))
-print(chineseZodiac(year: 1987))
-print(chineseZodiac(year: 2022))

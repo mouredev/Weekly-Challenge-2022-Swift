@@ -17,29 +17,3 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
-
-func mcd(firstNumber: Int, secondNumber: Int) -> Int {
-    
-    var a = firstNumber
-    var b = secondNumber
-    
-    while a != 0 && b != 0 {
-        let temp = b
-        b = a % b
-        a = temp
-    }
-    
-    return a + b
-}
-
-func mcm(firstNumber: Int, secondNumber: Int) -> Int {
-    return (firstNumber * secondNumber) / mcd(firstNumber: firstNumber, secondNumber: secondNumber)
-}
-
-func mcdRecursive(firstNumber: Int, secondNumber: Int) -> Int {
-    return (firstNumber == 0 || secondNumber == 0) ? (firstNumber + secondNumber) : mcdRecursive(firstNumber: secondNumber, secondNumber: firstNumber % secondNumber)
-}
-
-print(mcd(firstNumber: 56, secondNumber: 180))
-print(mcdRecursive(firstNumber: 56, secondNumber: 180))
-print(mcm(firstNumber: 56, secondNumber: 180))
