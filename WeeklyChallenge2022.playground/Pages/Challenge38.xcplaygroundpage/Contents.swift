@@ -17,3 +17,23 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+func passToDecimal(binaryNumber: String) -> Int {
+    var result = 0.0
+    var index = 0.0
+    binaryNumber.reversed().forEach { c in
+        pow(2, index)
+        result += Double(c.description)! * pow(2.0, index)
+        index += 1.0
+    }
+    return Int(result)
+}
+
+let binaryNumbers = ["012", "01", "10", "10000000"]
+binaryNumbers.forEach { binaryNumber in
+    if(binaryNumber.filter { $0 != "0" && $0 != "1" }.isEmpty ) {
+        print(passToDecimal(binaryNumber: binaryNumber))
+    } else {
+        print("No es un número binario correcto")
+    }
+}
