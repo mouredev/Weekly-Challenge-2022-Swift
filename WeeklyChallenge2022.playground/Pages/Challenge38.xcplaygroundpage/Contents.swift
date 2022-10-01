@@ -18,21 +18,39 @@ import Foundation
  *
  */
 
-func passToDecimal(binaryNumber: String) -> Int {
-    var result = 0.0
-    var index = 0.0
-    binaryNumber.reversed().forEach { c in
-        result += Double(c.description)! * pow(2.0, index)
-        index += 1.0
+func binaryToDecimal(binary: String) -> Int? {
+
+    let length = binary.count - 1
+    
+    if length < 0 {
+        return nil
     }
-    return Int(result)
+
+    var decimal: Int? = nil
+
+    for index in 0...length {
+        let digitString = Array(binary)[length - index].description
+        if digitString == "0" || digitString == "1" {
+            if decimal == nil {
+                decimal = 0
+            }
+            decimal! += (Int(digitString) ?? 0) * Int(truncating: pow(2.0, index) as NSDecimalNumber)
+        } else {
+            return nil
+        }
+    }
+
+    return decimal
 }
 
-let binaryNumbers = ["012", "01", "10", "10000000"]
-binaryNumbers.forEach { binaryNumber in
-    if(binaryNumber.filter { $0 != "0" && $0 != "1" }.isEmpty ) {
-        print(passToDecimal(binaryNumber: binaryNumber))
-    } else {
-        print("No es un número binario correcto")
-    }
-}
+print(binaryToDecimal(binary: "00110") ?? "Es nulo")
+print(binaryToDecimal(binary: "01100") ?? "Es nulo")
+print(binaryToDecimal(binary: "000000000") ?? "Es nulo")
+print(binaryToDecimal(binary: "00210") ?? "Es nulo")
+print(binaryToDecimal(binary: "001101001110") ?? "Es nulo")
+print(binaryToDecimal(binary: "00b10") ?? "Es nulo")
+print(binaryToDecimal(binary: "") ?? "Es nulo")
+print(binaryToDecimal(binary: "-00110") ?? "Es nulo")
+print(binaryToDecimal(binary: " ") ?? "Es nulo")
+print(binaryToDecimal(binary: " 10011") ?? "Es nulo")
+print(binaryToDecimal(binary: "1O1OO11") ?? "Es nulo")
