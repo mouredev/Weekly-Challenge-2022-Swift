@@ -22,3 +22,35 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+// Already implemented in challenge #29
+func quickSort(numbers: [Int], first: Int = 0, last: Int) -> [Int] {
+    let p = numbers[(first + last) / 2]
+    var i = first
+    var j = last
+    var result = numbers
+    
+    repeat {
+        while(result[i] < p) { i += 1 }
+        while(p < result[j]) { j -= 1 }
+        if(i <= j) {
+            let aux = result[i]
+            result[i] = result[j]
+            result[j] = aux
+            i += 1
+            j -= 1
+        }
+    } while(i <= j)
+    if(first < j) {
+        result = quickSort(numbers: result, first: first, last: j)
+    }
+    if(i < last) {
+        result = quickSort(numbers: result, first: i, last: last)
+    }
+    
+    return result
+}
+
+let numbers = [3, 10, 1, 8, 15, 5, 12, 6, 5, 4]
+print("Quicksort ASC: \(quickSort(numbers: numbers, last: numbers.count - 1))")
+print("Quicksort DESC: \(Array(quickSort(numbers: numbers, last: numbers.count - 1).reversed()))")
