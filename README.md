@@ -73,7 +73,8 @@ Tienes toda la información extendida sobre los retos de programación semanales
 * **#38** - 19/09/22 - [`BINARIO A DECIMAL`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge38.xcplaygroundpage/Contents.swift)
 * **#39** - 27/09/22 - [`TOP ALGORITMOS: QUICK SORT`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge39.xcplaygroundpage/Contents.swift)
 * **#40** - 03/10/22 - [`TRIÁNGULO DE PASCAL`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge40.xcplaygroundpage/Contents.swift)
-* **#41** - 10/10/22 - `Publicación nuevo reto...`
+* **#41** - 10/10/22 - [`LA LEY DE OHM`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge41.xcplaygroundpage/Contents.swift)
+* **#42** - 17/10/22 - `Publicación nuevo reto...`
 
 <a href="https://youtu.be/ydH_B5KuqGs"><img src="http://i3.ytimg.com/vi/ydH_B5KuqGs/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 
