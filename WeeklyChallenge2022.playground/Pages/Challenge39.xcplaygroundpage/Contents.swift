@@ -23,34 +23,53 @@ import Foundation
  *
  */
 
-// Already implemented in challenge #29
-func quickSort(numbers: [Int], first: Int = 0, last: Int) -> [Int] {
-    let p = numbers[(first + last) / 2]
+// Basado en https://www.genbeta.com/desarrollo/implementando-el-algoritmo-quicksort
+
+func quicksort(array: Array<Int>) -> Array<Int> {
+    return array.isEmpty ? array : quicksort(array: array, first: 0, last: array.count - 1)
+}
+
+func quicksort(array: Array<Int>, first: Int, last: Int) -> Array<Int> {
+
     var i = first
     var j = last
-    var result = numbers
-    
-    repeat {
-        while(result[i] < p) { i += 1 }
-        while(p < result[j]) { j -= 1 }
-        if(i <= j) {
-            let aux = result[i]
-            result[i] = result[j]
-            result[j] = aux
+    var array = array
+    let pivot = (array[i] + array[j]) / 2
+
+    while (i < j) {
+
+        while array[i] < pivot {
+            i += 1
+        }
+
+        while array[j] > pivot {
+            j -= 1
+        }
+
+        if i <= j {
+
+            let x = array[j]
+
+            array[j] = array[i]
+            array[i] = x
+
             i += 1
             j -= 1
         }
-    } while(i <= j)
-    if(first < j) {
-        result = quickSort(numbers: result, first: first, last: j)
     }
-    if(i < last) {
-        result = quickSort(numbers: result, first: i, last: last)
+
+    if first < j {
+        array = quicksort(array: array, first: first, last: j)
     }
-    
-    return result
+
+    if last > i {
+        array = quicksort(array: array, first: i, last: last)
+    }
+
+    return array
 }
 
-let numbers = [3, 10, 1, 8, 15, 5, 12, 6, 5, 4]
-print("Quicksort ASC: \(quickSort(numbers: numbers, last: numbers.count - 1))")
-print("Quicksort DESC: \(Array(quickSort(numbers: numbers, last: numbers.count - 1).reversed()))")
+let sortedArray = quicksort(array: [3, 5, 1, 8, 9, 0])
+sortedArray.forEach { element in
+    print(element)
+}
