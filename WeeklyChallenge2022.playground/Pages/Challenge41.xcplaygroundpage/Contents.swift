@@ -19,3 +19,45 @@ import Foundation
  *
  */
 
+class Solution {
+    
+    func ohm(V: Double? = nil, R: Double? = nil, I: Double? = nil) -> String {
+        
+        guard V != nil && R != nil || V != nil && I != nil || R != nil && I != nil else {
+            return "Invalid values"
+        }
+        
+        if V == nil, let R = R, let I = I {
+           return "V = " + String(format: "%.2f", R * I)
+        }
+        if R == nil, let V = V, let I = I, I != 0 {
+           return "R = " + String(format: "%.2f", V / I)
+        }
+        if I == nil, let V = V, let R = R, R != 0 {
+           return "I = " + String(format: "%.2f", V / R)
+        }
+           
+        return "Invalid values"
+    }
+    
+}
+
+let solution = Solution()
+
+let res = solution.ohm(R: 20, I: 10)
+let res1 = solution.ohm(R: 20, I: 0)
+let res2 = solution.ohm(R: 0.20, I: -7.10)
+
+let res3 = solution.ohm(V: 20, I: 10)
+let res4 = solution.ohm(V: 20, I: 0)
+let res5 = solution.ohm(V: 0.20, I: -7.10)
+
+let res6 = solution.ohm(V: 20, R: 10)
+let res7 = solution.ohm(V: 20, R: 0)
+let res8 = solution.ohm(V: 0.20, R: -7.10)
+
+let res9 = solution.ohm(V: 20, R: 10, I: 20)
+let res10 = solution.ohm(V: 20)
+let res11 = solution.ohm(R: 10)
+let res12 = solution.ohm(I: 20)
+let res13 = solution.ohm()
