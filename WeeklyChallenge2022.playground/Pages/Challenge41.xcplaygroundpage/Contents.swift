@@ -19,3 +19,55 @@ import Foundation
  *
  */
 
+protocol NumericProtocol {
+  var value: Double { get }
+}
+
+extension Double: NumericProtocol {
+  var value: Double { return self }
+}
+
+extension Int: NumericProtocol {
+  var value: Double { return Double(self) }
+}
+
+func ohm<T: NumericProtocol>(volts: T? = nil, resistance: T? = nil, intensity: T? = nil) {
+    if volts == nil {
+        guard let resistance = resistance, let intensity = intensity else {
+            print("Invalid values")
+            return
+        }
+        print("Volts: \(String(format: "%.2f", resistance.value * intensity.value)) V")
+
+    } else if resistance == nil {
+        guard let volts = volts, let intensity = intensity else {
+            print("Invalid values")
+            return
+        }
+        print("Resistance: \(String(format: "%.2f", volts.value / intensity.value)) Ω")
+
+    } else if intensity == nil {
+        guard let resistance = resistance, let volts = volts else {
+            print("Invalid values")
+            return
+        }
+        print("Intensity: \(String(format: "%.2f", volts.value / resistance.value)) A")
+
+    } else {
+        print("Invalid values")
+    }
+}
+
+// Valid cases
+ohm(volts: 1.1234, intensity: 10.1234)
+ohm(volts: 1.1234, resistance: 5.1234)
+ohm(resistance: 5.1234, intensity: 10.1234)
+ohm(volts: 1, intensity: 10)
+ohm(volts: 1, resistance: 5)
+ohm(resistance: 5, intensity: 10)
+
+// Invalid cases
+ohm(volts: 1.1234)
+ohm(resistance: 5.1234)
+ohm(intensity: 30.1234)
+ohm(volts: 1.1234, resistance: 5.1234, intensity: 10.1234)
