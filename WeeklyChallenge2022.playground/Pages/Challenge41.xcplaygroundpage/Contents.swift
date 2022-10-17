@@ -19,3 +19,20 @@ import Foundation
  *
  */
 
+private func calculateOhmLayer(V: Double? = nil, R: Double? = nil, I: Double? = nil) -> String {
+    if(V == nil) {
+        return (R == nil || I == nil) ? "Invalid values" : String(format: " %.2f", R! * I!)
+    } else if(R == nil) {
+        return (V == nil || I == nil) ? "Invalid values" : String(format: " %.2f", V! / I!)
+    } else if(I == nil) {
+        return (V == nil || R == nil) ? "Invalid values" : String(format: " %.2f", V! / R!)
+    } else {
+        return (V! != R! * I!) ? "Invalid values" : "Right values"
+    }
+}
+
+print(calculateOhmLayer(V: 5, R: 10, I: 0.5))
+print(calculateOhmLayer(V: nil, R: 10, I: 0.5))
+print(calculateOhmLayer(V: 5, R: nil, I: 0.5))
+print(calculateOhmLayer(V: 5, R: 10, I: nil))
+print(calculateOhmLayer(V: nil, R: nil, I: 0.5))
