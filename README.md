@@ -74,7 +74,8 @@ Tienes toda la información extendida sobre los retos de programación semanales
 * **#39** - 27/09/22 - [`TOP ALGORITMOS: QUICK SORT`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge39.xcplaygroundpage/Contents.swift)
 * **#40** - 03/10/22 - [`TRIÁNGULO DE PASCAL`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge40.xcplaygroundpage/Contents.swift)
 * **#41** - 10/10/22 - [`LA LEY DE OHM`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge41.xcplaygroundpage/Contents.swift)
-* **#42** - 17/10/22 - `Publicación nuevo reto...`
+* **#42** - 17/10/22 - [`CONVERSOR DE TEMPERATURA`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge42.xcplaygroundpage/Contents.swift)
+* **#43** - 24/10/22 - `Publicación nuevo reto...`
 
 <a href="https://youtu.be/ydH_B5KuqGs"><img src="http://i3.ytimg.com/vi/ydH_B5KuqGs/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 
@@ -91,6 +92,10 @@ Tienes toda la información extendida sobre los retos de programación semanales
 <a href="https://youtu.be/nOB_4le7718"><img src="http://i3.ytimg.com/vi/nOB_4le7718/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 
 *Corección retos del 21 al 30 en vídeo*
+
+<a href="https://youtu.be/8-IOU3Qlgws"><img src="http://i3.ytimg.com/vi/8-IOU3Qlgws/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
+
+*Corección retos del 31 al 40 en vídeo*
 
 ### ¿Cómo puedo participar?
 

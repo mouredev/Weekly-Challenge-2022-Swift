@@ -19,3 +19,29 @@ import Foundation
  *
  */
 
+// V = R * I
+func ohm(v: Double? = nil, r: Double? = nil, i: Double? = nil) -> String {
+
+    if let v, let r, i == nil {
+        return "I = \(String(format: "%.2f", v / r))"
+    } else if let v, let i, r == nil {
+        return "R = \(String(format: "%.2f", v / i))"
+    } else if let r, let i, v == nil {
+        return "V = \(String(format: "%.2f", r * i))"
+    }
+
+    return "Invalid values"
+}
+
+print(ohm())
+print(ohm(v: 5.0))
+print(ohm(v: 5.0, r: 4.0))
+print(ohm(v: 5.0, i: 4.0))
+print(ohm(r: 5.0, i: 4.0))
+print(ohm(v: 5.125, r: 4.0))
+print(ohm(v: 5.0, i: 4.125))
+print(ohm(r: 5.0, i: 4.125))
+print(ohm(v: 5.0, r: 0.0))
+print(ohm(v: 5.0, i: 0.0))
+print(ohm(r: 5.0, i: 0.0))
+print(ohm(v: 5.0, r: 4.0, i: 3.0))
