@@ -20,33 +20,39 @@ import Foundation
  *
  */
 
-private func printLine(line: [Int], tab: Int) {
-    var result = ""
-    (0...(tab * 2 + Int(round(Double(line.count) / 2.0)))).forEach { _ in
-        result = "\(result) "
-    }
-    line.forEach { i in
-        result += "\(i<10 ? "  " : " ")\(i)"
-    }
-    print(result)
-}
+func pascalTriangle(size: Int) {
 
-private func drawPascalTriangle(side: Int) {
-    var previousLine = [1]
-    var row = 1
-    (1..<side).forEach { _ in
-        var currentLine = [1]
-        printLine(line: previousLine, tab: side - row)
-        var column = 1
-        (1..<row).forEach { _ in
-            currentLine.append(previousLine[column-1] + previousLine[column])
-            column += 1
+    if size < 0 {
+        return
+    }
+    
+    var lastRow: [Int] = []
+
+    for row in 0..<size {
+
+        var currentRow: [Int] = []
+
+        var triangleRow = ""
+
+        for element in 0...row {
+
+            if element > 0 && element < row {
+                let value = lastRow[element - 1] + lastRow[element]
+                triangleRow += "\(value) "
+                currentRow.append(value)
+            } else {
+                triangleRow += "1 "
+                currentRow.append(1)
+            }
         }
-        currentLine.append(1)
-        previousLine = currentLine
-        row += 1
+        print(String(repeating: " ", count: size - row) + triangleRow)
+
+        lastRow = currentRow
     }
     printLine(line: previousLine,  tab: 0)
 }
 
-drawPascalTriangle(side: 9)
+pascalTriangle(size: 5)
+pascalTriangle(size: 1)
+pascalTriangle(size: 0)
+pascalTriangle(size: -5)
