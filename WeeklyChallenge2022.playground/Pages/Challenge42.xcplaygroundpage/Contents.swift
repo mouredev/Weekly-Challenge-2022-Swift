@@ -20,3 +20,28 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+func degreeConverter(_ input: String) -> String {
+    
+    if input.hasSuffix("°C"), let celsius = Double(input.dropLast(2)) {
+        
+        let fahrenheit = celsius * 1.8 + 32.0
+        return "\(String(format: "%.1f", fahrenheit))°F"
+        
+    } else if input.hasSuffix("°F"), let fahrenheit = Double(input.dropLast(2)){
+        
+        let celsius = (fahrenheit - 32) / 1.8
+        return "\(String(format: "%.0f", celsius))°C"
+    }
+    
+    return "Error: Value cannot be converted"
+}
+
+
+print(degreeConverter("27°C"));     // 80.6°F
+print(degreeConverter("80.6°F"));   // 27°C
+
+print(degreeConverter(""));         // Error
+print(degreeConverter("27"));       // Error
+print(degreeConverter("27°"));      // Error
+print(degreeConverter("27 C"));     // Error
