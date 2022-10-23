@@ -1,5 +1,5 @@
 import Foundation
-
+// primera solución
 func ohm(v: Double, i: Double, r: Double){
   if(v == 0 && i == 0 && r == 0){
     print("Invalid values")
