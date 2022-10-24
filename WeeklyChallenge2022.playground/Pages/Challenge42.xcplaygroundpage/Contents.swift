@@ -20,3 +20,40 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+enum TemperatureUnit: String, CaseIterable {
+    case celsius = "C"
+    case fahrenheit = "F"
+    
+    static func isValid(unit: String) -> Bool {
+        return TemperatureUnit.allCases.filter{ $0.rawValue == unit }.count > 0
+    }
+}
+
+func isNumber(symbol: String?) -> Bool {
+    return symbol != nil && symbol!.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil
+}
+
+func toggleTemperatureUnits(temperature: String) -> String {
+    let temperatureParts = temperature.replacingOccurrences(of: " ", with: "").uppercased().split(separator: "º")
+    if(temperatureParts.count == 2 && isNumber(symbol: String(temperatureParts[0])) && TemperatureUnit.isValid(unit: String(temperatureParts[1]))) {
+        let value = Double(temperatureParts[0])!
+        let units = temperatureParts[1]
+        if(units == TemperatureUnit.celsius.rawValue) {
+            return "\(String(format: "%.2f", value * 9.0 / 5.0 + 32.0)) º\(TemperatureUnit.fahrenheit.rawValue)"
+        } else {
+            return "\(String(format: "%.2f", (value - 32.0) * 5.0 / 9.0)) º\(TemperatureUnit.celsius.rawValue)"
+        }
+    } else {
+        return "Incorrect input"
+    }
+}
+
+print(toggleTemperatureUnits(temperature: "60 F"))
+print(toggleTemperatureUnits(temperature: "ab ºC"))
+print(toggleTemperatureUnits(temperature: "12 ºCF"))
+print(toggleTemperatureUnits(temperature: "273.15ºC"))
+print(toggleTemperatureUnits(temperature: "-40.0ºC"))
+print(toggleTemperatureUnits(temperature: "0 ºC"))
+print(toggleTemperatureUnits(temperature: "98.6ºF"))
+print(toggleTemperatureUnits(temperature: "212ºF"))
