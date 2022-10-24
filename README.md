@@ -75,7 +75,8 @@ Tienes toda la información extendida sobre los retos de programación semanales
 * **#40** - 03/10/22 - [`TRIÁNGULO DE PASCAL`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge40.xcplaygroundpage/Contents.swift)
 * **#41** - 10/10/22 - [`LA LEY DE OHM`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge41.xcplaygroundpage/Contents.swift)
 * **#42** - 17/10/22 - [`CONVERSOR DE TEMPERATURA`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge42.xcplaygroundpage/Contents.swift)
-* **#43** - 24/10/22 - `Publicación nuevo reto...`
+* **#43** - 24/10/22 - [`TRUCO O TRATO`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge43.xcplaygroundpage/Contents.swift)
+* **#44** - 02/11/22 - `Publicación nuevo reto...`
 
 <a href="https://youtu.be/ydH_B5KuqGs"><img src="http://i3.ytimg.com/vi/ydH_B5KuqGs/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 

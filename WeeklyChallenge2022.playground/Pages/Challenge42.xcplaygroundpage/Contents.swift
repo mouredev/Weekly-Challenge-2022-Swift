@@ -20,3 +20,32 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+func temperatureConverter(degrees: String) -> String? {
+
+    if degrees.replacingOccurrences(of: " ", with: "").contains("°C"),
+       let celsiusDegrees = Double(degrees.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "°C", with: "")) {
+       
+        return "\(String(format: "%.2f", (celsiusDegrees * 9/5) + 32))°F"
+        
+    } else if degrees.replacingOccurrences(of: " ", with: "").contains("°F"),
+      let fahrenheitDegrees = Double(degrees.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "°F", with: "")) {
+      
+       return "\(String(format: "%.2f", (fahrenheitDegrees - 32) * 5/9))°C"
+   }
+    
+    return nil
+}
+
+print(temperatureConverter(degrees: "100°C" ) ?? "Error")
+print(temperatureConverter(degrees: "100°F") ?? "Error")
+print(temperatureConverter(degrees: "100C") ?? "Error")
+print(temperatureConverter(degrees: "100F") ?? "Error")
+print(temperatureConverter(degrees: "100") ?? "Error")
+print(temperatureConverter(degrees: "100") ?? "Error")
+print(temperatureConverter(degrees: "- 100 °C ") ?? "Error")
+print(temperatureConverter(degrees: "- 100 °F ") ?? "Error")
+print(temperatureConverter(degrees: "100A°C") ?? "Error")
+print(temperatureConverter(degrees: "100A°F") ?? "Error")
+print(temperatureConverter(degrees: "°C") ?? "Error")
+print(temperatureConverter(degrees: "°F") ?? "Error")
