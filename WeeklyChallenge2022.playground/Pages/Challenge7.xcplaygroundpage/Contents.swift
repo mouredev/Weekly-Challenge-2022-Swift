@@ -24,23 +24,28 @@ func countWords(text: String) {
 
     let mutableString = NSMutableString(string: text.lowercased())
     
-    let regex = try! NSRegularExpression(pattern: "[^a-z0-9]", options: [])
+    // añado dos patrones para excluir número que no se consideran palabras, y dejo las acentuadas
+    let regex = try! NSRegularExpression(pattern: "\\W", options: [])
+    let regex1 = try! NSRegularExpression(pattern: "\\d", options: [])
     regex.replaceMatches(in: mutableString, options: [], range: NSMakeRange(0, mutableString.length), withTemplate: " ")
+    regex1.replaceMatches(in: mutableString, options: [], range: NSMakeRange(0, mutableString.length), withTemplate: " ")
     
     var words: [String:Int] = [:]
     
-    String(mutableString).split(separator: " ").forEach { word in
+    String(mutableString).split(separator: " ").forEach{ word in
         let key = String(word)
-        if words[key] != nil {
+        if words[key] != nil{
             words[key]! += 1
         } else {
             words[key] = 1
         }
     }
     
-    words.forEach { key, value in
-        print("\(key) se ha repetido \(value) \(value == 1 ? "vez" : "veces")")
-    }
+//    words.forEach { key, value in
+//            print("\(key) se ha repetido \(value) \(value == 1 ? "vez" : "veces")")
+//        }
+    
+    print(words)
 }
 
-countWords(text: "Hola, mi nombre es brais. Mi nombre completo es Brais Moure (MoureDev).")
+countWords(text: "Hola, mi nombre es brais. Mi nombre completo es Brais Moure (MoureDev), qué qué tal qué?")
