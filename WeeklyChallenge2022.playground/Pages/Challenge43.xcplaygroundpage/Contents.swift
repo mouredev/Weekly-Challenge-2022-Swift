@@ -1,4 +1,8 @@
-import Foundation
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 /*
  * Reto #43
@@ -35,3 +39,116 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+namespace Reto43
+{
+	internal class Program
+	{
+		static void Main(string[] args)
+		{
+			string dulces = Halloween.TrucoOTrato(new List<Persona>
+			{
+				new Persona(){Nombre = "Luis",Edad = 1,Altura = 49},
+				//8+8+7
+
+			}, new Trato());
+			Console.OutputEncoding = Encoding.UTF8;
+			Console.WriteLine(dulces);
+			Console.WriteLine(dulces.Length / 2);
+			Console.ReadKey();
+
+		}
+	}
+
+	internal class Truco : RegaloHalloween
+	{
+		protected override string[] _elementos { get; set; } = new string[] { "🎃", "👻", "💀", "🕷", "🕸", "🦇" };
+
+		protected override int ObtenerPorAltutra(List<Persona> personas)
+		{
+			return personas.Sum(i => i.Altura) / 100;
+		}
+
+		protected override int ObtenerPorAños(List<Persona> personas)
+		{
+			return personas.Where(i => i.Edad % 2 == 0).Count() * 2;
+		}
+
+		protected override int ObtenerPorNombre(List<Persona> personas)
+		{
+			return personas.Sum(i => i.Nombre.Length) / 2;
+		}
+	}
+
+	internal abstract class RegaloHalloween
+	{
+		protected abstract string[] _elementos { get; set; }
+
+		protected abstract int ObtenerPorNombre(List<Persona> personas);
+		protected abstract int ObtenerPorAños(List<Persona> personas);
+		protected abstract int ObtenerPorAltutra(List<Persona> personas);
+
+		public string TrucoOTrato(List<Persona> personas)
+		{
+			string resultado = "";
+			resultado += ObtenerDulce(ObtenerPorNombre(personas));
+			resultado += ObtenerDulce(ObtenerPorAños(personas));
+			resultado += ObtenerDulce(ObtenerPorAltutra(personas));
+			return resultado;
+		}
+
+		private string ObtenerDulce(int num)
+		{
+			string resultado = string.Empty;
+			Random random = new Random();
+			for (int i = 0; i < num; i++)
+			{
+				int index = random.Next(0, _elementos.Length);
+				resultado += _elementos[index];
+			}
+			return resultado;
+		}
+	}
+
+	internal class Trato : RegaloHalloween
+	{
+		protected override string[] _elementos { get; set; } = new string[] { "🍰", "🍬", "🍡", "🍭", "🍪", "🍫", "🧁", "🍩" };
+
+		private int ObtenerDuclcesPorAlutraOAños(IEnumerable<int> personas, int limiteDulces, int porcada, int numeroDeDulcesADarPorCada)
+		{
+			return personas.Sum((i) =>
+			{
+				return (i / porcada) * numeroDeDulcesADarPorCada > limiteDulces ? limiteDulces : (i / porcada) * numeroDeDulcesADarPorCada;
+			});
+		}
+
+		protected override int ObtenerPorAltutra(List<Persona> personas)
+		{
+			return ObtenerDuclcesPorAlutraOAños(personas.Select(i => i.Altura), 6, 50, 2);
+		}
+
+		protected override int ObtenerPorAños(List<Persona> personas)
+		{
+			return ObtenerDuclcesPorAlutraOAños(personas.Select(i => i.Edad), 3, 3, 1);
+		}
+
+		protected override int ObtenerPorNombre(List<Persona> personas)
+		{
+			return personas.Sum(i => i.Nombre.Length);
+		}
+	}
+
+	internal class Halloween
+	{
+		public static string TrucoOTrato(List<Persona> personas, RegaloHalloween trucoTrato)
+		{
+			return trucoTrato.TrucoOTrato(personas);
+		}
+	}
+	internal class Persona
+	{
+		public string Nombre { get; set; }
+		public int Edad { get; set; }
+		public int Altura { get; set; }
+	}
+}
