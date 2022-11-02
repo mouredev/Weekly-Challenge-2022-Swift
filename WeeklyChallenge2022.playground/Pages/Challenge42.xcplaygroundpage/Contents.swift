@@ -21,39 +21,31 @@ import Foundation
  *
  */
 
-enum TemperatureUnit: String, CaseIterable {
-    case celsius = "C"
-    case fahrenheit = "F"
+func temperatureConverter(degrees: String) -> String? {
+
+    if degrees.replacingOccurrences(of: " ", with: "").contains("°C"),
+       let celsiusDegrees = Double(degrees.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "°C", with: "")) {
+       
+        return "\(String(format: "%.2f", (celsiusDegrees * 9/5) + 32))°F"
+        
+    } else if degrees.replacingOccurrences(of: " ", with: "").contains("°F"),
+      let fahrenheitDegrees = Double(degrees.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "°F", with: "")) {
+      
+       return "\(String(format: "%.2f", (fahrenheitDegrees - 32) * 5/9))°C"
+   }
     
-    static func isValid(unit: String) -> Bool {
-        return TemperatureUnit.allCases.filter{ $0.rawValue == unit }.count > 0
-    }
+    return nil
 }
 
-func isNumber(symbol: String?) -> Bool {
-    return symbol != nil && symbol!.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil
-}
-
-func toggleTemperatureUnits(temperature: String) -> String {
-    let temperatureParts = temperature.replacingOccurrences(of: " ", with: "").uppercased().split(separator: "º")
-    if(temperatureParts.count == 2 && isNumber(symbol: String(temperatureParts[0])) && TemperatureUnit.isValid(unit: String(temperatureParts[1]))) {
-        let value = Double(temperatureParts[0])!
-        let units = temperatureParts[1]
-        if(units == TemperatureUnit.celsius.rawValue) {
-            return "\(String(format: "%.2f", value * 9.0 / 5.0 + 32.0)) º\(TemperatureUnit.fahrenheit.rawValue)"
-        } else {
-            return "\(String(format: "%.2f", (value - 32.0) * 5.0 / 9.0)) º\(TemperatureUnit.celsius.rawValue)"
-        }
-    } else {
-        return "Incorrect input"
-    }
-}
-
-print(toggleTemperatureUnits(temperature: "60 F"))
-print(toggleTemperatureUnits(temperature: "ab ºC"))
-print(toggleTemperatureUnits(temperature: "12 ºCF"))
-print(toggleTemperatureUnits(temperature: "273.15ºC"))
-print(toggleTemperatureUnits(temperature: "-40.0ºC"))
-print(toggleTemperatureUnits(temperature: "0 ºC"))
-print(toggleTemperatureUnits(temperature: "98.6ºF"))
-print(toggleTemperatureUnits(temperature: "212ºF"))
+print(temperatureConverter(degrees: "100°C" ) ?? "Error")
+print(temperatureConverter(degrees: "100°F") ?? "Error")
+print(temperatureConverter(degrees: "100C") ?? "Error")
+print(temperatureConverter(degrees: "100F") ?? "Error")
+print(temperatureConverter(degrees: "100") ?? "Error")
+print(temperatureConverter(degrees: "100") ?? "Error")
+print(temperatureConverter(degrees: "- 100 °C ") ?? "Error")
+print(temperatureConverter(degrees: "- 100 °F ") ?? "Error")
+print(temperatureConverter(degrees: "100A°C") ?? "Error")
+print(temperatureConverter(degrees: "100A°F") ?? "Error")
+print(temperatureConverter(degrees: "°C") ?? "Error")
+print(temperatureConverter(degrees: "°F") ?? "Error")
