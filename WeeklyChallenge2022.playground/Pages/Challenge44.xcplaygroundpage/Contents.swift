@@ -22,12 +22,39 @@ import Foundation
  */
 
 func countBoomerang(_ data: [Int]) -> Int {
+    let magicNumber = 3
     var countTotal = 0
+    let lengthData = data.count
+    
+    if lengthData >= magicNumber {
+        for idx in data.indices {
+            if idx+magicNumber <= lengthData {
+                let candidate: [Int] = Array(data[idx..<idx+magicNumber])
+                if let firstValue = candidate.first,
+                   let lastValue = candidate.last {
+                    let midValue = candidate[1]
+                    if firstValue == lastValue && firstValue != midValue {
+                        print("Aquí un bumerán: \(candidate)")
+                        countTotal += 1
+                    }
+                }
+            } else {
+                break
+            }
+        }
+    }
     
     return countTotal
 }
 
-let candidateBoomerang = [2, 1, 2, 3, 3, 4, 2, 4]
+let candidate1 = [2, 1, 2, 3, 3, 4, 2, 4]
+print("En total hay \(countBoomerang(candidate1)) bumerán/es")
 
-print(countBoomerang(candidateBoomerang))
+let candidate2 = [2, 3]
+print("En total hay \(countBoomerang(candidate2)) bumerán/es")
 
+let candidate3 = [2, 3, 2, 3, 5, 1, 5]
+print("En total hay \(countBoomerang(candidate3)) bumerán/es")
+
+let candidate4 = [2, 7, 2, 3, -5, 1, -5]
+print("En total hay \(countBoomerang(candidate4)) bumerán/es")
