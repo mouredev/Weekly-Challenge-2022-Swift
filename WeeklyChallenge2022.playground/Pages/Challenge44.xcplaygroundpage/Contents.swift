@@ -20,3 +20,14 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+func countBoomerang(_ data: [Int]) -> Int {
+    var countTotal = 0
+    
+    return countTotal
+}
+
+let candidateBoomerang = [2, 1, 2, 3, 3, 4, 2, 4]
+
+print(countBoomerang(candidateBoomerang))
+
