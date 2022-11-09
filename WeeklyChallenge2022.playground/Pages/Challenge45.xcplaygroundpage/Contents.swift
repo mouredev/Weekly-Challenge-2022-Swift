@@ -29,3 +29,26 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+
+
+
+ func countWatter(lista: [Int]) -> Int{
+     var cont = 0
+     for (inx,i) in lista.enumerated(){
+        if inx == lista.count - 1 || inx == 0 {continue}
+        let m = [lista[0..<inx].max()!, lista[inx+1...(lista.count - 1)].max()!].min()!
+        if m > i{
+             cont += m - i
+         }
+         
+     }
+     
+     return cont
+ }
+
+countWatter(lista: [4, 0, 3, 6, 1, 3])
+
+countWatter(lista: [4, 0, 3, 6, 1, 3].reversed())
+
+countWatter(lista: [4, 0, 3, 6, 1, 3].sorted())
