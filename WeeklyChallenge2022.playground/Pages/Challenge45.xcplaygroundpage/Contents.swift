@@ -79,3 +79,6 @@ print("En total hay \(countGotas(candidate6)) gotas de agua")
 
 let candidate7 = [0, 0, 0, 0, 0]
 print("En total hay \(countGotas(candidate7)) gotas de agua")
+
+let candidate8: [Int] = []
+print("En total hay \(countGotas(candidate8)) gotas de agua")
