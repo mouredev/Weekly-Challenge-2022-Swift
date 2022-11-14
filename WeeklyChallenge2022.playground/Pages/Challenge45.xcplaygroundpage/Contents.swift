@@ -29,3 +29,41 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+func calculateWaterUnits(container: [Int]) -> Int {
+
+    var units = 0
+    var wall = 0
+    var nextWall = 0
+    
+    container.enumerated().forEach { (index, blocks) in
+
+        if (blocks < 0) {
+            return
+        }
+
+        if index != container.count - 1 && (index == 0 || nextWall == blocks) {
+
+            wall = index == 0 ? blocks : nextWall
+
+            nextWall = 0
+            for nextBlocksIndex in index + 1 ..< container.count {
+                if container[nextBlocksIndex] >= nextWall {
+                    nextWall = container[nextBlocksIndex]
+                }
+            }
+        } else {
+            let referenceWall = nextWall > wall ? wall : nextWall
+            let currentBlocks = referenceWall - blocks
+            units += currentBlocks >= 0 ? currentBlocks : 0
+        }
+    }
+
+    return units
+}
+
+print(calculateWaterUnits(container: [4, 0, 3, 6]))
+print(calculateWaterUnits(container: [4, 0, 3, 6, 1, 3]))
+print(calculateWaterUnits(container: [5, 4, 3, 2, 1, 0]))
+print(calculateWaterUnits(container: [0, 1, 2, 3, 4, 5]))
+print(calculateWaterUnits(container: [4, 0, 3, 6, 1, 3, 0, 1, 6]))
