@@ -20,19 +20,32 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+func numberOfBoomerangs(numbers: [Int]) -> Int {
 
-func getNumOfBoomerangs(numbers: [Int]) -> Int {
-    var numOfBoomerangs = 0
-    if(numbers.count >= 3) {
-        (0..<numbers.count-2).forEach { index in
-                if(numbers[index] == numbers[index+2] && numbers[index] != numbers[index+1]) {
-                    numOfBoomerangs += 1
-                    print("[\(numbers[index]), \(numbers[index+1]), \(numbers[index+2])]")
-                }
+    if numbers.count < 3 { return 0 }
+    
+    var boomerangs = 0
+
+    (1..<numbers.count - 1).forEach { index in
+
+        let prev = numbers[index - 1]
+        let current = numbers[index]
+        let next = numbers[index + 1]
+
+        if prev == next && prev != current {
+            print("[\(prev), \(current), \(next)]")
+            boomerangs += 1
         }
     }
-    return numOfBoomerangs
+
+    return boomerangs
 }
 
-print(getNumOfBoomerangs(numbers: [2, 1]))
-print(getNumOfBoomerangs(numbers: [2, 1, 2, 3, 3, 4, 2, 4]))
+print(numberOfBoomerangs(numbers: [2, 1, 2, 3, 3, 4, 2, 4]))
+print(numberOfBoomerangs(numbers: [2, 1, 2, 1, 2]))
+print(numberOfBoomerangs(numbers: [1, 2, 3, 4, 5]))
+print(numberOfBoomerangs(numbers: [2, 2, 2, 2, 2]))
+print(numberOfBoomerangs(numbers: [2, -2, 2, -2, 2]))
+print(numberOfBoomerangs(numbers: [2, -2]))
+print(numberOfBoomerangs(numbers: [2]))
+print(numberOfBoomerangs(numbers: []))

@@ -35,6 +35,7 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
 enum Halloween {
     case trick, treat
 }
