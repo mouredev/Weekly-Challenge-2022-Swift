@@ -20,3 +20,33 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+func numberOfBoomerangs(numbers: [Int]) -> Int {
+
+    if numbers.count < 3 { return 0 }
+    
+    var boomerangs = 0
+
+    (1..<numbers.count - 1).forEach { index in
+
+        let prev = numbers[index - 1]
+        let current = numbers[index]
+        let next = numbers[index + 1]
+
+        if prev == next && prev != current {
+            print("[\(prev), \(current), \(next)]")
+            boomerangs += 1
+        }
+    }
+
+    return boomerangs
+}
+
+print(numberOfBoomerangs(numbers: [2, 1, 2, 3, 3, 4, 2, 4]))
+print(numberOfBoomerangs(numbers: [2, 1, 2, 1, 2]))
+print(numberOfBoomerangs(numbers: [1, 2, 3, 4, 5]))
+print(numberOfBoomerangs(numbers: [2, 2, 2, 2, 2]))
+print(numberOfBoomerangs(numbers: [2, -2, 2, -2, 2]))
+print(numberOfBoomerangs(numbers: [2, -2]))
+print(numberOfBoomerangs(numbers: [2]))
+print(numberOfBoomerangs(numbers: []))
