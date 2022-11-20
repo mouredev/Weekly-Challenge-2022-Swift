@@ -33,9 +33,9 @@ private enum Direction {
 }
 
 private func moveRobot(moves: [Int]) -> (x: Int, y: Int) {
+    var direction = Direction.north
     var x = 0
     var y = 0
-    var direction = Direction.north
     
     moves.forEach { move in
         switch(direction) {
