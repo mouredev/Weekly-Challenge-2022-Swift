@@ -30,37 +30,40 @@ import Foundation
  *
  */
 
-func getWaterUnits(input: [Int], draw: Bool = true) -> Int {
-    var result = 0
-    let numRows = input.max() ?? 0
-    (0..<numRows).forEach { row in
-        var line = ""
-        var previousBlockColumn = -1
-        (0..<input.count).forEach { column in
-            if(numRows - row <= input[column]) {
-                (previousBlockColumn+1..<column).forEach { _ in
-                    if(previousBlockColumn == -1) {
-                        line.append("➖")
-                    } else {
-                        line.append("💧")
-                        result += 1
-                    }
+func calculateWaterUnits(container: [Int]) -> Int {
+
+    var units = 0
+    var wall = 0
+    var nextWall = 0
+    
+    container.enumerated().forEach { (index, blocks) in
+
+        if (blocks < 0) {
+            return
+        }
+
+        if index != container.count - 1 && (index == 0 || nextWall == blocks) {
+
+            wall = index == 0 ? blocks : nextWall
+
+            nextWall = 0
+            for nextBlocksIndex in index + 1 ..< container.count {
+                if container[nextBlocksIndex] >= nextWall {
+                    nextWall = container[nextBlocksIndex]
                 }
-                line.append("⏹")
-                previousBlockColumn = column
             }
-        }
-        (line.count..<input.count).forEach { _ in
-            line.append("➖")
-        }
-        if(draw) {
-            print(line)
+        } else {
+            let referenceWall = nextWall > wall ? wall : nextWall
+            let currentBlocks = referenceWall - blocks
+            units += currentBlocks >= 0 ? currentBlocks : 0
         }
     }
-    return result
+
+    return units
 }
 
-print(getWaterUnits(input: []))
-print(getWaterUnits(input: [1, 2, 3, 3, 2, 1]))
-print(getWaterUnits(input: [4, 3, 1, 1, 3, 4]))
-print(getWaterUnits(input: [4, 0, 3, 6, 1, 3]))
+print(calculateWaterUnits(container: [4, 0, 3, 6]))
+print(calculateWaterUnits(container: [4, 0, 3, 6, 1, 3]))
+print(calculateWaterUnits(container: [5, 4, 3, 2, 1, 0]))
+print(calculateWaterUnits(container: [0, 1, 2, 3, 4, 5]))
+print(calculateWaterUnits(container: [4, 0, 3, 6, 1, 3, 0, 1, 6]))
