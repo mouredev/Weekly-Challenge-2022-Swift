@@ -79,7 +79,8 @@ Tienes toda la información extendida sobre los retos de programación semanales
 * **#44** - 02/11/22 - [`BUMERANES`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge44.xcplaygroundpage/Contents.swift)
 * **#45** - 07/11/22 - [`CONTENEDOR DE AGUA`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge45.xcplaygroundpage/Contents.swift)
 * **#46** - 14/11/22 - [`¿DÓNDE ESTÁ EL ROBOT?`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge46.xcplaygroundpage/Contents.swift)
-* **#47** - 21/11/22 - `Publicación nuevo reto...`
+* **#47** - 21/11/22 - [`VOCAL MÁS COMÚN`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge47.xcplaygroundpage/Contents.swift)
+* **#48** - 28/11/22 - `Publicación nuevo reto...`
 
 <a href="https://youtu.be/ydH_B5KuqGs"><img src="http://i3.ytimg.com/vi/ydH_B5KuqGs/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 
