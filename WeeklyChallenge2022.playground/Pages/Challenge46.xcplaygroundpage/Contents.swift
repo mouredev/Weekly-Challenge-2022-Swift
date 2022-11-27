@@ -3,7 +3,7 @@ import Foundation
 /*
  * Reto #46
  * ¿DÓNDE ESTÁ EL ROBOT?
- * Fecha publicación enunciado: 14/10/22
+ * Fecha publicación enunciado: 14/11/22
  * Fecha publicación resolución: 21/11/22
  * Dificultad: MEDIA
  *
@@ -28,42 +28,53 @@ import Foundation
  *
  */
 
-private enum Direction {
-    case north, east, south, west;
-    
-    func turn() -> Direction {
-        switch(self) {
-        case .north:
-            return .west
-        case .east:
-            return .north
-        case .south:
-            return .east
-        case .west:
-            return .south
+func whereIsTheRobot(steps: [Int]) -> String {
+
+    enum Direction {
+        
+        case positiveY, negativeX, negativeY, positiveX
+        
+        func turn() -> Direction {
+            
+            switch self {
+            case .positiveY:
+                return .negativeX
+            case .negativeX:
+                return .negativeY
+            case .negativeY:
+                return .positiveX
+            case .positiveX:
+                return .positiveY
+            }
         }
     }
-}
-
-private func moveRobot(moves: [Int]) -> (x: Int, y: Int) {
-    var direction = Direction.north
+    
     var x = 0
     var y = 0
-    
-    moves.forEach { move in
-        switch(direction) {
-        case .north:
-            y += move
-        case .east:
-            x += move
-        case .south:
-            y -= move
-        case .west:
-            x -= move
+
+    var direction = Direction.positiveY
+
+    steps.forEach { step in
+        
+        switch direction {
+        case .positiveY:
+            y += step
+        case .negativeX:
+            x -= step
+        case .negativeY:
+            y -= step
+        case .positiveX:
+            x += step
         }
+
         direction = direction.turn()
     }
-    return (x, y)
+
+    return "x: \(x), y: \(y), direction: \(direction)"
 }
 
-print(moveRobot(moves: [10, 5, -2]))
+print(whereIsTheRobot(steps: [10, 5, -2]))
+print(whereIsTheRobot(steps: [0, 0, 0]))
+print(whereIsTheRobot(steps: []))
+print(whereIsTheRobot(steps: [-10, -5, 2]))
+print(whereIsTheRobot(steps: [-10, -5, 2, 4, -8]))
