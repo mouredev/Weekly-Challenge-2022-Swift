@@ -17,3 +17,18 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+func getMostRepeatedVocals(text: String) -> String {
+    let cleanedText = text.folding(options: .diacriticInsensitive, locale: .current).lowercased()
+    var vocalOccurrences: [Character : Int] = [:]
+    cleanedText.forEach { letter in
+        if("aeiou".contains(letter)) {
+            vocalOccurrences[letter] = vocalOccurrences[letter] == nil ? 1 : vocalOccurrences[letter]! + 1
+        }
+    }
+    return vocalOccurrences.isEmpty ? "" : String(vocalOccurrences.filter{ $0.value == vocalOccurrences.values.max() }.keys)
+}
+
+print(getMostRepeatedVocals(text: "¡Pssst!"))
+print(getMostRepeatedVocals(text: "¡Hola Brais!"))
+print(getMostRepeatedVocals(text: "¡Adiós Brais!"))
+print(getMostRepeatedVocals(text: "¡Adiós Martín!"))
