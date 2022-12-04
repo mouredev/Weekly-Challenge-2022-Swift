@@ -48,7 +48,7 @@ func calculateWaterUnits(container: [Int]) -> Int {
 
             nextWall = 0
             for nextBlocksIndex in index + 1 ..< container.count {
-                if container[nextBlocksIndex] >= nextWall {
+                if container[nextBlocksIndex] >= nextWall && wall >= nextWall {
                     nextWall = container[nextBlocksIndex]
                 }
             }
