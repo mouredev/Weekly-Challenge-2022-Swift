@@ -1,4 +1,4 @@
-import Foundation
+//import Foundation
 
 /*
  * Reto #48
@@ -27,3 +27,52 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+ static PREMIOS: [&'static str; 24] = [
+    "PLAY 4", //1
+    "Play 5", //2
+    "Xbox", //3
+    "Xbox360", //4
+    "PS vita", //5
+    "Teclado", //6
+    "Teclado gammer", //7
+    "Ratón", //8
+    "Ratón gammer",  //9
+    "Portatil MSI", //10
+    "Nvidia GTX 3060", //11
+    "Ferrari", //12
+    "Gominolas", //13
+    "1 Año de café", //14
+    "1 Año de cerveza", //15
+    "1 Año de cocacola", //16
+    "Monitor MSI", //17
+    "Mac book air", //18
+    "Altavoz", //19
+    "Air pods", //20
+    "Samsung s22",  //21
+    "Caja sorpresa", //22
+    "Flash USB", //23
+    "Disquetera 5 1/2"]; //24
+mod datetime;
+use datetime::Datetime;
+
+fn check_date(date: &Datetime) -> Result<(&'static str, Datetime), Datetime> {
+    let f_ini: Datetime = Datetime::new(2022,12,1,0,0,0);
+    let f_fin: Datetime = Datetime::new(2022,12,24,23,59,59);
+
+    if date < &f_ini {
+        return Err(f_ini - *date);
+    }
+
+    else if date > &f_fin {
+        return Err(*date - f_fin);
+    }
+    else {
+        let i: usize = date.day.into();
+        return Ok((PREMIOS[i], f_fin - *date));
+    }
+}
+
+fn main() -> () {
+    return;
+}
