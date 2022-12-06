@@ -28,82 +28,114 @@ import Foundation
  *
  */
 
-import Foundation
-import _Concurrency
-import PlaygroundSupport
+func aDEViento2022(date: Date) -> String? {
 
-let dateFormatter = DateFormatter()
-dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
 
-func scrapADEVientoPrizeFor(day: Int) async -> String {
-    let url = URL(string: "https://adviento.dev")
-    return await withUnsafeContinuation { continuation in
-        let session = URLSession.shared
-        let task = session.dataTask(with: url!) { data, response, error in
-            guard let data = data else { return }
-            guard let htmlText = String(data: data, encoding: .utf8) else { return }
-            let days = htmlText.split(separator: ")</span></span></h4>")
-            days.indices.forEach { index in
-                if((index < days.count-1) && days[index].contains("(\(day)/24")) {
-                    var prize = days[index+1].split(separator: "</div>")[0].split(separator: "\">")[1]
-                    if(days[index+1].starts(with: "<h4")) {
-                        prize = days[index+1].split(separator: "title=\"")[1].split(separator: "\">")[0]
-                    }
-                    continuation.resume(returning: String(prize.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "").replacingOccurrences(of: "&quot;", with: "\"")))
-                }
+    if let startDate = formatter.date(from: "2022/12/01 00:00:00"),
+       let endDate = formatter.date(from: "2022/12/24 23:59:59") {
+        
+        if date >= startDate && date <= endDate {
+            
+            let gifts = [
+                "El programador pragmático",
+                "while True: learn()",
+                "Aprende Javascript ES9, HTML, CSS3 y NodeJS desde cero",
+                "Patrones de Diseño en JavaScript y TypeScript",
+                "Aprende Python en un fin de semana",
+                "Regalo 6",
+                "Regalo 7",
+                "Regalo 8",
+                "Regalo 9",
+                "Regalo 10",
+                "Regalo 11",
+                "Regalo 12",
+                "Regalo 13",
+                "Regalo 14",
+                "Regalo 15",
+                "Regalo 16",
+                "Regalo 17",
+                "Regalo 18",
+                "Regalo 19",
+                "Regalo 20",
+                "Regalo 21",
+                "Regalo 22",
+                "Regalo 23",
+                "Regalo 24"]
+            
+            var calendar = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+            calendar.hour = 23
+            calendar.minute = 59
+            calendar.second = 59
+
+            if let day = calendar.day, let dayEndDate = Calendar.current.date(from: calendar) {
+                
+                return "El regalo del día es: \(gifts[day - 1]) y el sorteo del día acaba en: \(diffTimeComponentsText(startDate: date, endDate: dayEndDate))"
             }
-            continuation.resume(returning: "unknown")
+        } else {
+            
+            let intro = date < startDate ? "El calendario de aDEViento 2022 comenzará en:" : "El calendario de aDEViento 2022 ha finalizado hace:"
+            let timeComponents = diffTimeComponentsText(startDate: date < startDate ? date : endDate, endDate: date < startDate ? startDate : date)
+            return "\(intro) \(timeComponents)"
         }
-        task.resume()
     }
-}
-
-func formatDateFrom(timeInterval: TimeInterval) -> String {
-    var calendar = Calendar.current
-    calendar.locale = Locale(identifier: "es")
-    let formatter = DateComponentsFormatter()
-    formatter.calendar = calendar
-    formatter.maximumUnitCount = 1
-    formatter.unitsStyle = .full
-    formatter.zeroFormattingBehavior = .dropAll
-    formatter.allowedUnits = [.day, .hour, .minute, .second]
-    return formatter.string(from: timeInterval)!
-}
-
-func showADEVientoInfoFor(date: Date) {
-    let calendarStartDate = dateFormatter.date(from: "2022/12/01 00:00:00")!
-    let calendarEndDate = dateFormatter.date(from: "2022/12/24 23:59:59")!
     
-    if(date.timeIntervalSince(calendarStartDate) < 0) {
-        print("El Calendario de aDEViento 2022 inicia en \(formatDateFrom(timeInterval: abs(date.timeIntervalSince(calendarStartDate))))")
-    } else if(date.timeIntervalSince(calendarEndDate) > 0) {
-        print("El Calendario de aDEViento 2022 finalizó hace \(formatDateFrom(timeInterval: date.timeIntervalSince(calendarEndDate)))")
-    } else {
-        let dateDay = Calendar.current.dateComponents([.day], from: date)
-        Task {
-            let prize = await scrapADEVientoPrizeFor(day: dateDay.day!)
-            if(prize != "unknown") {
-                let todayDay = Calendar.current.dateComponents([.day], from: .now)
-                if(dateDay.day! == todayDay.day!) {
-                    let endDay = dateFormatter.date(from: "2022/12/\(dateDay.day!) 23:59:59")!
-                    print("Quedan \(formatDateFrom(timeInterval: endDay.timeIntervalSince(.now))) para participar en el sorteo de: \(prize)")
-                } else {
-                    print("El premio fue: \(prize)")
-                }
-            } else {
-                let startDay = dateFormatter.date(from: "2022/12/\(dateDay.day!) 00:00:00")!
-                print("En \(formatDateFrom(timeInterval: startDay.timeIntervalSince(.now))) se conocerá el premio y comenzará el sorteo.")
-            }
-        }
-    }
+    return nil
 }
 
-showADEVientoInfoFor(date: dateFormatter.date(from: "2022/11/30 23:00:00")!)
-showADEVientoInfoFor(date: dateFormatter.date(from: "2022/12/26 01:00:00")!)
-//showADEVientoInfoFor(date: dateFormatter.date(from: "2022/12/01 04:00:00")!)
-//showADEVientoInfoFor(date: dateFormatter.date(from: "2022/12/02 08:00:00")!)
-//showADEVientoInfoFor(date: dateFormatter.date(from: "2022/12/03 12:00:00")!)
-//showADEVientoInfoFor(date: dateFormatter.date(from: "2022/12/04 16:00:00")!)
-showADEVientoInfoFor(date: .now)
-//showADEVientoInfoFor(date: dateFormatter.date(from: "2022/12/07 20:00:00")!)
+func diffTimeComponentsText(startDate: Date, endDate: Date) -> String {
+    
+    let diffInMillis = Int((endDate.timeIntervalSince1970 * 1000).rounded() - (startDate.timeIntervalSince1970 * 1000).rounded())
+    
+    let second = diffInMillis / 1000 % 60
+    let minutes = diffInMillis / (1000 * 60) % 60
+    let hours = diffInMillis / (1000 * 60 * 60) % 24
+    let days = diffInMillis / (1000 * 60 * 60 * 24) % 365
+    let years = diffInMillis / (1000 * 60 * 60 * 24 * 365)
 
+    return "\(years) años, \(days) días, \(hours) horas, \(minutes) minutos, \(second) segundos"
+}
+
+//var dateComponents = DateComponents()
+//dateComponents.year = 2022
+//dateComponents.month = 12
+//dateComponents.day = 5
+//dateComponents.hour = 20
+//dateComponents.minute = 27
+//dateComponents.second = 56
+//
+//if let date = Calendar.current.date(from: dateComponents) {
+//    aDEViento2022(date: date)
+//}
+
+let formatter = DateFormatter()
+formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+
+if let date = formatter.date(from: "2022/12/05 20:27:56") {
+    print(aDEViento2022(date: date) ?? "Error")
+}
+if let date = formatter.date(from: "2022/12/01 00:00:00") {
+    print(aDEViento2022(date: date) ?? "Error")
+}
+if let date = formatter.date(from: "2022/12/24 23:59:59") {
+    print(aDEViento2022(date: date) ?? "Error")
+}
+if let date = formatter.date(from: "2022/11/30 23:59:59") {
+    print(aDEViento2022(date: date) ?? "Error")
+}
+if let date = formatter.date(from: "2022/12/25 00:00:00") {
+    print(aDEViento2022(date: date) ?? "Error")
+}
+if let date = formatter.date(from: "2022/10/30 00:00:00") {
+    print(aDEViento2022(date: date) ?? "Error")
+}
+if let date = formatter.date(from: "2022/12/30 04:32:12") {
+    print(aDEViento2022(date: date) ?? "Error")
+}
+if let date = formatter.date(from: "2020/10/30 00:00:00") {
+    print(aDEViento2022(date: date) ?? "Error")
+}
+if let date = formatter.date(from: "2024/12/30 04:32:12") {
+    print(aDEViento2022(date: date) ?? "Error")
+}
