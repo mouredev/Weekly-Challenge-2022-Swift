@@ -1,4 +1,4 @@
-import Foundation
+//import Foundation
 
 /*
  * Reto #47
@@ -18,40 +18,65 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+#![allow(dead_code)]
 
-func mostRepeatedVowel(text: String) -> [String] {
-
-    var vowelCount: [Character : Int] = [:]
-
-    text.lowercased().folding(options: .diacriticInsensitive, locale: .current).forEach { character in
-        if character == "a" || character == "e" || character == "i" || character == "o" || character == "u" {
-            vowelCount[character] = (vowelCount[character] ?? 0) + 1
+type Charcountpair = (char,u32);
+fn most_repeated_vowel(text: &str) -> char {
+    let mut count: [Charcountpair;5] = [('a',0), ('e', 0), ('i',0), ('o', 0), ('u', 0)];
+    for char in text.chars() {
+        if is_a_repeated(char) {
+            count[0].1 += 1;
+        }
+        else if is_e_repeated(char) {
+            count[1].1 += 1;
+        }
+        else if is_i_repeated(char) {
+            count[2].1 += 1;
+        }
+        else if is_o_repeated(char) {
+            count[3].1 +=1;
+        }
+        else if is_u_repeated(char) {
+            count[4].1 += 1;
         }
     }
 
-    var mostRepeated: [String] = []
-    var maxRepeated = 0
-    
-    vowelCount.forEach { (vowel: Character, count: Int) in
-        if count >= maxRepeated {
-            if count > maxRepeated {
-                mostRepeated.removeAll()
-            }
-            mostRepeated.append(vowel.description)
+    let mut it = count.iter();
+    let mut temp = it.next().unwrap();
 
-            maxRepeated = count
-        }
+    for n in it {
+        temp = greater_number(&n, &temp);
     }
-
-    return mostRepeated
+    temp.0
 }
 
-print(mostRepeatedVowel(text: "aaaaaeeeeiiioou"))
-print(mostRepeatedVowel(text: "AáaaaEeeeIiiOoU"))
-print(mostRepeatedVowel(text: "eeeeiiioouaaaaa"))
-print(mostRepeatedVowel(text: ".-Aá?aaaBbEeeweIiiOoU:"))
-print(mostRepeatedVowel(text: ".-Aá?aaa BbEeew eIiiOoU:"))
-print(mostRepeatedVowel(text: ".-Aá?aaa BbEeew eEIiiOoU:"))
-print(mostRepeatedVowel(text: ".-Aá?aaa BbEeew eEIiiOoUuuuuu:"))
-print(mostRepeatedVowel(text: "aeiou"))
-print(mostRepeatedVowel(text: "brp qyz"))
+
+fn greater_number<'a>(a: &'a Charcountpair, b: &'a Charcountpair) -> &'a Charcountpair {
+    if a.1 >= b.1 {
+        return a;
+    }
+    return b;
+}
+
+fn is_a_repeated(s: char) -> bool {
+    s == 'a' || s == 'A' //|| s == 'á' || s == 'à' || s == 'Á' || s == 'À' || s == 'Â' || s == 'â' || s == 'ä' || s == 'Ä'
+}
+
+
+fn is_e_repeated(s: char) -> bool {
+    s == 'e' || s == 'E' //|| s == 'è' || s == 'é' || s == 'ê' || s == 'ë'  || s == 'É' || s == 'Ê' || s == 'È' || s == 'Ë'
+}
+
+fn is_i_repeated(s: char) -> bool {
+    s == 'i'  || s == 'I' //|| s == 'ì' || s == 'í' || s == 'î' || s == 'ï' || s == 'Í' || s == 'Ì' || s == 'Î' || s == 'Ï'
+}
+
+fn is_o_repeated(s: char) -> bool {
+    s == 'o' || s == 'O' //|| s == 'ó' || s == 'ô' || s == 'ò' || s == 'ö'  || s == 'Ó' || s == 'Ò' || s == 'Ö' || s == 'Ô' 
+}
+fn is_u_repeated(s: char) -> bool {
+    s == 'u' || s == 'U' //|| s == 'ú' || s == 'ù' || s == 'û' || s == 'ü'  || s == 'Ü' || s == 'Ú' || s == 'Û' || s == 'Ù'
+}
+fn main() -> () {
+    ()
+}
