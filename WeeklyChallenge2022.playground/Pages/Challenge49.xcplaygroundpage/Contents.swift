@@ -1,4 +1,4 @@
-import Foundation
+//import Foundation
 
 /*
  * Reto #49
@@ -20,3 +20,45 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+#[allow(dead_code)]
+fn detector_handle_at<'a>(s: &'a String) -> std::vec::Vec::<&'a str> {
+    let mut ret = std::vec::Vec::<&'a str>::new();
+    let palabras = s.split(' ');
+    for palabra in palabras {
+        if palabra.starts_with("@") {
+            ret.push(palabra);
+        }
+    }
+    ret
+ }
+
+#[allow(dead_code)]
+fn detector_handle_hashtag<'a>(s: &'a String) -> std::vec::Vec::<&'a str> {
+
+    let mut ret = std::vec::Vec::<&'a str>::new();
+    let palabras = s.split(' ');
+    for palabra in palabras {
+        if palabra.starts_with("#") {
+            ret.push(palabra);
+        }
+    }
+    ret
+ }
+#[allow(dead_code)]
+fn detector_handle_web<'a> (s: &'a String) -> std::vec::Vec::<&'a str> {
+    
+    let mut ret = std::vec::Vec::<&'a str>::new();
+    let palabras = s.split(' ');
+    for palabra in palabras {
+        if (palabra.starts_with("www.") || palabra.starts_with("https://") || palabra.starts_with("http://")) && 
+            (palabra.ends_with(".com") || palabra.ends_with(".es") || palabra.ends_with(".net")) {
+
+            ret.push(palabra);
+        }
+    }
+    ret
+ }
+
+fn main() -> () {
+    return;
+}
