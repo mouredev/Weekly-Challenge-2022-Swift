@@ -20,3 +20,30 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
+
+func handlesDetector(text: String) -> [String:[String]] {
+
+    var handles = [String:[String]]()
+
+    do {
+        
+        handles["user"] = try text.matches(of: Regex("@(\\w{2,15})")).map({ match in
+            text[match.range.lowerBound..<match.range.upperBound].description
+        })
+        
+        handles["hashtag"] = try text.matches(of: Regex("#[^ !@$^#&,.?():%<>{}\\[\\]|\"]+")).map({ match in
+            text[match.range.lowerBound..<match.range.upperBound].description
+        })
+        
+        handles["url"] = try text.matches(of: Regex("((https?://(www\\.)?)|www\\.)[\\w#+\\=]{2,256}\\.[a-zA-Z]{2,7}[\\w\\/?=&.+-]*")).map({ match in
+            text[match.range.lowerBound..<match.range.upperBound].description
+        })
+        
+    } catch {
+        // No hacemos nada en caso de error
+    }
+
+    return handles
+}
+
+print(handlesDetector(text: "En esta actividad de @mouredev, resolvemos #retos de #programacion desde https://retosdeprogramacion.com/semanales2022, que @braismoure aloja en www.github.com"))
