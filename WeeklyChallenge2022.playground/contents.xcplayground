@@ -119,5 +119,7 @@
         <page name='Challenge15.openai'/>
         <page name='Challenge16.openai'/>
         <page name='Challenge17.openai'/>
+        <page name='Challenge49.openai'/>
+        <page name='Challenge50'/>
     </pages>
 </playground>
