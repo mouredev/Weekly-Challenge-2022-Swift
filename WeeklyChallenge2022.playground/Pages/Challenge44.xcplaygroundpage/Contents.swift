@@ -20,7 +20,6 @@ import Foundation
  *   https://retosdeprogramacion.com/semanales2022.
  *
  */
-
 func numberOfBoomerangs(numbers: [Int]) -> Int {
 
     if numbers.count < 3 { return 0 }

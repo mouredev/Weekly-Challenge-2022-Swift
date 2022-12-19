@@ -54,6 +54,6 @@ func printDaysBetween(firstDate: String, secondDate: String) {
     }
 }
 
-printDaysBetween(firstDate: "18/05/2022", secondDate: "29/05/2022")
-printDaysBetween(firstDate: "mouredev", secondDate: "29/04/2022")
-printDaysBetween(firstDate: "18/5/2022", secondDate: "29/04/2022")
+printDaysBetween(firstDate: "18/05/2022", secondDate: "29/05/2022") // 0
+printDaysBetween(firstDate: "mouredev", secondDate: "29/04/2022")   // Error en el formato de alguna fecha
+printDaysBetween(firstDate: "18/5/2022", secondDate: "29/04/2022")  // Error en el formato de alguna fecha

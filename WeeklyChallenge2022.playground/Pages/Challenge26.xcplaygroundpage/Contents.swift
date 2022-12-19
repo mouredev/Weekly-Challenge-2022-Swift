@@ -46,7 +46,9 @@ func drawPolygon(size: Int, type: PolygonType) {
             } else {
                 print("\(String(repeating: "  ", count: value - size))\(String(repeating: "* ", count: totalSize - value))")
             }
+            print(rowLine)
         }
+        print()
     }
 
     print("")

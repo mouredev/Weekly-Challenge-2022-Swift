@@ -49,6 +49,7 @@ func pascalTriangle(size: Int) {
 
         lastRow = currentRow
     }
+    printLine(line: previousLine,  tab: 0)
 }
 
 pascalTriangle(size: 5)

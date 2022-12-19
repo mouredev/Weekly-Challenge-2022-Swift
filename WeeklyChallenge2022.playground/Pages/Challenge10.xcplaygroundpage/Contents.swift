@@ -47,6 +47,7 @@ func isBalanced(expression: String) -> Bool {
             }
         }
     }
+}
 
     return stack.isEmpty
 }

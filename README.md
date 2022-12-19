@@ -82,8 +82,7 @@ Tienes toda la información extendida sobre los retos de programación semanales
 * **#47** - 21/11/22 - [`VOCAL MÁS COMÚN`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge47.xcplaygroundpage/Contents.swift)
 * **#48** - 28/11/22 - [`EL CALENDARIO DE ADEVIENTO 2022`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge48.xcplaygroundpage/Contents.swift)
 * **#49** - 05/12/22 - [`EL DETECTOR DE HANDLES`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge49.xcplaygroundpage/Contents.swift)
-* **#50** - 12/12/22 - [`LA ENCRIPTACIÓN DE KARACA`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge50.xcplaygroundpage/Contents.swift)
-* **#51** - 19/12/22 - `Publicación nuevo reto...`
+* **#50** - 12/12/22 - `Publicación nuevo reto...`
 
 <a href="https://youtu.be/ydH_B5KuqGs"><img src="http://i3.ytimg.com/vi/ydH_B5KuqGs/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 

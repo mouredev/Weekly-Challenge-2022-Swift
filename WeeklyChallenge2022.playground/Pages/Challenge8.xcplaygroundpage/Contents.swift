@@ -33,5 +33,5 @@ func decimalToBinary(_ decimal: Int) -> String {
     return binary.isEmpty ? "0" : binary
 }
 
-print(decimalToBinary(387))
-print(decimalToBinary(0))
+print(decimalToBinary(387)) //110000011
+print(decimalToBinary(0))   //0

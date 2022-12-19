@@ -73,3 +73,9 @@ func area(polygon: Polygon) -> Double {
     polygon.printArea()
     return polygon.area()
 }
+
+print(Polygon.init(hasFourVertices: true, sideA: 4).getArea())
+print(Polygon.init(hasFourVertices: true, sideA: 7, sideB: 4).getArea())
+print(Polygon.init(hasFourVertices: false, sideA: 3, sideB: 4, sideC: 5).getArea())
+print(Polygon.init(hasFourVertices: false, sideA: 3, sideB: 4).getArea())   // isosceles
+print(Polygon.init(hasFourVertices: false, sideA: 3).getArea())             // equilateral
