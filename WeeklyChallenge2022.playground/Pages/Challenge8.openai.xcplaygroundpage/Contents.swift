@@ -9,18 +9,13 @@ import Foundation
  *
  * Enunciado: Crea un programa en Swift que se encargue de transformar un número decimal a binario sin utilizar funciones propias del lenguaje que lo hagan directamente.
  *
- * Resuelto: Sí. En 3 iteracciones.
- * Explicación:
- * · Para transformar un número decimal a binario en Swift, puedes utilizar un algoritmo de división sucesiva.
- * · En este ejemplo, la función decimalToBinary toma un número entero y lo divide repetidamente entre 2, agregando el residuo de cada división al resultado. Una vez que el número se ha dividido hasta llegar a 0, se devuelve el resultado como una cadena de caracteres.
+ * Resuelto: Sí
+ " Iteracciones: 3
+ * Explicación: Para transformar un número decimal a binario en Swift, puedes utilizar un algoritmo de división sucesiva.
+ En este ejemplo, la función decimalToBinary toma un número entero y lo divide repetidamente entre 2, agregando el residuo de cada división al resultado. Una vez que el número se ha dividido hasta llegar a 0, se devuelve el resultado como una cadena de caracteres.
  * Conversación:
  * - El código intenta cambiar el valor del parámetro number que es inmutable
- * + Es correcto. En Swift, los parámetros de función son inmutables por defecto. Esto significa que no se pueden cambiar directamente en la función. Sin embargo, hay algunas formas de trabajar alrededor de esta limitación.
- * + Otra forma de hacerlo es crear una variable local dentro de la función que contenga el valor del parámetro, y modificar esa variable en lugar del parámetro directamente
  * - Para el caso del número 0 devuelve un resultado vacío, en lugar de 0
- * + Correcto. En el código que te mostré anteriormente, la función decimalToBinary devuelve una cadena vacía cuando el número es 0. Esto se debe a que el bucle while se detiene cuando el número es 0, y no se agrega nada al resultado en ese momento.
- * + Para solucionar este problema, puedes agregar una comprobación para verificar si el número es 0 antes de entrar al bucle, y devolver el resultado directamente en ese caso.
- * + Con este cambio, la función devolverá "0" cuando el número sea 0, en lugar de una cadena vacía.
  *
  */
 

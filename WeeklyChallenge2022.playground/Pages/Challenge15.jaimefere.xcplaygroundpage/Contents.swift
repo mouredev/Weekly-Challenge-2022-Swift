@@ -33,9 +33,9 @@ private func daysInterval(dateText1: String, dateText2: String) -> Int {
     }
 }
 
-print(daysInterval(dateText1: "16/04/2022", dateText2: "16-04-2022"))
-print(daysInterval(dateText1: "16/04/2022", dateText2: "16/13/2022"))
-print(daysInterval(dateText1: "16/04/2022", dateText2: "32/04/2022"))
-print(daysInterval(dateText1: "16/04/2022", dateText2: "17/04/2022"))
-print(daysInterval(dateText1: "17/04/2022", dateText2: "16/04/2022"))
-print(daysInterval(dateText1: "17/04/2022", dateText2: "16/04/2023"))
+print(daysInterval(dateText1: "16/04/2022", dateText2: "16-04-2022"))   // 0
+print(daysInterval(dateText1: "16/04/2022", dateText2: "16/13/2022"))   // Alguna de las dos fechas de entrada es errónea
+print(daysInterval(dateText1: "16/04/2022", dateText2: "32/04/2022"))   // Alguna de las dos fechas de entrada es errónea
+print(daysInterval(dateText1: "16/04/2022", dateText2: "17/04/2022"))   // 1
+print(daysInterval(dateText1: "17/04/2022", dateText2: "16/04/2022"))   // 1
+print(daysInterval(dateText1: "17/04/2022", dateText2: "16/04/2023"))   // 364

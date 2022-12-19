@@ -12,15 +12,14 @@ import Foundation
  * — En morse se soporta raya "—", punto ".", un espacio " " entre letras o símbolos y dos espacios entre palabras "  ".
  * — El alfabeto morse soportado será el mostrado en https://es.wikipedia.org/wiki/Código_morse.
  *
- * Resuelto: Sí. En 2 iteracciones.
- * Explicación:
- * · Para crear este programa en Swift, podemos utilizar el diccionario de código morse para convertir un texto a morse y viceversa. Primero, definimos el diccionario como una estructura de datos de tipo [String: String]
- * · Luego, podemos crear una función que tome una cadena de texto como entrada y devuelva la cadena convertida a morse o a texto según sea necesario.
- * · Para convertir de morse a texto, podemos usar una función similar, pero en lugar de iterar sobre los caracteres de la cadena de texto, iteramos sobre las palabras en la cadena de morse.
- * · Para detectar automáticamente si la cadena de entrada es texto o morse, podemos utilizar una expresión regular para verificar si la cadena contiene sólo puntos y rayas. Si la cadena contiene sólo puntos y rayas, entonces es morse, de lo contrario es texto.
+ * Resuelto: Sí
+ " Iteracciones: 2
+ * Explicación: Para crear este programa en Swift, podemos utilizar el diccionario de código morse para convertir un texto a morse y viceversa. Primero, definimos el diccionario como una estructura de datos de tipo [String: String]
+ Luego, podemos crear una función que tome una cadena de texto como entrada y devuelva la cadena convertida a morse o a texto según sea necesario.
+ Para convertir de morse a texto, podemos usar una función similar, pero en lugar de iterar sobre los caracteres de la cadena de texto, iteramos sobre las palabras en la cadena de morse.
+ Para detectar automáticamente si la cadena de entrada es texto o morse, podemos utilizar una expresión regular para verificar si la cadena contiene sólo puntos y rayas. Si la cadena contiene sólo puntos y rayas, entonces es morse, de lo contrario es texto.
  * Conversación:
  * — En el alfabeto faltan equivalencias para la letra CH, para paréntesis, para símbolos de puntuación, de exclamación y de interrogación. Complétalo añadiendo todos los símbolos que se te ocurran
- * + Para añadir las equivalencias de los símbolos que faltan, simplemente debemos agregarlas al diccionario que creamos al principio del código. Con esto debería ser suficiente para que la función convertToMorse() pueda realizar correctamente la conversión tanto de texto a código morse como viceversa.
  *
  */
 

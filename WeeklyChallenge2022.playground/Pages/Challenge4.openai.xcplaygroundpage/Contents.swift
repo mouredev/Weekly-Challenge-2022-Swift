@@ -13,12 +13,10 @@ import Foundation
  * - Imprime el cálculo del área de un polígono de cada tipo.
  *
  * Resuelto: Sí.
- * Explicación:
- * · En este ejemplo, la función area recibe como parámetros una cadena que indica el tipo de polígono (triángulo, cuadrado o rectángulo) y dos números enteros que representan los lados del polígono. La función calcula y retorna el área del polígono, utilizando la fórmula correspondiente según el tipo de polígono que se le haya pasado.
+ " Iteracciones: 2
+ * Explicación: En este ejemplo, la función area recibe como parámetros una cadena que indica el tipo de polígono (triángulo, cuadrado o rectángulo) y dos números enteros que representan los lados del polígono. La función calcula y retorna el área del polígono, utilizando la fórmula correspondiente según el tipo de polígono que se le haya pasado.
  * Conversación:
  * - Los polígonos Cuadrado y Rectángulo tienen la misma fórmula, ¿podrían estar en el mismo case del switch?
- * + Sí, se pueden agrupar en el mismo case del switch si se desea.
- * + En este caso, en el case que se encarga de calcular el área de un cuadrado o un rectángulo se está utilizando la misma fórmula para ambos, que es multiplicar el valor de los dos lados. De esta manera, se pueden agrupar en un solo case del switch.
  *
  */
 

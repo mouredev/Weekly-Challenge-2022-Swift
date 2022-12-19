@@ -13,10 +13,8 @@ import Foundation
  * - No se pueden utilizar funciones propias del lenguaje que lo resuelvan automáticamente.
  *
  * Resuelto: Sí
- * Explicación:
- * · Este programa toma una cadena de texto ingresada por el usuario, divide la cadena en un array de palabras, luego recorre el array y cuenta cuántas veces aparece cada palabra en el texto. Finalmente, muestra el recuento de cada palabra.
- * Conversación:
- * -
+ " Iteracciones: º
+ * Explicación: Este programa toma una cadena de texto ingresada por el usuario, divide la cadena en un array de palabras, luego recorre el array y cuenta cuántas veces aparece cada palabra en el texto. Finalmente, muestra el recuento de cada palabra.
  *
  */
 

@@ -11,15 +11,11 @@ import Foundation
  * - Si le pasamos "Hola mundo" nos retornaría "odnum aloH"
  *
  * Resuelto: Sí. Pero hay que aclararle que no utilice funciones del sistema.
- * Explicación:
- * · Para crear un programa en Swift que invierta el orden de una cadena de texto sin usar funciones propias del lenguaje que lo hagan de forma automática, podemos utilizar un ciclo for y la propiedad .reversed() de las secuencias de caracteres de Swift.
+ " Iteracciones: 3
+ * Explicación: Para crear un programa en Swift que invierta el orden de una cadena de texto sin usar funciones propias del lenguaje que lo hagan de forma automática, podemos utilizar un ciclo for y la propiedad .reversed() de las secuencias de caracteres de Swift.
  * Conversación:
  * - Pero al utilizar la función reversed() no cumplimos con el enunciado.
- * + Tienes razón, si utilizamos la función reversed() del lenguaje Swift no cumplimos con el enunciado, ya que no estamos implementando la lógica para invertir la cadena de forma manual.
- * + En lugar de usar reversed(), podemos utilizar un ciclo for que recorra la cadena de forma inversa utilizando el índice de los caracteres. De esta forma, podemos ir agregando cada caracter a una nueva variable, que al final del ciclo contendrá la cadena original pero invertida.
  * - ¿Y cómo sería la implementación de la función invertirCadena de forma recursiva?
- * + La implementación de la función invertirCadena de forma recursiva podría ser similar a la que te mostré en la respuesta anterior, pero en lugar de usar un ciclo for, utilizaríamos la recursividad para ir agregando cada caracter a la cadena invertida.
- * + La idea es que en cada llamada recursiva, se extraiga el último caracter de la cadena y se concatene al principio de la cadena invertida, hasta que no queden caracteres en la cadena original.
  *
  */
 

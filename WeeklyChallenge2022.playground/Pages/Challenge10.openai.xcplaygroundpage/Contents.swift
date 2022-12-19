@@ -13,13 +13,13 @@ import Foundation
  * - Expresión balanceada: { [ a * ( c + d ) ] - 5 }
  * - Expresión no balanceada: { a * ( c + d ) ] - 5 }
  *
- * Resuelto: Sí. A la primera.
- * Explicación:
- * ·Para resolver este problema, podemos utilizar una pila, un tipo de dato que nos permite agregar elementos en un orden determinado y recuperarlos en orden inverso.
- * ·Para comprobar si los delimitadores de una expresión están equilibrados, podemos iterar sobre cada carácter de la expresión y hacer lo siguiente:
- * ·Si el carácter es un delimitador de apertura, lo agregamos a la pila.
- * ·Si el carácter es un delimitador de cierre, verificamos si el último elemento de la pila es el delimitador de apertura correspondiente. Si lo es, eliminamos el elemento de la pila. Si no lo es, la expresión no está equilibrada.
- * ·Al finalizar la iteración, si la pila está vacía, significa que todos los delimitadores de apertura y cierre se encuentran en pares y en orden correcto, por lo que la expresión está equilibrada. Si la pila no está vacía, significa que hay delimitadores de apertura que no tienen su correspondiente delimitador de cierre, por lo que la expresión no está equilibrada.
+ * Resuelto: Sí
+ " Iteracciones: 1
+ * Explicación: Para resolver este problema, podemos utilizar una pila, un tipo de dato que nos permite agregar elementos en un orden determinado y recuperarlos en orden inverso.
+ Para comprobar si los delimitadores de una expresión están equilibrados, podemos iterar sobre cada carácter de la expresión y hacer lo siguiente:
+ Si el carácter es un delimitador de apertura, lo agregamos a la pila.
+ Si el carácter es un delimitador de cierre, verificamos si el último elemento de la pila es el delimitador de apertura correspondiente. Si lo es, eliminamos el elemento de la pila. Si no lo es, la expresión no está equilibrada.
+ Al finalizar la iteración, si la pila está vacía, significa que todos los delimitadores de apertura y cierre se encuentran en pares y en orden correcto, por lo que la expresión está equilibrada. Si la pila no está vacía, significa que hay delimitadores de apertura que no tienen su correspondiente delimitador de cierre, por lo que la expresión no está equilibrada.
  *
  */
 
