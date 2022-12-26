@@ -84,15 +84,16 @@ Tienes toda la información extendida sobre los retos de programación semanales
 * **#49** - 05/12/22 - [`EL DETECTOR DE HANDLES`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge49.xcplaygroundpage/Contents.swift)
 * **#50** - 12/12/22 - [`LA ENCRIPTACIÓN DE KARACA`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge50.xcplaygroundpage/Contents.swift)
 * **#51** - 19/12/22 - [`EL RETO RANDOM`](https://github.com/mouredev/Weekly-Challenge-2022-Swift/blob/main/WeeklyChallenge2022.playground/Pages/Challenge51.xcplaygroundpage/Contents.swift)
-* **FIN** - 26/12/22 - `Presentación de los retos de programación semanales para 2023`
+
+> **[🆕ACCEDE A LOS NUEVOS RETOS SEMANALES PARA 2023](https://github.com/mouredev/retos-programacion-2023)**
 
 <a href="https://youtu.be/ydH_B5KuqGs"><img src="http://i3.ytimg.com/vi/ydH_B5KuqGs/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 
-*Corección retos del 0 al 4 en vídeo*
+*Corrección retos del 0 al 4 en vídeo*
 
 <a href="https://youtu.be/Y_Gej0lbfD0"><img src="http://i3.ytimg.com/vi/Y_Gej0lbfD0/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 
-*Corección retos del 5 al 10 en vídeo*
+*Corrección retos del 5 al 10 en vídeo*
 
 <a href="https://youtu.be/YPdhP60Tt08"><img src="http://i3.ytimg.com/vi/YPdhP60Tt08/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 
@@ -109,6 +110,10 @@ Tienes toda la información extendida sobre los retos de programación semanales
 <a href="https://youtu.be/LpnVqgonptI"><img src="http://i3.ytimg.com/vi/LpnVqgonptI/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
 
 *Corección retos del 41 al 46 en vídeo*
+
+<a href="https://youtu.be/nOrqQcHUhxc"><img src="http://i3.ytimg.com/vi/nOrqQcHUhxc/maxresdefault.jpg" style="height: 50%; width:50%;"/></a>
+
+*Corección retos del 47 al 51 en vídeo*
 
 ### ¿Cómo puedo participar?
 
