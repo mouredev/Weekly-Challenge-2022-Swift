@@ -19,23 +19,61 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
-
-func isPalindrome(text: String) -> Bool {
-    
-    let normalizedText = NSMutableString(string: text.lowercased().folding(options: .diacriticInsensitive, locale: .current)).toRegex(pattern: "[^a-z0-9]", replacement: "")
-    return normalizedText.description == String(normalizedText.description.reversed())
+fn main() {
+    println!("{}", is_palindrome("Ana lleva al oso la avellana."));
+    println!("{}", is_palindrome("Adivina ya te opina, ya ni miles origina, ya ni cetro me domina, ya ni monarcas, a repaso ni mulato carreta, acaso nicotina, ya ni cita vecino, anima cocina, pedazo gallina, cedazo terso nos retoza de canilla goza, de pánico camina, ónice vaticina, ya ni tocino saca, a terracota luminosa pera, sacra nómina y ánimo de mortecina, ya ni giros elimina, ya ni poeta, ya ni vida"));
+    println!("{}", is_palindrome("¿Qué os ha parecido el reto?"));
 }
 
-extension NSMutableString {
-    
-    func toRegex(pattern: String, replacement: String) -> NSMutableString {
-        let regex = try! NSRegularExpression(pattern: pattern, options: [])
-        regex.replaceMatches(in: self, options: [], range: NSMakeRange(0, self.length), withTemplate: replacement)
-        return self
+fn is_palindrome(text: &str) -> bool {
+    let text_lower = text.to_lowercase();
+    let text_min = remove_diacritics(text_lower.as_str()); 
+
+    let text_min: String = text_min.chars().filter(|c| c.is_alphanumeric()).collect();
+    let text_min_reverse: String = text_min.chars().rev().collect();
+
+    text_min.eq(&text_min_reverse)
+}
+
+fn remove_diacritics(string: &str) -> String {
+    let chars = string.chars();
+    chars.fold("".to_string(), |acc, c| acc + &find_char_match(c))
+}
+
+fn find_char_match(c: char) -> String {
+    match c {
+        'À' | 'Á' | 'Â' | 'Ã' | 'Ä' | 'Å' | 'Æ' => "A".to_string(),
+        'Þ' => "B".to_string(),
+        'Ç' | 'Č' => "C".to_string(),
+        'Ď' | 'Ð' => "D".to_string(),
+        'Ě' | 'È' | 'É' | 'Ê' | 'Ë' => "E".to_string(),
+        'Ƒ' => "F".to_string(),
+        'Ì' | 'Í' | 'Î' | 'Ï' => "I".to_string(),
+        'Ň' | 'Ñ' => "N".to_string(),
+        'Ò' | 'Ó' | 'Ô' | 'Õ' | 'Ö' | 'Ø' => "O".to_string(),
+        'Ř' => "R".to_string(),
+        'ß' => "ss".to_string(),
+        'Š' => "S".to_string(),
+        'Ť' => "T".to_string(),
+        'Ů' | 'Ù' | 'Ú' | 'Û' | 'Ü' => "U".to_string(),
+        'Ý' => "Y".to_string(),
+        'Ž' => "Z".to_string(),
+
+        'à' | 'á' | 'â' | 'ã' | 'ä' | 'å' | 'æ' => "a".to_string(),
+        'þ' => "b".to_string(),
+        'ç' | 'č' => "c".to_string(),
+        'ď' | 'ð' => "d".to_string(),
+        'ě' | 'è' | 'é' | 'ê' | 'ë' => "e".to_string(),
+        'ƒ' => "f".to_string(),
+        'ì' | 'í' | 'î' | 'ï' => "i".to_string(),
+        'ñ' | 'ň' => "n".to_string(),
+        'ò' | 'ó' | 'ô' | 'õ' | 'ö' | 'ø' => "o".to_string(),
+        'ř' => "r".to_string(),
+        'š' => "s".to_string(),
+        'ť' => "t".to_string(),
+        'ů' | 'ù' | 'ú' | 'û' | 'ü' => "u".to_string(),
+        'ý' | 'ÿ' => "y".to_string(),
+        'ž' => "z".to_string(),
+        _ => c.to_string(),
     }
-    
 }
-
-print(isPalindrome(text: "Ana lleva al oso la avellana."))
-print(isPalindrome(text: "Adivina ya te opina, ya ni miles origina, ya ni cetro me domina, ya ni monarcas, a repaso ni mulato carreta, acaso nicotina, ya ni cita vecino, anima cocina, pedazo gallina, cedazo terso nos retoza de canilla goza, de pánico camina, ónice vaticina, ya ni tocino saca, a terracota luminosa pera, sacra nómina y ánimo de mortecina, ya ni giros elimina, ya ni poeta, ya ni vida"))
-print(isPalindrome(text: "¿Qué os ha parecido el reto?"))
