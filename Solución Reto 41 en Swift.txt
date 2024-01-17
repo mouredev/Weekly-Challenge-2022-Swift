@@ -1,0 +1,21 @@
+import Foundation
+
+func ohm(v: Double, i: Double, r: Double){
+  if(v == 0 && i == 0 && r == 0){
+    print("Invalid values")
+  }
+  else if (v != 0 && i != 0 && r != 0){
+    print("Invalid values")
+  }
+  else if(v == 0 && i != 0 && r != 0){
+    print(String(format: "%.2f", i * r))
+  }
+  else if(i == 0 && v != 0 && r != 0){
+    print(String(format: "%.2f", v/r))
+  }
+  else{
+   print(String(format: "%.2f", v/i))
+  }
+}
+
+let num = ohm(v: 7, i: 8, r: 4.55)
