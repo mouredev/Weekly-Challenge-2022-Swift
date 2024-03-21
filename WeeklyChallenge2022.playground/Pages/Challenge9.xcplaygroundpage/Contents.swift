@@ -20,24 +20,69 @@ import Foundation
  *
  */
 
+let naturalDict = ["A":".—", "N":"—.", "0":"—————",
+                       "B":"—...", "Ñ":"——.——", "1":".————",
+                       "C":"—.—.", "O":"———", "2":"..———",
+                       "CH":"————", "P":".——.", "3":"...——",
+                       "D":"—..", "Q":"——.—", "4":"....—",
+                       "E":".", "R":".—.", "5":".....",
+                       "F":"..—.", "S":"...", "6":"—....",
+                       "G":"——.", "T":"—", "7":"——...",
+                       "H":"....", "U":"..—", "8":"———..",
+                       "I":"..", "V":"...—", "9":"————.",
+                       "J":".———", "W":".——", ".":".—.—.—",
+                       "K":"—.—", "X":"—..—", ",":"——..——",
+                       "L":".—..", "Y":"—.——", "?":"..——..",
+                   "M":"——", "Z":"——..", "\"":".—..—.", "/":"—..—.", " ": " "]
+
+func convertToMorse(text: String) -> String {
+    var morseText = ""
+    var aux = ""
+    
+    Array(text).forEach { character in
+        if (character.uppercased() == "C") {
+            print("Es una C: \(character)")
+            aux = character.uppercased()
+        } else if (character.uppercased() != "C" && aux == "") {
+            print("No es una C: \(character)")
+            if let morse = naturalDict[String(character).uppercased()] {
+                morseText += morse
+            }
+            print("morse: \(morseText)")
+        } else if (aux == "C" && character.uppercased() == "H") {
+            print("Es una CH: \(character)")
+            aux = ""
+            let char = "CH"
+            if let morse = naturalDict[char.uppercased()] {
+                morseText += morse
+                print("CH: \(morseText)")
+            }
+            print("morse: \(morseText)")
+        } else if (aux == "C" && character.uppercased() != "H") {
+            print("Tiene la C almacenada y la siguiente NO es H: \(character)")
+            if let morse = naturalDict[aux.uppercased()] {
+                morseText += morse
+            }
+            print("morse: \(morseText)")
+            aux = ""
+            if let morse = naturalDict[String(character).uppercased()] {
+                morseText += morse
+            }
+            print("morse: \(morseText)")
+        }
+    }
+    
+    return morseText
+}
+
+
+print("\(convertToMorse(text: "Chocapic. Es una marca de cereales?"))")
+
+
+// MARK: - Solucion MoureDev
 func decoder(input: String) -> String {
 
     var decodedInput = ""
-
-    let naturalDict = ["A":".—", "N":"—.", "0":"—————",
-                           "B":"—...", "Ñ":"——.——", "1":".————",
-                           "C":"—.—.", "O":"———", "2":"..———",
-                           "CH":"————", "P":".——.", "3":"...——",
-                           "D":"—..", "Q":"——.—", "4":"....—",
-                           "E":".", "R":".—.", "5":".....",
-                           "F":"..—.", "S":"...", "6":"—....",
-                           "G":"——.", "T":"—", "7":"——...",
-                           "H":"....", "U":"..—", "8":"———..",
-                           "I":"..", "V":"...—", "9":"————.",
-                           "J":".———", "W":".——", ".":".—.—.—",
-                           "K":"—.—", "X":"—..—", ",":"——..——",
-                           "L":".—..", "Y":"—.——", "?":"..——..",
-                           "M":"——", "Z":"——..", "\"":".—..—.", "/":"—..—."]
 
     var morseDict: [String: String] = [:]
     naturalDict.forEach { key, value in
@@ -47,7 +92,6 @@ func decoder(input: String) -> String {
     if input.rangeOfCharacter(from: CharacterSet.letters) != nil || input.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil {
 
         // Natural
-
         var index = 0
         var ch = false
 
@@ -75,7 +119,6 @@ func decoder(input: String) -> String {
     } else if (input.contains(".") || input.contains("—")) {
 
         // Morse
-
         input.components(separatedBy: "  ").forEach { word in
             word.components(separatedBy: " ").forEach { symbols in
                 decodedInput += morseDict[symbols] ?? ""

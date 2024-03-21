@@ -20,27 +20,31 @@ import Foundation
  *
  */
 
-func countWords(text: String) {
-
-    let mutableString = NSMutableString(string: text.lowercased())
-    
-    let regex = try! NSRegularExpression(pattern: "[^a-z0-9]", options: [])
-    regex.replaceMatches(in: mutableString, options: [], range: NSMakeRange(0, mutableString.length), withTemplate: " ")
-    
-    var words: [String:Int] = [:]
-    
-    String(mutableString).split(separator: " ").forEach { word in
-        let key = String(word)
-        if words[key] != nil {
-            words[key]! += 1
-        } else {
-            words[key] = 1
-        }
-    }
-    
-    words.forEach { key, value in
-        print("\(key) se ha repetido \(value) \(value == 1 ? "vez" : "veces")")
+extension String {
+    var wordList: [String] {
+        return components(separatedBy: CharacterSet.alphanumerics.inverted).filter { !$0.isEmpty }
     }
 }
 
-countWords(text: "Hola, mi nombre es brais. Mi nombre completo es Brais Moure (MoureDev).")
+func repeatedWords(text: String) {
+    var wordsList: [String:Int] = [:]
+    let words = text.lowercased().wordList
+    
+    if !words.isEmpty {
+        words.forEach { word in
+            if wordsList[word] != nil {
+                wordsList.updateValue(1 + 1, forKey: word)
+            } else {
+                wordsList[word] = 1
+            }
+        }
+        
+        wordsList.forEach { key, value in
+            print("La palabra '\(key)' se ha repetido \(value) veces")
+        }
+    } else {
+        print("Debes introducir al menos una palabra")
+    }
+}
+
+repeatedWords(text: "Hola, mi nombre es edu. Mi nombre completo es Edu Martin.")

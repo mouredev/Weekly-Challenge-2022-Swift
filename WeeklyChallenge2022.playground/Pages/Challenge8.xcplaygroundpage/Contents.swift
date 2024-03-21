@@ -17,13 +17,12 @@ import Foundation
  *
  */
 
-func decimalToBinary(_ decimal: Int) -> String {
-    
-    var number = decimal
+func convertToBinary(_ decimal: Int) -> String {
     var binary = ""
     
+    var number = decimal
+    
     while number != 0 {
-        
         let reminder = number % 2
         number /= 2
         
@@ -33,5 +32,4 @@ func decimalToBinary(_ decimal: Int) -> String {
     return binary.isEmpty ? "0" : binary
 }
 
-print(decimalToBinary(387))
-print(decimalToBinary(0))
+print(convertToBinary(10))

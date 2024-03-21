@@ -19,13 +19,38 @@ import Foundation
  *
  */
 
-var n0 = 0
-var n1 = 1
-
-(1...50).forEach { _ in
-    print(n0)
-
-    let fib = n0 + n1
-    n0 = n1
-    n1 = fib
+func fibonacci() {
+    var count = 1
+    var fibo = 0
+    var before = 0
+    
+    print("0: \(fibo)")
+    fibo = 1
+    
+    repeat {
+        count += 1
+        print("\(count): \(fibo)")
+        let aux = before
+        before = fibo
+        fibo = fibo + aux
+        
+        
+    } while(count < 50)
 }
+
+fibonacci()
+
+func fibonacciSolution() {
+    var n0 = 0
+    var n1 = 1
+
+    (1...50).forEach { _ in
+        print(n0)
+
+        let fib = n0 + n1
+        n0 = n1
+        n1 = fib
+    }
+}
+
+fibonacciSolution()
