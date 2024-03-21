@@ -1,5 +1,3 @@
-import Foundation
-
 /*
  * Reto #3
  * ¿ES UN NÚMERO PRIMO?
@@ -11,30 +9,26 @@ import Foundation
  * Hecho esto, imprime los números primos entre 1 y 100.
  *
  * Información adicional:
- * - Usa el canal de nuestro discord (https://mouredev.com/discord) "🔁reto-semanal" para preguntas, dudas o prestar ayuda a la comunidad.
+ * - Usa el canal de nuestro discord (https://mouredev.com/discord) "🔁reto-semanal" para preguntas, dudas o prestar ayuda la acomunidad.
  * - Puedes hacer un Fork del repo y una Pull Request al repo original para que veamos tu solución aportada.
  * - Revisaré el ejercicio en directo desde Twitch el lunes siguiente al de su publicación.
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
- *
  */
 
-func isPrime(number: Int) -> Bool {
-    
-    if number < 2 {
-        return false
-    }
-    
-    for i in 2 ..< number {
-        if number % i == 0 {
-            return false
+function esPrimo(number)
+{
+    if(number < 2 ) return false; 
+
+    for(let i = 2; i < number ; i ++){
+        if(number % i == 0){
+            return false;
         }
     }
-    
-    return true
+
+    return true;
 }
 
-(1...100).forEach { number in
-    if isPrime(number: number) {
-        print(number)
-    }
+for(let i = 0; i < 100; i++)
+{
+    return 'El valor'+ i +'es primo:'+esPrimo(i);
 }
